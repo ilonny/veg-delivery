@@ -2,10 +2,7 @@ import { combineReducers, createStore, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
 // import { sideBarReducer, categoriesReducer } from "../../features";
-
-const mainReducer = (state = { test: 123 }, action) => {
-    return { ...state };
-};
+import { mainReducer } from "./reducer";
 
 const rootReducer = combineReducers({
     main: mainReducer,
