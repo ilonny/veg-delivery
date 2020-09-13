@@ -1,6 +1,7 @@
 import { HomePage } from "./HomePage";
 import { AddRest } from "./AddRest";
 import { ListRest } from "./ListRest";
+import { RestaurantPage } from "./RestaurantPage";
 
 export const routes = () => [
     {
@@ -15,5 +16,9 @@ export const routes = () => [
     {
       path: "/list-rest",
       component: ListRest,
+    },
+    {
+      path: "/restaurant",
+      component: RestaurantPage,
     }
 ];

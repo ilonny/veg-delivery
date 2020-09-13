@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 // import { mainRedcuer } from "./lib/store";
 import { hot } from "react-hot-loader";
@@ -87,7 +87,7 @@ const _MainComp = (props) => {
             <GlobalStyles />
             <Layout style={{ flex: 1 }}>
                 <Layout>
-                    <Header>Header</Header>
+                    <Header></Header>
                 </Layout>
                 <Layout>
                     <Sider width={200} className="site-layout-background">
