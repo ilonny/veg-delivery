@@ -17,7 +17,6 @@ const { Header, Content, Sider } = Layout;
 const _MainComp = (props) => {
     // console.log("props", props);
     const { user } = props;
-    const [counter, setCounter] = useState(0);
     if (!user) {
         const onFinish = (values) => {
             console.log("Success:", values);
@@ -35,7 +34,6 @@ const _MainComp = (props) => {
                     }
                     if (res.status === 200) {
                         props.setUser(res.userInfo);
-                        setCounter(counter + 1);
                     }
                 });
         };
