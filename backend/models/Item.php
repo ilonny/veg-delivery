@@ -17,6 +17,7 @@ use Yii;
  * @property string $price
  * @property int|null $parent_id
  * @property string|null $image
+ * @property int $active
  */
 class Item extends \yii\db\ActiveRecord
 {
@@ -35,7 +36,7 @@ class Item extends \yii\db\ActiveRecord
     {
         return [
             [['restaurant_id', 'menu_category_id', 'name', 'price'], 'required'],
-            [['restaurant_id', 'menu_category_id', 'parent_id'], 'integer'],
+            [['restaurant_id', 'menu_category_id', 'parent_id', 'active'], 'integer'],
             [['name', 'description', 'weight', 'price', 'image'], 'string'],
         ];
     }
@@ -55,6 +56,7 @@ class Item extends \yii\db\ActiveRecord
             'price' => 'Price',
             'parent_id' => 'Parent ID',
             'image' => 'Image',
+            'active' => 'Active',
         ];
     }
 }

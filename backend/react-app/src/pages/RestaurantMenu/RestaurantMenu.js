@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col, Row, Button, Input, Divider, Select } from "antd";
+import {
+    Card,
+    // Col,
+    // Row,
+    // Select,
+    Button,
+    Input,
+    Divider,
+    Collapse,
+} from "antd";
 import { API_HOST } from "../../lib";
 const { Meta } = Card;
+const { Panel } = Collapse;
 
 export const RestaurantMenu = (props) => {
     const [data, setData] = useState(null);
@@ -42,7 +52,7 @@ export const RestaurantMenu = (props) => {
     const saveItem = () => {
         const formData = new FormData();
         let input = document.querySelector("#new_item_image");
-        console.log('data is ', data);
+        console.log("data is ", data);
         formData.append(
             "category_id",
             newItem.category_id ? newItem.category_id : data[0].id
@@ -60,11 +70,11 @@ export const RestaurantMenu = (props) => {
             .then((res) => res.json())
             .then((res) => {
                 if (res.status === 200) {
-                    alert('успешно добавлено');
+                    alert("успешно добавлено");
                     getMenu();
                     setNewItem(false);
                 } else {
-                    alert('не удалось добавить блюдо');
+                    alert("не удалось добавить блюдо");
                     getMenu();
                 }
             });
@@ -90,7 +100,9 @@ export const RestaurantMenu = (props) => {
                             }
                         >
                             {data.map((cat) => (
-                                <option key={cat.id} value={cat.id}>{cat.name}</option>
+                                <option key={cat.id} value={cat.id}>
+                                    {cat.name}
+                                </option>
                             ))}
                         </select>
                     </label>
@@ -195,6 +207,215 @@ export const RestaurantMenu = (props) => {
                                     </Button>
                                 </div>
                             </h3>
+                            <div>
+                                <Collapse defaultActiveKey={[]}>
+                                    <Panel header="Меню категории" key="1">
+                                        {category.menu.map((item) => {
+                                            return (
+                                                <Collapse defaultActiveKey={[]}>
+                                                    <Panel
+                                                        header={item.name}
+                                                        key="1"
+                                                    >
+                                                        <div
+                                                            key={item.id}
+                                                            style={{
+                                                                margin: 15,
+                                                            }}
+                                                        >
+                                                            <Card>
+                                                                <label>
+                                                                    <span>
+                                                                        Название
+                                                                        -{" "}
+                                                                        {
+                                                                            item.name
+                                                                        }
+                                                                    </span>
+                                                                    <Input
+                                                                        placeholder="Новое название"
+                                                                        onChange={(
+                                                                            e
+                                                                        ) => {
+                                                                            fetch(
+                                                                                API_HOST +
+                                                                                    `/restaurant/change-item?id=${item.id}&key=name&value=${e.target.value}`
+                                                                            ).then(
+                                                                                (
+                                                                                    res
+                                                                                ) =>
+                                                                                    getMenu()
+                                                                            );
+                                                                        }}
+                                                                    />
+                                                                </label>
+                                                                <img
+                                                                    src={
+                                                                        API_HOST +
+                                                                        "/" +
+                                                                        item.image
+                                                                    }
+                                                                    style={{
+                                                                        maxWidth: 300,
+                                                                    }}
+                                                                />
+                                                                <input
+                                                                    type="file"
+                                                                    onChange={(
+                                                                        e
+                                                                    ) => {
+                                                                        let data = new FormData();
+                                                                        data.append(
+                                                                            "file",
+                                                                            e
+                                                                                .target
+                                                                                .files[0]
+                                                                        );
+                                                                        fetch(
+                                                                            API_HOST +
+                                                                                `/restaurant/change-item-image?id=${item.id}
+                                                                        `,
+                                                                            {
+                                                                                method:
+                                                                                    "POST",
+                                                                                body: data,
+                                                                            }
+                                                                        ).then(
+                                                                            (
+                                                                                res
+                                                                            ) =>
+                                                                                getMenu()
+                                                                        );
+                                                                    }}
+                                                                />
+                                                                <p>
+                                                                    <label>
+                                                                        <span>
+                                                                            Описание
+                                                                            -{" "}
+                                                                            {
+                                                                                item.description
+                                                                            }
+                                                                        </span>
+                                                                        <Input
+                                                                            placeholder="Новое описание"
+                                                                            onChange={(
+                                                                                e
+                                                                            ) => {
+                                                                                fetch(
+                                                                                    API_HOST +
+                                                                                        `/restaurant/change-item?id=${item.id}&key=description&value=${e.target.value}`
+                                                                                ).then(
+                                                                                    (
+                                                                                        res
+                                                                                    ) =>
+                                                                                        getMenu()
+                                                                                );
+                                                                            }}
+                                                                        />
+                                                                    </label>
+                                                                </p>
+                                                                <p>
+                                                                    <label>
+                                                                        <span>
+                                                                             Вес
+                                                                            -{" "}
+                                                                            {
+                                                                                item.weight
+                                                                            }{" "}
+                                                                            гр
+                                                                        </span>
+                                                                        <Input
+                                                                            placeholder="Новый вес"
+                                                                            onChange={(
+                                                                                e
+                                                                            ) => {
+                                                                                fetch(
+                                                                                    API_HOST +
+                                                                                        `/restaurant/change-item?id=${item.id}&key=weight&value=${e.target.value}`
+                                                                                ).then(
+                                                                                    (
+                                                                                        res
+                                                                                    ) =>
+                                                                                        getMenu()
+                                                                                );
+                                                                            }}
+                                                                        />
+                                                                    </label>
+                                                                </p>
+                                                                <p>
+                                                                    <label>
+                                                                        <span>
+                                                                            Цена
+                                                                            -{" "}
+                                                                            {
+                                                                                item.price
+                                                                            }{" "}
+                                                                            руб
+                                                                        </span>
+                                                                        <Input
+                                                                            placeholder="Новый вес"
+                                                                            onChange={(
+                                                                                e
+                                                                            ) => {
+                                                                                fetch(
+                                                                                    API_HOST +
+                                                                                        `/restaurant/change-item?id=${item.id}&key=price&value=${e.target.value}`
+                                                                                ).then(
+                                                                                    (
+                                                                                        res
+                                                                                    ) =>
+                                                                                        getMenu()
+                                                                                );
+                                                                            }}
+                                                                        />
+                                                                    </label>
+                                                                </p>
+                                                                <p>
+                                                                    <label>
+                                                                        <span>
+                                                                            {item.active
+                                                                                ? "активно"
+                                                                                : "не активно"}
+                                                                        </span>
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            checked={
+                                                                                item.active
+                                                                            }
+                                                                            onChange={(
+                                                                                e
+                                                                            ) => {
+                                                                                fetch(
+                                                                                    API_HOST +
+                                                                                        `/restaurant/change-item?id=${
+                                                                                            item.id
+                                                                                        }&key=active&value=${
+                                                                                            e
+                                                                                                .target
+                                                                                                .checked
+                                                                                                ? 1
+                                                                                                : 0
+                                                                                        }`
+                                                                                ).then(
+                                                                                    (
+                                                                                        res
+                                                                                    ) =>
+                                                                                        getMenu()
+                                                                                );
+                                                                            }}
+                                                                        />
+                                                                    </label>
+                                                                </p>
+                                                            </Card>
+                                                        </div>
+                                                    </Panel>
+                                                </Collapse>
+                                            );
+                                        })}
+                                    </Panel>
+                                </Collapse>
+                            </div>
                             <Divider />
                         </div>
                     );

@@ -118,7 +118,7 @@ class RestaurantController extends Controller
                 'name' => $value->name,
                 'order_by' => $value->order_by,
                 'restaurant_id' => $value->restaurant_id,
-                'menu' => []
+                'menu' => Item::find()->andWhere(['menu_category_id' => $value->id])->all()
             ]);
         }
         return $this->asJson($res);
@@ -164,5 +164,19 @@ class RestaurantController extends Controller
                 ]);
             }
         }
+    }
+
+    public function actionChangeItem($id, $key, $value) {
+        $item = Item::findOne($id);
+        $item->{$key} = $value; 
+        $item->update();
+    }
+    public function actionChangeItemImage($id) {
+        $item = Item::findOne($id);
+        $uploadFormModel = new UploadForm();
+        $uploadDir = $uploadFormModel->getUploadName($item->name, $_FILES['file']['name']);
+        move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir);
+        $item->image = $uploadDir;
+        $item->update();
     }
 }
