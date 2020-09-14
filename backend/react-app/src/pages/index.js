@@ -3,6 +3,7 @@ import { AddRest } from "./AddRest";
 import { ListRest } from "./ListRest";
 import { RestaurantPage } from "./RestaurantPage";
 import { RestaurantMenu } from "./RestaurantMenu";
+import { RestaurantModif } from "./RestaurantModif";
 
 export const routes = () => [
     {
@@ -25,5 +26,9 @@ export const routes = () => [
     {
       path: "/restaurant-menu",
       component: RestaurantMenu,
-    }
+    },
+    {
+      path: "/restaurant-modif",
+      component: RestaurantModif,
+    },
 ];

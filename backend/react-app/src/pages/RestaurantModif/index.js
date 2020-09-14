@@ -1,0 +1,1 @@
+export { RestaurantModif } from "./RestaurantModif";

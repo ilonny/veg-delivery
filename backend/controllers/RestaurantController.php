@@ -10,6 +10,7 @@ use common\models\LoginForm;
 use backend\models\UploadForm;
 use backend\models\Restaurant;
 use backend\models\MenuCategory;
+use backend\models\Modificator;
 use backend\models\Item;
 use yii\web\UploadedFile;
 use yii\helpers\Json;
@@ -178,5 +179,40 @@ class RestaurantController extends Controller
         move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir);
         $item->image = $uploadDir;
         $item->update();
+    }
+
+    public function actionCreateRestModif() {
+        $model = new Modificator;
+        $model->restaurant_id = $_POST['rest_id'];
+        $model->name = $_POST['name'];
+        $model->type = $_POST['type'];
+        $model->parent_id = $_POST['parent_id'] == 'null' ? null : $_POST['parent_id'];
+        if ($model->save()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
+    public function actionGetModifList($restaurant_id) {
+        // $restaurant_id = $_POST['rest_id'];
+        $res = [];
+        $models = Modificator::find()
+            ->andWhere(['restaurant_id' => $restaurant_id])
+            ->andWhere(['parent_id' => null])->all();
+        foreach ($models as $key => $value) {
+            array_push($res, [
+                'id' => $value->id,
+                'name' => $value->name,
+                'type' => $value->type,
+                'restaurant_id' => $value->restaurant_id,
+                'parent_id' => $value->parent_id,
+                'list' => Modificator::find()->andWhere(['parent_id' => $value->id])->all()
+            ]);
+        }
+        return $this->asJson($res);
     }
 }

@@ -48,6 +48,13 @@ export const RestaurantPage = (props) => {
                     >
                         <Button>Меню</Button>
                     </Link>
+                    <br/>
+                    <br/>
+                    <Link
+                        to={{ pathname: "restaurant-modif", state: { id: id } }}
+                    >
+                        <Button>Модификаторы</Button>
+                    </Link>
                 </Col>
             </Row>
         </>
