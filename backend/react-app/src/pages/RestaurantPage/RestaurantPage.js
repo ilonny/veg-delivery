@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Card, Col, Row, Button } from "antd";
 import { API_HOST } from "../../lib";
-const { Meta } = Card;
+import { Link } from "react-router-dom";
 
+
+const { Meta } = Card;
 export const RestaurantPage = (props) => {
     const [data, setData] = useState(null);
     const { id } = props.location.state;
@@ -41,7 +43,11 @@ export const RestaurantPage = (props) => {
                     </Card>
                 </Col>
                 <Col className="gutter-row" span={10}>
-                    <Button>Менюю</Button>
+                    <Link
+                        to={{ pathname: "restaurant-menu", state: { id: id } }}
+                    >
+                        <Button>Меню</Button>
+                    </Link>
                 </Col>
             </Row>
         </>

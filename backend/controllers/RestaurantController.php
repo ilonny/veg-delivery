@@ -9,6 +9,8 @@ use yii\helpers\ArrayHelper;
 use common\models\LoginForm;
 use backend\models\UploadForm;
 use backend\models\Restaurant;
+use backend\models\MenuCategory;
+use backend\models\Item;
 use yii\web\UploadedFile;
 use yii\helpers\Json;
 use yii\web\Response;
@@ -81,16 +83,86 @@ class RestaurantController extends Controller
     }
 
     public function actionList($token = '') {
-        // var_dump($token);die();
         $res = [];
         if ($token && $token == 'ZWmGuABp3N6') {
             $res = Restaurant::find()->all();
         }
-        // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        // var_dump($res);die();
         return $this->asJson($res);
-        // return json_encode([
-        //     'restaurants' => json_encode($res, JSON_UNESCAPED_UNICODE)
-        // ]);
+    }
+
+    public function actionGetData($id) {
+        $res = Restaurant::findOne($id);
+        return $this->asJson($res);
+    }
+
+    public function actionCreateCategoryMenu() {
+        $model = new MenuCategory;
+        $model->restaurant_id = $_POST['rest_id'];
+        $model->name = $_POST['category_name'];
+        if ($model->save()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
+    public function actionGetMenu() {
+        $res = [];
+        $rest_categories = MenuCategory::find()->andWhere(['restaurant_id' => $_POST['rest_id']])->orderBy('order_by')->all();
+        foreach ($rest_categories as $key => $value) {
+            array_push($res, [
+                'id' => $value->id,
+                'name' => $value->name,
+                'order_by' => $value->order_by,
+                'restaurant_id' => $value->restaurant_id,
+                'menu' => []
+            ]);
+        }
+        return $this->asJson($res);
+    }
+
+    public function actionChangeRestCategoryOrder($id, $value) {
+        $category = MenuCategory::findOne($id);
+        $category->order_by = $value;
+        $category->update();
+    }
+
+    public function actionDeleteRestCategory($id) {
+        $category = MenuCategory::findOne($id);
+        $category->delete();
+    }
+
+
+    public function actionAddItem() {
+        if (Yii::$app->request->isPost) {
+            $model = new Item;
+            $model->restaurant_id = $_POST['rest_id'];
+            $model->menu_category_id = $_POST['category_id'];
+            $model->name = $_POST['name'];
+            $model->description = $_POST['description'];
+            $model->weight = $_POST['weight'];
+            $model->price = $_POST['price'];
+            // $model->active = $_POST['active'] === 'true' ? 1 : 0;
+            $uploadFormModel = new UploadForm();
+            $uploadDir = $uploadFormModel->getUploadName($model->name, $_FILES['file']['name']);
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir)) {
+            } else {
+            }
+            $model->image = $uploadDir;
+            if ($model->save()) {
+                return json_encode([
+                    'status' => 200,
+                    'message' => 'Успешно сохранено',
+                ]);
+            } else {
+                return json_encode([
+                    'status' => 500,
+                    'message' => 'Ошибка сервера, не удалось сохранить',
+                ]);
+            }
+        }
     }
 }

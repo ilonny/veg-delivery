@@ -32,7 +32,7 @@ class UploadForm extends Model
 
     public function getUploadName($modelName = '', $fileName)
     {
-        return 'uploads/' . $modelName .'_'.$fileName;
+        return 'uploads/' . $modelName .'_'.time().'_'.$fileName;
     }
 }
 ?>
