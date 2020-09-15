@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\models;
 
 use Yii;
@@ -11,6 +12,10 @@ use Yii;
  * @property string $description
  * @property string $address_json
  * @property string $image
+ * @property string $delivery_radius
+ * @property string|null $active
+ * @property string|null $time_start
+ * @property string|null $time_end
  */
 class Restaurant extends \yii\db\ActiveRecord
 {
@@ -28,8 +33,9 @@ class Restaurant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'address_json', 'image'], 'required'],
-            [['name', 'description', 'address_json', 'image'], 'string'],
+            [['name', 'description', 'address_json', 'image', 'delivery_radius'], 'required'],
+            [['name', 'description', 'address_json', 'image', 'delivery_radius', 'active'], 'string'],
+            [['time_start', 'time_end'], 'safe'],
         ];
     }
 
@@ -44,6 +50,10 @@ class Restaurant extends \yii\db\ActiveRecord
             'description' => 'Description',
             'address_json' => 'Address Json',
             'image' => 'Image',
+            'delivery_radius' => 'Delivery Radius',
+            'active' => 'Active',
+            'time_start' => 'Time Start',
+            'time_end' => 'Time End',
         ];
     }
 }

@@ -280,4 +280,19 @@ class RestaurantController extends Controller
         $model = RestaurantDelivery::findOne($id);
         $model->delete();
     }
+
+    public function actionEditRestTime($id, $start, $end) {
+        $model = Restaurant::findOne($id);
+        $model->time_start = $start;
+        $model->time_end = $end;
+        $model->validate();
+        if ($model->update()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
 }
