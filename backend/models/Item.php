@@ -2,7 +2,6 @@
 
 namespace backend\models;
 
-
 use Yii;
 
 /**
@@ -18,6 +17,7 @@ use Yii;
  * @property int|null $parent_id
  * @property string|null $image
  * @property int $active
+ * @property string|null $modificators
  */
 class Item extends \yii\db\ActiveRecord
 {
@@ -38,6 +38,7 @@ class Item extends \yii\db\ActiveRecord
             [['restaurant_id', 'menu_category_id', 'name', 'price'], 'required'],
             [['restaurant_id', 'menu_category_id', 'parent_id', 'active'], 'integer'],
             [['name', 'description', 'weight', 'price', 'image'], 'string'],
+            [['modificators'], 'safe'],
         ];
     }
 
@@ -57,6 +58,7 @@ class Item extends \yii\db\ActiveRecord
             'parent_id' => 'Parent ID',
             'image' => 'Image',
             'active' => 'Active',
+            'modificators' => 'Modificators',
         ];
     }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import {
     Card,
@@ -10,7 +11,8 @@ import {
     Collapse,
 } from "antd";
 import { API_HOST } from "../../lib";
-const { Meta } = Card;
+import { Link } from "react-router-dom";
+// const { Meta } = Card;
 const { Panel } = Collapse;
 
 export const RestaurantMenu = (props) => {
@@ -82,6 +84,10 @@ export const RestaurantMenu = (props) => {
     console.log("newItem", newItem);
     return (
         <>
+            <Link to={{ pathname: "restaurant-modif", state: { id: id } }}>
+                <Button>Редактировать модификаторы</Button>
+            </Link>
+            <Divider />
             <Input onChange={(e) => setNewCategoryValue(e.target.value)} />
             <Button onClick={createCategory}>Добавить категорию</Button>
             <Divider />
@@ -165,8 +171,8 @@ export const RestaurantMenu = (props) => {
             )}
             <Divider />
             {data &&
-                data.length &&
-                data.map((category) => {
+                data.menu.length &&
+                data.menu.map((category) => {
                     return (
                         <div key={category.id}>
                             <h3
@@ -212,13 +218,15 @@ export const RestaurantMenu = (props) => {
                                     <Panel header="Меню категории" key="1">
                                         {category.menu.map((item) => {
                                             return (
-                                                <Collapse defaultActiveKey={[]}>
+                                                <Collapse
+                                                    key={item.id}
+                                                    defaultActiveKey={[]}
+                                                >
                                                     <Panel
                                                         header={item.name}
                                                         key="1"
                                                     >
                                                         <div
-                                                            key={item.id}
                                                             style={{
                                                                 margin: 15,
                                                             }}
@@ -405,6 +413,73 @@ export const RestaurantMenu = (props) => {
                                                                                 );
                                                                             }}
                                                                         />
+                                                                    </label>
+                                                                </p>
+                                                                <p>
+                                                                    <label>
+                                                                        <span>
+                                                                            Модификаторы
+                                                                        </span>
+                                                                        <select
+                                                                            multiple
+                                                                            value={item.modificators ? item.modificators.split(',') : []}
+                                                                            style={{
+                                                                                width:
+                                                                                    "100%",
+                                                                            }}
+                                                                            onChange={(
+                                                                                e
+                                                                            ) => {
+                                                                                const val = [
+                                                                                    ...e
+                                                                                        .target
+                                                                                        .options,
+                                                                                ]
+                                                                                    .filter(
+                                                                                        (
+                                                                                            x
+                                                                                        ) =>
+                                                                                            x.selected
+                                                                                    )
+                                                                                    .map(
+                                                                                        (
+                                                                                            x
+                                                                                        ) =>
+                                                                                            x.value
+                                                                                    );
+                                                                                fetch(
+                                                                                    API_HOST +
+                                                                                        `/restaurant/change-item?id=${item.id}&key=modificators&value=${val}`
+                                                                                ).then(
+                                                                                    (
+                                                                                        res
+                                                                                    ) =>
+                                                                                        getMenu()
+                                                                                );
+                                                                            }}
+                                                                        >
+                                                                            {data.modificators.map(
+                                                                                (
+                                                                                    modif
+                                                                                ) => {
+                                                                                    return (
+                                                                                        <option
+                                                                                            key={
+                                                                                                modif.id
+                                                                                            }
+                                                                                            value={
+                                                                                                modif.id
+                                                                                            }
+                                                                                            
+                                                                                        >
+                                                                                            {
+                                                                                                modif.name
+                                                                                            }
+                                                                                        </option>
+                                                                                    );
+                                                                                }
+                                                                            )}
+                                                                        </select>
                                                                     </label>
                                                                 </p>
                                                             </Card>

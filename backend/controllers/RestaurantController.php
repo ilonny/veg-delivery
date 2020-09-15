@@ -113,16 +113,23 @@ class RestaurantController extends Controller
     public function actionGetMenu() {
         $res = [];
         $rest_categories = MenuCategory::find()->andWhere(['restaurant_id' => $_POST['rest_id']])->orderBy('order_by')->all();
+        $modificators = Modificator::find()
+            ->andWhere(['restaurant_id' => $_POST['rest_id']])
+            ->andWhere(['parent_id' => null])
+            ->all();
         foreach ($rest_categories as $key => $value) {
             array_push($res, [
                 'id' => $value->id,
                 'name' => $value->name,
                 'order_by' => $value->order_by,
                 'restaurant_id' => $value->restaurant_id,
-                'menu' => Item::find()->andWhere(['menu_category_id' => $value->id])->all()
+                'menu' => Item::find()->andWhere(['menu_category_id' => $value->id])->all(),
             ]);
         }
-        return $this->asJson($res);
+        return $this->asJson([
+            'menu' => $res,
+            'modificators' => $modificators
+        ]);
     }
 
     public function actionChangeRestCategoryOrder($id, $value) {
@@ -214,5 +221,27 @@ class RestaurantController extends Controller
             ]);
         }
         return $this->asJson($res);
+    }
+
+    public function actionCreateRestModifVariant() {
+        $model = new Modificator;
+        $model->restaurant_id = $_POST['rest_id'];
+        $model->name = $_POST['name'];
+        $model->price = $_POST['price'];
+        $model->type = 'single';
+        $model->parent_id = $_POST['parent_id'];
+        if ($model->save()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
+    public function actionDeleteRestModif($id) {
+        $model = Modificator::findOne($id);
+        $model->delete();
     }
 }
