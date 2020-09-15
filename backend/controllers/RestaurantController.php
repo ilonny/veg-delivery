@@ -11,6 +11,7 @@ use backend\models\UploadForm;
 use backend\models\Restaurant;
 use backend\models\MenuCategory;
 use backend\models\Modificator;
+use backend\models\RestaurantDelivery;
 use backend\models\Item;
 use yii\web\UploadedFile;
 use yii\helpers\Json;
@@ -242,6 +243,41 @@ class RestaurantController extends Controller
 
     public function actionDeleteRestModif($id) {
         $model = Modificator::findOne($id);
+        $model->delete();
+    }
+
+    public function actionEditRestRadius($id, $value) {
+        $model = Restaurant::findOne($id);
+        $model->delivery_radius = $value;
+        $model->update();
+    }
+
+    public function actionCreateRestDelivery() {
+        $model = new RestaurantDelivery;
+        $model->restaurant_id = $_POST['rest_id'];
+        $model->price = $_POST['price'];
+        $model->price_start = $_POST['price_start'];
+        if ($model->save()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
+    public function actionGetDeliveryList($restaurant_id) {
+        return $this->asJson(RestaurantDelivery::find()->andWhere(['restaurant_id' => $restaurant_id])->all());
+    }
+
+    public function actionEditDelivery($id, $key, $value) {
+        $model = RestaurantDelivery::findOne($id);
+        $model->{$key} = $value;
+        $model->update();
+    }
+    public function actionDeleteDelivery($id) {
+        $model = RestaurantDelivery::findOne($id);
         $model->delete();
     }
 }

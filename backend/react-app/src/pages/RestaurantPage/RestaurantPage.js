@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Col, Row, Button } from "antd";
+import { Card, Col, Row, Button, Input } from "antd";
 import { API_HOST } from "../../lib";
 import { Link } from "react-router-dom";
 
@@ -25,6 +25,7 @@ export const RestaurantPage = (props) => {
     }
     if (!data) return null;
     // const reOpenRest = () => {};
+    console.log('rest data', data)
     return (
         <>
             <Row gutter={[16, 16]}>
@@ -54,6 +55,19 @@ export const RestaurantPage = (props) => {
                         to={{ pathname: "restaurant-modif", state: { id: id } }}
                     >
                         <Button>Модификаторы</Button>
+                    </Link>
+                    <br/>
+                    <br/>
+                    <label>
+                        <span>Радиус доставки (км)</span>
+                        <Input value={data.delivery_radius} onChange={e => fetch(API_HOST+`/restaurant/edit-rest-radius?id=${data.id}&value=${e.target.value}`)}/>
+                    </label>
+                    <br/>
+                    <br/>
+                    <Link
+                        to={{ pathname: "restaurant-delivery", state: { id: id } }}
+                    >
+                        <Button>Стоимость доставки</Button>
                     </Link>
                 </Col>
             </Row>

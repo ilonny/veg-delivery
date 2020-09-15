@@ -62,7 +62,7 @@ export const RestaurantModif = (props) => {
     return (
         <>
             <div>Модификаторы ресторана</div>
-            <Link to={{pathname: "restaurant-menu", state: {id}}}>
+            <Link to={{pathname: "restaurant", state: {id}}}>
                 <Button>Назад в меню</Button>
             </Link>
             <Divider />
