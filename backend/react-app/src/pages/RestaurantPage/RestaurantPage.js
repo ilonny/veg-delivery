@@ -121,6 +121,17 @@ export const RestaurantPage = (props) => {
                     </label>
                     <br />
                     <Button onClick={() => changeTime()}>Сохранить время</Button>
+
+                    <br/>
+                    <br/>
+                    <Link
+                        to={{
+                            pathname: "restaurant-discount",
+                            state: { id: id },
+                        }}
+                    >
+                        <Button>Скидки, акции и промокоды</Button>
+                    </Link>
                 </Col>
             </Row>
         </>

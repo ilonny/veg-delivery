@@ -12,6 +12,7 @@ use backend\models\Restaurant;
 use backend\models\MenuCategory;
 use backend\models\Modificator;
 use backend\models\RestaurantDelivery;
+use backend\models\Discount;
 use backend\models\Item;
 use yii\web\UploadedFile;
 use yii\helpers\Json;
@@ -294,5 +295,43 @@ class RestaurantController extends Controller
         return $this->asJson([
             'status' => 500
         ]);
+    }
+
+    public function actionGetDiscountList($restaurant_id) {
+        return $this->asJson(Discount::find()->andWhere(['restaurant_id' => $restaurant_id])->all());
+    }
+
+    public function actionCreateRestDiscount() {
+        $model = new Discount;
+        $model->restaurant_id = $_POST['rest_id'];
+        $model->name = $_POST['name'];
+        $model->discount_value = $_POST['discount_value'];
+        $model->type = $_POST['type'];
+        $model->description = $_POST['description'];
+        $model->promocode = $_POST['promocode'];
+        $model->time_start = $_POST['time_start'];
+        $model->time_end = $_POST['time_end'];
+        $model->items = $_POST['items'];
+        $model->price_start = $_POST['price_start'];
+        // $model->name = $_POST['name'];
+        if ($model->save()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
+    public function actionEditDiscount($id, $key, $value) {
+        $model = Discount::findOne($id);
+        $model->{$key} = $value;
+        $model->update();
+    }
+
+    public function actionDeleteDiscount($id) {
+        $model = Discount::findOne($id);
+        $model->delete();
     }
 }

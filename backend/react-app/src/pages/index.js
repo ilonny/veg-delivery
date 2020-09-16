@@ -5,6 +5,7 @@ import { RestaurantPage } from "./RestaurantPage";
 import { RestaurantMenu } from "./RestaurantMenu";
 import { RestaurantModif } from "./RestaurantModif";
 import { RestaurantDelivery } from "./RestaurantDelivery";
+import { RestaurantDiscount } from "./RestaurantDiscount";
 
 export const routes = () => [
     {
@@ -13,27 +14,31 @@ export const routes = () => [
         component: HomePage,
     },
     {
-      path: "/add-rest",
-      component: AddRest,
+        path: "/add-rest",
+        component: AddRest,
     },
     {
-      path: "/list-rest",
-      component: ListRest,
+        path: "/list-rest",
+        component: ListRest,
     },
     {
-      path: "/restaurant",
-      component: RestaurantPage,
+        path: "/restaurant",
+        component: RestaurantPage,
     },
     {
-      path: "/restaurant-menu",
-      component: RestaurantMenu,
+        path: "/restaurant-menu",
+        component: RestaurantMenu,
     },
     {
-      path: "/restaurant-modif",
-      component: RestaurantModif,
+        path: "/restaurant-modif",
+        component: RestaurantModif,
     },
     {
-      path: "/restaurant-delivery",
-      component: RestaurantDelivery,
+        path: "/restaurant-delivery",
+        component: RestaurantDelivery,
+    },
+    {
+        path: "/restaurant-discount",
+        component: RestaurantDiscount,
     },
 ];
