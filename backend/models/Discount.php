@@ -19,6 +19,7 @@ use Yii;
  * @property int|null $active
  * @property string|null $description
  * @property string|null $price_start
+ * @property string|null $discount_value
  */
 class Discount extends \yii\db\ActiveRecord
 {
@@ -36,7 +37,7 @@ class Discount extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'name', 'promocode', 'items', 'other', 'description', 'price_start'], 'string'],
+            [['type', 'name', 'promocode', 'items', 'other', 'description', 'price_start', 'discount_value'], 'string'],
             [['restaurant_id', 'active'], 'integer'],
             [['time_start', 'time_end'], 'safe'],
         ];
@@ -60,6 +61,7 @@ class Discount extends \yii\db\ActiveRecord
             'active' => 'Active',
             'description' => 'Description',
             'price_start' => 'Price Start',
+            'discount_value' => 'Discount Value',
         ];
     }
 }

@@ -89,7 +89,7 @@ export const RestaurantPage = (props) => {
                                 fetch(
                                     API_HOST +
                                         `/restaurant/edit-rest-radius?id=${data.id}&value=${e.target.value}`
-                                )
+                                ).then((res) => getData())
                             }
                         />
                     </label>
@@ -120,10 +120,58 @@ export const RestaurantPage = (props) => {
                         />
                     </label>
                     <br />
-                    <Button onClick={() => changeTime()}>Сохранить время</Button>
+                    <Button onClick={() => changeTime()}>
+                        Сохранить время
+                    </Button>
 
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
+                    <label>
+                        <span>Минимальная сумма заказа (руб)</span>
+                        <Input
+                            value={data.min_price}
+                            onChange={(e) =>
+                                fetch(
+                                    API_HOST +
+                                        `/restaurant/edit-rest-min-price?id=${data.id}&value=${e.target.value}`
+                                ).then((res) => getData())
+                            }
+                        />
+                    </label>
+                    <br />
+                    <br />
+                    <label>
+                        <span>
+                            Юридиская информация (название ООО, адрес, телефон)
+                        </span>
+                        <Input
+                            value={data.restaurant_info}
+                            onChange={(e) =>
+                                fetch(
+                                    API_HOST +
+                                        `/restaurant/edit-rest-info?id=${data.id}&value=${e.target.value}`
+                                ).then((res) => getData())
+                            }
+                        />
+                    </label>
+                    <br />
+                    <br />
+                    <Button
+                        onClick={() => {
+                            fetch(
+                                API_HOST +
+                                    `/restaurant/edit-rest-active?id=${
+                                        data.id
+                                    }&value=${data.active == "1" ? 0 : 1}`
+                            ).then((res) => getData());
+                        }}
+                    >
+                        Ресторан {data.active == "1" ? "открыт" : "закрыт"}{" "}
+                        (нажмите чтобы{" "}
+                        {data.active == "1" ? "закрыть" : "открыть"})
+                    </Button>
+                    <br />
+                    <br />
                     <Link
                         to={{
                             pathname: "restaurant-discount",

@@ -253,6 +253,24 @@ class RestaurantController extends Controller
         $model->update();
     }
 
+    public function actionEditRestMinPrice($id, $value) {
+        $model = Restaurant::findOne($id);
+        $model->min_price = $value;
+        $model->update();
+    }
+
+    public function actionEditRestInfo($id, $value) {
+        $model = Restaurant::findOne($id);
+        $model->restaurant_info = $value;
+        $model->update();
+    }
+
+    public function actionEditRestActive($id, $value) {
+        $model = Restaurant::findOne($id);
+        $model->active = $value;
+        $model->update();
+    }
+
     public function actionCreateRestDelivery() {
         $model = new RestaurantDelivery;
         $model->restaurant_id = $_POST['rest_id'];
