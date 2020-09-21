@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* VegDeliveryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* VegDeliveryTests.m */; };
+		0A0ABFE82519488F00528468 /* Exo2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A0ABFE62519488F00528468 /* Exo2-Regular.ttf */; };
+		0A0ABFE92519488F00528468 /* Exo2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A0ABFE72519488F00528468 /* Exo2-Bold.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -44,6 +46,9 @@
 		00E356EE1AD99517003FC87E /* VegDeliveryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VegDeliveryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* VegDeliveryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VegDeliveryTests.m; sourceTree = "<group>"; };
+		0A0ABFE62519488F00528468 /* Exo2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Regular.ttf"; sourceTree = "<group>"; };
+		0A0ABFE72519488F00528468 /* Exo2-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Bold.ttf"; sourceTree = "<group>"; };
+		0A0ABFEA25194B0800528468 /* Exo2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Exo2.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* VegDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VegDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = VegDelivery/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = VegDelivery/AppDelegate.m; sourceTree = "<group>"; };
@@ -122,6 +127,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0A0ABFE52519485D00528468 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A0ABFE72519488F00528468 /* Exo2-Bold.ttf */,
+				0A0ABFEA25194B0800528468 /* Exo2.ttf */,
+				0A0ABFE62519488F00528468 /* Exo2-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* VegDelivery */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +174,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				0A0ABFE52519485D00528468 /* Resources */,
 				13B07FAE1A68108700A75B9A /* VegDelivery */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* VegDeliveryTests */,
@@ -194,7 +210,6 @@
 				D1EFC2EF2AA6B4AA9C0E09C9 /* Pods-VegDelivery-tvOSTests.debug.xcconfig */,
 				C308CFFE4E4F6931DD3B6076 /* Pods-VegDelivery-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -341,7 +356,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				0A0ABFE92519488F00528468 /* Exo2-Bold.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0A0ABFE82519488F00528468 /* Exo2-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

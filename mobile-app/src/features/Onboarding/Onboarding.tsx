@@ -13,7 +13,7 @@ export const Onboarding = (props) => {
         showsButtons={false}
         activeDotColor={'#5AC17D'}
         dotColor={'rgb(201, 224, 212)'}
-        paginationStyle={{ bottom: 140 }}>
+        paginationStyle={{ bottom: 120 }}>
         <FirstScreen swiperRef={swiperRef} />
         <SecondScreen swiperRef={swiperRef} />
         <ThirdScreen />

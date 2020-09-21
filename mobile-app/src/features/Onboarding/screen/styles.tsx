@@ -34,8 +34,9 @@ export const styles: Styles = {
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: '600',
     color: '#656665',
+    fontFamily: 'Exo2-Bold',
   },
   nextButton: {
     width: 230,
@@ -49,6 +50,7 @@ export const styles: Styles = {
   buttonText: {
     color: '#fff',
     fontSize: 18,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Exo2-Bold',
   },
 };
