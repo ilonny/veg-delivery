@@ -14,7 +14,6 @@ export const ThirdScreen = () => {
           imageName="notification"
           styleProp={{ ...styles.logo, marginBottom: 20 }}
         />
-        {/* <View style={styles.lineDivider} /> */}
         <Text style={styles.title}>Разрешите</Text>
         <Text style={styles.title}>уведомления, чтобы </Text>
         <Text style={styles.title}>получать информацию</Text>

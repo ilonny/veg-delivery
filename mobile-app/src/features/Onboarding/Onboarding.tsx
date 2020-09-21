@@ -16,7 +16,7 @@ export const Onboarding = (props) => {
         paginationStyle={{ bottom: 140 }}>
         <FirstScreen swiperRef={swiperRef} />
         <SecondScreen swiperRef={swiperRef} />
-        <ThirdScreen swiperRef={swiperRef} />
+        <ThirdScreen />
       </Swiper>
     </>
     // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
