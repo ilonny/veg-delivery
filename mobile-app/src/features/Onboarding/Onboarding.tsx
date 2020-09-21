@@ -1,9 +1,24 @@
-import React, { useRef } from 'react';
-// import { View, Text } from 'react-native';
+import React, { useRef, useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import Swiper from 'react-native-swiper';
+import { useNavigation, CommonActions } from '@react-navigation/native';
 import { FirstScreen, SecondScreen, ThirdScreen } from './screen';
+
 export const Onboarding = (props) => {
+  const navigation = useNavigation();
   console.log('props onboarding', props);
+  const goToAddress = () => {
+    navigation.navigate('AddressScreen');
+    navigation.dispatch((state) => {
+      // Remove the home route from the stack
+      const routes = state.routes.filter((r) => r.name !== 'OnboardingScreen');
+      return CommonActions.reset({
+        ...state,
+        routes,
+        index: routes.length - 1,
+      });
+    });
+  };
   const swiperRef = useRef();
   return (
     <>
@@ -16,7 +31,10 @@ export const Onboarding = (props) => {
         paginationStyle={{ bottom: 120 }}>
         <FirstScreen swiperRef={swiperRef} />
         <SecondScreen swiperRef={swiperRef} />
-        <ThirdScreen />
+        <ThirdScreen
+          goToAddress={goToAddress}
+          setOnboardingIsVisible={props.setOnboardingIsVisible}
+        />
       </Swiper>
     </>
     // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

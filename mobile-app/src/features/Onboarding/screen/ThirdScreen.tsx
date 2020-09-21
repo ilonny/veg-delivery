@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import { ImageView } from '../../../features';
-import { useNavigation } from '@react-navigation/native';
+
 import { styles } from './styles';
 
-export const ThirdScreen = () => {
-  const navigation = useNavigation();
+export const ThirdScreen = (props: any) => {
   return (
     <>
       <ImageView imageName="onboarding_1" styleProp={styles.imageBackground} />
@@ -18,7 +17,12 @@ export const ThirdScreen = () => {
         <Text style={styles.title}>уведомления, чтобы </Text>
         <Text style={styles.title}>получать информацию</Text>
         <Text style={styles.title}>о своем заказе и акциях</Text>
-        <TouchableOpacity style={styles.nextButton}>
+        <TouchableOpacity
+          style={styles.nextButton}
+          onPress={() => {
+            props.setOnboardingIsVisible(true);
+            props.goToAddress();
+          }}>
           <Text style={styles.buttonText}>Далее</Text>
         </TouchableOpacity>
       </SafeAreaView>
