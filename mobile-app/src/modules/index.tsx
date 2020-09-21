@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {View, Text} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { View, Text } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-import {Onboarding} from './Onboarding';
+import { OnboardingScreen } from './OnboardingScreen';
 
 // const tabRoutes = () => {
 //   return (
@@ -64,8 +64,8 @@ import {Onboarding} from './Onboarding';
 export const StackNavigator = () => {
   return (
     <>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Onboarding" component={Onboarding} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       </Stack.Navigator>
     </>
   );
