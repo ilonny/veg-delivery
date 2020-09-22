@@ -1,10 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
+import { ScreenTitle } from '../../ui';
+import { ChooseAddress } from '../../features';
 
 export const AddressScreen = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>AddressScreen here</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+      <ScreenTitle text={'Выберите адрес'} />
+      <ScreenTitle text={'доставки'} />
+      <ChooseAddress />
+    </SafeAreaView>
   );
 };

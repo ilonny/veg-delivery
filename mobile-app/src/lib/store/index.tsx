@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { mainReducer } from './mainReducer';
 import AsyncStorage from '@react-native-community/async-storage';
 import { persistStore, persistReducer } from 'redux-persist';
-import { onboardingReducer } from '../../features';
+import { onboardingReducer, userReducer } from '../../features';
 const persistConfig = {
   key: 'main',
   storage: AsyncStorage,
@@ -17,6 +17,7 @@ const rootReducer = combineReducers({
     { ...persistConfig, key: 'onboarding' },
     onboardingReducer,
   ),
+  userReducer: persistReducer({ ...persistConfig, key: 'user' }, userReducer),
 });
 
 let enhacers: any;
