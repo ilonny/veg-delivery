@@ -37,9 +37,6 @@ export const SecondScreen = (props: any) => {
                     buttonPositive: 'OK',
                   },
                 );
-                if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                  Geolocation.requestAuthorization();
-                }
               } else {
                 Geolocation.requestAuthorization();
               }
