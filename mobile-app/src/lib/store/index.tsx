@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
 });
 
 let enhacers: any;
-
+//@ts-ignore
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   enhacers = applyMiddleware(thunk, createLogger({ collapsed: true }));
 } else {

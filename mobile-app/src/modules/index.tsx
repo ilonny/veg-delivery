@@ -55,11 +55,12 @@ export const StackNavigatorTemplate = (props) => {
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName={
-          props.onboardingIsVisible ? 'AddressScreen' : 'OnboardingScreen'
+          // props.onboardingIsVisible ? 'AddressScreen' : 'OnboardingScreen'
+          props.onboardingIsVisible ? 'OnboardingScreen' : 'OnboardingScreen'
         }>
-        {!props.onboardingIsVisible && (
-          <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
-        )}
+        {/* {!props.onboardingIsVisible && (
+          )} */}
+        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
         <Stack.Screen name="AddressScreen" component={AddressScreen} />
         <Stack.Screen name="MainTabScreen" component={tabRoutes} />
       </Stack.Navigator>
@@ -69,6 +70,7 @@ export const StackNavigatorTemplate = (props) => {
 
 export const StackNavigator = connect(
   (state) => ({
+    //@ts-ignore
     onboardingIsVisible: state.onboardingReducer.onboardingIsVisible,
   }),
   (dispatch) => ({}),
