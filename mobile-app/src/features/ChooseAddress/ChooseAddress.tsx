@@ -1,22 +1,18 @@
+//@ts-nocheck
 import React from 'react';
 import { View, Text } from 'react-native';
+import { styles } from './styles';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 export const ChooseAddress = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Chooooseee</Text>
       <MapView
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-        style={{
-          height: 400,
-          width: 400,
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-        }}
+        style={styles.mapView}
         region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: 55.751244,
+          longitude: 37.618423,
           latitudeDelta: 0.015,
           longitudeDelta: 0.0121,
         }}></MapView>
