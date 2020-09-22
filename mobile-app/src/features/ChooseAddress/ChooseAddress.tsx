@@ -1,15 +1,18 @@
 //@ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { View, Text, PermissionsAndroid, Platform } from 'react-native';
-import { styles } from './styles';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import { AddressPlaceholder, MainButton } from '../../ui';
+import { suggestionFetchOptions } from '../../lib';
+import { styles } from './styles';
 
 export const ChooseAddress = () => {
   const [userLocation, setUserLocation] = useState({
     lat: 55.751244,
     long: 37.618423,
   });
+  const [userAddress, setUserAddress] = useState(undefined);
   useEffect(() => {
     Geolocation.getCurrentPosition((info) => {
       console.log('location', info);
@@ -21,6 +24,23 @@ export const ChooseAddress = () => {
       }
     });
   }, []);
+  useEffect(() => {
+    fetch(
+      'https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address',
+      {
+        ...suggestionFetchOptions,
+        body: JSON.stringify({
+          lat: userLocation.lat,
+          lon: userLocation.long,
+        }),
+      },
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('suggestion res', res);
+        setUserAddress(res.suggestions ? res.suggestions[0] : undefined);
+      });
+  }, [userLocation]);
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <MapView
@@ -34,6 +54,10 @@ export const ChooseAddress = () => {
         }}
         onPress={(e) => {
           console.log(e.nativeEvent);
+          setUserLocation({
+            lat: e.nativeEvent.coordinate.latitude,
+            long: e.nativeEvent.coordinate.longitude,
+          });
           // console.log('coords', coords);
           // console.log('point', point);
         }}>
@@ -46,6 +70,10 @@ export const ChooseAddress = () => {
           description={'test 2'}
         />
       </MapView>
+      <View style={styles.bottomAddress}>
+        <AddressPlaceholder text={userAddress ? userAddress.value : ''} />
+        <MainButton text={'Сохранить'} styleProp={{ marginTop: 16 }} />
+      </View>
     </View>
   );
 };
