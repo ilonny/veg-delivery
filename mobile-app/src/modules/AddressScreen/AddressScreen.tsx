@@ -6,8 +6,8 @@ import { ChooseAddress } from '../../features';
 export const AddressScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-      <ScreenTitle text={'Выберите адрес'} />
-      <ScreenTitle text={'доставки'} />
+      {/* <ScreenTitle text={'Выберите адрес'} />
+      <ScreenTitle text={'доставки'} /> */}
       <ChooseAddress />
     </SafeAreaView>
   );

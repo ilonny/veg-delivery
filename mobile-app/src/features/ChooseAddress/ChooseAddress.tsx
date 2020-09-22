@@ -1,9 +1,16 @@
 //@ts-nocheck
 import React, { useEffect, useState } from 'react';
-import { View, Text, PermissionsAndroid, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  PermissionsAndroid,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import { AddressPlaceholder, MainButton } from '../../ui';
+import { SuggestionInput } from '../../features';
+import { AddressPlaceholder, MainButton, ScreenTitle } from '../../ui';
 import { suggestionFetchOptions } from '../../lib';
 import { styles } from './styles';
 
@@ -13,6 +20,7 @@ export const ChooseAddress = () => {
     long: 37.618423,
   });
   const [userAddress, setUserAddress] = useState(undefined);
+  const [suggestionWindowIsOpen, setSuggestionWindowIsOpen] = useState(false);
   useEffect(() => {
     Geolocation.getCurrentPosition((info) => {
       console.log('location', info);
@@ -42,7 +50,9 @@ export const ChooseAddress = () => {
       });
   }, [userLocation]);
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1 }}>
+      <ScreenTitle text={'Выберите адрес'} />
+      <ScreenTitle text={'доставки'} />
       <MapView
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
         style={styles.mapView}
@@ -71,9 +81,15 @@ export const ChooseAddress = () => {
         />
       </MapView>
       <View style={styles.bottomAddress}>
-        <AddressPlaceholder text={userAddress ? userAddress.value : ''} />
+        <TouchableOpacity onPress={() => setSuggestionWindowIsOpen(true)}>
+          <AddressPlaceholder text={userAddress ? userAddress.value : ''} />
+        </TouchableOpacity>
         <MainButton text={'Сохранить'} styleProp={{ marginTop: 16 }} />
       </View>
+      <SuggestionInput
+        opened={suggestionWindowIsOpen}
+        closeSetState={() => setSuggestionWindowIsOpen(false)}
+      />
     </View>
   );
 };
