@@ -6,6 +6,7 @@ import {
   PermissionsAndroid,
   Platform,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
@@ -14,23 +15,31 @@ import { AddressPlaceholder, MainButton, ScreenTitle } from '../../ui';
 import { suggestionFetchOptions } from '../../lib';
 import { styles } from './styles';
 
-export const ChooseAddress = () => {
-  const [userLocation, setUserLocation] = useState({
-    lat: 55.751244,
-    long: 37.618423,
-  });
-  const [userAddress, setUserAddress] = useState(undefined);
+export const ChooseAddress = (props) => {
+  console.log('props', props);
+  const { addressData, setUserAddressData } = props;
+  const [userLocation, setUserLocation] = useState(
+    addressData && addressData.data
+      ? {
+          lat: Number(addressData.data.geo_lat),
+          long: Number(addressData.data.geo_lon),
+        }
+      : { lat: 55.751244, long: 37.618423 },
+  );
+  // const [userAddress, setUserAddress] = useState(undefined);
   const [suggestionWindowIsOpen, setSuggestionWindowIsOpen] = useState(false);
   useEffect(() => {
-    Geolocation.getCurrentPosition((info) => {
-      console.log('location', info);
-      if (info && info.coords) {
-        setUserLocation({
-          lat: info.coords.latitude,
-          long: info.coords.longitude,
-        });
-      }
-    });
+    if ((addressData && !addressData.value) || !addressData) {
+      Geolocation.getCurrentPosition((info) => {
+        console.log('location', info);
+        if (info && info.coords) {
+          setUserLocation({
+            lat: info.coords.latitude,
+            long: info.coords.longitude,
+          });
+        }
+      });
+    }
   }, []);
   useEffect(() => {
     fetch(
@@ -46,11 +55,12 @@ export const ChooseAddress = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log('suggestion res', res);
-        setUserAddress(res.suggestions ? res.suggestions[0] : undefined);
+        // setUserAddress(res.suggestions ? res.suggestions[0] : undefined);
+        setUserAddressData(res.suggestions ? res.suggestions[0] : {});
       });
   }, [userLocation]);
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, paddingTop: 13 }}>
       <ScreenTitle text={'Выберите адрес'} />
       <ScreenTitle text={'доставки'} />
       <MapView
@@ -82,13 +92,22 @@ export const ChooseAddress = () => {
       </MapView>
       <View style={styles.bottomAddress}>
         <TouchableOpacity onPress={() => setSuggestionWindowIsOpen(true)}>
-          <AddressPlaceholder text={userAddress ? userAddress.value : ''} />
+          <AddressPlaceholder text={addressData ? addressData.value : ''} />
         </TouchableOpacity>
         <MainButton text={'Сохранить'} styleProp={{ marginTop: 16 }} />
       </View>
       <SuggestionInput
         opened={suggestionWindowIsOpen}
-        closeSetState={() => setSuggestionWindowIsOpen(false)}
+        closeSetState={() => {
+          Keyboard.dismiss();
+          setSuggestionWindowIsOpen(false);
+        }}
+        callback={(addressData) => {
+          setUserLocation({
+            lat: Number(addressData.data.geo_lat),
+            long: Number(addressData.data.geo_lon),
+          });
+        }}
       />
     </View>
   );

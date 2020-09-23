@@ -1,1 +1,1 @@
-export { ChooseAddress } from './ChooseAddress';
+export { ChooseAddress } from './connect';

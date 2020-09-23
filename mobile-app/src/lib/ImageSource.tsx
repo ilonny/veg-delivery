@@ -5,6 +5,7 @@ export const ImageSource = {
   worldwide: require('../assets/icons/worldwide.png'),
   notification: require('../assets/icons/notification.png'),
   place_small: require('../assets/icons/place_small.png'),
+  back_icon: require('../assets/icons/back_icon.png'),
 };
 
 export type TImageSource = keyof typeof ImageSource;
