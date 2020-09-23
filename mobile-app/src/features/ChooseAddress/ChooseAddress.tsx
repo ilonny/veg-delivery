@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Keyboard,
 } from 'react-native';
+import { useNavigation, CommonActions } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import { SuggestionInput } from '../../features';
@@ -17,6 +18,7 @@ import { styles } from './styles';
 
 export const ChooseAddress = (props) => {
   console.log('props', props);
+  const navigation = useNavigation();
   const { addressData, setUserAddressData } = props;
   const [userLocation, setUserLocation] = useState(
     addressData && addressData.data
@@ -94,7 +96,24 @@ export const ChooseAddress = (props) => {
         <TouchableOpacity onPress={() => setSuggestionWindowIsOpen(true)}>
           <AddressPlaceholder text={addressData ? addressData.value : ''} />
         </TouchableOpacity>
-        <MainButton text={'Сохранить'} styleProp={{ marginTop: 16 }} />
+        <MainButton
+          text={'Сохранить'}
+          styleProp={{ marginTop: 16 }}
+          action={() => {
+            navigation.navigate('UserRegistrationScreen');
+            navigation.dispatch((state) => {
+              // Remove the home route from the stack
+              const routes = state.routes.filter(
+                (r) => r.name !== 'AddressScreen',
+              );
+              return CommonActions.reset({
+                ...state,
+                routes,
+                index: routes.length - 1,
+              });
+            });
+          }}
+        />
       </View>
       <SuggestionInput
         opened={suggestionWindowIsOpen}

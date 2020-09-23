@@ -5,11 +5,18 @@ import { styles } from './styles';
 type TProps = {
   text: string;
   styleProp?: ViewStyle;
+  action?: Function;
 };
 
-export const MainButton = ({ text, styleProp = {} }: TProps) => {
+export const MainButton = ({
+  text,
+  styleProp = {},
+  action = () => {},
+}: TProps) => {
   return (
-    <TouchableOpacity style={{ ...styles.wrapper, ...styleProp }}>
+    <TouchableOpacity
+      onPress={() => action()}
+      style={{ ...styles.wrapper, ...styleProp }}>
       <Text style={styles.title}>{text}</Text>
     </TouchableOpacity>
   );

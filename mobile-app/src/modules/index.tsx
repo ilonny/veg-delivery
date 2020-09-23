@@ -7,7 +7,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 import { OnboardingScreen } from './OnboardingScreen';
 import { AddressScreen } from './AddressScreen';
-
+import { UserRegistrationScreen } from './UserRegistrationScreen';
 const HomeScreen = (props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -56,12 +56,18 @@ export const StackNavigatorTemplate = (props) => {
         screenOptions={{ headerShown: false }}
         initialRouteName={
           // props.onboardingIsVisible ? 'AddressScreen' : 'OnboardingScreen'
-          props.onboardingIsVisible ? 'OnboardingScreen' : 'OnboardingScreen'
+          props.onboardingIsVisible
+            ? 'UserRegistrationScreen'
+            : 'UserRegistrationScreen'
         }>
         {/* {!props.onboardingIsVisible && (
           )} */}
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
         <Stack.Screen name="AddressScreen" component={AddressScreen} />
+        <Stack.Screen
+          name="UserRegistrationScreen"
+          component={UserRegistrationScreen}
+        />
         <Stack.Screen name="MainTabScreen" component={tabRoutes} />
       </Stack.Navigator>
     </>
