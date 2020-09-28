@@ -64,7 +64,7 @@ class RestaurantController extends Controller
             $model->description = $_POST['description'];
             $model->address_json = $_POST['address'];
             $model->delivery_radius = $_POST['delivery_radius'];
-            $model->active = $_POST['active'] === 'true' ? 1 : 0;
+            $model->active = $_POST['active'] === 'true' ? '1' : '0';
             $uploadFormModel = new UploadForm();
             $uploadDir = $uploadFormModel->getUploadName($model->name, $_FILES['file']['name']);
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir)) {
