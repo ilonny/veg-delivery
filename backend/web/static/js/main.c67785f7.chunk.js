@@ -8,8 +8,8 @@
           return O;
         });
         var n = a(0),
-          r = a.n(n),
-          l = a(60),
+          l = a.n(n),
+          r = a(60),
           c = a(150),
           u = a(130),
           i = a(151),
@@ -25,7 +25,7 @@
           g = s.a.Header,
           v = s.a.Content,
           y = s.a.Sider,
-          j = Object(l.b)(
+          j = Object(r.b)(
             function (e) {
               return { user: e.main.user };
             },
@@ -39,10 +39,10 @@
           )(function (e) {
             var t = e.user;
             if (!t) {
-              return r.a.createElement(
-                r.a.Fragment,
+              return l.a.createElement(
+                l.a.Fragment,
                 null,
-                r.a.createElement(
+                l.a.createElement(
                   s.a,
                   {
                     style: {
@@ -52,7 +52,7 @@
                       minHeight: "100vh",
                     },
                   },
-                  r.a.createElement(
+                  l.a.createElement(
                     d.a,
                     {
                       name: "basic",
@@ -74,7 +74,7 @@
                             });
                       },
                     },
-                    r.a.createElement(
+                    l.a.createElement(
                       d.a.Item,
                       {
                         label: "\u041b\u043e\u0433\u0438\u043d",
@@ -87,9 +87,9 @@
                           },
                         ],
                       },
-                      r.a.createElement(p.a, { type: "text" })
+                      l.a.createElement(p.a, { type: "text" })
                     ),
-                    r.a.createElement(
+                    l.a.createElement(
                       d.a.Item,
                       {
                         label: "\u041f\u0430\u0440\u043e\u043b\u044c",
@@ -102,9 +102,9 @@
                           },
                         ],
                       },
-                      r.a.createElement(p.a, { type: "password" })
+                      l.a.createElement(p.a, { type: "password" })
                     ),
-                    r.a.createElement(
+                    l.a.createElement(
                       E.a,
                       { type: "primary", htmlType: "submit" },
                       "\u0412\u043e\u0439\u0442\u0438"
@@ -113,22 +113,22 @@
                 )
               );
             }
-            return r.a.createElement(
-              r.a.Fragment,
+            return l.a.createElement(
+              l.a.Fragment,
               null,
-              r.a.createElement(u.Normalize, null),
-              r.a.createElement(o.a, null),
-              r.a.createElement(
+              l.a.createElement(u.Normalize, null),
+              l.a.createElement(o.a, null),
+              l.a.createElement(
                 s.a,
                 { style: { flex: 1 } },
-                r.a.createElement(s.a, null, r.a.createElement(g, null)),
-                r.a.createElement(
+                l.a.createElement(s.a, null, l.a.createElement(g, null)),
+                l.a.createElement(
                   s.a,
                   null,
-                  r.a.createElement(
+                  l.a.createElement(
                     y,
                     { width: 200, className: "site-layout-background" },
-                    r.a.createElement(
+                    l.a.createElement(
                       m.a,
                       {
                         mode: "inline",
@@ -136,27 +136,27 @@
                         defaultOpenKeys: [],
                         style: { height: "100%", borderRight: 0 },
                       },
-                      r.a.createElement(
+                      l.a.createElement(
                         b,
                         {
                           key: "sub1",
                           title:
                             "\u0420\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u044b",
                         },
-                        r.a.createElement(
+                        l.a.createElement(
                           m.a.Item,
                           { key: "1" },
-                          r.a.createElement(
+                          l.a.createElement(
                             f.a,
                             { to: "/list-rest" },
                             "\u0421\u043f\u0438\u0441\u043e\u043a \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u043e\u0432"
                           )
                         ),
                         "admin" === t.role &&
-                          r.a.createElement(
+                          l.a.createElement(
                             m.a.Item,
                             { key: "2" },
-                            r.a.createElement(
+                            l.a.createElement(
                               f.a,
                               { to: "/add-rest" },
                               "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d"
@@ -165,20 +165,20 @@
                       )
                     )
                   ),
-                  r.a.createElement(
+                  l.a.createElement(
                     v,
                     { style: { padding: 30 } },
-                    r.a.createElement(i.a, null)
+                    l.a.createElement(i.a, null)
                   )
                 )
               )
             );
           }),
           O = Object(c.hot)(e)(function () {
-            return r.a.createElement(
-              r.a.Fragment,
+            return l.a.createElement(
+              l.a.Fragment,
               null,
-              r.a.createElement(j, null)
+              l.a.createElement(j, null)
             );
           });
       }.call(this, a(104)(e)));
@@ -189,8 +189,8 @@
         return u;
       });
       var n = a(148),
-        r = a(91),
-        l = a(76);
+        l = a(91),
+        r = a(76);
       function c() {
         var e = Object(n.a)([
           '\n  body {\n    font-family: "Helvetica", "Open Sans", sans-serif;\n    height: 100vh;\n    -webkit-font-smoothing: antialiased;\n    color: ',
@@ -203,21 +203,21 @@
           e
         );
       }
-      var u = Object(r.createGlobalStyle)(c(), l.a.black);
+      var u = Object(l.createGlobalStyle)(c(), r.a.black);
     },
     151: function (e, t, a) {
       "use strict";
       a.d(t, "a", function () {
-        return D;
+        return N;
       });
       var n = a(0),
-        r = a.n(n),
-        l = a(146),
+        l = a.n(n),
+        r = a(146),
         c = function () {
-          return r.a.createElement(
-            r.a.Fragment,
+          return l.a.createElement(
+            l.a.Fragment,
             null,
-            r.a.createElement(
+            l.a.createElement(
               "p",
               null,
               "\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c"
@@ -236,11 +236,11 @@
           var e = Object(n.useState)(),
             t = Object(u.a)(e, 2),
             a = t[0],
-            l = t[1];
-          return r.a.createElement(
-            r.a.Fragment,
+            r = t[1];
+          return l.a.createElement(
+            l.a.Fragment,
             null,
-            r.a.createElement(
+            l.a.createElement(
               i.a,
               Object.assign(
                 {
@@ -279,7 +279,7 @@
                 },
                 E
               ),
-              r.a.createElement(
+              l.a.createElement(
                 i.a.Item,
                 {
                   label: "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435",
@@ -292,53 +292,53 @@
                     },
                   ],
                 },
-                r.a.createElement(o.a, null)
+                l.a.createElement(o.a, null)
               ),
-              r.a.createElement(
+              l.a.createElement(
                 i.a.Item,
                 {
                   label: "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435",
                   name: "description",
                 },
-                r.a.createElement(o.a, null)
+                l.a.createElement(o.a, null)
               ),
-              r.a.createElement(
+              l.a.createElement(
                 i.a.Item,
                 {
                   label:
                     "\u0418\u0437\u043e\u0431\u0440\u0436\u0430\u0435\u043d\u0438\u0435",
                   name: "file",
                 },
-                r.a.createElement(o.a, { type: "file" })
+                l.a.createElement(o.a, { type: "file" })
               ),
-              r.a.createElement(
+              l.a.createElement(
                 i.a.Item,
                 { label: "\u0410\u0434\u0440\u0435\u0441", name: "address" },
-                r.a.createElement(d.a, {
+                l.a.createElement(d.a, {
                   token: "eadbc452286d23c7163b38989884d5ae40d08ade",
                   value: a,
-                  onChange: l,
+                  onChange: r,
                 })
               ),
-              r.a.createElement(
+              l.a.createElement(
                 i.a.Item,
                 {
                   label:
                     "\u0420\u0430\u0434\u0438\u0443\u0441 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 (\u043a\u043c)",
                   name: "delivery_radius",
                 },
-                r.a.createElement(o.a, null)
+                l.a.createElement(o.a, null)
               ),
-              r.a.createElement(
+              l.a.createElement(
                 i.a.Item,
                 { name: "active", valuePropName: "checked" },
-                r.a.createElement(
+                l.a.createElement(
                   m.a,
                   null,
                   "\u0410\u043a\u0442\u0438\u0432\u0435\u043d"
                 )
               ),
-              r.a.createElement(
+              l.a.createElement(
                 s.a,
                 { type: "primary", htmlType: "submit" },
                 "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c"
@@ -355,7 +355,7 @@
           var e = Object(n.useState)([]),
             t = Object(u.a)(e, 2),
             a = t[0],
-            l = t[1];
+            r = t[1];
           return (
             Object(n.useEffect)(function () {
               try {
@@ -364,17 +364,17 @@
                     return e.json();
                   })
                   .then(function (e) {
-                    return l(e);
+                    return r(e);
                   });
               } catch (e) {
                 console.log(e);
               }
             }, []),
-            r.a.createElement(
-              r.a.Fragment,
+            l.a.createElement(
+              l.a.Fragment,
               null,
               a.length
-                ? r.a.createElement(
+                ? l.a.createElement(
                     b.a,
                     { gutter: [16, 16] },
                     a.map(function (e) {
@@ -385,26 +385,26 @@
                         t =
                           "\u041d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e";
                       }
-                      return r.a.createElement(
+                      return l.a.createElement(
                         v.a,
                         {
                           to: { pathname: "/restaurant", state: { id: e.id } },
                           key: e.id,
                         },
-                        r.a.createElement(
+                        l.a.createElement(
                           g.a,
                           { className: "gutter-row", span: 6 },
-                          r.a.createElement(
+                          l.a.createElement(
                             h.a,
                             {
                               hoverable: !0,
                               style: { width: 240 },
-                              cover: r.a.createElement("img", {
+                              cover: l.a.createElement("img", {
                                 alt: "",
                                 src: p.a + "/" + e.image,
                               }),
                             },
-                            r.a.createElement(y, {
+                            l.a.createElement(y, {
                               title: e.name,
                               description: e.description + "\n" + t,
                             })
@@ -417,11 +417,22 @@
             )
           );
         },
-        O = h.a.Meta,
-        _ = function (e) {
+        O = h.a.Meta;
+      function _(e, t) {
+        var a = !1;
+        return function () {
+          a ||
+            (e.apply(this, arguments),
+            (a = !0),
+            setTimeout(function () {
+              return (a = !1);
+            }, t));
+        };
+      }
+      var w = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
-            l = a[0],
+            r = a[0],
             c = a[1],
             i = e.location.state.id,
             m = Object(n.useState)(!1),
@@ -430,165 +441,189 @@
             f = d[1],
             y = Object(n.useState)(!1),
             j = Object(u.a)(y, 2),
-            _ = j[0],
-            w = j[1];
+            w = j[0],
+            C = j[1];
           Object(n.useEffect)(
             function () {
-              C();
+              S();
             },
             [i]
           );
           var k,
-            C = function () {
+            S = function () {
               try {
                 fetch(p.a + "/restaurant/get-data?id=" + i)
                   .then(function (e) {
                     return e.json();
                   })
                   .then(function (e) {
-                    c(e), f(e.time_start), w(e.time_end);
+                    c(e), f(e.time_start), C(e.time_end);
                   });
               } catch (e) {
                 console.log(e);
               }
             };
           try {
-            k = JSON.parse(l.address_json).value;
-          } catch (S) {
+            k = JSON.parse(r.address_json).value;
+          } catch (F) {
             k =
               "\u041d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e";
           }
-          if ((console.log("rest data", l), !l)) return null;
-          return r.a.createElement(
-            r.a.Fragment,
+          if ((console.log("rest data", r), !r)) return null;
+          return l.a.createElement(
+            l.a.Fragment,
             null,
-            r.a.createElement(
+            l.a.createElement(
               b.a,
               { gutter: [16, 16] },
-              r.a.createElement(
+              l.a.createElement(
                 g.a,
                 { className: "gutter-row", span: 10 },
-                r.a.createElement(
+                l.a.createElement(
                   h.a,
                   {
                     hoverable: !0,
                     style: { width: "100%" },
-                    cover: r.a.createElement("img", {
+                    cover: l.a.createElement("img", {
                       alt: "",
-                      src: p.a + "/" + l.image,
+                      src: p.a + "/" + r.image,
                     }),
                   },
-                  r.a.createElement(O, {
-                    title: l.name,
-                    description: l.description,
+                  l.a.createElement(O, {
+                    title: r.name,
+                    description: r.description,
                   }),
-                  r.a.createElement("p", null, k),
-                  r.a.createElement(
+                  l.a.createElement("p", null, k),
+                  l.a.createElement(
                     "p",
                     null,
                     "\u0420\u0430\u0434\u0438\u0443\u0441 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 ",
-                    l.delivery_radius,
+                    r.delivery_radius,
                     " \u043a\u043c"
                   )
                 )
               ),
-              r.a.createElement(
+              l.a.createElement(
                 g.a,
                 { className: "gutter-row", span: 10 },
-                r.a.createElement(
+                l.a.createElement(
                   v.a,
                   { to: { pathname: "restaurant-menu", state: { id: i } } },
-                  r.a.createElement(s.a, null, "\u041c\u0435\u043d\u044e")
+                  l.a.createElement(s.a, null, "\u041c\u0435\u043d\u044e")
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
                   v.a,
                   { to: { pathname: "restaurant-modif", state: { id: i } } },
-                  r.a.createElement(
+                  l.a.createElement(
                     s.a,
                     null,
                     "\u041c\u043e\u0434\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440\u044b"
                   )
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
                   "label",
                   null,
-                  r.a.createElement(
+                  l.a.createElement(
                     "span",
                     null,
                     "\u0420\u0430\u0434\u0438\u0443\u0441 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 (\u043a\u043c)"
                   ),
-                  r.a.createElement(o.a, {
-                    value: l.delivery_radius,
+                  l.a.createElement(o.a, {
+                    value: r.delivery_radius,
                     onChange: function (e) {
                       return fetch(
                         p.a +
                           "/restaurant/edit-rest-radius?id="
-                            .concat(l.id, "&value=")
+                            .concat(r.id, "&value=")
                             .concat(e.target.value)
                       ).then(function (e) {
-                        return C();
+                        return S();
                       });
                     },
                   })
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
+                  "label",
+                  null,
+                  l.a.createElement(
+                    "span",
+                    null,
+                    "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u0430"
+                  ),
+                  l.a.createElement(o.a, {
+                    value: r.description,
+                    onChange: _(function (e) {
+                      fetch(
+                        p.a +
+                          "/restaurant/edit-rest-desc?id="
+                            .concat(r.id, "&value=")
+                            .concat(e.target.value)
+                      ).then(function (e) {
+                        return S();
+                      });
+                    }, 1e3),
+                  })
+                ),
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
                   v.a,
                   { to: { pathname: "restaurant-delivery", state: { id: i } } },
-                  r.a.createElement(
+                  l.a.createElement(
                     s.a,
                     null,
                     "\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438"
                   )
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
                   "label",
                   null,
-                  r.a.createElement(
+                  l.a.createElement(
                     "span",
                     null,
                     "\u0412\u0440\u0435\u043c\u044f \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u044f (\u0447\u0447:\u043c\u043c)"
                   ),
-                  r.a.createElement(o.a, {
+                  l.a.createElement(o.a, {
                     value: E,
                     onChange: function (e) {
                       return f(e.target.value);
                     },
                   })
                 ),
-                r.a.createElement(
+                l.a.createElement(
                   "label",
                   null,
-                  r.a.createElement(
+                  l.a.createElement(
                     "span",
                     null,
                     "\u0412\u0440\u0435\u043c\u044f \u0437\u0430\u043a\u0440\u044b\u0442\u0438\u044f (\u0447\u0447:\u043c\u043c)"
                   ),
-                  r.a.createElement(o.a, {
-                    value: _,
+                  l.a.createElement(o.a, {
+                    value: w,
                     onChange: function (e) {
-                      return w(e.target.value);
+                      return C(e.target.value);
                     },
                   })
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement(
                   s.a,
                   {
                     onClick: function () {
                       fetch(
                         p.a +
                           "/restaurant/edit-rest-time?id="
-                            .concat(l.id, "&start=")
+                            .concat(r.id, "&start=")
                             .concat(E, "&end=")
-                            .concat(_)
+                            .concat(w)
                       )
                         .then(function (e) {
                           return e.json();
@@ -598,114 +633,139 @@
                             alert(
                               "\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043e"
                             ),
-                            C();
+                            S();
                         });
                     },
                   },
                   "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0432\u0440\u0435\u043c\u044f"
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
                   "label",
                   null,
-                  r.a.createElement(
+                  l.a.createElement(
                     "span",
                     null,
                     "\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u0443\u043c\u043c\u0430 \u0437\u0430\u043a\u0430\u0437\u0430 (\u0440\u0443\u0431)"
                   ),
-                  r.a.createElement(o.a, {
-                    value: l.min_price,
+                  l.a.createElement(o.a, {
+                    value: r.min_price,
                     onChange: function (e) {
                       return fetch(
                         p.a +
                           "/restaurant/edit-rest-min-price?id="
-                            .concat(l.id, "&value=")
+                            .concat(r.id, "&value=")
                             .concat(e.target.value)
                       ).then(function (e) {
-                        return C();
+                        return S();
                       });
                     },
                   })
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
                   "label",
                   null,
-                  r.a.createElement(
+                  l.a.createElement(
                     "span",
                     null,
                     "\u042e\u0440\u0438\u0434\u0438\u0441\u043a\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f (\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u041e\u041e\u041e, \u0430\u0434\u0440\u0435\u0441, \u0442\u0435\u043b\u0435\u0444\u043e\u043d)"
                   ),
-                  r.a.createElement(o.a, {
-                    value: l.restaurant_info,
+                  l.a.createElement(o.a, {
+                    value: r.restaurant_info,
                     onChange: function (e) {
                       return fetch(
                         p.a +
                           "/restaurant/edit-rest-info?id="
-                            .concat(l.id, "&value=")
+                            .concat(r.id, "&value=")
                             .concat(e.target.value)
                       ).then(function (e) {
-                        return C();
+                        return S();
                       });
                     },
                   })
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
                   s.a,
                   {
                     onClick: function () {
                       fetch(
                         p.a +
                           "/restaurant/edit-rest-active?id="
-                            .concat(l.id, "&value=")
-                            .concat("1" == l.active ? 0 : 1)
+                            .concat(r.id, "&value=")
+                            .concat("1" == r.active ? 0 : 1)
                       ).then(function (e) {
-                        return C();
+                        return S();
                       });
                     },
                   },
                   "\u0420\u0435\u0441\u0442\u043e\u0440\u0430\u043d ",
-                  "1" == l.active
+                  "1" == r.active
                     ? "\u043e\u0442\u043a\u0440\u044b\u0442"
                     : "\u0437\u0430\u043a\u0440\u044b\u0442",
                   " ",
                   "(\u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u0447\u0442\u043e\u0431\u044b",
                   " ",
-                  "1" == l.active
+                  "1" == r.active
                     ? "\u0437\u0430\u043a\u0440\u044b\u0442\u044c"
                     : "\u043e\u0442\u043a\u0440\u044b\u0442\u044c",
                   ")"
                 ),
-                r.a.createElement("br", null),
-                r.a.createElement("br", null),
-                r.a.createElement(
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
                   v.a,
                   { to: { pathname: "restaurant-discount", state: { id: i } } },
-                  r.a.createElement(
+                  l.a.createElement(
                     s.a,
                     null,
                     "\u0421\u043a\u0438\u0434\u043a\u0438, \u0430\u043a\u0446\u0438\u0438 \u0438 \u043f\u0440\u043e\u043c\u043e\u043a\u043e\u0434\u044b"
                   )
+                ),
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement(
+                  "label",
+                  null,
+                  l.a.createElement(
+                    "span",
+                    null,
+                    "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u043d\u043e\u0432\u043e\u0435 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435"
+                  ),
+                  l.a.createElement("input", {
+                    type: "file",
+                    onChange: function (e) {
+                      var t = new FormData();
+                      t.append("file", e.target.files[0]),
+                        fetch(
+                          p.a +
+                            "/restaurant/change-rest-image?id=".concat(r.id),
+                          { method: "POST", body: t }
+                        ).then(function (e) {
+                          return S();
+                        });
+                    },
+                  })
                 )
               )
             )
           );
         },
-        w = a(69),
+        C = a(69),
         k = a(5),
-        C = a(292),
-        S = a(289),
-        F = C.a.Panel,
-        x = function (e) {
+        S = a(292),
+        F = a(289),
+        x = S.a.Panel,
+        I = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
-            l = a[0],
+            r = a[0],
             c = a[1];
-          console.log("data is", l);
+          console.log("data is", r);
           var i = e.location.state.id,
             m = Object(n.useState)(!1),
             d = Object(u.a)(m, 2),
@@ -731,25 +791,25 @@
             O = y[1];
           return (
             console.log("newItem", j),
-            r.a.createElement(
-              r.a.Fragment,
+            l.a.createElement(
+              l.a.Fragment,
               null,
-              r.a.createElement(
+              l.a.createElement(
                 v.a,
                 { to: { pathname: "restaurant-modif", state: { id: i } } },
-                r.a.createElement(
+                l.a.createElement(
                   s.a,
                   null,
                   "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043c\u043e\u0434\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440\u044b"
                 )
               ),
-              r.a.createElement(S.a, null),
-              r.a.createElement(o.a, {
+              l.a.createElement(F.a, null),
+              l.a.createElement(o.a, {
                 onChange: function (e) {
                   return f(e.target.value);
                 },
               }),
-              r.a.createElement(
+              l.a.createElement(
                 s.a,
                 {
                   onClick: function () {
@@ -770,29 +830,30 @@
                 },
                 "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044e"
               ),
-              r.a.createElement(S.a, null),
-              l &&
-                l.menu &&
-                r.a.createElement(
+              l.a.createElement(F.a, null),
+              r &&
+                r.menu &&
+                l.a.createElement(
                   "div",
                   null,
-                  r.a.createElement(
+                  l.a.createElement(
                     "h3",
                     null,
                     "\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0431\u043b\u044e\u0434\u0430"
                   ),
-                  r.a.createElement(
+                  l.a.createElement(
                     "label",
                     null,
-                    r.a.createElement(
+                    l.a.createElement(
                       "span",
                       null,
                       "\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f"
                     ),
-                    r.a.createElement(
+                    l.a.createElement(
                       "select",
                       {
                         style: { width: "100%", height: 40 },
+                        value: j.category_id,
                         onChange: function (e) {
                           return O(
                             Object(k.a)(
@@ -803,8 +864,8 @@
                           );
                         },
                       },
-                      l.menu.map(function (e) {
-                        return r.a.createElement(
+                      r.menu.map(function (e) {
+                        return l.a.createElement(
                           "option",
                           { key: e.id, value: e.id },
                           e.name
@@ -812,16 +873,16 @@
                       })
                     )
                   ),
-                  r.a.createElement("br", null),
-                  r.a.createElement(
+                  l.a.createElement("br", null),
+                  l.a.createElement(
                     "label",
                     null,
-                    r.a.createElement(
+                    l.a.createElement(
                       "span",
                       null,
                       "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435"
                     ),
-                    r.a.createElement(o.a, {
+                    l.a.createElement(o.a, {
                       onChange: function (e) {
                         return O(
                           Object(k.a)(
@@ -833,16 +894,16 @@
                       },
                     })
                   ),
-                  r.a.createElement("br", null),
-                  r.a.createElement(
+                  l.a.createElement("br", null),
+                  l.a.createElement(
                     "label",
                     null,
-                    r.a.createElement(
+                    l.a.createElement(
                       "span",
                       null,
                       "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435"
                     ),
-                    r.a.createElement(o.a, {
+                    l.a.createElement(o.a, {
                       onChange: function (e) {
                         return O(
                           Object(k.a)(
@@ -854,16 +915,16 @@
                       },
                     })
                   ),
-                  r.a.createElement("br", null),
-                  r.a.createElement(
+                  l.a.createElement("br", null),
+                  l.a.createElement(
                     "label",
                     null,
-                    r.a.createElement(
+                    l.a.createElement(
                       "span",
                       null,
                       "\u0412\u0435\u0441 (\u0433\u0440)"
                     ),
-                    r.a.createElement(o.a, {
+                    l.a.createElement(o.a, {
                       onChange: function (e) {
                         return O(
                           Object(k.a)(
@@ -875,16 +936,16 @@
                       },
                     })
                   ),
-                  r.a.createElement("br", null),
-                  r.a.createElement(
+                  l.a.createElement("br", null),
+                  l.a.createElement(
                     "label",
                     null,
-                    r.a.createElement(
+                    l.a.createElement(
                       "span",
                       null,
                       "\u0426\u0435\u043d\u0430 (\u0440\u0443\u0431)"
                     ),
-                    r.a.createElement(o.a, {
+                    l.a.createElement(o.a, {
                       onChange: function (e) {
                         return O(
                           Object(k.a)(
@@ -896,18 +957,19 @@
                       },
                     })
                   ),
-                  r.a.createElement("br", null),
-                  r.a.createElement(
+                  l.a.createElement("br", null),
+                  l.a.createElement(
                     "label",
                     null,
-                    r.a.createElement(
+                    l.a.createElement(
                       "span",
                       null,
                       "\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435"
                     ),
-                    r.a.createElement(o.a, {
+                    l.a.createElement(o.a, {
                       type: "file",
                       id: "new_item_image",
+                      value: j.file,
                       onChange: function (e) {
                         return O(
                           Object(k.a)(
@@ -917,19 +979,40 @@
                           )
                         );
                       },
-                    })
+                    }),
+                    l.a.createElement(
+                      "button",
+                      {
+                        onClick: function () {
+                          (document.querySelector("#new_item_image").value =
+                            ""),
+                            document
+                              .querySelector("#new_item_image")
+                              .dispatchEvent(new Event("change")),
+                            O(
+                              Object(k.a)(
+                                Object(k.a)({}, j),
+                                {},
+                                { file: void 0 }
+                              )
+                            );
+                        },
+                        style: { padding: 5 },
+                      },
+                      "\u0441\u0431\u0440\u043e\u0441\u0438\u0442\u044c \u0432\u044b\u0431\u043e\u0440 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f"
+                    )
                   ),
-                  r.a.createElement("br", null),
-                  r.a.createElement(
+                  l.a.createElement("br", null),
+                  l.a.createElement(
                     s.a,
                     {
                       onClick: function () {
                         var e = new FormData(),
                           t = document.querySelector("#new_item_image");
-                        console.log("data is ", l),
+                        console.log("data is ", r),
                           e.append(
                             "category_id",
-                            j.category_id ? j.category_id : l.menu[0].id
+                            j.category_id ? j.category_id : r.menu[0].id
                           ),
                           e.append("description", j.description),
                           e.append("name", j.name),
@@ -949,8 +1032,7 @@
                                 ? (alert(
                                     "\u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e"
                                   ),
-                                  b(),
-                                  O(!1))
+                                  b())
                                 : (alert(
                                     "\u043d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0431\u043b\u044e\u0434\u043e"
                                   ),
@@ -962,14 +1044,14 @@
                     "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c"
                   )
                 ),
-              r.a.createElement(S.a, null),
-              l &&
-                l.menu.length &&
-                l.menu.map(function (e) {
-                  return r.a.createElement(
+              l.a.createElement(F.a, null),
+              r &&
+                r.menu.length &&
+                r.menu.map(function (e) {
+                  return l.a.createElement(
                     "div",
                     { key: e.id },
-                    r.a.createElement(
+                    l.a.createElement(
                       "h3",
                       {
                         style: {
@@ -979,10 +1061,10 @@
                         },
                       },
                       e.name,
-                      r.a.createElement(
+                      l.a.createElement(
                         "div",
                         null,
-                        r.a.createElement(o.a, {
+                        l.a.createElement(o.a, {
                           placeholder:
                             "\u0441\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430",
                           value: e.order_by,
@@ -998,7 +1080,7 @@
                             });
                           },
                         }),
-                        r.a.createElement(
+                        l.a.createElement(
                           s.a,
                           {
                             onClick: function () {
@@ -1019,43 +1101,42 @@
                         )
                       )
                     ),
-                    r.a.createElement(
+                    l.a.createElement(
                       "div",
                       null,
-                      r.a.createElement(
-                        C.a,
+                      l.a.createElement(
+                        S.a,
                         { defaultActiveKey: [] },
-                        r.a.createElement(
-                          F,
+                        l.a.createElement(
+                          x,
                           {
                             header:
                               "\u041c\u0435\u043d\u044e \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438",
                             key: "1",
                           },
                           e.menu.map(function (e) {
-                            return r.a.createElement(
-                              C.a,
+                            return l.a.createElement(
+                              S.a,
                               { key: e.id, defaultActiveKey: [] },
-                              r.a.createElement(
-                                F,
+                              l.a.createElement(
+                                x,
                                 { header: e.name, key: "1" },
-                                r.a.createElement(
+                                l.a.createElement(
                                   "div",
                                   { style: { margin: 15 } },
-                                  r.a.createElement(
+                                  l.a.createElement(
                                     h.a,
                                     null,
-                                    r.a.createElement(
+                                    l.a.createElement(
                                       "label",
                                       null,
-                                      r.a.createElement(
+                                      l.a.createElement(
                                         "span",
                                         null,
-                                        "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 -",
-                                        " ",
+                                        "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 - ",
                                         e.name
                                       ),
-                                      r.a.createElement(o.a, {
+                                      l.a.createElement(o.a, {
                                         placeholder:
                                           "\u041d\u043e\u0432\u043e\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435",
                                         onChange: function (t) {
@@ -1073,11 +1154,11 @@
                                         },
                                       })
                                     ),
-                                    r.a.createElement("img", {
+                                    l.a.createElement("img", {
                                       src: p.a + "/" + e.image,
                                       style: { maxWidth: 300 },
                                     }),
-                                    r.a.createElement("input", {
+                                    l.a.createElement("input", {
                                       type: "file",
                                       onChange: function (t) {
                                         var a = new FormData();
@@ -1094,20 +1175,19 @@
                                           });
                                       },
                                     }),
-                                    r.a.createElement(
+                                    l.a.createElement(
                                       "p",
                                       null,
-                                      r.a.createElement(
+                                      l.a.createElement(
                                         "label",
                                         null,
-                                        r.a.createElement(
+                                        l.a.createElement(
                                           "span",
                                           null,
-                                          "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 -",
-                                          " ",
+                                          "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 - ",
                                           e.description
                                         ),
-                                        r.a.createElement(o.a, {
+                                        l.a.createElement(o.a, {
                                           placeholder:
                                             "\u041d\u043e\u0432\u043e\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435",
                                           onChange: function (t) {
@@ -1126,22 +1206,20 @@
                                         })
                                       )
                                     ),
-                                    r.a.createElement(
+                                    l.a.createElement(
                                       "p",
                                       null,
-                                      r.a.createElement(
+                                      l.a.createElement(
                                         "label",
                                         null,
-                                        r.a.createElement(
+                                        l.a.createElement(
                                           "span",
                                           null,
-                                          "\xa0\u0412\u0435\u0441 -",
-                                          " ",
+                                          "\xa0\u0412\u0435\u0441 - ",
                                           e.weight,
-                                          " ",
-                                          "\u0433\u0440"
+                                          " \u0433\u0440"
                                         ),
-                                        r.a.createElement(o.a, {
+                                        l.a.createElement(o.a, {
                                           placeholder:
                                             "\u041d\u043e\u0432\u044b\u0439 \u0432\u0435\u0441",
                                           onChange: function (t) {
@@ -1160,22 +1238,20 @@
                                         })
                                       )
                                     ),
-                                    r.a.createElement(
+                                    l.a.createElement(
                                       "p",
                                       null,
-                                      r.a.createElement(
+                                      l.a.createElement(
                                         "label",
                                         null,
-                                        r.a.createElement(
+                                        l.a.createElement(
                                           "span",
                                           null,
-                                          "\u0426\u0435\u043d\u0430 -",
-                                          " ",
+                                          "\u0426\u0435\u043d\u0430 - ",
                                           e.price,
-                                          " ",
-                                          "\u0440\u0443\u0431"
+                                          " \u0440\u0443\u0431"
                                         ),
-                                        r.a.createElement(o.a, {
+                                        l.a.createElement(o.a, {
                                           placeholder:
                                             "\u041d\u043e\u0432\u044b\u0439 \u0432\u0435\u0441",
                                           onChange: function (t) {
@@ -1194,20 +1270,20 @@
                                         })
                                       )
                                     ),
-                                    r.a.createElement(
+                                    l.a.createElement(
                                       "p",
                                       null,
-                                      r.a.createElement(
+                                      l.a.createElement(
                                         "label",
                                         null,
-                                        r.a.createElement(
+                                        l.a.createElement(
                                           "span",
                                           null,
                                           e.active
                                             ? "\u0430\u043a\u0442\u0438\u0432\u043d\u043e"
                                             : "\u043d\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e"
                                         ),
-                                        r.a.createElement("input", {
+                                        l.a.createElement("input", {
                                           type: "checkbox",
                                           checked: e.active,
                                           onChange: function (t) {
@@ -1228,18 +1304,18 @@
                                         })
                                       )
                                     ),
-                                    r.a.createElement(
+                                    l.a.createElement(
                                       "p",
                                       null,
-                                      r.a.createElement(
+                                      l.a.createElement(
                                         "label",
                                         null,
-                                        r.a.createElement(
+                                        l.a.createElement(
                                           "span",
                                           null,
                                           "\u041c\u043e\u0434\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440\u044b"
                                         ),
-                                        r.a.createElement(
+                                        l.a.createElement(
                                           "select",
                                           {
                                             multiple: !0,
@@ -1248,7 +1324,7 @@
                                               : [],
                                             style: { width: "100%" },
                                             onChange: function (t) {
-                                              var a = Object(w.a)(
+                                              var a = Object(C.a)(
                                                 t.target.options
                                               )
                                                 .filter(function (e) {
@@ -1270,13 +1346,45 @@
                                               });
                                             },
                                           },
-                                          l.modificators.map(function (e) {
-                                            return r.a.createElement(
+                                          r.modificators.map(function (e) {
+                                            return l.a.createElement(
                                               "option",
                                               { key: e.id, value: e.id },
                                               e.name
                                             );
                                           })
+                                        )
+                                      )
+                                    ),
+                                    l.a.createElement(
+                                      "p",
+                                      null,
+                                      l.a.createElement(
+                                        "label",
+                                        null,
+                                        l.a.createElement(
+                                          "span",
+                                          null,
+                                          "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0431\u043b\u044e\u0434\u043e "
+                                        ),
+                                        l.a.createElement(
+                                          s.a,
+                                          {
+                                            onClick: function (t) {
+                                              window.confirm(
+                                                "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0435"
+                                              ) &&
+                                                fetch(
+                                                  p.a +
+                                                    "/restaurant/delete-item?id=".concat(
+                                                      e.id
+                                                    )
+                                                ).then(function (e) {
+                                                  return b();
+                                                });
+                                            },
+                                          },
+                                          "\u0423\u0434\u0430\u043b\u0438\u0442\u044c"
                                         )
                                       )
                                     )
@@ -1288,16 +1396,16 @@
                         )
                       )
                     ),
-                    r.a.createElement(S.a, null)
+                    l.a.createElement(F.a, null)
                   );
                 })
             )
           );
         },
-        I = function (e) {
+        T = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
-            l = a[0],
+            r = a[0],
             c = a[1],
             i = e.location.state.id,
             m = Object(n.useState)({ type: "single" }),
@@ -1327,34 +1435,34 @@
               );
           };
           return (
-            console.log("data", l),
-            r.a.createElement(
-              r.a.Fragment,
+            console.log("data", r),
+            l.a.createElement(
+              l.a.Fragment,
               null,
-              r.a.createElement(
+              l.a.createElement(
                 "div",
                 null,
                 "\u041c\u043e\u0434\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440\u044b \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u0430"
               ),
-              r.a.createElement(
+              l.a.createElement(
                 v.a,
                 { to: { pathname: "restaurant", state: { id: i } } },
-                r.a.createElement(
+                l.a.createElement(
                   s.a,
                   null,
                   "\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
                 )
               ),
-              r.a.createElement(S.a, null),
-              r.a.createElement(
+              l.a.createElement(F.a, null),
+              l.a.createElement(
                 "label",
                 null,
-                r.a.createElement(
+                l.a.createElement(
                   "span",
                   null,
                   "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435"
                 ),
-                r.a.createElement(o.a, {
+                l.a.createElement(o.a, {
                   onChange: function (e) {
                     return f(
                       Object(k.a)(
@@ -1366,11 +1474,11 @@
                   },
                 })
               ),
-              r.a.createElement(
+              l.a.createElement(
                 "label",
                 null,
-                r.a.createElement("span", null, "\u0422\u0438\u043f"),
-                r.a.createElement(
+                l.a.createElement("span", null, "\u0422\u0438\u043f"),
+                l.a.createElement(
                   "select",
                   {
                     style: { width: "100%", height: 40, marginBottom: 10 },
@@ -1384,19 +1492,19 @@
                       );
                     },
                   },
-                  r.a.createElement(
+                  l.a.createElement(
                     "option",
                     { value: "single" },
                     "\u041e\u0434\u0438\u043d\u043e\u0447\u043d\u044b\u0439 \u0432\u044b\u0431\u043e\u0440 \u0438\u0437 \u0441\u043f\u0438\u0441\u043a\u0430"
                   ),
-                  r.a.createElement(
+                  l.a.createElement(
                     "option",
                     { value: "multiple" },
                     "\u041c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u0432\u044b\u0431\u043e\u0440 \u0438\u0437 \u0441\u043f\u0438\u0441\u043a\u0430"
                   )
                 )
               ),
-              r.a.createElement(
+              l.a.createElement(
                 s.a,
                 {
                   onClick: function () {
@@ -1419,14 +1527,14 @@
                 },
                 "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043c\u043e\u0434\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440"
               ),
-              r.a.createElement(S.a, null),
-              l &&
-                l.length &&
-                l.map(function (e) {
-                  return r.a.createElement(
+              l.a.createElement(F.a, null),
+              r &&
+                r.length &&
+                r.map(function (e) {
+                  return l.a.createElement(
                     "div",
                     { key: e.id },
-                    r.a.createElement(
+                    l.a.createElement(
                       "div",
                       {
                         style: {
@@ -1435,8 +1543,8 @@
                           justifyContent: "space-between",
                         },
                       },
-                      r.a.createElement("h3", null, e.name),
-                      r.a.createElement(
+                      l.a.createElement("h3", null, e.name),
+                      l.a.createElement(
                         s.a,
                         {
                           onClick: function () {
@@ -1446,30 +1554,30 @@
                         "\u0423\u0434\u0430\u043b\u0438\u0442\u044c"
                       )
                     ),
-                    r.a.createElement("br", null),
-                    r.a.createElement(
+                    l.a.createElement("br", null),
+                    l.a.createElement(
                       "form",
                       { id: "form" + e.id },
-                      r.a.createElement(o.a, {
+                      l.a.createElement(o.a, {
                         name: "name",
                         placeholder:
                           "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435",
                       }),
-                      r.a.createElement(o.a, {
+                      l.a.createElement(o.a, {
                         name: "price",
                         placeholder: "\u0426\u0435\u043d\u0430",
                       }),
-                      r.a.createElement(o.a, {
+                      l.a.createElement(o.a, {
                         name: "rest_id",
                         type: "hidden",
                         value: i,
                       }),
-                      r.a.createElement(o.a, {
+                      l.a.createElement(o.a, {
                         name: "parent_id",
                         type: "hidden",
                         value: e.id,
                       }),
-                      r.a.createElement(
+                      l.a.createElement(
                         s.a,
                         {
                           onClick: function () {
@@ -1491,12 +1599,12 @@
                         "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432\u0430\u0440\u0438\u0430\u043d\u0442"
                       )
                     ),
-                    r.a.createElement("br", null),
+                    l.a.createElement("br", null),
                     e.list.map(function (e) {
-                      return r.a.createElement(
+                      return l.a.createElement(
                         h.a,
                         { key: e.id },
-                        r.a.createElement(
+                        l.a.createElement(
                           "div",
                           {
                             style: {
@@ -1505,17 +1613,17 @@
                               justifyContent: "space-between",
                             },
                           },
-                          r.a.createElement("p", null, e.name),
-                          r.a.createElement(
+                          l.a.createElement("p", null, e.name),
+                          l.a.createElement(
                             "span",
                             null,
-                            r.a.createElement(
+                            l.a.createElement(
                               "span",
                               null,
                               e.price,
                               " \u0440\u0443\u0431"
                             ),
-                            r.a.createElement(
+                            l.a.createElement(
                               s.a,
                               {
                                 onClick: function () {
@@ -1529,16 +1637,16 @@
                         )
                       );
                     }),
-                    r.a.createElement(S.a, null)
+                    l.a.createElement(F.a, null)
                   );
                 })
             )
           );
         },
-        T = function (e) {
+        P = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
-            l = a[0],
+            r = a[0],
             c = a[1],
             i = e.location.state.id,
             m = Object(n.useState)({ type: "single" }),
@@ -1558,34 +1666,34 @@
             h();
           }, []);
           return (
-            console.log("data", l),
-            r.a.createElement(
-              r.a.Fragment,
+            console.log("data", r),
+            l.a.createElement(
+              l.a.Fragment,
               null,
-              r.a.createElement(
+              l.a.createElement(
                 "div",
                 null,
                 "\u0414\u043e\u0441\u0442\u0430\u0432\u043a\u0430 \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u0430"
               ),
-              r.a.createElement(
+              l.a.createElement(
                 v.a,
                 { to: { pathname: "restaurant", state: { id: i } } },
-                r.a.createElement(
+                l.a.createElement(
                   s.a,
                   null,
                   "\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
                 )
               ),
-              r.a.createElement(S.a, null),
-              r.a.createElement(
+              l.a.createElement(F.a, null),
+              l.a.createElement(
                 "label",
                 null,
-                r.a.createElement(
+                l.a.createElement(
                   "span",
                   null,
                   "\u0417\u0430\u043a\u0430\u0437 \u043e\u0442"
                 ),
-                r.a.createElement(o.a, {
+                l.a.createElement(o.a, {
                   onChange: function (e) {
                     return f(
                       Object(k.a)(
@@ -1597,15 +1705,15 @@
                   },
                 })
               ),
-              r.a.createElement(
+              l.a.createElement(
                 "label",
                 null,
-                r.a.createElement(
+                l.a.createElement(
                   "span",
                   null,
                   "\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 "
                 ),
-                r.a.createElement(o.a, {
+                l.a.createElement(o.a, {
                   onChange: function (e) {
                     return f(
                       Object(k.a)(
@@ -1617,7 +1725,7 @@
                   },
                 })
               ),
-              r.a.createElement(
+              l.a.createElement(
                 s.a,
                 {
                   onClick: function () {
@@ -1639,14 +1747,14 @@
                 },
                 "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0443"
               ),
-              r.a.createElement(S.a, null),
-              l &&
-                l.length &&
-                l.map(function (e) {
-                  return r.a.createElement(
+              l.a.createElement(F.a, null),
+              r &&
+                r.length &&
+                r.map(function (e) {
+                  return l.a.createElement(
                     "div",
                     { key: e.id },
-                    r.a.createElement(
+                    l.a.createElement(
                       "div",
                       {
                         style: {
@@ -1655,15 +1763,15 @@
                           justifyContent: "space-between",
                         },
                       },
-                      r.a.createElement(
+                      l.a.createElement(
                         "label",
                         { style: { flex: 1 } },
-                        r.a.createElement(
+                        l.a.createElement(
                           "span",
                           null,
                           "\u0417\u0430\u043a\u0430\u0437 \u043e\u0442"
                         ),
-                        r.a.createElement(o.a, {
+                        l.a.createElement(o.a, {
                           value: e.price_start,
                           onChange: function (t) {
                             fetch(
@@ -1677,15 +1785,15 @@
                           },
                         })
                       ),
-                      r.a.createElement(
+                      l.a.createElement(
                         "label",
                         { style: { flex: 1, padding: 20 } },
-                        r.a.createElement(
+                        l.a.createElement(
                           "span",
                           null,
                           "\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438"
                         ),
-                        r.a.createElement(o.a, {
+                        l.a.createElement(o.a, {
                           value: e.price,
                           onChange: function (t) {
                             fetch(
@@ -1699,11 +1807,11 @@
                           },
                         })
                       ),
-                      r.a.createElement(
+                      l.a.createElement(
                         "div",
                         null,
-                        r.a.createElement("br", null),
-                        r.a.createElement(
+                        l.a.createElement("br", null),
+                        l.a.createElement(
                           s.a,
                           {
                             onClick: function () {
@@ -1724,16 +1832,16 @@
                         )
                       )
                     ),
-                    r.a.createElement(S.a, null)
+                    l.a.createElement(F.a, null)
                   );
                 })
             )
           );
         },
-        P = function (e) {
+        D = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
-            l = a[0],
+            r = a[0],
             c = a[1],
             i = e.location.state.id,
             m = Object(n.useState)({ type: "promocode" }),
@@ -1780,16 +1888,16 @@
                   return y(e.menu);
                 });
           }, []);
-          console.log("data", l),
+          console.log("data", r),
             console.log("newModif", E),
             console.log("menu", g);
           var _ = function (e, t) {
               var a = t;
-              return r.a.createElement(
+              return l.a.createElement(
                 "label",
                 null,
-                r.a.createElement("span", null, e),
-                r.a.createElement(o.a, {
+                l.a.createElement("span", null, e),
+                l.a.createElement(o.a, {
                   onChange: function (e) {
                     var t = Object(k.a)({}, E);
                     (t[a] = e.target.value), f(Object(k.a)({}, t));
@@ -1797,12 +1905,12 @@
                 })
               );
             },
-            C = function (e, t, a, n) {
-              return r.a.createElement(
+            w = function (e, t, a, n) {
+              return l.a.createElement(
                 "label",
                 null,
-                r.a.createElement("span", null, t),
-                r.a.createElement(o.a, {
+                l.a.createElement("span", null, t),
+                l.a.createElement(o.a, {
                   value: n,
                   onChange: function (t) {
                     fetch(
@@ -1818,33 +1926,33 @@
                 })
               );
             };
-          return r.a.createElement(
-            r.a.Fragment,
+          return l.a.createElement(
+            l.a.Fragment,
             null,
-            r.a.createElement(
+            l.a.createElement(
               "div",
               null,
               "\u0421\u043a\u0438\u0434\u043a\u0438, \u0430\u043a\u0446\u0438\u0438 \u0438 \u043f\u0440\u043e\u043c\u043e\u043a\u043e\u0434\u044b"
             ),
-            r.a.createElement(
+            l.a.createElement(
               v.a,
               { to: { pathname: "restaurant", state: { id: i } } },
-              r.a.createElement(
+              l.a.createElement(
                 s.a,
                 null,
                 "\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
               )
             ),
-            r.a.createElement(S.a, null),
-            r.a.createElement(
+            l.a.createElement(F.a, null),
+            l.a.createElement(
               "label",
               null,
-              r.a.createElement(
+              l.a.createElement(
                 "span",
                 null,
                 "\u0422\u0438\u043f \u0441\u043a\u0438\u0434\u043a\u0438"
               ),
-              r.a.createElement(
+              l.a.createElement(
                 "select",
                 {
                   style: { width: "100%", height: 40 },
@@ -1859,7 +1967,7 @@
                   },
                 },
                 j.map(function (e) {
-                  return r.a.createElement(
+                  return l.a.createElement(
                     "option",
                     { key: e.value, value: e.value },
                     e.name
@@ -1867,51 +1975,51 @@
                 })
               )
             ),
-            r.a.createElement("br", null),
+            l.a.createElement("br", null),
             _("\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435", "name"),
-            r.a.createElement("br", null),
+            l.a.createElement("br", null),
             _(
               "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435",
               "description"
             ),
-            r.a.createElement("br", null),
+            l.a.createElement("br", null),
             _("\u041f\u0440\u043e\u043c\u043e\u043a\u043e\u0434", "promocode"),
-            r.a.createElement("br", null),
+            l.a.createElement("br", null),
             _(
               "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0441\u043a\u0438\u0434\u043a\u0438 (\u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440 300 \u0440 \u0438\u043b\u0438 20 %  - \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u043e\u0431\u0435\u043b)",
               "discount_value"
             ),
-            r.a.createElement("br", null),
+            l.a.createElement("br", null),
             _(
               "\u0417\u0430\u043a\u0430\u0437 \u043e\u0442 (\u0440)",
               "price_start"
             ),
-            r.a.createElement("br", null),
+            l.a.createElement("br", null),
             _(
               "\u0412\u0440\u0435\u043c\u044f \u043d\u0430\u0447\u0430\u043b\u0430 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044f (\u0447\u0447:\u043c\u043c)",
               "time_start"
             ),
-            r.a.createElement("br", null),
+            l.a.createElement("br", null),
             _(
               "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044f (\u0447\u0447:\u043c\u043c)",
               "time_end"
             ),
-            r.a.createElement("br", null),
-            r.a.createElement(
+            l.a.createElement("br", null),
+            l.a.createElement(
               "label",
               null,
-              r.a.createElement(
+              l.a.createElement(
                 "span",
                 null,
                 "\u041d\u0430 \u043a\u0430\u043a\u0438\u0435 \u0431\u043b\u044e\u0434\u0430 \u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u044f\u0435\u0442\u0441\u044f"
               ),
-              r.a.createElement(
+              l.a.createElement(
                 "select",
                 {
                   multiple: !0,
                   style: { width: "100%" },
                   onChange: function (e) {
-                    var t = Object(w.a)(e.target.options)
+                    var t = Object(C.a)(e.target.options)
                       .filter(function (e) {
                         return e.selected;
                       })
@@ -1922,11 +2030,11 @@
                   },
                 },
                 g.map(function (e) {
-                  return r.a.createElement(
+                  return l.a.createElement(
                     "optgroup",
                     { label: e.name },
                     e.menu.map(function (e) {
-                      return r.a.createElement(
+                      return l.a.createElement(
                         "option",
                         { value: e.id },
                         e.name
@@ -1936,9 +2044,9 @@
                 })
               )
             ),
-            r.a.createElement("br", null),
-            r.a.createElement("br", null),
-            r.a.createElement(
+            l.a.createElement("br", null),
+            l.a.createElement("br", null),
+            l.a.createElement(
               s.a,
               {
                 onClick: function () {
@@ -1970,19 +2078,19 @@
               },
               "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0430\u043a\u0446\u0438\u044e"
             ),
-            r.a.createElement(S.a, null),
-            r.a.createElement(
+            l.a.createElement(F.a, null),
+            l.a.createElement(
               "h3",
               null,
               "\u0421\u043f\u0438\u0441\u043e\u043a \u0430\u043a\u0446\u0438\u0439"
             ),
-            l &&
-              l.length &&
-              l.map(function (e) {
-                return r.a.createElement(
+            r &&
+              r.length &&
+              r.map(function (e) {
+                return l.a.createElement(
                   "div",
                   { key: e.id },
-                  r.a.createElement(
+                  l.a.createElement(
                     "select",
                     {
                       style: { width: "100%", height: 40 },
@@ -1999,79 +2107,79 @@
                       value: e.type,
                     },
                     j.map(function (e) {
-                      return r.a.createElement(
+                      return l.a.createElement(
                         "option",
                         { key: e.value, value: e.value },
                         e.name
                       );
                     })
                   ),
-                  r.a.createElement("br", null),
-                  C(
+                  l.a.createElement("br", null),
+                  w(
                     e.id,
                     "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435",
                     "name",
                     e.name
                   ),
-                  r.a.createElement("br", null),
-                  C(
+                  l.a.createElement("br", null),
+                  w(
                     e.id,
                     "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435",
                     "description",
                     e.description
                   ),
-                  r.a.createElement("br", null),
-                  C(
+                  l.a.createElement("br", null),
+                  w(
                     e.id,
                     "\u041f\u0440\u043e\u043c\u043e\u043a\u043e\u0434",
                     "promocode",
                     e.promocode
                   ),
-                  r.a.createElement("br", null),
-                  C(
+                  l.a.createElement("br", null),
+                  w(
                     e.id,
                     "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0441\u043a\u0438\u0434\u043a\u0438 (\u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440 300 \u0440 \u0438\u043b\u0438 20 %  - \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u043e\u0431\u0435\u043b)",
                     "discount_value",
                     e.discount_value
                   ),
-                  r.a.createElement("br", null),
-                  C(
+                  l.a.createElement("br", null),
+                  w(
                     e.id,
                     "\u0417\u0430\u043a\u0430\u0437 \u043e\u0442 (\u0440)",
                     "price_start",
                     e.price_start
                   ),
-                  r.a.createElement("br", null),
-                  C(
+                  l.a.createElement("br", null),
+                  w(
                     e.id,
                     "\u0412\u0440\u0435\u043c\u044f \u043d\u0430\u0447\u0430\u043b\u0430 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044f (\u0447\u0447:\u043c\u043c)",
                     "time_start",
                     e.time_start
                   ),
-                  r.a.createElement("br", null),
-                  C(
+                  l.a.createElement("br", null),
+                  w(
                     e.id,
                     "\u0412\u0440\u0435\u043c\u044f \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u044f \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044f (\u0447\u0447:\u043c\u043c)",
                     "time_end",
                     e.time_end
                   ),
-                  r.a.createElement("br", null),
-                  r.a.createElement(
+                  l.a.createElement("br", null),
+                  l.a.createElement(
                     "label",
                     null,
-                    r.a.createElement(
+                    l.a.createElement(
                       "span",
                       null,
                       "\u041d\u0430 \u043a\u0430\u043a\u0438\u0435 \u0431\u043b\u044e\u0434\u0430 \u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u044f\u0435\u0442\u0441\u044f"
                     ),
-                    r.a.createElement(
+                    l.a.createElement(
                       "select",
                       {
                         multiple: !0,
                         style: { width: "100%" },
                         value: e.items ? e.items.split(",") : [],
                         onChange: function (t) {
-                          var a = Object(w.a)(t.target.options)
+                          var a = Object(C.a)(t.target.options)
                             .filter(function (e) {
                               return e.selected;
                             })
@@ -2089,11 +2197,11 @@
                         },
                       },
                       g.map(function (e) {
-                        return r.a.createElement(
+                        return l.a.createElement(
                           "optgroup",
                           { label: e.name },
                           e.menu.map(function (e) {
-                            return r.a.createElement(
+                            return l.a.createElement(
                               "option",
                               { value: e.id },
                               e.name
@@ -2103,9 +2211,9 @@
                       })
                     )
                   ),
-                  r.a.createElement("br", null),
-                  r.a.createElement("br", null),
-                  r.a.createElement(
+                  l.a.createElement("br", null),
+                  l.a.createElement("br", null),
+                  l.a.createElement(
                     s.a,
                     {
                       onClick: function () {
@@ -2121,24 +2229,24 @@
                     },
                     "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0430\u043a\u0446\u0438\u044e"
                   ),
-                  r.a.createElement(S.a, null)
+                  l.a.createElement(F.a, null)
                 );
               })
           );
         },
-        D = function () {
+        N = function () {
           return n.createElement(
             n.Fragment,
             null,
-            Object(l.a)([
+            Object(r.a)([
               { path: "/", exact: !0, component: c },
               { path: "/add-rest", component: f },
               { path: "/list-rest", component: j },
-              { path: "/restaurant", component: _ },
-              { path: "/restaurant-menu", component: x },
-              { path: "/restaurant-modif", component: I },
-              { path: "/restaurant-delivery", component: T },
-              { path: "/restaurant-discount", component: P },
+              { path: "/restaurant", component: w },
+              { path: "/restaurant-menu", component: I },
+              { path: "/restaurant-modif", component: T },
+              { path: "/restaurant-delivery", component: P },
+              { path: "/restaurant-discount", component: D },
             ])
           );
         };
@@ -2150,9 +2258,9 @@
       "use strict";
       a.r(t);
       var n = a(0),
-        r = a.n(n),
-        l = a(9),
-        c = a.n(l),
+        l = a.n(n),
+        r = a(9),
+        c = a.n(r),
         u = a(29),
         i = a(60),
         o = a(126),
@@ -2161,16 +2269,16 @@
         d = document.querySelector("#root");
       d &&
         c.a.render(
-          r.a.createElement(
+          l.a.createElement(
             i.a,
             { store: m.d },
-            r.a.createElement(
+            l.a.createElement(
               o.a,
               { loading: null, persistor: m.c },
-              r.a.createElement(
+              l.a.createElement(
                 u.b,
                 { history: m.b },
-                r.a.createElement(s.a, null)
+                l.a.createElement(s.a, null)
               )
             )
           ),
@@ -2180,7 +2288,7 @@
     4: function (e, t, a) {
       "use strict";
       a.d(t, "b", function () {
-        return l;
+        return r;
       }),
         a.d(t, "d", function () {
           return f;
@@ -2193,8 +2301,8 @@
         });
       a(76);
       var n,
-        r = a(35),
-        l = Object(r.a)(),
+        l = a(35),
+        r = Object(l.a)(),
         c = a(44),
         u = (a(165), a(127)),
         i = a(99),
@@ -2238,4 +2346,4 @@
   },
   [[156, 1, 2]],
 ]);
-//# sourceMappingURL=main.e85dd8db.chunk.js.map
+//# sourceMappingURL=main.c67785f7.chunk.js.map

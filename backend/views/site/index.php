@@ -120,4 +120,4 @@ $this->registerCssFile("@web/static/css/2.0f1fb5eb.chunk.css", [
     })([]);
 </script>
 <script src="/static/js/2.3e4bd211.chunk.js"></script>
-<script src="/static/js/main.e85dd8db.chunk.js"></script>
+<script src="/static/js/main.c67785f7.chunk.js"></script>

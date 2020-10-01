@@ -35,7 +35,7 @@ class Restaurant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'address_json', 'image', 'delivery_radius'], 'required'],
+            [['name', 'address_json', 'image', 'delivery_radius'], 'required'],
             [['name', 'description', 'address_json', 'image', 'delivery_radius', 'active', 'restaurant_info', 'min_price'], 'string'],
             [['time_start', 'time_end'], 'safe'],
         ];

@@ -156,12 +156,14 @@ class RestaurantController extends Controller
             $model->weight = $_POST['weight'];
             $model->price = $_POST['price'];
             // $model->active = $_POST['active'] === 'true' ? 1 : 0;
-            $uploadFormModel = new UploadForm();
-            $uploadDir = $uploadFormModel->getUploadName($model->name, $_FILES['file']['name']);
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir)) {
-            } else {
+            if (isset($_FILES['file'])) {
+                try {
+                    $uploadFormModel = new UploadForm();
+                    $uploadDir = $uploadFormModel->getUploadName($model->name, $_FILES['file']['name']);
+                    move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir);
+                    $model->image = $uploadDir;
+                } catch (Exception $e) {}
             }
-            $model->image = $uploadDir;
             if ($model->save()) {
                 return json_encode([
                     'status' => 200,
@@ -181,8 +183,23 @@ class RestaurantController extends Controller
         $item->{$key} = $value; 
         $item->update();
     }
+
+    public function actionDeleteItem($id) {
+        $item = Item::findOne($id);
+        $item->delete();
+    }
+
     public function actionChangeItemImage($id) {
         $item = Item::findOne($id);
+        $uploadFormModel = new UploadForm();
+        $uploadDir = $uploadFormModel->getUploadName($item->name, $_FILES['file']['name']);
+        move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir);
+        $item->image = $uploadDir;
+        $item->update();
+    }
+
+    public function actionChangeRestImage($id) {
+        $item = Restaurant::findOne($id);
         $uploadFormModel = new UploadForm();
         $uploadDir = $uploadFormModel->getUploadName($item->name, $_FILES['file']['name']);
         move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir);
@@ -250,6 +267,12 @@ class RestaurantController extends Controller
     public function actionEditRestRadius($id, $value) {
         $model = Restaurant::findOne($id);
         $model->delivery_radius = $value;
+        $model->update();
+    }
+
+    public function actionEditRestDesc($id, $value) {
+        $model = Restaurant::findOne($id);
+        $model->description = $value;
         $model->update();
     }
 

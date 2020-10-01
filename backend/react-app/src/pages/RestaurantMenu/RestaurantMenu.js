@@ -75,7 +75,7 @@ export const RestaurantMenu = (props) => {
         if (res.status === 200) {
           alert("успешно добавлено");
           getMenu();
-          setNewItem(false);
+          // setNewItem({});
         } else {
           alert("не удалось добавить блюдо");
           getMenu();
@@ -99,6 +99,7 @@ export const RestaurantMenu = (props) => {
             <span>Категория</span>
             <select
               style={{ width: "100%", height: 40 }}
+              value={newItem.category_id}
               onChange={(e) =>
                 setNewItem({
                   ...newItem,
@@ -162,8 +163,21 @@ export const RestaurantMenu = (props) => {
             <Input
               type="file"
               id="new_item_image"
+              value={newItem.file}
               onChange={(e) => setNewItem({ ...newItem, file: e.target.value })}
             />
+            <button
+              onClick={() => {
+                document.querySelector("#new_item_image").value = "";
+                document
+                  .querySelector("#new_item_image")
+                  .dispatchEvent(new Event("change"));
+                setNewItem({ ...newItem, file: undefined });
+              }}
+              style={{ padding: 5 }}
+            >
+              сбросить выбор изображения
+            </button>
           </label>
           <br />
           <Button onClick={saveItem} style={{ marginTop: 20 }}>
@@ -355,6 +369,25 @@ export const RestaurantMenu = (props) => {
                                         );
                                       })}
                                     </select>
+                                  </label>
+                                </p>
+                                <p>
+                                  <label>
+                                    <span>Удалить блюдо </span>
+                                    <Button
+                                      onClick={(e) => {
+                                        if (
+                                          window.confirm("Подтвердите удаление")
+                                        ) {
+                                          fetch(
+                                            API_HOST +
+                                              `/restaurant/delete-item?id=${item.id}`
+                                          ).then((res) => getMenu());
+                                        }
+                                      }}
+                                    >
+                                      Удалить
+                                    </Button>
                                   </label>
                                 </p>
                               </Card>
