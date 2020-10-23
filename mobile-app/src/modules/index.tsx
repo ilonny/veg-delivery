@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 import { OnboardingScreen } from './OnboardingScreen';
 import { AddressScreen } from './AddressScreen';
 import { UserRegistrationScreen } from './UserRegistrationScreen';
+import { ImageView } from '../features';
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 const HomeScreen = (props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -19,29 +20,62 @@ const HomeScreen = (props) => {
 const tabRoutes = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Рестораны"
       tabBarOptions={{
         activeTintColor: '#e91e63',
       }}>
       <Tab.Screen
+        name="Рестораны"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: 'Рестораны',
+          tabBarIcon: ({ focused }) => {
+            return (
+              <>
+                <ImageView
+                  imageName="dinner"
+                  styleProp={{ width: 28, height: 17 }}
+                  tintColor={focused ? '#5AC17D' : '#F1F0F4'}
+                />
+              </>
+            );
+          },
+        }}
+      />
+      <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Корзина',
+          tabBarIcon: ({ focused }) => {
+            return (
+              <>
+                <ImageView
+                  imageName="shopping_basket"
+                  styleProp={{ width: 23, height: 19 }}
+                  tintColor={focused ? '#5AC17D' : '#F1F0F4'}
+                />
+              </>
+            );
+          },
         }}
       />
       <Tab.Screen
         name="Home2"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Home2',
-        }}
-      />
-      <Tab.Screen
-        name="Home3"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: 'Home3',
+          tabBarLabel: 'Личный кабинет',
+          tabBarIcon: ({ focused }) => {
+            return (
+              <>
+                <ImageView
+                  imageName="user"
+                  styleProp={{ width: 22, height: 20 }}
+                  tintColor={focused ? '#5AC17D' : '#F1F0F4'}
+                />
+              </>
+            );
+          },
         }}
       />
     </Tab.Navigator>
@@ -55,14 +89,14 @@ export const StackNavigatorTemplate = (props) => {
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName={
-          // props.onboardingIsVisible ? 'AddressScreen' : 'OnboardingScreen'
-          props.onboardingIsVisible
-            ? 'UserRegistrationScreen'
-            : 'UserRegistrationScreen'
+          props.onboardingIsVisible ? 'AddressScreen' : 'OnboardingScreen'
+          // props.onboardingIsVisible
+          //   ? 'UserRegistrationScreen'
+          //   : 'UserRegistrationScreen'
         }>
-        {/* {!props.onboardingIsVisible && (
-          )} */}
-        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+        {!props.onboardingIsVisible && (
+          <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+        )}
         <Stack.Screen name="AddressScreen" component={AddressScreen} />
         <Stack.Screen
           name="UserRegistrationScreen"

@@ -4,12 +4,17 @@ import { ImageSource, TImageSource } from '../../lib';
 type Props = {
   imageName: TImageSource;
   styleProp?: ImageStyle;
+  tintColor?: string;
 };
 
-export const ImageView = ({ imageName, styleProp }: Props) => {
+export const ImageView = ({ imageName, styleProp, tintColor }: Props) => {
   return (
     <>
-      <Image source={ImageSource[imageName]} style={styleProp} />
+      <Image
+        source={ImageSource[imageName]}
+        style={[styleProp, tintColor && { tintColor }]}
+        // tintColor={tintColor ? tintColor : undefined}
+      />
     </>
   );
 };

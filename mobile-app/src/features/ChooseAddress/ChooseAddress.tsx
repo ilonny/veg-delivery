@@ -100,7 +100,7 @@ export const ChooseAddress = (props) => {
           text={'Сохранить'}
           styleProp={{ marginTop: 16 }}
           action={() => {
-            navigation.navigate('UserRegistrationScreen');
+            navigation.navigate('MainTabScreen');
             navigation.dispatch((state) => {
               // Remove the home route from the stack
               const routes = state.routes.filter(

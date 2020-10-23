@@ -6,6 +6,9 @@ export const ImageSource = {
   notification: require('../assets/icons/notification.png'),
   place_small: require('../assets/icons/place_small.png'),
   back_icon: require('../assets/icons/back_icon.png'),
+  dinner: require('../assets/icons/dinner.png'),
+  user: require('../assets/icons/user.png'),
+  shopping_basket: require('../assets/icons/shopping_basket.png'),
 };
 
 export type TImageSource = keyof typeof ImageSource;
