@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { OnboardingScreen } from './OnboardingScreen';
 import { AddressScreen } from './AddressScreen';
 import { UserRegistrationScreen } from './UserRegistrationScreen';
+import { RestaurantList } from './RestaurantList';
 import { ImageView } from '../features';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -14,6 +15,16 @@ const HomeScreen = (props) => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home screen {props.num}</Text>
     </View>
+  );
+};
+
+export const RestaurantStack = (props) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={'RestaurantList'}>
+      <Stack.Screen name="RestaurantList" component={RestaurantList} />
+    </Stack.Navigator>
   );
 };
 
@@ -26,7 +37,7 @@ const tabRoutes = () => {
       }}>
       <Tab.Screen
         name="Рестораны"
-        component={HomeScreen}
+        component={RestaurantStack}
         options={{
           tabBarLabel: 'Рестораны',
           tabBarIcon: ({ focused }) => {
@@ -89,7 +100,7 @@ export const StackNavigatorTemplate = (props) => {
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName={
-          props.onboardingIsVisible ? 'AddressScreen' : 'OnboardingScreen'
+          props.onboardingIsVisible ? 'MainTabScreen' : 'OnboardingScreen'
           // props.onboardingIsVisible
           //   ? 'UserRegistrationScreen'
           //   : 'UserRegistrationScreen'

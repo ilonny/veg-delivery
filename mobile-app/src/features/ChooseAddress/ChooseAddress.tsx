@@ -88,8 +88,8 @@ export const ChooseAddress = (props) => {
             latitude: userLocation.lat,
             longitude: userLocation.long,
           }}
-          title={'test'}
-          description={'test 2'}
+          title={''}
+          description={''}
         />
       </MapView>
       <View style={styles.bottomAddress}>
