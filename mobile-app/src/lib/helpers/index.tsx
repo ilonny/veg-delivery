@@ -7,3 +7,15 @@ export const debounce = (f: Function, ms: number) => {
     setTimeout(() => (isCooldown = false), ms);
   };
 };
+
+export const getLanLonFromAddressJson = (addressData) => {
+  if (
+    addressData &&
+    addressData.data &&
+    addressData.data.geo_lat &&
+    addressData.data.geo_lon
+  ) {
+    return { lat: addressData.data.geo_lat, lon: addressData.data.geo_lon };
+  }
+  return false;
+};

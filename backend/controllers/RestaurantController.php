@@ -93,6 +93,46 @@ class RestaurantController extends Controller
         return $this->asJson($res);
     }
 
+    public function getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longitude2) {
+        $theta = $longitude1 - $longitude2;
+        $miles = (sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($theta)));
+        $miles = acos($miles);
+        $miles = rad2deg($miles);
+        $miles = $miles * 60 * 1.1515;
+        $feet = $miles * 5280;
+        $yards = $feet / 3;
+        $kilometers = $miles * 1.609344;
+        $meters = $kilometers * 1000;
+        return $kilometers;
+        // return compact('miles','feet','yards','kilometers','meters'); 
+    }
+
+    public function actionMobileList($lat = '', $lon = '') {
+        $res = [];
+        $rest_all = Restaurant::find()->all();
+        $R=6371;  // Earth's radius
+        
+        foreach ($rest_all as $key => $rest) {
+            $rest_address = json_decode($rest->address_json, true);
+            $rest_lat = floatval($rest_address['data']['geo_lat']);
+            $rest_lon = floatval($rest_address['data']['geo_lon']);
+            $rest_radius = floatval($rest->delivery_radius);
+            $lat = floatval($lat);
+            $lon = floatval($lon);
+            $sin1=sin(($rest_lat - $lat) / 2);
+            $sin2=sin(($rest_lon - $lon) / 2);
+            
+            // $direction_length = 2 * $R * asin(sqrt($sin1 * $sin1 + $sin2 * $sin2 * cos($rest_lat) * cos($lat)));
+            // var_dump($direction_length);
+            // var_dump($this->getDistanceBetweenPointsNew($rest_lat, $rest_lon, $lat, $lon));
+            $direction_length = $this->getDistanceBetweenPointsNew($rest_lat, $rest_lon, $lat, $lon);
+            if ($direction_length <= $rest_radius) {
+                array_push($res, $rest);
+            }
+        }
+        return $this->asJson($res);
+    }
+
     public function actionGetData($id) {
         $res = Restaurant::findOne($id);
         return $this->asJson($res);

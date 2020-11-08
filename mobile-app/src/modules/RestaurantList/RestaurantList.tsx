@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import { ScreenTitle, AddressPlaceholder } from '../../ui';
 import { RestaurantList as RestaurantListFeature } from '../../features';
 import { useNavigation, CommonActions } from '@react-navigation/native';
