@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const ImageView = ({ imageName, styleProp, tintColor, uri }: Props) => {
-  console.log('uru', API_URL + '/' + uri);
+  // console.log('uru', API_URL + '/' + uri);
   return (
     <>
       <Image

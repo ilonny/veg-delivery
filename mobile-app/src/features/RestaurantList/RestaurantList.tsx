@@ -6,6 +6,8 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
+import { useNavigation, CommonActions } from '@react-navigation/native';
+
 import { ImageView } from '../../features';
 import { ImageSource } from '../../lib';
 import { styles } from './styles';
@@ -42,6 +44,7 @@ export const RestaurantList = ({
       </View>
     );
   }
+  const navigation = useNavigation();
   return (
     <View style={{ flex: 1, paddingTop: 16 }}>
       <FlatList
@@ -62,7 +65,10 @@ export const RestaurantList = ({
         renderItem={({ item }) => {
           console.log('item', item);
           return (
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('RestaurantScreen', { restaurant: item });
+              }}>
               <View style={styles.restItemWrapperShadow}>
                 <View style={styles.restItemWrapper}>
                   <ImageView

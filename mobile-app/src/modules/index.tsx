@@ -7,6 +7,7 @@ import { OnboardingScreen } from './OnboardingScreen';
 import { AddressScreen } from './AddressScreen';
 import { UserRegistrationScreen } from './UserRegistrationScreen';
 import { RestaurantList } from './RestaurantList';
+import { RestaurantScreen } from './RestaurantScreen';
 import { ImageView } from '../features';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -24,6 +25,7 @@ export const RestaurantStack = (props) => {
       screenOptions={{ headerShown: false }}
       initialRouteName={'RestaurantList'}>
       <Stack.Screen name="RestaurantList" component={RestaurantList} />
+      <Stack.Screen name="RestaurantScreen" component={RestaurantScreen} />
     </Stack.Navigator>
   );
 };
