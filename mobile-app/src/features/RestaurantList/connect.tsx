@@ -5,6 +5,7 @@ import { restaurantReducer } from '../../features';
 export const RestaurantList = connect(
   (state) => ({
     addressData: state.userReducer.addressData,
+    restaurantList: state.restaurantReducer.restaurantList,
   }),
   (dispatch) => ({
     getRestaurants: (params) =>

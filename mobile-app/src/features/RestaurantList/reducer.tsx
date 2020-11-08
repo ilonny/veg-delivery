@@ -1,4 +1,5 @@
 //@ts-nocheck
+import { Alert } from 'react-native';
 import { SET_REST_LIST } from './actions';
 import { API_URL, getLanLonFromAddressJson } from '../../lib';
 const initialState = {
@@ -21,6 +22,7 @@ export const restaurantReducer = (state = initialState, action) => {
 restaurantReducer.getRestaurants = (params) => (dispatch, getState) => {
   console.log('restaurantReducer.getRestaurants ', params);
   const { addressData } = params || getState().userReducer.addressData || false;
+  const { callback } = params;
   const coords = getLanLonFromAddressJson(addressData);
   console.log('coords', coords);
   if (coords) {
@@ -31,6 +33,11 @@ restaurantReducer.getRestaurants = (params) => (dispatch, getState) => {
       .then((res) => {
         dispatch({ type: SET_REST_LIST, restaurantList: res });
         console.log('resss is ', res);
+        callback();
+      })
+      .catch((err) => {
+        Alert.alert('Возниикла внутренняя ошибка сервера');
+        callback();
       });
   }
 };

@@ -14,7 +14,7 @@ export const RestaurantList = ({ addressData }: any) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', paddingTop: 16 }}>
       <ScreenTitle text={'Рестораны'} />
-      <View style={{ padding: 16 }}>
+      <View style={{ padding: 16, flex: 1, paddingBottom: 0 }}>
         <TouchableOpacity onPress={() => navigation.navigate('AddressScreen')}>
           <AddressPlaceholder text={addressData.value} />
         </TouchableOpacity>
