@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import { ScreenTitle, AddressPlaceholder } from '../../ui';
+import { ScreenTitle, AddressPlaceholder, RestaurantInfo } from '../../ui';
 import { useNavigation, CommonActions } from '@react-navigation/native';
+import { RestaurantMenu } from '../../features';
 export const RestaurantScreen = ({ addressData, route }: any) => {
   const navigation = useNavigation();
   console.log('rest route', route);
@@ -16,7 +17,9 @@ export const RestaurantScreen = ({ addressData, route }: any) => {
   console.log('restaurant', restaurant);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', paddingTop: 16 }}>
-      <ScreenTitle text={restaurant.name} />
+      <ScreenTitle text={restaurant.name} backIcon={true} />
+      <RestaurantInfo item={restaurant} inside={true} />
+      <RestaurantMenu restaurant={restaurant} />
     </SafeAreaView>
   );
 };

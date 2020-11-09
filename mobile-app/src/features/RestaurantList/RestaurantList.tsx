@@ -7,9 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useNavigation, CommonActions } from '@react-navigation/native';
-
 import { ImageView } from '../../features';
-import { ImageSource } from '../../lib';
+import { RestaurantInfo } from '../../ui';
 import { styles } from './styles';
 type TProps = {
   getRestaurants: Function;
@@ -28,6 +27,7 @@ export const RestaurantList = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const getRestaurantsInside = () => {
+    console.log('efffectt', getRestaurants);
     getRestaurants({
       callback: () => setLoading(false),
       addressData,
@@ -63,7 +63,7 @@ export const RestaurantList = ({
           return <View style={{ height: 20 }} />;
         }}
         renderItem={({ item }) => {
-          console.log('item', item);
+          // console.log('item', item);
           return (
             <TouchableOpacity
               onPress={() => {
@@ -75,40 +75,7 @@ export const RestaurantList = ({
                     uri={item.image}
                     styleProp={styles.restItemImage}
                   />
-                  <View style={styles.restItemRow}>
-                    <Text style={styles.restItemTitle}>{item.name}</Text>
-                    <View
-                      style={[
-                        styles.colorBg,
-                        { backgroundColor: 'rgb(235, 248, 239)' },
-                      ]}>
-                      <ImageView
-                        imageName="rating_star"
-                        styleProp={styles.imageStar}
-                      />
-                      <Text style={styles.ratingText}>
-                        {item.rating ? item.rating : 'Мало отзывов'}
-                      </Text>
-                    </View>
-                  </View>
-                  <View style={styles.restItemRow}>
-                    <View style={[styles.colorBg]}>
-                      <Text>
-                        <Text style={styles.infoText}>Заказ от: </Text>
-                        <Text style={[styles.infoText, { color: '#656665' }]}>
-                          {item.min_price} руб
-                        </Text>
-                      </Text>
-                    </View>
-                    <View style={[styles.colorBg]}>
-                      <Text>
-                        <Text style={styles.infoText}>Доставка: </Text>
-                        <Text style={[styles.infoText, { color: '#656665' }]}>
-                          40-50 мин
-                        </Text>
-                      </Text>
-                    </View>
-                  </View>
+                  <RestaurantInfo item={item} />
                 </View>
               </View>
             </TouchableOpacity>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, ViewStyle, TouchableOpacity } from 'react-native';
+import { useNavigation, CommonActions } from '@react-navigation/native';
 import { ImageView } from '../../features';
 import { styles } from './styles';
 type TProps = {
@@ -15,6 +16,7 @@ export const ScreenTitle = ({
   backIcon,
   backIconAction,
 }: TProps) => {
+  const navigation = useNavigation();
   return (
     <View
       style={[
@@ -24,7 +26,9 @@ export const ScreenTitle = ({
       ]}>
       {backIcon && (
         <TouchableOpacity
-          onPress={() => backIconAction()}
+          onPress={() =>
+            backIconAction ? backIconAction() : navigation.goBack()
+          }
           style={{ marginRight: 20 }}>
           <ImageView imageName="back_icon" />
         </TouchableOpacity>

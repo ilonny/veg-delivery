@@ -1,0 +1,1 @@
+export { RestaurantMenu } from './connect';
