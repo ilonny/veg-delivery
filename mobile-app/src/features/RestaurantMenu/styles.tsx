@@ -1,4 +1,5 @@
-import { ViewStyle, TextStyle, ImageStyle } from 'react-native';
+import { ViewStyle, TextStyle, ImageStyle, Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 
 type Styles = {
   loadingWrapper: ViewStyle;
@@ -21,6 +22,22 @@ type Styles = {
   dishBottom: ViewStyle;
   addIcon: ImageStyle;
   dishPrice: TextStyle;
+  modalWrapper: ViewStyle;
+  modal: ViewStyle;
+  modalImage: ImageStyle;
+  modalTitle: TextStyle;
+  modalDesc: TextStyle;
+  modalModifWrapper: ViewStyle;
+  modifTitle: TextStyle;
+  variantRowStart: ViewStyle;
+  variantRowBetween: ViewStyle;
+  variantName: TextStyle;
+  variantCheckbox: ViewStyle;
+  variantCheckboxChecked: ViewStyle;
+  modalBottom: ViewStyle;
+  selectedDishPrice: TextStyle;
+  countRow: ViewStyle;
+  countText: TextStyle;
 };
 
 export const styles: Styles = {
@@ -127,7 +144,9 @@ export const styles: Styles = {
     height: 83,
     borderRadius: 5,
     marginRight: 10,
-    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: 'red',
   },
   dishName: {
     fontFamily: 'Exo2-Bold',
@@ -148,5 +167,89 @@ export const styles: Styles = {
     fontFamily: 'Exo2-Bold',
     color: '#5AC17D',
     fontSize: 18,
+  },
+  modalWrapper: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 16,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    justifyContent: 'space-between',
+  },
+  modal: {
+    margin: 0,
+    paddingTop: 100,
+  },
+  modalImage: {
+    width: width - 32,
+    height: height - 600,
+    borderRadius: 10,
+  },
+  modalTitle: {
+    color: '#656665',
+    fontFamily: 'Exo2-Bold',
+    fontSize: 20,
+    marginVertical: 20,
+  },
+  modalDesc: {
+    color: '#9F9F9F',
+    fontFamily: 'Exo2-Bold',
+    fontSize: 15,
+    marginBottom: 20,
+  },
+  modalModifWrapper: {},
+  modifTitle: {
+    color: '#9F9F9F',
+    fontFamily: 'Exo2-Bold',
+    marginBottom: 10,
+  },
+  variantRowStart: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  variantRowBetween: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 5,
+  },
+  variantName: {
+    color: '#9F9F9F',
+    fontFamily: 'Exo2-Bold',
+    fontSize: 18,
+    marginTop: -5,
+  },
+  variantCheckbox: {
+    width: 15,
+    height: 15,
+    borderRadius: 3,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#F1F0F4',
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  variantCheckboxChecked: {
+    width: 4,
+    height: 4,
+    borderRadius: 4,
+    backgroundColor: '#5AC17D',
+  },
+  modalBottom: {},
+  selectedDishPrice: {
+    color: '#5AC17D',
+    fontFamily: 'Exo2-Bold',
+    fontSize: 22,
+  },
+  countRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  countText: {
+    marginHorizontal: 10,
+    fontSize: 18,
+    color: '#656665',
   },
 };
