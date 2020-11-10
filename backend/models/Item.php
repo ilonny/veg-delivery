@@ -18,6 +18,7 @@ use Yii;
  * @property string|null $image
  * @property int $active
  * @property string|null $modificators
+ * @property string|null $modificators_info
  */
 class Item extends \yii\db\ActiveRecord
 {
@@ -38,7 +39,7 @@ class Item extends \yii\db\ActiveRecord
             [['restaurant_id', 'menu_category_id', 'name', 'price'], 'required'],
             [['restaurant_id', 'menu_category_id', 'parent_id', 'active'], 'integer'],
             [['name', 'description', 'weight', 'price', 'image'], 'string'],
-            [['modificators'], 'safe'],
+            [['modificators', 'modificators_info'], 'safe'],
         ];
     }
 
@@ -59,6 +60,7 @@ class Item extends \yii\db\ActiveRecord
             'image' => 'Image',
             'active' => 'Active',
             'modificators' => 'Modificators',
+            'modificators_info' => 'modificators_info'
         ];
     }
 }

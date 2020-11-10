@@ -165,8 +165,25 @@ class RestaurantController extends Controller
                 'name' => $value->name,
                 'order_by' => $value->order_by,
                 'restaurant_id' => $value->restaurant_id,
-                'menu' => Item::find()->andWhere(['menu_category_id' => $value->id])->all(),
+                'menu' => Item::find()->andWhere(['menu_category_id' => $value->id])->asArray()->all(),
             ]);
+            foreach ($res[$key]['menu'] as $key_dish => $dish) {
+                $modificators_ids = explode(',', $dish['modificators']);
+                // $res[$key]['menu'][$key_dish] = (array) $res[$key]['menu'][$key_dish];
+                $res[$key]['menu'][$key_dish]['modificators_info'] = [];
+                foreach ($modificators_ids as $modif_key => $modif_parent_id) {
+                    $res[$key]['menu'][$key_dish]['modificators_info'][$modif_key] = Modificator::find()->where(['id' => $modif_parent_id])->asArray()->one();
+                    $res[$key]['menu'][$key_dish]['modificators_info'][$modif_key]['variants'] = 
+                        Modificator::find()
+                            ->andWhere(['parent_id' => $modif_parent_id])
+                            ->asArray()
+                            ->all();
+                }
+                    // $res[$key]['menu'][$key_dish]['modificators_info'] = Modificator::find()
+                    // ->andWhere(['restaurant_id' => $_POST['rest_id']])
+                    // ->andWhere(['parent_id' => $dish->id])
+                    // ->all();
+            }
         }
         return $this->asJson([
             'menu' => $res,
