@@ -18,7 +18,7 @@ export const RestaurantMenu = connect(
   }),
   (dispatch) => ({
     getMenu: (params) => dispatch(restaurantReducer.getMenu(params)),
-    addToCart: (item) => dispatch({ type: ADD_TO_CART, item }),
+    addToCart: (item) => dispatch(cartReducer.addToCart(item)),
     deleteFromCart: (item, force = false) =>
       dispatch({ type: DELETE_FROM_CART, item, force }),
     changeCartItem: (item) => dispatch({ type: CHANGE_CART_ITEM, item }),

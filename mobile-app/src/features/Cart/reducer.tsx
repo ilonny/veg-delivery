@@ -4,6 +4,7 @@ import {
   ADD_TO_CART,
   DELETE_FROM_CART,
   CHANGE_CART_ITEM,
+  CLEAR_CART,
 } from '../../features';
 import { API_URL, getLanLonFromAddressJson } from '../../lib';
 import { itemIsAddedToCartIndex } from '../../lib';
@@ -85,7 +86,42 @@ export const cartReducer = (state = initialState, action) => {
         ...state,
         cartList: [...newCartList],
       };
+    case CLEAR_CART:
+      return {
+        ...initialState,
+      };
     default:
       return { ...state };
+  }
+};
+
+cartReducer.addToCart = (item) => (dispatch, getState) => {
+  const store = getState();
+  console.log('store.cartReducer.cartList', store.cartReducer.cartList);
+  const restaurant_id =
+    (store.cartReducer.cartList[0] &&
+      store.cartReducer.cartList[0].restaurant_id) ||
+    item.restaurant_id;
+  if (restaurant_id != item.restaurant_id) {
+    Alert.alert(
+      'Очистить корзину?',
+      'Все ранее выбранные товары будут удалены',
+      [
+        {
+          text: 'Отмена',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'Продолжить',
+          onPress: () => {
+            dispatch({ type: CLEAR_CART });
+            dispatch({ type: ADD_TO_CART, item });
+          },
+        },
+      ],
+    );
+  } else {
+    dispatch({ type: ADD_TO_CART, item });
   }
 };
