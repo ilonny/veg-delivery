@@ -30,7 +30,7 @@ export const SuggestionInput = ({
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    console.log('SuggestionInput effect');
+    // console.log('SuggestionInput effect');
     Animated.timing(translateX, {
       toValue: opened ? 0 : -width,
       duration: 250,

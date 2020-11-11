@@ -27,7 +27,7 @@ export const RestaurantList = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const getRestaurantsInside = () => {
-    console.log('efffectt', getRestaurants);
+    // console.log('efffectt', getRestaurants);
     getRestaurants({
       callback: () => setLoading(false),
       addressData,

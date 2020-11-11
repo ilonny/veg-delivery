@@ -29,7 +29,7 @@ restaurantReducer.getRestaurants = (params) => (dispatch, getState) => {
   const { addressData } = params || getState().userReducer.addressData || false;
   const { callback } = params;
   const coords = getLanLonFromAddressJson(addressData);
-  console.log('coords', coords);
+  // console.log('coords', coords);
   if (coords) {
     fetch(
       `${API_URL}/restaurant/mobile-list?lat=${coords.lat}&lon=${coords.lon}`,
@@ -37,7 +37,7 @@ restaurantReducer.getRestaurants = (params) => (dispatch, getState) => {
       .then((res) => res.json())
       .then((res) => {
         dispatch({ type: SET_REST_LIST, restaurantList: res });
-        console.log('resss is ', res);
+        // console.log('resss is ', res);
         callback();
       })
       .catch((err) => {
@@ -58,7 +58,7 @@ restaurantReducer.getMenu = (params) => (dispatch, getState) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log('res menu ', res);
+      // console.log('res menu ', res);
       dispatch({ type: SET_REST_MENU, restaurantMenu: res });
       callback();
     })

@@ -9,6 +9,7 @@ import {
   onboardingReducer,
   userReducer,
   restaurantReducer,
+  cartReducer,
 } from '../../features';
 const persistConfig = {
   key: 'main',
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
     restaurantReducer,
   ),
   userReducer: persistReducer({ ...persistConfig, key: 'user' }, userReducer),
+  cartReducer: persistReducer({ ...persistConfig, key: 'cart' }, cartReducer),
 });
 
 let enhacers: any;

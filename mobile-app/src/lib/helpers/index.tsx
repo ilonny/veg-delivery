@@ -19,3 +19,11 @@ export const getLanLonFromAddressJson = (addressData) => {
   }
   return false;
 };
+
+export const itemIsAddedToCartIndex = (item, cartList) => {
+  // console.log('itemIsAddedToCartIndex', item, cartList);
+  if (!item || !cartList) {
+    return -1;
+  }
+  return cartList.findIndex((el, index) => el.id == item.id);
+};

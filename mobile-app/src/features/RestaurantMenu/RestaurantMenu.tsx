@@ -11,6 +11,7 @@ import { useNavigation, CommonActions } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { ImageView } from '../../features';
 import { RestaurantInfo, MainButton } from '../../ui';
+import { itemIsAddedToCartIndex } from '../../lib';
 import { styles } from './styles';
 type TProps = {
   getMenu: Function;
@@ -18,6 +19,9 @@ type TProps = {
   restaurantMenu: Array<any>;
   restaurantList: Array<any>;
   restaurant: Object;
+  cartList: Array<any>;
+  addToCart: Function;
+  deleteFromCart: Function;
 };
 
 // export const listItem = ({item}) => {
@@ -29,6 +33,10 @@ export const RestaurantMenu = ({
   addressData,
   restaurantMenu,
   restaurant,
+  cartList = [],
+  addToCart,
+  deleteFromCart,
+  changeCartItem,
 }) => {
   const [loading, setLoading] = useState(false);
   const getMenuInside = () => {
@@ -50,7 +58,7 @@ export const RestaurantMenu = ({
         false,
     );
   }, [restaurantMenu]);
-  console.log('activeCategory', activeCategory);
+  // console.log('activeCategory', activeCategory);
   const listCategory = useRef(null);
   const listMenuCategory = useRef(null);
   const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -62,15 +70,17 @@ export const RestaurantMenu = ({
       </View>
     );
   }
+  const cartIndexSelectedDish = itemIsAddedToCartIndex(selectedDish, cartList);
+
   const navigation = useNavigation();
-  console.log('rest menu', restaurantMenu);
+  // console.log('rest menu', restaurantMenu);
   const setModificator = (modificator, variant) => {
     const { type } = modificator;
     const selectedDishNew = { ...selectedDish };
     if (!selectedDishNew.selectedModificators) {
       selectedDishNew.selectedModificators = {};
     }
-    console.log('modificator, variant', modificator, variant);
+    // console.log('modificator, variant', modificator, variant);
     let { selectedModificators } = selectedDishNew;
     if (!selectedModificators[modificator.id]) {
       selectedModificators[modificator.id] = modificator;
@@ -109,6 +119,9 @@ export const RestaurantMenu = ({
     setSelectedDish({
       ...selectedDishNew,
     });
+    // if (cartIndexSelectedDish !== -1) {
+    //   changeCartItem(selectedDishNew);
+    // }
     //   if (
     //     selectedModificators.chosen_variants.find(
     //       (c_var) => c_var.id === variant.id,
@@ -138,7 +151,7 @@ export const RestaurantMenu = ({
       <View style={{ height: 45, flex: 0 }}>
         <FlatList
           ref={listCategory}
-          data={restaurantMenu.menu}
+          data={(restaurantMenu && restaurantMenu.menu) || []}
           keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -183,7 +196,8 @@ export const RestaurantMenu = ({
       <View style={{ flex: 1, backgroundColor: '#E5E5E5' }}>
         <FlatList
           ref={listMenuCategory}
-          data={restaurantMenu.menu}
+          data={(restaurantMenu && restaurantMenu.menu) || []}
+          // data={restaurantMenu.menu}
           keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
           style={{ flex: 1 }}
@@ -195,6 +209,7 @@ export const RestaurantMenu = ({
                   <View style={styles.categoryLine} />
                 </View>
                 {item.menu.map((dish) => {
+                  const cartIndexDish = itemIsAddedToCartIndex(dish, cartList);
                   return (
                     <TouchableOpacity
                       key={dish.id}
@@ -229,9 +244,22 @@ export const RestaurantMenu = ({
                               }}>
                               <Text style={styles.dishName}>{dish.name}</Text>
                               <View style={styles.dishBottom}>
-                                <TouchableOpacity>
+                                <TouchableOpacity
+                                  onPress={() => {
+                                    if (cartIndexDish === -1) {
+                                      addToCart(dish);
+                                      setModalIsVisible(false);
+                                      setSelectedDish(false);
+                                    } else {
+                                      deleteFromCart(dish, true);
+                                    }
+                                  }}>
                                   <ImageView
-                                    imageName="add_icon"
+                                    imageName={
+                                      cartIndexDish === -1
+                                        ? 'add_icon'
+                                        : 'minus_icon_gray'
+                                    }
                                     styleProp={styles.addIcon}
                                   />
                                 </TouchableOpacity>
@@ -272,7 +300,9 @@ export const RestaurantMenu = ({
           <View>
             <ImageView uri={selectedDish.image} styleProp={styles.modalImage} />
             <Text style={styles.modalTitle}>{selectedDish.name}</Text>
-            <Text style={styles.modalDesc}>{selectedDish.description}</Text>
+            <Text style={styles.modalDesc}>
+              {selectedDish.description} ({selectedDish.weight} г)
+            </Text>
             {selectedDish.modificators &&
               selectedDish.modificators_info &&
               selectedDish.modificators_info.length && (
@@ -339,14 +369,26 @@ export const RestaurantMenu = ({
                 {selectedDish.price} руб
               </Text>
               <View style={styles.countRow}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (cartList[cartIndexSelectedDish]) {
+                      deleteFromCart(selectedDish);
+                    }
+                  }}>
                   <ImageView
                     imageName="minus_icon_gray"
                     styleProp={{ width: 32, height: 32 }}
                   />
                 </TouchableOpacity>
-                <Text style={styles.countText}>1</Text>
-                <TouchableOpacity>
+                <Text style={styles.countText}>
+                  {cartList[cartIndexSelectedDish]
+                    ? cartList[cartIndexSelectedDish].count
+                    : '0'}
+                </Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    addToCart(selectedDish);
+                  }}>
                   <ImageView
                     imageName="plus_icon_gray"
                     styleProp={{ width: 32, height: 32 }}
@@ -354,7 +396,21 @@ export const RestaurantMenu = ({
                 </TouchableOpacity>
               </View>
             </View>
-            <MainButton text="В корзину" styleProp={{ marginVertical: 10 }} />
+            <MainButton
+              action={() => {
+                // if (cartIndexSelectedDish === -1) {
+                addToCart(selectedDish);
+                setModalIsVisible(false);
+                setSelectedDish(false);
+                // }
+              }}
+              text={
+                cartIndexSelectedDish === -1
+                  ? 'В корзину'
+                  : 'Добавлить еще в корзину'
+              }
+              styleProp={{ marginVertical: 10 }}
+            />
           </View>
         </View>
       </Modal>
