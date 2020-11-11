@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './lib';
 import { PersistGate } from 'redux-persist/integration/react';
 import { StackNavigator } from './modules';
+import Toast from 'react-native-toast-message';
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
@@ -18,6 +19,7 @@ const App = () => {
           </NavigationContainer>
         </PersistGate>
       </Provider>
+      <Toast ref={(ref) => Toast.setRef(ref)} />
     </>
   );
 };

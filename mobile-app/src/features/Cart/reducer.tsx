@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { Alert } from 'react-native';
+import Toast from 'react-native-toast-message';
 import {
   ADD_TO_CART,
   DELETE_FROM_CART,
@@ -117,11 +118,19 @@ cartReducer.addToCart = (item) => (dispatch, getState) => {
           onPress: () => {
             dispatch({ type: CLEAR_CART });
             dispatch({ type: ADD_TO_CART, item });
+            Toast.show({
+              text1: 'Добавлено в корзину',
+              position: 'bottom',
+            });
           },
         },
       ],
     );
   } else {
     dispatch({ type: ADD_TO_CART, item });
+    Toast.show({
+      text1: 'Добавлено в корзину',
+      position: 'bottom',
+    });
   }
 };
