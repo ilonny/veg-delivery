@@ -8,4 +8,5 @@ export * from './Restaurant';
 export * from './RestaurantList';
 export * from './RestaurantMenu';
 export * from './Cart';
+export * from './CartTabBarIcon';
 export { mainReducer } from '../lib/store/mainReducer';

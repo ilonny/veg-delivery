@@ -8,7 +8,7 @@ import { AddressScreen } from './AddressScreen';
 import { UserRegistrationScreen } from './UserRegistrationScreen';
 import { RestaurantList } from './RestaurantList';
 import { RestaurantScreen } from './RestaurantScreen';
-import { ImageView } from '../features';
+import { ImageView, CartTabBarIcon } from '../features';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const HomeScreen = (props) => {
@@ -63,11 +63,12 @@ const tabRoutes = () => {
           tabBarIcon: ({ focused }) => {
             return (
               <>
-                <ImageView
+                <CartTabBarIcon focused={focused} />
+                {/* <ImageView
                   imageName="shopping_basket"
                   styleProp={{ width: 23, height: 19 }}
                   tintColor={focused ? '#5AC17D' : '#F1F0F4'}
-                />
+                /> */}
               </>
             );
           },

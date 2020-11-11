@@ -1,0 +1,1 @@
+export { CartTabBarIcon } from './connect';
