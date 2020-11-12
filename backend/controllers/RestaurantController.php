@@ -109,14 +109,14 @@ class RestaurantController extends Controller
 
     public function actionMobileList($lat = '', $lon = '') {
         $res = [];
-        $rest_all = Restaurant::find()->all();
+        $rest_all = Restaurant::find()->asArray()->all();
         $R=6371;  // Earth's radius
         
         foreach ($rest_all as $key => $rest) {
-            $rest_address = json_decode($rest->address_json, true);
+            $rest_address = json_decode($rest['address_json'], true);
             $rest_lat = floatval($rest_address['data']['geo_lat']);
             $rest_lon = floatval($rest_address['data']['geo_lon']);
-            $rest_radius = floatval($rest->delivery_radius);
+            $rest_radius = floatval($rest['delivery_radius']);
             $lat = floatval($lat);
             $lon = floatval($lon);
             $sin1=sin(($rest_lat - $lat) / 2);
@@ -129,6 +129,13 @@ class RestaurantController extends Controller
             if ($direction_length <= $rest_radius) {
                 array_push($res, $rest);
             }
+        }
+        foreach ($res as $key => $rest_inner) {
+            $res[$key]['delivery_data'] =
+                RestaurantDelivery::find()
+                    ->where(['restaurant_id' => $rest_inner['id']])
+                    ->asArray()
+                    ->all();
         }
         return $this->asJson($res);
     }
