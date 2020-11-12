@@ -49,7 +49,7 @@ export const RestaurantList = ({
     <View style={{ flex: 1, paddingTop: 16 }}>
       <FlatList
         data={restaurantList}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id && item.id.toString()}
         style={{ margin: -10 }}
         contentContainerStyle={{
           paddingVertical: 16,

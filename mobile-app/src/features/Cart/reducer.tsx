@@ -25,6 +25,13 @@ export const cartReducer = (state = initialState, action) => {
     case ADD_TO_CART:
       if (index !== -1) {
         newCartList = [...cartList];
+        newCartList[index] = {
+          ...item,
+          count: newCartList[index].count + 1,
+          selectedModificatorsAll: newCartList[
+            index
+          ].selectedModificatorsAll.concat({ ...item.selectedModificators }),
+        };
         console.log('indexxx is', index);
         console.log('state', cartList);
         console.log('...item.selectedModificators', item.selectedModificators);
@@ -33,16 +40,9 @@ export const cartReducer = (state = initialState, action) => {
           '...old.selectedModificators',
           newCartList[index].selectedModificatorsAll,
         );
-        newCartList[index] = {
-          ...item,
-          count: newCartList[index].count + 1,
-          selectedModificatorsAll: newCartList[
-            index
-          ].selectedModificatorsAll.concat({ ...item.selectedModificators }),
-        };
         return {
           ...state,
-          cartList: [...newCartList],
+          cartList: newCartList,
         };
       } else {
         return {
@@ -73,9 +73,10 @@ export const cartReducer = (state = initialState, action) => {
           cartList: state.cartList.filter((el) => el.id !== action.item.id),
         };
       } else {
-        newCartList[index].selectedModificatorsAll = newCartList[
-          index
-        ].selectedModificatorsAll.splice(-1, 1);
+        newCartList[index].selectedModificatorsAll.splice(-1, 1);
+        newCartList[index].selectedModificatorsAll = [
+          ...newCartList[index].selectedModificatorsAll,
+        ];
         return {
           ...state,
           cartList: [...newCartList],

@@ -8,6 +8,7 @@ import { AddressScreen } from './AddressScreen';
 import { UserRegistrationScreen } from './UserRegistrationScreen';
 import { RestaurantList } from './RestaurantList';
 import { RestaurantScreen } from './RestaurantScreen';
+import { CartScreen } from './CartScreen';
 import { ImageView, CartTabBarIcon } from '../features';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -30,10 +31,20 @@ export const RestaurantStack = (props) => {
   );
 };
 
+export const CartStack = (props) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={'RestaurantList'}>
+      <Stack.Screen name="CartScreen" component={CartScreen} />
+    </Stack.Navigator>
+  );
+};
+
 const tabRoutes = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Рестораны"
+      initialRouteName="Корзина"
       tabBarOptions={{
         activeTintColor: '#e91e63',
       }}>
@@ -56,8 +67,8 @@ const tabRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Корзина"
+        component={CartStack}
         options={{
           tabBarLabel: 'Корзина',
           tabBarIcon: ({ focused }) => {

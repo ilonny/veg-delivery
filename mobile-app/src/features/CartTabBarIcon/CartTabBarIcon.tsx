@@ -34,7 +34,7 @@ export const CartTabBarIcon = ({ cartList, focused }) => {
             width: 7,
             height: 7,
             borderRadius: 7,
-            backgroundColor: '#5AC17D',
+            backgroundColor: focused ? '#5AC17D' : '#F1F0F4',
             position: 'absolute',
             right: 0,
             top: 10,

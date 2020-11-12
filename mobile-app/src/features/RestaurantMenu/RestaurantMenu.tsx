@@ -83,7 +83,7 @@ export const RestaurantMenu = ({
     // console.log('modificator, variant', modificator, variant);
     let { selectedModificators } = selectedDishNew;
     if (!selectedModificators[modificator.id]) {
-      selectedModificators[modificator.id] = modificator;
+      selectedModificators[modificator.id] = { ...modificator };
       selectedDishNew.selectedModificators[modificator.id].chosen_variants = [];
     }
     //если это одиночный выбор то просто перетираем массиив
@@ -109,9 +109,15 @@ export const RestaurantMenu = ({
       console.log('variant not finded');
       //если не выбран, в завиисиимости от тиипа либо добавим в список, либо заменими список
       if (type === 'single') {
-        selectedModificators[modificator.id].chosen_variants = [variant];
+        selectedModificators[modificator.id].chosen_variants = [{ ...variant }];
       } else {
-        selectedModificators[modificator.id].chosen_variants.push(variant);
+        selectedModificators[
+          modificator.id
+        ].chosen_variants = selectedModificators[
+          modificator.id
+        ].chosen_variants.concat({
+          ...variant,
+        });
       }
     }
     console.log('selectedModificators res', selectedModificators);
