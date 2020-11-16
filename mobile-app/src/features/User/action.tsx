@@ -1,3 +1,4 @@
 export const USER_SET_ADDRESS_DATA = 'USER_SET_ADDRESS_DATA';
 export const USER_SET_PHONE = 'USER_SET_PHONE';
 export const USER_SET_NAME = 'USER_SET_NAME';
+export const USER_SET_USER_INFO = 'USER_SET_USER_INFO';

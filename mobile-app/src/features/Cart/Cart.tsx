@@ -94,8 +94,8 @@ export const Cart = ({
           ])} на сумму ${totalPrice} руб`}
           backIcon={false}
         />
+        {/* ts-ignore */}
         <View style={styles.rowStart}>
-          {/* ts-ignore */}
           <Text style={styles.restTitle}>Ресторан: {restaurant.name}</Text>
         </View>
         <View>
