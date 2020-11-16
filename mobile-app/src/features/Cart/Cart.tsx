@@ -235,6 +235,7 @@ export const Cart = ({
           }
           action={() => {
             if (canOrder) {
+              navigation.navigate('CreateOrderScreen');
             }
           }}
         />

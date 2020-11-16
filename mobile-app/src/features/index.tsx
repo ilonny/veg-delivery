@@ -9,4 +9,5 @@ export * from './RestaurantList';
 export * from './RestaurantMenu';
 export * from './Cart';
 export * from './CartTabBarIcon';
+export * from './CreateOrder';
 export { mainReducer } from '../lib/store/mainReducer';

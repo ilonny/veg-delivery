@@ -9,6 +9,7 @@ import { UserRegistrationScreen } from './UserRegistrationScreen';
 import { RestaurantList } from './RestaurantList';
 import { RestaurantScreen } from './RestaurantScreen';
 import { CartScreen } from './CartScreen';
+import { CreateOrderScreen } from './CreateOrderScreen';
 import { ImageView, CartTabBarIcon } from '../features';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -37,6 +38,7 @@ export const CartStack = (props) => {
       screenOptions={{ headerShown: false }}
       initialRouteName={'RestaurantList'}>
       <Stack.Screen name="CartScreen" component={CartScreen} />
+      <Stack.Screen name="CreateOrderScreen" component={CreateOrderScreen} />
     </Stack.Navigator>
   );
 };
