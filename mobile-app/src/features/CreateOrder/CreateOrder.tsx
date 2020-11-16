@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -27,6 +27,9 @@ type TProps = {
   deleteFromCart: Function;
   clearCart: Function;
   addressData: Object;
+  changeUserInfo: Function;
+  createOrder: Function;
+  userInfo: Object;
 };
 export const CreateOrder = ({
   cartList,
@@ -35,7 +38,11 @@ export const CreateOrder = ({
   deleteFromCart,
   clearCart,
   addressData,
+  changeUserInfo,
+  createOrder,
+  userInfo,
 }: any) => {
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
   let restaurant = {};
@@ -99,25 +106,51 @@ export const CreateOrder = ({
             { marginVertical: 10, marginHorizontal: -5 },
           ]}>
           <TextInput
-            placeholder="Кв./Офис"
+            placeholder="Кв./Офис*"
             style={[styles.textInput, { marginHorizontal: 5 }]}
+            value={userInfo.flat}
+            onChangeText={(text) =>
+              changeUserInfo({ key: 'flat', value: text })
+            }
           />
           <TextInput
             placeholder="Подъезд"
             style={[styles.textInput, { marginHorizontal: 5 }]}
+            value={userInfo.flat_p}
+            onChangeText={(text) =>
+              changeUserInfo({ key: 'flat_p', value: text })
+            }
           />
           <TextInput
             placeholder="Этаж"
             style={[styles.textInput, { marginHorizontal: 5 }]}
+            value={userInfo.floor}
+            onChangeText={(text) =>
+              changeUserInfo({ key: 'floor', value: text })
+            }
           />
         </View>
-        <TextInput placeholder="Комментарий" style={[styles.textInput]} />
+        <TextInput
+          placeholder="Комментарий"
+          style={[styles.textInput]}
+          value={userInfo.comment}
+          onChangeText={(text) =>
+            changeUserInfo({ key: 'comment', value: text })
+          }
+        />
         <View style={{ height: 30 }} />
         <Text style={styles.textLabel}>Контактные данные</Text>
-        <TextInput placeholder="Имя" style={[styles.textInput]} />
         <TextInput
-          placeholder="Телефон"
+          placeholder="Имя*"
+          style={[styles.textInput]}
+          value={userInfo.name}
+          onChangeText={(text) => changeUserInfo({ key: 'name', value: text })}
+        />
+        <TextInput
+          placeholder="Телефон*"
           style={[styles.textInput, { marginTop: 10 }]}
+          value={userInfo.phone}
+          onChangeText={(text) => changeUserInfo({ key: 'phone', value: text })}
         />
         <View style={{ height: 30 }} />
         <Text style={styles.textLabel}>Стоимость:</Text>
@@ -139,19 +172,29 @@ export const CreateOrder = ({
         <Text style={styles.emptyCartText}>
           {+deliveryPrice + +totalPrice} руб
         </Text>
-        <MainButton
-          text="Оплатить"
-          styleProp={
-            !canOrder && {
-              backgroundColor: '#F1F0F4',
+        {loading ? (
+          <ActivityIndicator />
+        ) : (
+          <MainButton
+            text="Оплатить"
+            styleProp={
+              !canOrder && {
+                backgroundColor: '#F1F0F4',
+              }
             }
-          }
-          action={() => {
-            if (canOrder) {
-              navigation.navigate('CreateOrderScreen');
-            }
-          }}
-        />
+            action={() => {
+              if (canOrder) {
+                setLoading(true);
+                createOrder({
+                  totalPrice,
+                  deliveryPrice,
+                  callback: () => setLoading(false),
+                });
+                // navigation.navigate('CreateOrderScreen');
+              }
+            }}
+          />
+        )}
       </View>
     </SafeAreaView>
   );

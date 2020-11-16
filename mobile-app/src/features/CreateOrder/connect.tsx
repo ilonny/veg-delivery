@@ -7,12 +7,14 @@ import {
   DELETE_FROM_CART,
   CHANGE_CART_ITEM,
   CLEAR_CART,
+  userReducer,
 } from '../../features';
 export const CreateOrder = connect(
   (state) => ({
     // phone: state.userReducer.phone,
     // name: state.userReducer.name,
     addressData: state.userReducer.addressData,
+    userInfo: state.userReducer.userInfo,
     cartList: state.cartReducer.cartList,
     restaurantList: state.restaurantReducer.restaurantList,
   }),
@@ -22,6 +24,8 @@ export const CreateOrder = connect(
       dispatch({ type: DELETE_FROM_CART, item, force }),
     changeCartItem: (item) => dispatch({ type: CHANGE_CART_ITEM, item }),
     clearCart: () => dispatch({ type: CLEAR_CART }),
+    changeUserInfo: (params) => dispatch(userReducer.changeUserInfo(params)),
+    createOrder: (params) => dispatch(userReducer.createOrder(params)),
     // setUserPhone: (phone) => dispatch({ type: USER_SET_PHONE, phone }),
     // setUserName: (name) => dispatch({ type: USER_SET_NAME, name }),
   }),
