@@ -36,7 +36,10 @@ restaurantReducer.getRestaurants = (params) => (dispatch, getState) => {
     )
       .then((res) => res.json())
       .then((res) => {
-        dispatch({ type: SET_REST_LIST, restaurantList: res });
+        dispatch({
+          type: SET_REST_LIST,
+          restaurantList: res.filter((el) => el.active != 0),
+        });
         // console.log('resss is ', res);
         callback();
       })

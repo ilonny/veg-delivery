@@ -4,6 +4,10 @@ import { styles } from './styles';
 import { ImageView } from '../../features';
 
 export const RestaurantInfo = ({ item, inside = false }) => {
+  let addressData;
+  try {
+    addressData = JSON.parse(item?.address_json);
+  } catch (e) {}
   return (
     <View>
       {!inside && (
@@ -18,6 +22,9 @@ export const RestaurantInfo = ({ item, inside = false }) => {
           </View>
         </View>
       )}
+      <Text style={{ paddingHorizontal: 10, color: '#656565', marginTop: 10 }}>
+        {addressData?.value}
+      </Text>
       <View style={styles.restItemRow}>
         <View style={[styles.colorBg]}>
           <Text>
