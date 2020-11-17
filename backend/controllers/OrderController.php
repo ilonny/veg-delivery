@@ -13,6 +13,7 @@ use backend\models\Product;
 use backend\models\UploadForm;
 use backend\models\Color;
 use backend\models\Ord;
+use backend\models\Restaurant;
 use yii\web\UploadedFile;
 use yii\helpers\Json;
 use yii\web\Response;
@@ -67,13 +68,17 @@ class OrderController extends Controller
         
         $model->total_price = ($post_arr['totalPrice']);
         $model->delivery_price = ($post_arr['deliveryPrice']);
+        $model->restaurant_id = intval($post_arr['restaurant_id']);
 
-        $model->status = 'new';
+        $model->status = 'Новый';
         if ($model->save()) {
+            $rest_data = Restaurant::findOne($model->restaurant_id);
             return $this->asJson([
                 'status' => 200,
                 'message' => 'Заказ успешно создан.',
                 'orderInfo' => $model,
+                'restInfo' => $rest_data,
+                'date_create' => date('d.m.y H:i'),
             ]);    
         }
         return $this->asJson([

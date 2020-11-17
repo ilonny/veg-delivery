@@ -17,6 +17,8 @@ use Yii;
  * @property string|null $other
  * @property string|null $status
  * @property string|null $cart_list
+ * @property string|null $date_create
+ * @property int|null $restaurant_id
  */
 class Ord extends \yii\db\ActiveRecord
 {
@@ -35,7 +37,8 @@ class Ord extends \yii\db\ActiveRecord
     {
         return [
             [['user_info', 'address_data', 'payment_method', 'payment_status', 'other', 'status', 'cart_list'], 'string'],
-            [['total_price', 'delivery_price'], 'integer'],
+            [['total_price', 'delivery_price', 'restaurant_id'], 'integer'],
+            [['date_create'], 'safe'],
         ];
     }
 
@@ -55,6 +58,8 @@ class Ord extends \yii\db\ActiveRecord
             'other' => 'Other',
             'status' => 'Status',
             'cart_list' => 'Cart List',
+            'date_create' => 'Date Create',
+            'restaurant_id' => 'Restaurant ID',
         ];
     }
 }

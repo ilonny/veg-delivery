@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { ScreenTitle, AddressPlaceholder, RestaurantInfo } from '../../ui';
 import { useNavigation, CommonActions } from '@react-navigation/native';
-import { UserSettings } from '../../features';
+import { OrderList } from '../../features';
 import { MainButton } from '../../ui';
 import { ScrollView } from 'react-native-gesture-handler';
 export const OrderListScreen = ({ addressData, route }: any) => {
@@ -18,6 +18,7 @@ export const OrderListScreen = ({ addressData, route }: any) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', paddingTop: 16 }}>
       <ScreenTitle text="Мои заказы" backIcon={true} />
+      <OrderList />
     </SafeAreaView>
   );
 };

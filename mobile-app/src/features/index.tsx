@@ -12,4 +12,5 @@ export * from './CartTabBarIcon';
 export * from './CreateOrder';
 export * from './CabinetLink';
 export * from './UserSettings';
+export * from './OrderList';
 export { mainReducer } from '../lib/store/mainReducer';

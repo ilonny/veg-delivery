@@ -6,7 +6,8 @@ import {
   SET_USER_DATA,
   USER_SET_USER_INFO,
   ADD_ORDER,
-} from './action';
+  CLEAR_CART,
+} from '../../features';
 const initialState = {
   addressData: undefined,
   userInfo: {
@@ -64,6 +65,7 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
   const { totalPrice, deliveryPrice, callback, navigation } = params;
   const { userInfo, addressData } = getState().userReducer;
   const { cartList } = getState().cartReducer;
+  const { restaurant_id } = cartList[0];
   if (
     !addressData.value ||
     !userInfo.flat ||
@@ -82,8 +84,9 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
     totalPrice,
     deliveryPrice,
     cartList,
+    restaurant_id,
   };
-  // console.log('create order data', data);
+  console.log('create order data', data);
   console.log(`${API_URL}/order/create`);
   const formData = new FormData();
   formData.append('data', JSON.stringify(data));
@@ -101,7 +104,19 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
       console.log('create order res', res);
       Alert.alert(res.message);
       if (res.status == 200) {
-        dispatch({ type: ADD_ORDER, order: res.orderInfo });
+        dispatch({
+          type: ADD_ORDER,
+          order: {
+            ...res.orderInfo,
+            restaurantInfo: res.restInfo,
+            cartList,
+            date_create: res.date_create,
+          },
+        });
+        setTimeout(() => {
+          dispatch({ type: CLEAR_CART });
+          navigation.navigate('Рестораны');
+        }, 200);
       }
     })
     .catch((error) => {
@@ -111,3 +126,10 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
     callback();
   }, 2500);
 };
+
+//TODO!!!!!!!!
+////////////////////////////////
+//короче. надо сохранять данные корзины в заказе. думаю добавлять прям из редьюсера ее, и чистить после добавлениия заказа.
+//добавиить поле date_create в ответ
+//подумать как формировать заказы. по id походу..
+//
