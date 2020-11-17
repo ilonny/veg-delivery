@@ -10,4 +10,6 @@ export * from './RestaurantMenu';
 export * from './Cart';
 export * from './CartTabBarIcon';
 export * from './CreateOrder';
+export * from './CabinetLink';
+export * from './UserSettings';
 export { mainReducer } from '../lib/store/mainReducer';

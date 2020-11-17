@@ -1,9 +1,11 @@
 //@ts-nocheck
 import { Alert } from 'react-native';
+import { API_URL } from '../../lib';
 import {
   USER_SET_ADDRESS_DATA,
   SET_USER_DATA,
   USER_SET_USER_INFO,
+  ADD_ORDER,
 } from './action';
 const initialState = {
   addressData: undefined,
@@ -30,6 +32,11 @@ export const userReducer = (state = initialState, action) => {
           ...action.userInfo,
         },
       };
+    case ADD_ORDER:
+      return {
+        ...state,
+        orders: state.orders.concat(action.order),
+      };
     // case USER_SET_PHONE:
     //   return {
     //     ...state,
@@ -54,7 +61,7 @@ userReducer.changeUserInfo = (params) => (dispatch, getState) => {
 
 userReducer.createOrder = (params) => (dispatch, getState) => {
   console.log('userReducer.createOrder', params);
-  const { totalPrice, deliveryPrice, callback } = params;
+  const { totalPrice, deliveryPrice, callback, navigation } = params;
   const { userInfo, addressData } = getState().userReducer;
   const { cartList } = getState().cartReducer;
   if (
@@ -70,13 +77,36 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
     return;
   }
   const data = {
-    ...userInfo,
+    userInfo,
     addressData,
     totalPrice,
     deliveryPrice,
     cartList,
   };
-  console.log('create order data', data);
+  // console.log('create order data', data);
+  console.log(`${API_URL}/order/create`);
+  const formData = new FormData();
+  formData.append('data', JSON.stringify(data));
+  fetch(`${API_URL}/order/create`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      // Accept: 'application/json',
+    },
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log('create order res', res);
+      Alert.alert(res.message);
+      if (res.status == 200) {
+        dispatch({ type: ADD_ORDER, order: res.orderInfo });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   setTimeout(() => {
     callback();
   }, 2500);

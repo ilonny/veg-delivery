@@ -18,6 +18,7 @@ import {
 import { ImageView } from '..';
 import { useNavigation, CommonActions } from '@react-navigation/native';
 import { getCartData, declOfNum } from '../../lib';
+import { UserSettings } from '../../features';
 import { styles } from './styles';
 
 type TProps = {
@@ -93,65 +94,8 @@ export const CreateOrder = ({
         flex: 1,
       }}>
       <ScrollView style={{ flex: 1, padding: 16 }}>
-        <Text style={styles.textLabel}>Адрес доставки</Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('AddressScreen');
-          }}>
-          <AddressPlaceholder text={addressData ? addressData.value : ''} />
-        </TouchableOpacity>
-        <View
-          style={[
-            styles.rowStart,
-            { marginVertical: 10, marginHorizontal: -5 },
-          ]}>
-          <TextInput
-            placeholder="Кв./Офис*"
-            style={[styles.textInput, { marginHorizontal: 5 }]}
-            value={userInfo.flat}
-            onChangeText={(text) =>
-              changeUserInfo({ key: 'flat', value: text })
-            }
-          />
-          <TextInput
-            placeholder="Подъезд"
-            style={[styles.textInput, { marginHorizontal: 5 }]}
-            value={userInfo.flat_p}
-            onChangeText={(text) =>
-              changeUserInfo({ key: 'flat_p', value: text })
-            }
-          />
-          <TextInput
-            placeholder="Этаж"
-            style={[styles.textInput, { marginHorizontal: 5 }]}
-            value={userInfo.floor}
-            onChangeText={(text) =>
-              changeUserInfo({ key: 'floor', value: text })
-            }
-          />
-        </View>
-        <TextInput
-          placeholder="Комментарий"
-          style={[styles.textInput]}
-          value={userInfo.comment}
-          onChangeText={(text) =>
-            changeUserInfo({ key: 'comment', value: text })
-          }
-        />
-        <View style={{ height: 30 }} />
-        <Text style={styles.textLabel}>Контактные данные</Text>
-        <TextInput
-          placeholder="Имя*"
-          style={[styles.textInput]}
-          value={userInfo.name}
-          onChangeText={(text) => changeUserInfo({ key: 'name', value: text })}
-        />
-        <TextInput
-          placeholder="Телефон*"
-          style={[styles.textInput, { marginTop: 10 }]}
-          value={userInfo.phone}
-          onChangeText={(text) => changeUserInfo({ key: 'phone', value: text })}
-        />
+        <UserSettings showCommentInput={true} />
+        {/* <View style={styles.divider} /> */}
         <View style={{ height: 30 }} />
         <Text style={styles.textLabel}>Стоимость:</Text>
         <View style={styles.divider} />
@@ -166,7 +110,6 @@ export const CreateOrder = ({
             {deliveryPrice ? deliveryPrice + ' руб' : 'Бесплатно'}
           </Text>
         </View>
-        <View style={styles.divider} />
       </ScrollView>
       <View style={styles.cartBottom}>
         <Text style={styles.emptyCartText}>
@@ -189,6 +132,7 @@ export const CreateOrder = ({
                   totalPrice,
                   deliveryPrice,
                   callback: () => setLoading(false),
+                  navigation,
                 });
                 // navigation.navigate('CreateOrderScreen');
               }

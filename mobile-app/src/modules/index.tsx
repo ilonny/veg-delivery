@@ -10,6 +10,10 @@ import { RestaurantList } from './RestaurantList';
 import { RestaurantScreen } from './RestaurantScreen';
 import { CartScreen } from './CartScreen';
 import { CreateOrderScreen } from './CreateOrderScreen';
+import { CabinetScreen } from './CabinetScreen';
+import { UserSettingsScreen } from './UserSettingsScreen';
+import { AboutScreen } from './AboutScreen';
+import { OrderListScreen } from './OrderListScreen';
 import { ImageView, CartTabBarIcon } from '../features';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -36,9 +40,22 @@ export const CartStack = (props) => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={'RestaurantList'}>
+      initialRouteName={'CartScreen'}>
       <Stack.Screen name="CartScreen" component={CartScreen} />
       <Stack.Screen name="CreateOrderScreen" component={CreateOrderScreen} />
+    </Stack.Navigator>
+  );
+};
+
+export const CabinetStack = (props) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={'CabinetScreen'}>
+      <Stack.Screen name="CabinetScreen" component={CabinetScreen} />
+      <Stack.Screen name="UserSettingsScreen" component={UserSettingsScreen} />
+      <Stack.Screen name="AboutScreen" component={AboutScreen} />
+      <Stack.Screen name="OrderListScreen" component={OrderListScreen} />
     </Stack.Navigator>
   );
 };
@@ -46,7 +63,7 @@ export const CartStack = (props) => {
 const tabRoutes = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Корзина"
+      initialRouteName="Личный кабинет"
       tabBarOptions={{
         activeTintColor: '#e91e63',
       }}>
@@ -88,8 +105,8 @@ const tabRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="Home2"
-        component={HomeScreen}
+        name="Личный кабинет"
+        component={CabinetStack}
         options={{
           tabBarLabel: 'Личный кабинет',
           tabBarIcon: ({ focused }) => {

@@ -14,6 +14,7 @@ export const ImageSource = {
   plus_icon_gray: require('../assets/icons/plus_icon_gray.png'),
   minus_icon_gray: require('../assets/icons/minus_icon_gray.png'),
   cart_empty_big: require('../assets/icons/cart_empty_big.png'),
+  cabinet_link_arrow: require('../assets/icons/cabinet_link_arrow.png'),
 };
 
 export type TImageSource = keyof typeof ImageSource;
