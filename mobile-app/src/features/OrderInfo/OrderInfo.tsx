@@ -34,7 +34,7 @@ type TProps = {
   userInfo: Object;
   showCommentInput: Boolean;
   orderList: Array<any>;
-  selectedOrder: Any;
+  selectedOrder: any;
 };
 export const OrderInfo = ({
   cartList,

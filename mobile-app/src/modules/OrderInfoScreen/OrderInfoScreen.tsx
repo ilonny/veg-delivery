@@ -16,10 +16,10 @@ export const OrderInfoScreen = ({ addressData, route }: any) => {
   const { params } = route;
   const { selectedOrder } = params;
   // console.log('rest route', route);
-  // console.log('restaurant', restaurant);
+  console.log('selectedOrder screen', selectedOrder);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', paddingTop: 16 }}>
-      <ScreenTitle text="Мои заказы" backIcon={true} />
+      <ScreenTitle text="Информация о заказе" backIcon={true} />
       <OrderInfo selectedOrder={selectedOrder} />
     </SafeAreaView>
   );

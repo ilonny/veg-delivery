@@ -128,7 +128,15 @@ export const OrderList = ({
                   address_data: JSON.parse(item.address_data),
                   user_info: JSON.parse(item.user_info),
                 });
-                navigation.navigate('OrderInfoScreen', { selectedOrder });
+                setTimeout(() => {
+                  navigation.navigate('OrderInfoScreen', {
+                    selectedOrder: {
+                      ...item,
+                      address_data: JSON.parse(item.address_data),
+                      user_info: JSON.parse(item.user_info),
+                    },
+                  });
+                }, 10);
                 // setModalIsVisible(true);
               }}>
               <View style={styles.restItemWrapper}>
