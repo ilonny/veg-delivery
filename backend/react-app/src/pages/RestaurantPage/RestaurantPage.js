@@ -24,6 +24,7 @@ export const RestaurantPage = (props) => {
   const { id } = props.location.state;
   const [startTime, setStartTime] = useState(false);
   const [endTime, setEndTime] = useState(false);
+  const [restInfo, setRestInfo] = useState(false);
   useEffect(() => {
     getData();
   }, [id]);
@@ -35,6 +36,7 @@ export const RestaurantPage = (props) => {
           setData(res);
           setStartTime(res.time_start);
           setEndTime(res.time_end);
+          setRestInfo(res.restaurant_info);
         });
     } catch (e) {
       console.log(e);
@@ -79,6 +81,11 @@ export const RestaurantPage = (props) => {
           </Card>
         </Col>
         <Col className="gutter-row" span={10}>
+          <Link to={{ pathname: "restaurant-order", state: { id: id } }}>
+            <Button>Заказы</Button>
+          </Link>
+          <br />
+          <br />
           <Link to={{ pathname: "restaurant-menu", state: { id: id } }}>
             <Button>Меню</Button>
           </Link>
@@ -163,14 +170,19 @@ export const RestaurantPage = (props) => {
           <label>
             <span>Юридиская информация (название ООО, адрес, телефон)</span>
             <Input
-              value={data.restaurant_info}
-              onChange={(e) =>
+              value={restInfo}
+              onChange={(e) => setRestInfo(e.target.value)}
+            />
+            <Button
+              onClick={() => {
                 fetch(
                   API_HOST +
-                    `/restaurant/edit-rest-info?id=${data.id}&value=${e.target.value}`
-                ).then((res) => getData())
-              }
-            />
+                    `/restaurant/edit-rest-info?id=${data.id}&value=${restInfo}`
+                ).then((res) => getData());
+              }}
+            >
+              Сохранить
+            </Button>
           </label>
           <br />
           <br />

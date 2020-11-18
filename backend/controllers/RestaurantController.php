@@ -14,6 +14,7 @@ use backend\models\Modificator;
 use backend\models\RestaurantDelivery;
 use backend\models\Discount;
 use backend\models\Item;
+use backend\models\Ord;
 use yii\web\UploadedFile;
 use yii\helpers\Json;
 use yii\web\Response;
@@ -438,5 +439,9 @@ class RestaurantController extends Controller
     public function actionDeleteDiscount($id) {
         $model = Discount::findOne($id);
         $model->delete();
+    }
+
+    public function actionGetOrderList($restaurant_id) {
+        return $this->asJson(Ord::find()->andWhere(['restaurant_id' => $restaurant_id])->orderBy('id DESC')->all());
     }
 }
