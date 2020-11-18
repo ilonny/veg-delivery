@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   View,
   Text,
@@ -50,8 +50,50 @@ export const OrderList = ({
 }: any) => {
   const [loading, setLoading] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState({});
-  const [modalIsVisible, setModalIsVisible] = useState(false);
   const navigation = useNavigation();
+  const scrollViewRef = useRef(null);
+  const modalRef = useRef(null);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [modalIsAnimating, setModalIsAnimating] = useState(false);
+  let shouldDismiss = false;
+
+  const onScroll = (event) => {
+    if (modalIsAnimating) return;
+    const offsetY = event.nativeEvent.contentOffset.y;
+    const contentSizeHeight = event.nativeEvent.contentSize.height;
+    const layoutMeasurementHeight = event.nativeEvent.layoutMeasurement.height;
+    const dismissBuffer = (contentSizeHeight / 100) * 20;
+
+    if (offsetY > 0)
+      if (
+        layoutMeasurementHeight + offsetY >
+        contentSizeHeight + dismissBuffer
+      ) {
+        modalRef.current.animationOut = 'slideOutUp';
+        shouldDismiss = true;
+      } else shouldDismiss = false;
+    else if (offsetY < 0)
+      if (
+        layoutMeasurementHeight + offsetY * -1 >
+        contentSizeHeight + dismissBuffer
+      ) {
+        modalRef.current.animationOut = 'slideOutDown';
+        shouldDismiss = true;
+      } else shouldDismiss = false;
+  };
+
+  const onScrollEndDrag = () => {
+    if (shouldDismiss) setModalIsVisible(false);
+  };
+
+  const openModal = () => {
+    setModalIsVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalIsVisible(false);
+  };
+
   let restaurant = {};
   if (restaurantList && !!restaurantList.length && !!cartList[0]) {
     try {
@@ -86,7 +128,8 @@ export const OrderList = ({
                   address_data: JSON.parse(item.address_data),
                   user_info: JSON.parse(item.user_info),
                 });
-                setModalIsVisible(true);
+                navigation.navigate('OrderInfoScreen', { selectedOrder });
+                // setModalIsVisible(true);
               }}>
               <View style={styles.restItemWrapper}>
                 <View
@@ -140,53 +183,48 @@ export const OrderList = ({
         // backdropColor={'transparent'}
         // backdropOpacity={0}
         onBackdropPress={() => setModalIsVisible(false)}
-        onModalShow={() => {
-          console.log('modal open', selectedOrder);
-        }}
         style={styles.modal}>
         <View style={styles.modalWrapper}>
-          <View>
+          <ScrollView ref={scrollViewRef}>
             <Text style={styles.orderTitle}>Заказ №{selectedOrder.id}</Text>
-            <ScrollView style={{ flex: 0 }}>
-              <Text style={styles.orderText}>
-                Ресторан: {selectedOrder?.restaurantInfo?.name}
-              </Text>
-              <Text style={styles.orderText}>Детали заказа:</Text>
-              {!!selectedOrder.cartList && !!selectedOrder.cartList.length && (
-                <List cartList={selectedOrder.cartList} showButtons={false} />
-              )}
-              <Text style={styles.orderText}>
-                Заказ: {selectedOrder?.total_price + ' руб'}
-              </Text>
-              <Text style={styles.orderText}>
-                Доставка:{' '}
-                {selectedOrder.delivery_price
-                  ? selectedOrder.delivery_price + ' руб'
-                  : 'Бесплатно'}
-              </Text>
-              <Text style={styles.orderText}>
-                Итого:{' '}
-                {selectedOrder?.total_price + selectedOrder.delivery_price} руб
-              </Text>
-              <Text style={styles.orderText}>
-                Адрес доставки: {selectedOrder?.address_data?.value}
-                {!!selectedOrder.user_info?.flat &&
-                  ` Квартира: ${selectedOrder.user_info.flat}`}
-                {!!selectedOrder.user_info?.flat_p &&
-                  ` Подъезд: ${selectedOrder.user_info.flat_p}`}
-                {!!selectedOrder.user_info?.floor &&
-                  ` Этаж: ${selectedOrder.user_info.floor}`}
-              </Text>
-              <Text style={styles.orderText}>
-                Имя: {selectedOrder?.user_info?.name}
-              </Text>
-              <Text style={styles.orderText}>
-                Телефон: {selectedOrder?.user_info?.phone}
-              </Text>
-            </ScrollView>
-          </View>
-          {/* <View style={styles.modalBottom}></View> */}
+            <Text style={styles.orderText}>
+              Ресторан: {selectedOrder?.restaurantInfo?.name}
+            </Text>
+            <Text style={styles.orderText}>Детали заказа:</Text>
+            {!!selectedOrder.cartList && !!selectedOrder.cartList.length && (
+              <List cartList={selectedOrder.cartList} showButtons={false} />
+            )}
+            <Text style={styles.orderText}>
+              Заказ: {selectedOrder?.total_price + ' руб'}
+            </Text>
+            <Text style={styles.orderText}>
+              Доставка:{' '}
+              {selectedOrder.delivery_price
+                ? selectedOrder.delivery_price + ' руб'
+                : 'Бесплатно'}
+            </Text>
+            <Text style={styles.orderText}>
+              Итого: {selectedOrder?.total_price + selectedOrder.delivery_price}{' '}
+              руб
+            </Text>
+            <Text style={styles.orderText}>
+              Адрес доставки: {selectedOrder?.address_data?.value}
+              {!!selectedOrder.user_info?.flat &&
+                ` Квартира: ${selectedOrder.user_info.flat}`}
+              {!!selectedOrder.user_info?.flat_p &&
+                ` Подъезд: ${selectedOrder.user_info.flat_p}`}
+              {!!selectedOrder.user_info?.floor &&
+                ` Этаж: ${selectedOrder.user_info.floor}`}
+            </Text>
+            <Text style={styles.orderText}>
+              Имя: {selectedOrder?.user_info?.name}
+            </Text>
+            <Text style={styles.orderText}>
+              Телефон: {selectedOrder?.user_info?.phone}
+            </Text>
+          </ScrollView>
         </View>
+        {/* <View style={styles.modalBottom}></View> */}
       </Modal>
     </View>
   );

@@ -24,6 +24,7 @@ export const List = ({
   deleteFromCart,
   addToCart,
   showButtons = true,
+  showImages = true,
 }) => {
   return (
     <View>
@@ -31,14 +32,16 @@ export const List = ({
         return (
           <View key={cartItem.id} style={styles.cartItemWrapper}>
             <View style={{ flexDirection: 'row' }}>
-              <ImageView
-                uri={cartItem.image}
-                styleProp={styles.cartItemImage}
-              />
+              {showImages && (
+                <ImageView
+                  uri={cartItem.image}
+                  styleProp={styles.cartItemImage}
+                />
+              )}
               <View
                 style={{
                   justifyContent: 'space-between',
-                  height: 83,
+                  height: showImages ? 83 : 'auto',
                   flex: 1,
                 }}>
                 <Text style={styles.dishName}>{cartItem.name}</Text>

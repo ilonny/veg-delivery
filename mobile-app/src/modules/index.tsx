@@ -14,6 +14,7 @@ import { CabinetScreen } from './CabinetScreen';
 import { UserSettingsScreen } from './UserSettingsScreen';
 import { AboutScreen } from './AboutScreen';
 import { OrderListScreen } from './OrderListScreen';
+import { OrderInfoScreen } from './OrderInfoScreen';
 import { ImageView, CartTabBarIcon } from '../features';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -56,6 +57,7 @@ export const CabinetStack = (props) => {
       <Stack.Screen name="UserSettingsScreen" component={UserSettingsScreen} />
       <Stack.Screen name="AboutScreen" component={AboutScreen} />
       <Stack.Screen name="OrderListScreen" component={OrderListScreen} />
+      <Stack.Screen name="OrderInfoScreen" component={OrderInfoScreen} />
     </Stack.Navigator>
   );
 };
@@ -63,7 +65,7 @@ export const CabinetStack = (props) => {
 const tabRoutes = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Личный кабинет"
+      initialRouteName="Рестораны"
       tabBarOptions={{
         activeTintColor: '#e91e63',
       }}>

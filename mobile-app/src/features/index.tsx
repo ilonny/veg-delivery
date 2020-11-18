@@ -13,4 +13,5 @@ export * from './CreateOrder';
 export * from './CabinetLink';
 export * from './UserSettings';
 export * from './OrderList';
+export * from './OrderInfo';
 export { mainReducer } from '../lib/store/mainReducer';
