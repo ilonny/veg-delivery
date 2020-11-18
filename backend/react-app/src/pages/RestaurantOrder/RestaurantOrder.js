@@ -100,6 +100,8 @@ export const RestaurantOrder = (props) => {
       }),
       totalPrice: row.total_price,
       deliveryPrice: row.delivery_price,
+      date: row.date_create,
+      payment_status: row.payment_status,
     };
   });
 
@@ -133,6 +135,21 @@ export const RestaurantOrder = (props) => {
       title: "Стоимость доставки",
       dataIndex: "deliveryPrice",
       key: "deliveryPrice",
+    },
+    {
+      title: "Дата",
+      dataIndex: "date",
+      key: "date",
+    },
+    {
+      title: "Дата",
+      dataIndex: "date",
+      key: "date",
+    },
+    {
+      title: "Статус оплаты",
+      dataIndex: "payment_status",
+      key: "payment_status",
     },
   ];
   return (
