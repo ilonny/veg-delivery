@@ -20,11 +20,13 @@ export const RestaurantOrder = (props) => {
   const [data, setData] = useState([]);
   const { id } = props.location.state;
   const [newModif, setNewModif] = useState({ type: "single" });
-
+  const [loading, setLoading] = useState(false);
   const getData = () => {
+    setLoading(true);
     fetch(API_HOST + "/restaurant/get-order-list?restaurant_id=" + id)
       .then((res) => res.json())
       .then((res) => {
+        setLoading(false);
         setData(res);
       });
   };
@@ -105,6 +107,13 @@ export const RestaurantOrder = (props) => {
     };
   });
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getData();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   const columns = [
     {
       title: "Номер",
@@ -158,6 +167,10 @@ export const RestaurantOrder = (props) => {
       <Link to={{ pathname: "restaurant", state: { id } }}>
         <Button>Назад в меню</Button>
       </Link>
+      <Divider />
+      <Button onClick={() => getData()}>Обновить список</Button>
+      <Divider />
+      {loading && <p> Загрузка ... </p>}
       <Divider />
       <Table dataSource={dataSource} columns={columns} />;
     </>
