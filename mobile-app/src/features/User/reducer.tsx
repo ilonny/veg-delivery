@@ -93,10 +93,10 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
   fetch(`${API_URL}/order/create`, {
     method: 'POST',
     mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      // Accept: 'application/json',
-    },
+    // headers: {
+    //   'Content-Type': 'application/json',
+    //   Accept: 'application/json',
+    // },
     body: formData,
   })
     .then((res) => res.json())
@@ -122,6 +122,19 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
     .catch((error) => {
       console.log(error);
     });
+  //   var request = new XMLHttpRequest();
+  // request.onreadystatechange = (e) => {
+  //   if (request.readyState !== 4) {
+  //     return;
+  //   }
+  //   if (request.status === 200) {
+  //     console.log('success', request.responseText);
+  //   } else {
+  //     console.warn('error', request);
+  //   }
+  // };
+  // request.open('GET', url);
+  // request.send();
   setTimeout(() => {
     callback();
   }, 2500);

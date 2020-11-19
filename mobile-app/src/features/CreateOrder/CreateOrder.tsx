@@ -8,6 +8,7 @@ import {
   ScrollView,
   Alert,
   TextInput,
+  Platform,
 } from 'react-native';
 import {
   ScreenTitle,
@@ -93,22 +94,28 @@ export const CreateOrder = ({
       style={{
         flex: 1,
       }}>
-      <ScrollView style={{ flex: 1, padding: 16 }}>
-        <UserSettings showCommentInput={true} />
-        {/* <View style={styles.divider} /> */}
-        <View style={{ height: 30 }} />
-        <Text style={styles.textLabel}>Стоимость:</Text>
-        <View style={styles.divider} />
-        <View style={styles.rowBetween}>
-          <Text style={styles.bottomText}>Сумма заказа</Text>
-          <Text style={styles.bottomText}>{totalPrice} руб</Text>
-        </View>
-        <View style={styles.divider} />
-        <View style={styles.rowBetween}>
-          <Text style={styles.bottomText}>Доставка</Text>
-          <Text style={styles.bottomText}>
-            {deliveryPrice ? deliveryPrice + ' руб' : 'Бесплатно'}
-          </Text>
+      <ScrollView>
+        <View
+          style={[
+            { flex: 1, padding: 16 },
+            // Platform.OS === 'android' && { paddingBottom: 80 },
+          ]}>
+          <UserSettings showCommentInput={true} />
+          {/* <View style={styles.divider} /> */}
+          <View style={{ height: 30 }} />
+          <Text style={styles.textLabel}>Стоимость:</Text>
+          <View style={styles.divider} />
+          <View style={styles.rowBetween}>
+            <Text style={styles.bottomText}>Сумма заказа</Text>
+            <Text style={styles.bottomText}>{totalPrice} руб</Text>
+          </View>
+          <View style={styles.divider} />
+          <View style={styles.rowBetween}>
+            <Text style={styles.bottomText}>Доставка</Text>
+            <Text style={styles.bottomText}>
+              {deliveryPrice ? deliveryPrice + ' руб' : 'Бесплатно'}
+            </Text>
+          </View>
         </View>
       </ScrollView>
       <View style={styles.cartBottom}>

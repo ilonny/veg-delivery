@@ -1,0 +1,14 @@
+<network-security-config>
+  <domain-config cleartextTrafficPermitted="false">
+    <domain includeSubdomains="true">app.vegfood.delivery</domain>
+    <domain includeSubdomains="true">vegfood.delivery</domain>
+    <domain includeSubdomains="true">https://vegfood.delivery</domain>
+    <domain includeSubdomains="true">https://app.vegfood.delivery</domain>
+    <domain includeSubdomains="true">https://31.31.201.107</domain>
+    <domain includeSubdomains="true">31.31.201.107</domain>
+  </domain-config>
+  <trust-anchors>
+    <certificates src="system" />
+    <certificates src="user" />
+    </trust-anchors>
+</network-security-config>
