@@ -11,6 +11,9 @@ type Styles = {
   imageStar: ImageStyle;
   ratingText: TextStyle;
   infoText: TextStyle;
+  infoIconWrapper: ViewStyle;
+  modalWrapper: ViewStyle;
+  modal: ViewStyle;
 };
 
 export const styles: Styles = {
@@ -79,5 +82,34 @@ export const styles: Styles = {
     fontSize: 14,
     color: '#9F9F9F',
     fontFamily: 'Exo2-Bold',
+  },
+  infoIconWrapper: {
+    width: 30,
+    height: 30,
+    borderRadius: 30,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(241,241,241)',
+    marginRight: 16,
+  },
+  modalWrapper: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 16,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    justifyContent: 'space-between',
+  },
+  modal: {
+    margin: 0,
+    paddingTop: 100,
   },
 };
