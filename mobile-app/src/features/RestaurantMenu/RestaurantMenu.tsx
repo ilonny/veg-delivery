@@ -37,7 +37,9 @@ export const RestaurantMenu = ({
   addToCart,
   deleteFromCart,
   changeCartItem,
+  item,
 }) => {
+  console.log('RestaurantMenu item??', item);
   const [loading, setLoading] = useState(false);
   const getMenuInside = () => {
     getMenu({
@@ -58,6 +60,15 @@ export const RestaurantMenu = ({
         false,
     );
   }, [restaurantMenu]);
+  useEffect(() => {
+    if (item && item.id) {
+      // let dish = restaurantMenu?.menu?.find((el) => el.id == item.id);
+      console.log('dish???', item);
+      console.log('restaurantMenu', restaurantMenu);
+      setSelectedDish(item);
+      setModalIsVisible(true);
+    }
+  }, [item]);
   // console.log('activeCategory', activeCategory);
   const listCategory = useRef(null);
   const listMenuCategory = useRef(null);

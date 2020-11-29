@@ -13,13 +13,14 @@ export const RestaurantScreen = ({ addressData, route }: any) => {
   const navigation = useNavigation();
   // console.log('rest route', route);
   const { params } = route;
-  const { restaurant } = params;
+  const { restaurant, item } = params;
   // console.log('restaurant', restaurant);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', paddingTop: 16 }}>
       <ScreenTitle text={restaurant.name} backIcon={true} />
       <RestaurantInfo item={restaurant} inside={true} />
-      <RestaurantMenu restaurant={restaurant} />
+      {/* @ts-ignore */}
+      <RestaurantMenu restaurant={restaurant} item={item} />
     </SafeAreaView>
   );
 };

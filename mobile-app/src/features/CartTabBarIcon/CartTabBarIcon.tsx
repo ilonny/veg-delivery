@@ -25,7 +25,7 @@ export const CartTabBarIcon = ({ cartList, focused }) => {
     <View style={{ flex: 1, paddingTop: 16 }}>
       <ImageView
         imageName="shopping_basket"
-        styleProp={{ width: 23, height: 19 }}
+        styleProp={{ width: 23, height: 19, marginTop: -8 }}
         tintColor={focused ? '#5AC17D' : '#F1F0F4'}
       />
       {!!cartList.length && (

@@ -15,6 +15,7 @@ import { UserSettingsScreen } from './UserSettingsScreen';
 import { AboutScreen } from './AboutScreen';
 import { OrderListScreen } from './OrderListScreen';
 import { OrderInfoScreen } from './OrderInfoScreen';
+import { SearchScreen } from './SearchScreen';
 import { ImageView, CartTabBarIcon } from '../features';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -62,6 +63,16 @@ export const CabinetStack = (props) => {
   );
 };
 
+export const SearchStack = (props) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={'SearchScreen'}>
+      <Stack.Screen name="SearchScreen" component={SearchScreen} />
+    </Stack.Navigator>
+  );
+};
+
 const tabRoutes = () => {
   return (
     <Tab.Navigator
@@ -101,6 +112,25 @@ const tabRoutes = () => {
                   styleProp={{ width: 23, height: 19 }}
                   tintColor={focused ? '#5AC17D' : '#F1F0F4'}
                 /> */}
+              </>
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Поиск"
+        component={SearchStack}
+        options={{
+          tabBarLabel: 'Поиск',
+          tabBarIcon: ({ focused }) => {
+            return (
+              <>
+                <ImageView
+                  imageName="search"
+                  styleProp={{ width: 28, height: 20 }}
+                  resizeMode="contain"
+                  tintColor={focused ? '#5AC17D' : '#F1F0F4'}
+                />
               </>
             );
           },

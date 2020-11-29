@@ -143,6 +143,41 @@ class RestaurantController extends Controller
                 // die();
             
                 if ($direction_length <= $rest_radius) {
+                    ///////
+                        $res_menu = [];
+                        $rest_categories = MenuCategory::find()->andWhere(['restaurant_id' => $rest['id']])->orderBy('order_by')->all();
+                        $modificators = Modificator::find()
+                            ->andWhere(['restaurant_id' => $rest['id']])
+                            ->andWhere(['parent_id' => null])
+                            ->all();
+                        foreach ($rest_categories as $key => $value) {
+                            array_push($res_menu, [
+                                'id' => $value->id,
+                                'name' => $value->name,
+                                'order_by' => $value->order_by,
+                                'restaurant_id' => $value->restaurant_id,
+                                'menu' => Item::find()->andWhere(['menu_category_id' => $value->id])->asArray()->all(),
+                            ]);
+                            foreach ($res_menu[$key]['menu'] as $key_dish => $dish) {
+                                $modificators_ids = explode(',', $dish['modificators']);
+                                // $res_menu[$key]['menu'][$key_dish] = (array) $res_menu[$key]['menu'][$key_dish];
+                                $res_menu[$key]['menu'][$key_dish]['modificators_info'] = [];
+                                foreach ($modificators_ids as $modif_key => $modif_parent_id) {
+                                    $res_menu[$key]['menu'][$key_dish]['modificators_info'][$modif_key] = Modificator::find()->where(['id' => $modif_parent_id])->asArray()->one();
+                                    $res_menu[$key]['menu'][$key_dish]['modificators_info'][$modif_key]['variants'] = 
+                                        Modificator::find()
+                                            ->andWhere(['parent_id' => $modif_parent_id])
+                                            ->asArray()
+                                            ->all();
+                                }
+                                    // $res[$key]['menu'][$key_dish]['modificators_info'] = Modificator::find()
+                                    // ->andWhere(['restaurant_id' => $rest['id']])
+                                    // ->andWhere(['parent_id' => $dish->id])
+                                    // ->all();
+                            }
+                        }
+                    $rest['menu'] = $res_menu;
+                    ///////
                     array_push($res, $rest);
                 }
             }
