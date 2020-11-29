@@ -7,9 +7,11 @@ export const RestaurantList = connect(
     // phone: state.userReducer.phone,
     // name: state.userReducer.name,
     addressData: state.userReducer.addressData,
+    addressHintShowed: state.tempReducer.addressHintShowed,
   }),
   (dispatch) => ({
     // setUserPhone: (phone) => dispatch({ type: USER_SET_PHONE, phone }),
     // setUserName: (name) => dispatch({ type: USER_SET_NAME, name }),
+    setAddressHintShowed: () => dispatch({ type: 'SET_ADDRESS_HINT_SHOWED' }),
   }),
 )(RestaurantListTemplate);

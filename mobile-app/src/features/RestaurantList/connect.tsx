@@ -6,6 +6,7 @@ import {
   cartReducer,
   ADD_TO_CART,
   DELETE_FROM_CART,
+  tempReducer,
 } from '../../features';
 // import { restaurantReducer } from './reducer';
 export const RestaurantList = connect(

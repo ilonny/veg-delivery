@@ -12,6 +12,12 @@ type Styles = {
   ratingText: TextStyle;
   infoText: TextStyle;
   notFoundText: TextStyle;
+  hintWrapper: ViewStyle;
+  hintWrapperTitle: TextStyle;
+  hintWrapperAddress: TextStyle;
+  hintWrapperRow: ViewStyle;
+  hintButton: ViewStyle;
+  hintButtonText: TextStyle;
 };
 
 export const styles: Styles = {
@@ -86,5 +92,53 @@ export const styles: Styles = {
     color: '#9F9F9F',
     fontFamily: 'Exo2-Bold',
     textAlign: 'center',
+  },
+  hintWrapper: {
+    position: 'absolute',
+    top: 70,
+    left: 0,
+    right: 0,
+    backgroundColor: '#fff',
+    zIndex: 333999,
+    margin: 10,
+    padding: 15,
+    borderRadius: 16,
+    // overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 4,
+  },
+  hintWrapperTitle: {
+    fontSize: 22,
+    color: '#9F9F9F',
+    fontFamily: 'Exo2-Bold',
+  },
+  hintWrapperAddress: {
+    marginTop: 10,
+  },
+  hintWrapperRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+  hintButton: {
+    flex: 1,
+    borderRadius: 6,
+    marginHorizontal: 16,
+    padding: 10,
+    backgroundColor: '#fafafa',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  hintButtonText: {
+    fontSize: 16,
+    color: '#9F9F9F',
+    fontFamily: 'Exo2-Bold',
   },
 };

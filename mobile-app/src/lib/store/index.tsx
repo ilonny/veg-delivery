@@ -3,6 +3,7 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import { mainReducer } from './mainReducer';
+import { tempReducer } from './tempReducer';
 import AsyncStorage from '@react-native-community/async-storage';
 import { persistStore, persistReducer } from 'redux-persist';
 import {
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   ),
   userReducer: persistReducer({ ...persistConfig, key: 'user' }, userReducer),
   cartReducer: persistReducer({ ...persistConfig, key: 'cart' }, cartReducer),
+  tempReducer,
 });
 
 let enhacers: any;

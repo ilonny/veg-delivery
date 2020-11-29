@@ -15,3 +15,4 @@ export * from './UserSettings';
 export * from './OrderList';
 export * from './OrderInfo';
 export { mainReducer } from '../lib/store/mainReducer';
+export { tempReducer } from '../lib/store/tempReducer';
