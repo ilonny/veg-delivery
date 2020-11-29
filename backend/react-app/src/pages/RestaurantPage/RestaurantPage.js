@@ -25,6 +25,7 @@ export const RestaurantPage = (props) => {
   const [startTime, setStartTime] = useState(false);
   const [endTime, setEndTime] = useState(false);
   const [restInfo, setRestInfo] = useState(false);
+  const [deliveryTime, setDeliveryTime] = useState(false);
   useEffect(() => {
     getData();
   }, [id]);
@@ -37,6 +38,7 @@ export const RestaurantPage = (props) => {
           setStartTime(res.time_start);
           setEndTime(res.time_end);
           setRestInfo(res.restaurant_info);
+          setDeliveryTime(res.delivery_time);
         });
     } catch (e) {
       console.log(e);
@@ -57,6 +59,20 @@ export const RestaurantPage = (props) => {
     fetch(
       API_HOST +
         `/restaurant/edit-rest-time?id=${data.id}&start=${startTime}&end=${endTime}`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Успешно сохранено");
+        }
+        getData();
+      });
+  };
+
+  const changeDeliveryTime = () => {
+    fetch(
+      API_HOST +
+        `/restaurant/edit-rest-deliverytime?id=${data.id}&time=${deliveryTime}`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -150,6 +166,18 @@ export const RestaurantPage = (props) => {
           </label>
           <br />
           <Button onClick={() => changeTime()}>Сохранить время</Button>
+
+          <br />
+          <br />
+          <label>
+            <span>Сроки доставкии (например "40-50 мин")</span>
+            <Input
+              value={deliveryTime}
+              onChange={(e) => setDeliveryTime(e.target.value)}
+            />
+          </label>
+          <br />
+          <Button onClick={() => changeDeliveryTime()}>Сохранить время</Button>
 
           <br />
           <br />

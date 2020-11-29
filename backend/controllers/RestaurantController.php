@@ -403,6 +403,20 @@ class RestaurantController extends Controller
         ]);
     }
 
+    public function actionEditRestDeliverytime($id, $time) {
+        $model = Restaurant::findOne($id);
+        $model->delivery_time = $time;
+        $model->validate();
+        if ($model->update()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
     public function actionGetDiscountList($restaurant_id) {
         return $this->asJson(Discount::find()->andWhere(['restaurant_id' => $restaurant_id])->all());
     }
