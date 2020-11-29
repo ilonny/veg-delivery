@@ -31,6 +31,10 @@ restaurantReducer.getRestaurants = (params) => (dispatch, getState) => {
   const coords = getLanLonFromAddressJson(addressData);
   // console.log('coords', coords);
   if (coords) {
+    console.log(
+      'fetch rest',
+      `${API_URL}/restaurant/mobile-list?lat=${coords.lat}&lon=${coords.lon}`,
+    );
     fetch(
       `${API_URL}/restaurant/mobile-list?lat=${coords.lat}&lon=${coords.lon}`,
     )

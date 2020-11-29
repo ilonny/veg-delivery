@@ -71,6 +71,14 @@ class OrderController extends Controller
         $model->restaurant_id = intval($post_arr['restaurant_id']);
 
         $model->status = 'Новый';
+        $rest = Restaurant::find()->andWhere(['id' => intval($post_arr['restaurant_id'])])->asArray()->one();
+        $current_time = date('H:m:s');
+        if (!($current_time >= $rest['time_start'] && $current_time <= $rest['time_end'])) {
+            return $this->asJson([
+                'status' => 500,
+                'message' => 'К сожалению, ресторан уже закрыт.'
+            ]);
+        }
         if ($model->save()) {
             $rest_data = Restaurant::findOne($model->restaurant_id);
             return $this->asJson([

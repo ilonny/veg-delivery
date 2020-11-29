@@ -114,21 +114,36 @@ class RestaurantController extends Controller
         $R=6371;  // Earth's radius
         
         foreach ($rest_all as $key => $rest) {
-            $rest_address = json_decode($rest['address_json'], true);
-            $rest_lat = floatval($rest_address['data']['geo_lat']);
-            $rest_lon = floatval($rest_address['data']['geo_lon']);
-            $rest_radius = floatval($rest['delivery_radius']);
-            $lat = floatval($lat);
-            $lon = floatval($lon);
-            $sin1=sin(($rest_lat - $lat) / 2);
-            $sin2=sin(($rest_lon - $lon) / 2);
+            $current_time = date('H:m:s');
+            // var_dump($rest['time_start']);
+            // var_dump($rest['time_end']);
+            // var_dump($current_time);
+            // die();
+            if ($current_time >= $rest['time_start'] && $current_time <= $rest['time_end']) {
+                $rest_address = json_decode($rest['address_json'], true);
+                $rest_lat = floatval($rest_address['data']['geo_lat']);
+                $rest_lon = floatval($rest_address['data']['geo_lon']);
+                $rest_radius = floatval($rest['delivery_radius']);
+                $lat = floatval($lat);
+                $lon = floatval($lon);
+                $sin1=sin(($rest_lat - $lat) / 2);
+                $sin2=sin(($rest_lon - $lon) / 2);
+                
+                // $direction_length = 2 * $R * asin(sqrt($sin1 * $sin1 + $sin2 * $sin2 * cos($rest_lat) * cos($lat)));
+                // var_dump($direction_length);
+                // var_dump($this->getDistanceBetweenPointsNew($rest_lat, $rest_lon, $lat, $lon));
+                $direction_length = $this->getDistanceBetweenPointsNew($rest_lat, $rest_lon, $lat, $lon);
+
+                //проверка работает ли в данное время ресторан
+                
+                // var_dump($rest['time_start']);
+                // var_dump($rest['time_end']);
+                // var_dump($current_time);
+                // die();
             
-            // $direction_length = 2 * $R * asin(sqrt($sin1 * $sin1 + $sin2 * $sin2 * cos($rest_lat) * cos($lat)));
-            // var_dump($direction_length);
-            // var_dump($this->getDistanceBetweenPointsNew($rest_lat, $rest_lon, $lat, $lon));
-            $direction_length = $this->getDistanceBetweenPointsNew($rest_lat, $rest_lon, $lat, $lon);
-            if ($direction_length <= $rest_radius) {
-                array_push($res, $rest);
+                if ($direction_length <= $rest_radius) {
+                    array_push($res, $rest);
+                }
             }
         }
         foreach ($res as $key => $rest_inner) {
