@@ -76,51 +76,73 @@ export const UserSettings = ({
       </TouchableOpacity>
       <View
         style={[styles.rowStart, { marginVertical: 10, marginHorizontal: -5 }]}>
-        <TextInput
-          placeholder="Кв./Офис*"
-          style={[styles.textInput, { marginHorizontal: 5 }]}
-          value={userInfo.flat}
-          onChangeText={(text) => changeUserInfo({ key: 'flat', value: text })}
-        />
-        <TextInput
-          placeholder="Подъезд"
-          style={[styles.textInput, { marginHorizontal: 5 }]}
-          value={userInfo.flat_p}
-          onChangeText={(text) =>
-            changeUserInfo({ key: 'flat_p', value: text })
-          }
-        />
-        <TextInput
-          placeholder="Этаж"
-          style={[styles.textInput, { marginHorizontal: 5 }]}
-          value={userInfo.floor}
-          onChangeText={(text) => changeUserInfo({ key: 'floor', value: text })}
-        />
+        <View style={styles.textInputWrapper}>
+          <Text style={[styles.textLabel, { left: 10 }]}>Кв./Офис*</Text>
+          <TextInput
+            placeholder="Кв./Офис*"
+            style={[styles.textInput, { marginHorizontal: 5 }]}
+            value={userInfo.flat}
+            onChangeText={(text) =>
+              changeUserInfo({ key: 'flat', value: text })
+            }
+          />
+        </View>
+        <View style={styles.textInputWrapper}>
+          <Text style={[styles.textLabel, { left: 10 }]}>Подъезд</Text>
+          <TextInput
+            placeholder="Подъезд"
+            style={[styles.textInput, { marginHorizontal: 5 }]}
+            value={userInfo.flat_p}
+            onChangeText={(text) =>
+              changeUserInfo({ key: 'flat_p', value: text })
+            }
+          />
+        </View>
+        <View style={styles.textInputWrapper}>
+          <Text style={[styles.textLabel, { left: 10 }]}>Этаж</Text>
+          <TextInput
+            placeholder="Этаж"
+            style={[styles.textInput, { marginHorizontal: 5 }]}
+            value={userInfo.floor}
+            onChangeText={(text) =>
+              changeUserInfo({ key: 'floor', value: text })
+            }
+          />
+        </View>
       </View>
       {showCommentInput && (
-        <TextInput
-          placeholder="Комментарий"
-          style={[styles.textInput]}
-          value={userInfo.comment}
-          onChangeText={(text) =>
-            changeUserInfo({ key: 'comment', value: text })
-          }
-        />
+        <View style={styles.textInputWrapper}>
+          <Text style={[styles.textLabel]}>Комментарий</Text>
+          <TextInput
+            placeholder="Комментарий"
+            style={[styles.textInput]}
+            value={userInfo.comment}
+            onChangeText={(text) =>
+              changeUserInfo({ key: 'comment', value: text })
+            }
+          />
+        </View>
       )}
       <View style={{ height: 30 }} />
       <Text style={styles.textLabel}>Контактные данные</Text>
-      <TextInput
-        placeholder="Имя*"
-        style={[styles.textInput]}
-        value={userInfo.name}
-        onChangeText={(text) => changeUserInfo({ key: 'name', value: text })}
-      />
-      <TextInput
-        placeholder="Телефон*"
-        style={[styles.textInput, { marginTop: 10 }]}
-        value={userInfo.phone}
-        onChangeText={(text) => changeUserInfo({ key: 'phone', value: text })}
-      />
+      <View style={styles.textInputWrapper}>
+        <Text style={[styles.textLabel]}>Имя*</Text>
+        <TextInput
+          placeholder="Имя*"
+          style={[styles.textInput]}
+          value={userInfo.name}
+          onChangeText={(text) => changeUserInfo({ key: 'name', value: text })}
+        />
+      </View>
+      <View style={styles.textInputWrapper}>
+        <Text style={[styles.textLabel, { marginTop: 15 }]}>Телефон*</Text>
+        <TextInput
+          placeholder="Телефон*"
+          style={[styles.textInput, { marginTop: 10 }]}
+          value={userInfo.phone}
+          onChangeText={(text) => changeUserInfo({ key: 'phone', value: text })}
+        />
+      </View>
     </View>
   );
 };

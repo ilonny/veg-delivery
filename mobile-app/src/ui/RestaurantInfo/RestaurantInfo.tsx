@@ -83,6 +83,10 @@ export const RestaurantInfo = ({ item, inside = false }) => {
               <Text style={styles.restItemTitle}>Информация о ресторане</Text>
               <Text> </Text>
               <Text>{item.restaurant_info}</Text>
+              <Text>Режим работы:</Text>
+              <Text>
+                {item?.time_start?.slice(0, 5)} - {item?.time_end?.slice(0, 5)}
+              </Text>
             </ScrollView>
           </View>
         </Modal>

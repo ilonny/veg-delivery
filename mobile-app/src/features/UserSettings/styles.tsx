@@ -5,6 +5,7 @@ type Styles = {
   emptyCartText: TextStyle;
   rowStart: ViewStyle;
   rowBetween: ViewStyle;
+  textInputWrapper: ViewStyle;
   textInput: ViewStyle;
   divider: ViewStyle;
   bottomText: TextStyle;
@@ -34,6 +35,9 @@ export const styles: Styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  textInputWrapper: {
+    flex: 1,
   },
   textInput: {
     alignItems: 'center',

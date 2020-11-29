@@ -110,6 +110,6 @@ export const styles: Styles = {
   },
   modal: {
     margin: 0,
-    paddingTop: 100,
+    paddingTop: 500,
   },
 };
