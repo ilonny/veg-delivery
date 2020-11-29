@@ -58,6 +58,7 @@ class OrderController extends Controller
     public function actionCreate() {
         // var_dump('$_REQUEST');die();
         // var_dump($_REQUEST);die();
+        date_default_timezone_set('Europe/Moscow');
         $request = Yii::$app->request;
         $post = $request->post('data'); 
         $post_arr = json_decode($post, true);

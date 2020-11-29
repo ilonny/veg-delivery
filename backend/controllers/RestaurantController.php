@@ -109,6 +109,7 @@ class RestaurantController extends Controller
     }
 
     public function actionMobileList($lat = '', $lon = '') {
+        date_default_timezone_set('Europe/Moscow');
         $res = [];
         $rest_all = Restaurant::find()->asArray()->all();
         $R=6371;  // Earth's radius
