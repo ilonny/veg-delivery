@@ -19,7 +19,8 @@ import { styles } from './styles';
 export const ChooseAddress = (props) => {
   console.log('props', props);
   const navigation = useNavigation();
-  const { addressData, setUserAddressData } = props;
+  const { addressData, setUserAddressData, checkAddress } = props;
+  const [oldData, setOldData] = useState(false);
   const [userLocation, setUserLocation] = useState(
     addressData && addressData.data
       ? {
@@ -41,6 +42,8 @@ export const ChooseAddress = (props) => {
           });
         }
       });
+    } else {
+      setOldData(addressData);
     }
   }, []);
   useEffect(() => {
@@ -58,7 +61,10 @@ export const ChooseAddress = (props) => {
       .then((res) => {
         console.log('suggestion res', res);
         // setUserAddress(res.suggestions ? res.suggestions[0] : undefined);
-        setUserAddressData(res.suggestions ? res.suggestions[0] : {});
+        setUserAddressData({
+          addressData: res.suggestions ? res.suggestions[0] : {},
+          navigation,
+        });
       });
   }, [userLocation]);
   return (
@@ -112,6 +118,7 @@ export const ChooseAddress = (props) => {
                 index: routes.length - 1,
               });
             });
+            checkAddress({ navigation, addressData: oldData });
           }}
         />
       </View>

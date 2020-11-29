@@ -22,9 +22,5 @@ export const RestaurantMenu = connect(
     deleteFromCart: (item, force = false) =>
       dispatch({ type: DELETE_FROM_CART, item, force }),
     changeCartItem: (item) => dispatch({ type: CHANGE_CART_ITEM, item }),
-    // getRestaurants: (params) =>
-    //   dispatch(restaurantReducer.getRestaurants(params)),
-    // setUserAddressData: (addressData) =>
-    //   dispatch({ type: USER_SET_ADDRESS_DATA, addressData }),
   }),
 )(RestaurantMenuTemplate);

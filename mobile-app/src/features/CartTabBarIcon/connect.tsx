@@ -12,10 +12,5 @@ export const CartTabBarIcon = connect(
   (state) => ({
     cartList: state.cartReducer.cartList,
   }),
-  (dispatch) => ({
-    // getRestaurants: (params) =>
-    //   dispatch(restaurantReducer.getRestaurants(params)),
-    // setUserAddressData: (addressData) =>
-    //   dispatch({ type: USER_SET_ADDRESS_DATA, addressData }),
-  }),
+  (dispatch) => ({}),
 )(CartTabBarIconTemplate);

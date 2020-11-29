@@ -17,7 +17,5 @@ export const RestaurantList = connect(
   (dispatch) => ({
     getRestaurants: (params) =>
       dispatch(restaurantReducer.getRestaurants(params)),
-    // setUserAddressData: (addressData) =>
-    //   dispatch({ type: USER_SET_ADDRESS_DATA, addressData }),
   }),
 )(RestaurantListTemplate);

@@ -1,4 +1,5 @@
 //@ts-nocheck
+import { CommonActions } from '@react-navigation/native';
 import { Alert } from 'react-native';
 import { API_URL } from '../../lib';
 import {
@@ -140,9 +141,46 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
   }, 2500);
 };
 
-//TODO!!!!!!!!
-////////////////////////////////
-//короче. надо сохранять данные корзины в заказе. думаю добавлять прям из редьюсера ее, и чистить после добавлениия заказа.
-//добавиить поле date_create в ответ
-//подумать как формировать заказы. по id походу..
-//
+userReducer.changeAddress = (params) => (dispatch, getState) => {
+  console.log('userReducer.changeAddress', params);
+  const { addressData, navigation } = params;
+  const oldData = getState()?.userReducer?.addressData?.value;
+  // if (oldData != addressData?.value) {
+  //   dispatch({ type: CLEAR_CART });
+  //   navigation.navigate('RestaurantList');
+  //   navigation.dispatch((state) => {
+  //     // Remove the home route from the stack
+  //     const routes = state.routes.filter((r) => r.name !== 'CartScreen' && r.name !== 'CreateOrderScreen');
+  //     return CommonActions.reset({
+  //       ...state,
+  //       routes,
+  //       index: routes.length - 1,
+  //     });
+  //   });
+  // }
+  dispatch({ type: USER_SET_ADDRESS_DATA, addressData });
+};
+
+userReducer.checkAddress = (params) => (dispatch, getState) => {
+  console.log('userReducer.checkAddress', params);
+  const { addressData, navigation } = params;
+  // const oldData = getState()?.userReducer?.addressData?.value;
+  const oldData = getState()?.userReducer?.addressData?.value;
+  console.log('userReducer.checkAddress olddata', oldData);
+  if (oldData != addressData?.value) {
+    console.log('new data chosen');
+    dispatch({ type: CLEAR_CART });
+    navigation.navigate('RestaurantList');
+    navigation.dispatch((state) => {
+      // Remove the home route from the stack
+      const routes = state.routes.filter(
+        (r) => r.name !== 'CartScreen' && r.name !== 'CreateOrderScreen',
+      );
+      return CommonActions.reset({
+        ...state,
+        routes,
+        index: routes.length - 1,
+      });
+    });
+  }
+};
