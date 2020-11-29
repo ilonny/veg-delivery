@@ -40,6 +40,28 @@ export const RestaurantMenu = ({
   item,
 }) => {
   console.log('RestaurantMenu item??', item);
+  const onViewRef = useRef((viewableItems) => {
+    try {
+      console.log('viewableItems', viewableItems);
+      item = viewableItems?.viewableItems[0];
+      if (item) {
+        console.log('item?', item);
+        // let index = restaurantMenu.menu.findIndex((el) => el.id === item.id);
+        let index = item?.index + 1;
+        console.log('item?', restaurantMenu.menu);
+        console.log('index', index);
+        setActiveCategory(item.item);
+        listCategory.current.scrollToIndex({
+          index:
+            index === 0 || index === restaurantMenu.menu.length - 1
+              ? index
+              : index - 1,
+        });
+      }
+    } catch (e) {}
+    // Use viewable items in state or as intended
+  });
+  const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
   const [loading, setLoading] = useState(false);
   const getMenuInside = () => {
     getMenu({
@@ -218,6 +240,11 @@ export const RestaurantMenu = ({
           keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
           style={{ flex: 1 }}
+          onViewableItemsChanged={(info) => {
+            console.log('info', info);
+          }}
+          onViewableItemsChanged={onViewRef.current}
+          viewabilityConfig={viewConfigRef.current}
           renderItem={({ item }) => {
             return (
               <View>
