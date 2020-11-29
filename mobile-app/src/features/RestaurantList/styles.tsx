@@ -11,6 +11,7 @@ type Styles = {
   imageStar: ImageStyle;
   ratingText: TextStyle;
   infoText: TextStyle;
+  notFoundText: TextStyle;
 };
 
 export const styles: Styles = {
@@ -79,5 +80,11 @@ export const styles: Styles = {
     fontSize: 14,
     color: '#9F9F9F',
     fontFamily: 'Exo2-Bold',
+  },
+  notFoundText: {
+    fontSize: 22,
+    color: '#9F9F9F',
+    fontFamily: 'Exo2-Bold',
+    textAlign: 'center',
   },
 };

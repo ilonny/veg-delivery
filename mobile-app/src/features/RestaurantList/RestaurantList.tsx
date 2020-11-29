@@ -45,6 +45,16 @@ export const RestaurantList = ({
     );
   }
   const navigation = useNavigation();
+  if (!restaurantList.length) {
+    return (
+      <View style={{ flex: 1, paddingTop: 16 }}>
+        <Text style={styles.notFoundText}>
+          К сожалению, не нашлось ни одного ресторана, доставляющих по Вашему
+          адресу
+        </Text>
+      </View>
+    );
+  }
   return (
     <View style={{ flex: 1, paddingTop: 16 }}>
       <FlatList
