@@ -80,7 +80,9 @@ export const List = ({
                       </TouchableOpacity>
                     )}
                   </View>
-                  <Text style={styles.dishPrice}>{cartItem.price} руб</Text>
+                  <Text style={styles.dishPrice}>
+                    {cartItem.count} x {cartItem.price} руб
+                  </Text>
                 </View>
               </View>
             </View>
