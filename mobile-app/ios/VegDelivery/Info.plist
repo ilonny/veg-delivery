@@ -37,6 +37,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>For detect delivery address</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>For detect delivery address</string>
 	<key>UIAppFonts</key>
