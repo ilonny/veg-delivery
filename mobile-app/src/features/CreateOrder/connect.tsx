@@ -26,6 +26,7 @@ export const CreateOrder = connect(
     clearCart: () => dispatch({ type: CLEAR_CART }),
     changeUserInfo: (params) => dispatch(userReducer.changeUserInfo(params)),
     createOrder: (params) => dispatch(userReducer.createOrder(params)),
+    confirmOrder: (params) => dispatch(userReducer.confirmOrder(params)),
     // setUserPhone: (phone) => dispatch({ type: USER_SET_PHONE, phone }),
     // setUserName: (name) => dispatch({ type: USER_SET_NAME, name }),
   }),

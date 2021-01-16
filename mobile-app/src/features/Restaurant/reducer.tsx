@@ -48,6 +48,7 @@ restaurantReducer.getRestaurants = (params) => (dispatch, getState) => {
         callback();
       })
       .catch((err) => {
+        console.log('get rest error', err);
         Alert.alert('Возникла внутренняя ошибка сервера');
         callback();
       });
@@ -70,6 +71,7 @@ restaurantReducer.getMenu = (params) => (dispatch, getState) => {
       callback();
     })
     .catch((err) => {
+      console.log('get menu error', err);
       Alert.alert('Возникла внутренняя ошибка сервера');
       callback();
     });

@@ -112,10 +112,13 @@ export const OrderList = ({
   const minPrice = parseInt(restaurant.min_price) || 0;
   const canOrder = totalPrice >= minPrice;
   // console.log('canOrder', totalPrice, minPrice, canOrder);
+  console.log('orderList', orderList);
   return (
     <View style={{ flex: 1, paddingTop: 16 }}>
       <FlatList
-        data={orderList.sort((a, b) => (a.id > b.id ? -1 : 1))}
+        data={orderList
+          .filter((el) => Boolean(el))
+          .sort((a, b) => (a.id > b.id ? -1 : 1))}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={{ paddingHorizontal: 16 }}
         renderItem={({ item }) => {

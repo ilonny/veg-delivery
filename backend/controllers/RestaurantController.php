@@ -507,6 +507,13 @@ class RestaurantController extends Controller
     }
 
     public function actionGetOrderList($restaurant_id) {
-        return $this->asJson(Ord::find()->andWhere(['restaurant_id' => $restaurant_id])->orderBy('id DESC')->all());
+        return $this->asJson(Ord::find()
+            ->andWhere([
+                'restaurant_id' => $restaurant_id,
+                'payment_status' => 'success',
+            ])
+            ->orderBy('id DESC')
+            ->all()
+        );
     }
 }

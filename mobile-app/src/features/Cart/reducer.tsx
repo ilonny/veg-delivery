@@ -122,6 +122,7 @@ cartReducer.addToCart = (item) => (dispatch, getState) => {
             Toast.show({
               text1: 'Добавлено в корзину',
               position: 'bottom',
+              bottomOffset: 100,
             });
           },
         },
@@ -132,6 +133,7 @@ cartReducer.addToCart = (item) => (dispatch, getState) => {
     Toast.show({
       text1: 'Добавлено в корзину',
       position: 'bottom',
+      bottomOffset: 100,
     });
   }
 };

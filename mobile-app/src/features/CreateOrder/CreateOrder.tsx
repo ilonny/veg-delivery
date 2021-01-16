@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Modal from 'react-native-modal';
+import { WebView } from 'react-native-webview';
 import {
   View,
   Text,
@@ -31,6 +33,7 @@ type TProps = {
   addressData: Object;
   changeUserInfo: Function;
   createOrder: Function;
+  confirmOrder: Function;
   userInfo: Object;
 };
 export const CreateOrder = ({
@@ -43,10 +46,13 @@ export const CreateOrder = ({
   changeUserInfo,
   createOrder,
   userInfo,
+  confirmOrder,
 }: any) => {
   const [loading, setLoading] = useState(false);
+  const [paymentLink, setPaymentLink] = useState<string>('');
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [currentOrder, setCurrentOrder] = useState(false);
   const navigation = useNavigation();
-
   let restaurant = {};
   if (restaurantList && !!restaurantList.length && !!cartList[0]) {
     try {
@@ -138,7 +144,14 @@ export const CreateOrder = ({
                 createOrder({
                   totalPrice,
                   deliveryPrice,
-                  callback: () => setLoading(false),
+                  callback: (data) => {
+                    setLoading(false);
+                    if (data && data?.paymentLink) {
+                      setPaymentLink(data?.paymentLink);
+                      setCurrentOrder(data?.order);
+                      setModalIsVisible(true);
+                    }
+                  },
                   navigation,
                 });
                 // navigation.navigate('CreateOrderScreen');
@@ -147,6 +160,40 @@ export const CreateOrder = ({
           />
         )}
       </View>
+      <Modal
+        isVisible={modalIsVisible}
+        style={{
+          margin: 0,
+          paddingTop: 100,
+        }}
+        swipeDirection={['down']}
+        animationIn="slideInUp"
+        animationOut="slideOutDown"
+        animationInTiming={250}
+        animationOutTiming={250}
+        onSwipeComplete={(arg) => setModalIsVisible(false)}
+        propagateSwipe={true}
+        // scrollHorizontal={true}
+      >
+        <WebView
+          style={{ flex: 1 }}
+          source={{ uri: paymentLink }}
+          onMessage={(event) => {
+            const { data } = event.nativeEvent;
+            console.log('webview recieved', data);
+            if (data == 'success') {
+              setModalIsVisible(false);
+              confirmOrder({ navigation, orderData: currentOrder });
+            }
+            if (data == 'error') {
+              setModalIsVisible(false);
+              setTimeout(() => {
+                Alert.alert('Оплата не удалась');
+              }, 300);
+            }
+          }}
+        />
+      </Modal>
     </SafeAreaView>
   );
 };

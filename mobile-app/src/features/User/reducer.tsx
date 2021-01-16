@@ -103,21 +103,56 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
     .then((res) => res.json())
     .then((res) => {
       console.log('create order res', res);
-      Alert.alert(res.message);
+      let orderData = {
+        ...res.orderInfo,
+        restaurantInfo: res.restInfo,
+        cartList,
+        date_create: res.date_create,
+      };
+      // Alert.alert(res.message);
       if (res.status == 200) {
-        dispatch({
-          type: ADD_ORDER,
-          order: {
-            ...res.orderInfo,
-            restaurantInfo: res.restInfo,
-            cartList,
-            date_create: res.date_create,
-          },
-        });
-        setTimeout(() => {
-          dispatch({ type: CLEAR_CART });
-          navigation.navigate('Рестораны');
-        }, 200);
+        if (res?.orderInfo?.id) {
+          fetch(
+            `${API_URL}/payment/init-pay?order_id=${res?.orderInfo?.id}`,
+            {},
+          )
+            .then((res) => res.json())
+            .then((res) => {
+              if (res.Success) {
+                console.log('create payment link res', res);
+                callback({
+                  paymentLink: res?.PaymentURL,
+                  order: orderData,
+                });
+              } else {
+                console.log('res != success', res);
+                Alert.alert(
+                  'Возникла ошибка при создании оплаты. Попробуйте позже.',
+                );
+              }
+            })
+            .catch((err) => {
+              console.log('create payment link error', err);
+              Alert.alert(
+                'Возникла ошибка при создании оплаты. Попробуйте позже.',
+              );
+            });
+        } else {
+          Alert.alert('Возникла ошибка при создании заказа. Попробуйте позже.');
+        }
+        // dispatch({
+        //   type: ADD_ORDER,
+        //   order: {
+        //     ...res.orderInfo,
+        //     restaurantInfo: res.restInfo,
+        //     cartList,
+        //     date_create: res.date_create,
+        //   },
+        // });
+        // setTimeout(() => {
+        //   dispatch({ type: CLEAR_CART });
+        //   navigation.navigate('Рестораны');
+        // }, 200);
       }
     })
     .catch((error) => {
@@ -136,9 +171,28 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
   // };
   // request.open('GET', url);
   // request.send();
+  // setTimeout(() => {
+  //   callback();
+  // }, 2500);
+};
+
+userReducer.confirmOrder = (params) => (dispatch, getState) => {
+  const { totalPrice, deliveryPrice, callback, navigation, orderData } = params;
+  const { userInfo, addressData } = getState().userReducer;
+  const { cartList } = getState().cartReducer;
+  const { restaurant_id } = cartList[0];
+
+  dispatch({
+    type: ADD_ORDER,
+    order: orderData,
+  });
   setTimeout(() => {
-    callback();
-  }, 2500);
+    dispatch({ type: CLEAR_CART });
+    navigation.navigate('Рестораны');
+    setTimeout(() => {
+      Alert.alert('Спасибо, ваш заказ успешно оплачен.');
+    }, 500);
+  }, 200);
 };
 
 userReducer.changeAddress = (params) => (dispatch, getState) => {
