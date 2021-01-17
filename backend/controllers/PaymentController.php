@@ -88,6 +88,7 @@ class PaymentController extends Controller
             '1609226746243DEMO',  //Ваш Terminal_Key
             'ka2tkc1400rxwcog'   //Ваш Secret_Key
         );
+        
         $params = [
             'OrderId' => intval($order_id),
             'Amount'  => (intval($order->total_price) + intval($order->delivery_price)) * 100,
@@ -108,6 +109,8 @@ class PaymentController extends Controller
         ];
         // if ($enabledTaxation) {
         // }
+        $token = hash('sha256', $params['Amount'].$params['OrderId'].$api->secretKey.$api->terminalKey);
+        $params['Token'] = $token;
         $api->init($params);
         // echo '<pre>';
             // var_dump($params);
@@ -153,7 +156,32 @@ class PaymentController extends Controller
         ';
     }
 
+    public function actionCancel($order_id) {
+        $api = new TinkoffMerchantAPI(
+            '1609226746243DEMO',  //Ваш Terminal_Key
+            'ka2tkc1400rxwcog'   //Ваш Secret_Key
+        );
+        $order = Ord::findOne($order_id);
+        $paymentData = json_decode($order->other, true);
+        $PaymentId = $paymentData['PaymentId'];
+        $token = hash('sha256', $paymentData['Amount'].$paymentData['OrderId'].$api->secretKey.$api->terminalKey);
+        $params = [
+            'PaymentId' => $PaymentId,
+            'Amount' => intval($paymentData['Amount']),
+            // 'Token' => $token
+        ];
+        $api->cancelPayment($params);
+        $res = html_entity_decode($api->response);
+        $res_arr = json_decode($res, true);
+        if ($res_arr['Success']) {
+            $order->payment_status = 'refunded';
+            $order->other = $res;
+            $order->update();
+        }
+        return ($res);
+        // var_dump($api->response);
 
+    }
     public function actionCreate() {
         // var_dump('$_REQUEST');die();
         // var_dump($_REQUEST);die();

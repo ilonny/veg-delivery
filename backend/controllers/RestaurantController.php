@@ -510,7 +510,11 @@ class RestaurantController extends Controller
         return $this->asJson(Ord::find()
             ->andWhere([
                 'restaurant_id' => $restaurant_id,
-                'payment_status' => 'success',
+            ])
+            ->andWhere([
+                'or',
+                ['payment_status' => 'success'],
+                ['payment_status' => 'refunded'],
             ])
             ->orderBy('id DESC')
             ->all()

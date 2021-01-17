@@ -103,7 +103,36 @@ export const RestaurantOrder = (props) => {
       totalPrice: row.total_price,
       deliveryPrice: row.delivery_price,
       date: row.date_create,
-      payment_status: row.payment_status,
+      payment_status: row.payment_status == "success" ? "Оплачен" : "Отменен",
+      cancel_payment: (
+        <Button
+          onClick={() => {
+            if (
+              window.confirm(
+                `Вы действительно хотите отменить оплату закзаа ${row.id}?`
+              )
+            ) {
+              fetch(`${API_HOST}/payment/cancel?order_id=${row.id}`)
+                .then((res) => res.json())
+                .then((res) => {
+                  console.log("cancel payment response", res);
+                  if (res.Success) {
+                    alert("Оплата отменена.");
+                  } else {
+                    alert(
+                      "Не удалось отменить оплату. " +
+                        res.Message +
+                        " " +
+                        res.Details
+                    );
+                  }
+                });
+            }
+          }}
+        >
+          Отменить оплату
+        </Button>
+      ),
     };
   });
 
@@ -115,6 +144,11 @@ export const RestaurantOrder = (props) => {
   }, []);
 
   const columns = [
+    {
+      title: "Отменить оплату",
+      dataIndex: "cancel_payment",
+      key: "cancel_payment",
+    },
     {
       title: "Номер",
       dataIndex: "id",

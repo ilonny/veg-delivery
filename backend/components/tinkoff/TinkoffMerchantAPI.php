@@ -99,6 +99,11 @@ class TinkoffMerchantAPI
         return $this->buildQuery('RemoveCard', $args);
     }
 
+    public function cancelPayment($args)
+    {
+        return $this->buildQuery('Cancel', $args);
+    }
+
     /**
      * Builds a query string and call sendRequest method.
      * Could be used to custom API call method.
