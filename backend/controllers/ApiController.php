@@ -53,4 +53,10 @@ class ApiController extends Controller
         ]);
     }
 
+    public function actionAbout()
+    {
+        return '
+        <h1>Пример пользовательского соглашения</h1>
+        ';
+    }
 }
