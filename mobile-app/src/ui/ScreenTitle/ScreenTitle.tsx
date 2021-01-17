@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Text, ViewStyle, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  ViewStyle,
+  TouchableOpacity,
+  TextStyle,
+} from 'react-native';
 import { useNavigation, CommonActions } from '@react-navigation/native';
 import { ImageView } from '../../features';
 import { styles } from './styles';
@@ -8,6 +14,7 @@ type TProps = {
   styleProp?: ViewStyle;
   backIcon?: boolean;
   backIconAction?: Function;
+  textStyle?: TextStyle;
 };
 
 export const ScreenTitle = ({
@@ -15,6 +22,7 @@ export const ScreenTitle = ({
   styleProp = {},
   backIcon,
   backIconAction,
+  textStyle,
 }: TProps) => {
   const navigation = useNavigation();
   return (
@@ -33,7 +41,7 @@ export const ScreenTitle = ({
           <ImageView imageName="back_icon" />
         </TouchableOpacity>
       )}
-      <Text style={styles.title}>{text}</Text>
+      <Text style={[styles.title, textStyle]}>{text}</Text>
     </View>
   );
 };

@@ -14,5 +14,6 @@ export const styles: Styles = {
   wrapper: {
     paddingHorizontal: 16,
     paddingVertical: 5,
+    paddingRight: 32,
   },
 };

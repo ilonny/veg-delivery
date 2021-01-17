@@ -20,7 +20,10 @@ export const CabinetScreen = ({ addressData, route }: any) => {
       <ScrollView style={{ flex: 1, padding: 16 }}>
         <CabinetLink screenName="UserSettingsScreen" title="Мои данные" />
         <CabinetLink screenName="OrderListScreen" title="Мои заказы" />
-        <CabinetLink screenName="AboutScreen" title="О приложении" />
+        <CabinetLink
+          screenName="AboutScreen"
+          title="Пользовательское соглашение и обработка данных"
+        />
       </ScrollView>
     </SafeAreaView>
   );
