@@ -19,6 +19,7 @@ use Yii;
  * @property string|null $restaurant_info
  * @property string|null $min_price
  * @property string|null $delivery_time
+ * @property int|null $user_id
  */
 class Restaurant extends \yii\db\ActiveRecord
 {
@@ -39,6 +40,7 @@ class Restaurant extends \yii\db\ActiveRecord
             [['name', 'address_json', 'image', 'delivery_radius'], 'required'],
             [['name', 'description', 'address_json', 'image', 'delivery_radius', 'active', 'restaurant_info', 'min_price', 'delivery_time'], 'string'],
             [['time_start', 'time_end'], 'safe'],
+            [['user_id'], 'integer'],
         ];
     }
 
@@ -60,6 +62,7 @@ class Restaurant extends \yii\db\ActiveRecord
             'restaurant_info' => 'Restaurant Info',
             'min_price' => 'Min Price',
             'delivery_time' => 'Delivery Time',
+            'user_id' => 'User ID',
         ];
     }
 }

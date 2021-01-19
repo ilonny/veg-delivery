@@ -1,5 +1,6 @@
 import { HomePage } from "./HomePage";
 import { AddRest } from "./AddRest";
+import { AddUser } from "./AddUser";
 import { ListRest } from "./ListRest";
 import { RestaurantPage } from "./RestaurantPage";
 import { RestaurantMenu } from "./RestaurantMenu";
@@ -16,6 +17,10 @@ export const routes = () => [
   {
     path: "/add-rest",
     component: AddRest,
+  },
+  {
+    path: "/add-user",
+    component: AddUser,
   },
   {
     path: "/list-rest",

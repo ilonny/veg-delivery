@@ -88,8 +88,11 @@ class RestaurantController extends Controller
 
     public function actionList($token = '') {
         $res = [];
-        if ($token && $token == 'ZWmGuABp3N6') {
+        // var_dump(Yii::$app->user->id);
+        if ($token && $token == 'ZWmGuABp3N6' || (Yii::$app->user->id === 1)) {
             $res = Restaurant::find()->all();
+        } else {
+            $res = Restaurant::find()-andWhere(['user_id' => Yii::$app->user->id])>all();
         }
         return $this->asJson($res);
     }
