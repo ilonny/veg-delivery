@@ -102,6 +102,18 @@ export const AddUser = () => {
         >
           <Input />
         </Form.Item>
+        <Form.Item
+          label="email"
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Обязательное поле",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
         <Button type="primary" htmlType="submit">
           Сохранить
         </Button>

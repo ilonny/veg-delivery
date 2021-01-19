@@ -1,5 +1,6 @@
 <?php
 namespace backend\controllers;
+error_reporting(E_ERROR | E_PARSE);
 
 use Yii;
 use yii\web\Controller;
@@ -21,6 +22,8 @@ use yii\web\Response;
 use DateTime;
 use yii\filters\Cors;
 use yii\filters\auth\HttpBasicAuth;
+use common\models\User;
+
 
 /**
  * Category controller
@@ -60,12 +63,17 @@ class RestaurantController extends Controller
     public function actionAdd()
     {
         if (Yii::$app->request->isPost) {
+            $user_id = Yii::$app->user->id;
+            if (!$user_id) {
+                $user_id = intval($_POST['user_id']);
+            }
             $model = new Restaurant;
             $model->name = $_POST['name'];
             $model->description = $_POST['description'];
             $model->address_json = $_POST['address'];
             $model->delivery_radius = $_POST['delivery_radius'];
             $model->active = $_POST['active'] === 'true' ? '1' : '0';
+            $model->user_id = $user_id;
             $uploadFormModel = new UploadForm();
             $uploadDir = $uploadFormModel->getUploadName($model->name, $_FILES['file']['name']);
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir)) {
@@ -86,13 +94,17 @@ class RestaurantController extends Controller
         }
     }
 
-    public function actionList($token = '') {
+    public function actionList($token = '', $user = '') {
         $res = [];
         // var_dump(Yii::$app->user->id);
-        if ($token && $token == 'ZWmGuABp3N6' || (Yii::$app->user->id === 1)) {
+        $user_id = Yii::$app->user->id;
+        if (!$user_id) {
+            $user_id = intval($user);
+        }
+        if ($token && $token == 'ZWmGuABp3N6' || ($user_id === 1)) {
             $res = Restaurant::find()->all();
         } else {
-            $res = Restaurant::find()-andWhere(['user_id' => Yii::$app->user->id])>all();
+            $res = Restaurant::find()->andWhere(['user_id' => $user_id])->all();
         }
         return $this->asJson($res);
     }
@@ -566,5 +578,23 @@ class RestaurantController extends Controller
             ->orderBy('id DESC')
             ->all()
         );
+    }
+
+    public function actionUserAdd() {
+        $user = new User();
+        $user->username = $_POST['login'];
+        $user->role = 'user';
+        $user->email = $_POST['email'] || '';
+        $user->setPassword($_POST['password']);
+        $user->generateAuthKey();
+        $user->generateEmailVerificationToken();
+        if ($user->save()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
     }
 }

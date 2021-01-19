@@ -13,7 +13,7 @@
         light_gray: "#F2F2F2",
       };
     },
-    177: function (e, t, a) {
+    178: function (e, t, a) {
       "use strict";
       (function (e) {
         a.d(t, "a", function () {
@@ -22,15 +22,15 @@
         var n = a(0),
           l = a.n(n),
           r = a(92),
-          c = a(208),
-          u = a(178),
-          i = a(210),
-          o = a(206),
-          m = (a(363), a(56)),
+          c = a(209),
+          u = a(179),
+          i = a(211),
+          o = a(207),
+          m = (a(363), a(49)),
           s = a(84),
-          d = a(148),
-          E = a(217),
-          p = a(53),
+          d = a(149),
+          p = a(218),
+          E = a(54),
           f = a(30),
           h = a(5),
           b = m.a.SubMenu,
@@ -49,7 +49,8 @@
               };
             }
           )(function (e) {
-            var t = e.user;
+            var t = e.user,
+              a = e.setUser;
             if (!t) {
               return l.a.createElement(
                 l.a.Fragment,
@@ -99,7 +100,7 @@
                           },
                         ],
                       },
-                      l.a.createElement(E.a, { type: "text" })
+                      l.a.createElement(p.a, { type: "text" })
                     ),
                     l.a.createElement(
                       d.a.Item,
@@ -114,10 +115,10 @@
                           },
                         ],
                       },
-                      l.a.createElement(E.a, { type: "password" })
+                      l.a.createElement(p.a, { type: "password" })
                     ),
                     l.a.createElement(
-                      p.a,
+                      E.a,
                       { type: "primary", htmlType: "submit" },
                       "\u0412\u043e\u0439\u0442\u0438"
                     )
@@ -160,20 +161,54 @@
                           { key: "1" },
                           l.a.createElement(
                             f.a,
-                            { to: "/list-rest" },
+                            {
+                              to: {
+                                pathname: "/list-rest",
+                                state: { user: t },
+                              },
+                            },
                             "\u0421\u043f\u0438\u0441\u043e\u043a \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u043e\u0432"
                           )
                         ),
-                        "admin" === t.role &&
+                        l.a.createElement(
+                          m.a.Item,
+                          { key: "2" },
                           l.a.createElement(
-                            m.a.Item,
-                            { key: "2" },
-                            l.a.createElement(
-                              f.a,
-                              { to: "/add-rest" },
-                              "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d"
-                            )
+                            f.a,
+                            {
+                              to: { pathname: "/add-rest", state: { user: t } },
+                            },
+                            "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d 123"
                           )
+                        )
+                      ),
+                      "admin" === t.role &&
+                        l.a.createElement(
+                          m.a.Item,
+                          { key: "3" },
+                          l.a.createElement(
+                            f.a,
+                            { to: "/add-user" },
+                            "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f"
+                          )
+                        ),
+                      l.a.createElement(
+                        m.a.Item,
+                        { key: "4" },
+                        l.a.createElement(
+                          "button",
+                          {
+                            style: { width: "100%", height: "100%" },
+                            onClick: function () {
+                              console.log(""),
+                                a(void 0),
+                                setTimeout(function () {
+                                  window.location.href = "/";
+                                }, 1e3);
+                            },
+                          },
+                          "\u0412\u044b\u0445\u043e\u0434"
+                        )
                       )
                     )
                   ),
@@ -193,15 +228,15 @@
               l.a.createElement(j, null)
             );
           });
-      }.call(this, a(150)(e)));
+      }.call(this, a(152)(e)));
     },
-    206: function (e, t, a) {
+    207: function (e, t, a) {
       "use strict";
       a.d(t, "a", function () {
         return u;
       });
-      var n = a(207),
-        l = a(140),
+      var n = a(208),
+        l = a(141),
         r = a(116);
       function c() {
         var e = Object(n.a)([
@@ -217,14 +252,14 @@
       }
       var u = Object(l.createGlobalStyle)(c(), r.a.black);
     },
-    210: function (e, t, a) {
+    211: function (e, t, a) {
       "use strict";
       a.d(t, "a", function () {
-        return q;
+        return A;
       });
       var n = a(0),
         l = a.n(n),
-        r = a(205),
+        r = a(206),
         c = function () {
           return l.a.createElement(
             l.a.Fragment,
@@ -236,19 +271,27 @@
             )
           );
         },
-        u = a(22),
-        i = a(148),
-        o = a(217),
+        u = a(17),
+        i = a(149),
+        o = a(218),
         m = a(110),
-        s = a(53),
+        s = a(54),
         d = a(369),
-        E = (a(151), a(5)),
-        p = { labelCol: { span: 4 }, wrapperCol: { span: 16 } },
-        f = function () {
-          var e = Object(n.useState)(),
-            t = Object(u.a)(e, 2),
-            a = t[0],
-            r = t[1];
+        p = (a(135), a(5)),
+        E = { labelCol: { span: 4 }, wrapperCol: { span: 16 } },
+        f = function (e) {
+          var t,
+            a = (null === e ||
+            void 0 === e ||
+            null === (t = e.location) ||
+            void 0 === t
+              ? void 0
+              : t.state
+            ).user,
+            r = Object(n.useState)(),
+            c = Object(u.a)(r, 2),
+            f = c[0],
+            h = c[1];
           return l.a.createElement(
             l.a.Fragment,
             null,
@@ -258,7 +301,7 @@
                 {
                   name: "basic",
                   onFinish: function (e) {
-                    console.log("Success:", { values: e, value: a });
+                    console.log("Success:", { values: e, value: f });
                     var t = document.querySelector('input[type="file"]'),
                       n = new FormData();
                     Object.keys(e).forEach(function (t) {
@@ -269,8 +312,12 @@
                         );
                     }),
                       n.append("file", t.files[0]),
+                      n.append(
+                        "user_id",
+                        null === a || void 0 === a ? void 0 : a.id
+                      ),
                       n.append("user", "hubot"),
-                      fetch(E.a + "/restaurant/add", {
+                      fetch(p.a + "/restaurant/add", {
                         method: "POST",
                         body: n,
                         headers: {},
@@ -289,7 +336,7 @@
                   style: { minHeight: "100vh" },
                   initialValues: { active: !0 },
                 },
-                p
+                E
               ),
               l.a.createElement(
                 i.a.Item,
@@ -328,8 +375,8 @@
                 { label: "\u0410\u0434\u0440\u0435\u0441", name: "address" },
                 l.a.createElement(d.a, {
                   token: "eadbc452286d23c7163b38989884d5ae40d08ade",
-                  value: a,
-                  onChange: r,
+                  value: f,
+                  onChange: h,
                 })
               ),
               l.a.createElement(
@@ -358,25 +405,149 @@
             )
           );
         },
-        h = a(367),
-        b = a(97),
-        g = a(57),
-        v = a(30),
-        y = h.a.Meta,
-        j = function () {
-          var e = Object(n.useState)([]),
+        h = { labelCol: { span: 4 }, wrapperCol: { span: 16 } },
+        b = function () {
+          var e = Object(n.useState)(),
             t = Object(u.a)(e, 2),
-            a = t[0],
-            r = t[1];
+            a = t[0];
+          t[1];
+          return l.a.createElement(
+            l.a.Fragment,
+            null,
+            l.a.createElement(
+              i.a,
+              Object.assign(
+                {
+                  name: "basic",
+                  onFinish: function (e) {
+                    console.log("Success:", { values: e, value: a });
+                    var t = new FormData();
+                    Object.keys(e).forEach(function (a) {
+                      "dragger" !== a &&
+                        t.append(
+                          a,
+                          "address" === a ? JSON.stringify(e[a]) : e[a]
+                        );
+                    }),
+                      fetch(p.a + "/restaurant/user-add", {
+                        method: "POST",
+                        body: t,
+                        headers: {},
+                      })
+                        .then(function (e) {
+                          return e.json();
+                        })
+                        .then(function (e) {
+                          alert(e.message),
+                            200 === e.status
+                              ? (alert(
+                                  "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d"
+                                ),
+                                (document.location.href = "/"))
+                              : alert(
+                                  "\u041e\u0448\u0438\u0431\u043a\u0430 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f"
+                                );
+                        })
+                        .catch(function (e) {
+                          alert(
+                            "\u041e\u0448\u0438\u0431\u043a\u0430 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f"
+                          );
+                        });
+                  },
+                  onFinishFailed: function (e) {
+                    console.log("Failed:", e);
+                  },
+                  style: { minHeight: "100vh" },
+                  initialValues: { active: !0 },
+                },
+                h
+              ),
+              l.a.createElement(
+                i.a.Item,
+                {
+                  label: "\u041b\u043e\u0433\u0438\u043d",
+                  name: "login",
+                  rules: [
+                    {
+                      required: !0,
+                      message:
+                        "\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u0435",
+                    },
+                  ],
+                },
+                l.a.createElement(o.a, null)
+              ),
+              l.a.createElement(
+                i.a.Item,
+                {
+                  label: "\u041f\u0430\u0440\u043e\u043b\u044c",
+                  name: "password",
+                  rules: [
+                    {
+                      required: !0,
+                      message:
+                        "\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u0435",
+                    },
+                  ],
+                },
+                l.a.createElement(o.a, null)
+              ),
+              l.a.createElement(
+                i.a.Item,
+                {
+                  label: "email",
+                  name: "email",
+                  rules: [
+                    {
+                      required: !0,
+                      message:
+                        "\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u0435",
+                    },
+                  ],
+                },
+                l.a.createElement(o.a, null)
+              ),
+              l.a.createElement(
+                s.a,
+                { type: "primary", htmlType: "submit" },
+                "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c"
+              )
+            )
+          );
+        },
+        g = a(367),
+        v = a(97),
+        y = a(57),
+        j = a(30),
+        O = g.a.Meta,
+        _ = function (e) {
+          var t,
+            a = Object(n.useState)([]),
+            r = Object(u.a)(a, 2),
+            c = r[0],
+            i = r[1];
+          console.log("ListRest props", e);
+          var o = (null === e ||
+          void 0 === e ||
+          null === (t = e.location) ||
+          void 0 === t
+            ? void 0
+            : t.state
+          ).user;
           return (
             Object(n.useEffect)(function () {
               try {
-                fetch(E.a + "/restaurant/list?token=ZWmGuABp3N6")
+                fetch(
+                  p.a +
+                    "/restaurant/list?token="
+                      .concat(1 === o.id ? "ZWmGuABp3N6" : "", "&user=")
+                      .concat(o.id)
+                )
                   .then(function (e) {
                     return e.json();
                   })
                   .then(function (e) {
-                    return r(e);
+                    return i(e);
                   });
               } catch (e) {
                 console.log(e);
@@ -385,11 +556,11 @@
             l.a.createElement(
               l.a.Fragment,
               null,
-              a.length
+              c.length
                 ? l.a.createElement(
-                    b.a,
+                    v.a,
                     { gutter: [16, 16] },
-                    a.map(function (e) {
+                    c.map(function (e) {
                       var t;
                       try {
                         t = JSON.parse(e.address_json).value;
@@ -398,25 +569,25 @@
                           "\u041d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e";
                       }
                       return l.a.createElement(
-                        v.a,
+                        j.a,
                         {
                           to: { pathname: "/restaurant", state: { id: e.id } },
                           key: e.id,
                         },
                         l.a.createElement(
-                          g.a,
+                          y.a,
                           { className: "gutter-row", span: 6 },
                           l.a.createElement(
-                            h.a,
+                            g.a,
                             {
                               hoverable: !0,
                               style: { width: 240 },
                               cover: l.a.createElement("img", {
                                 alt: "",
-                                src: E.a + "/" + e.image,
+                                src: p.a + "/" + e.image,
                               }),
                             },
-                            l.a.createElement(y, {
+                            l.a.createElement(O, {
                               title: e.name,
                               description: e.description + "\n" + t,
                             })
@@ -425,12 +596,12 @@
                       );
                     })
                   )
-                : "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430"
+                : "\u0420\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u044b \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u044e\u0442"
             )
           );
         },
-        O = h.a.Meta;
-      function _(e, t) {
+        k = g.a.Meta;
+      function w(e, t) {
         var a = !1;
         return function () {
           a ||
@@ -441,69 +612,69 @@
             }, t));
         };
       }
-      var k = function (e) {
+      var C = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
             r = a[0],
             c = a[1],
             i = e.location.state.id,
             m = Object(n.useState)(!1),
-            p = Object(u.a)(m, 2),
-            f = p[0],
-            y = p[1],
-            j = Object(n.useState)(!1),
-            k = Object(u.a)(j, 2),
-            C = k[0],
-            w = k[1],
+            E = Object(u.a)(m, 2),
+            f = E[0],
+            h = E[1],
+            b = Object(n.useState)(!1),
+            O = Object(u.a)(b, 2),
+            _ = O[0],
+            C = O[1],
             S = Object(n.useState)(!1),
             F = Object(u.a)(S, 2),
             I = F[0],
             x = F[1],
-            P = Object(n.useState)(!1),
-            T = Object(u.a)(P, 2),
-            D = T[0],
-            N = T[1],
-            J = Object(n.useState)(!1),
-            q = Object(u.a)(J, 2),
-            M = q[0],
-            A = q[1],
+            T = Object(n.useState)(!1),
+            P = Object(u.a)(T, 2),
+            D = P[0],
+            N = P[1],
+            q = Object(n.useState)(!1),
+            J = Object(u.a)(q, 2),
+            M = J[0],
+            A = J[1],
             L = Object(n.useState)(!1),
             U = Object(u.a)(L, 2),
-            H = U[0],
-            K = U[1];
+            R = U[0],
+            H = U[1];
           Object(n.useEffect)(
             function () {
               z();
             },
             [i]
           );
-          var R,
+          var K,
             z = function () {
               try {
-                fetch(E.a + "/restaurant/get-data?id=" + i)
+                fetch(p.a + "/restaurant/get-data?id=" + i)
                   .then(function (e) {
                     return e.json();
                   })
                   .then(function (e) {
                     c(e),
-                      y(e.time_start),
-                      w(e.time_end),
+                      h(e.time_start),
+                      C(e.time_end),
                       x(e.restaurant_info),
                       N(e.delivery_time),
                       A(e.name);
                     var t = JSON.parse(
                       null === e || void 0 === e ? void 0 : e.address_json
                     );
-                    console.log("addressJson", t), K(t);
+                    console.log("addressJson", t), H(t);
                   });
               } catch (e) {
                 console.log(e);
               }
             };
           try {
-            R = JSON.parse(r.address_json).value;
+            K = JSON.parse(r.address_json).value;
           } catch (B) {
-            R =
+            K =
               "\u041d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e";
           }
           if ((console.log("rest data", r), !r)) return null;
@@ -511,26 +682,26 @@
             l.a.Fragment,
             null,
             l.a.createElement(
-              b.a,
+              v.a,
               { gutter: [16, 16] },
               l.a.createElement(
-                g.a,
+                y.a,
                 { className: "gutter-row", span: 10 },
                 l.a.createElement(
-                  h.a,
+                  g.a,
                   {
                     hoverable: !0,
                     style: { width: "100%" },
                     cover: l.a.createElement("img", {
                       alt: "",
-                      src: E.a + "/" + r.image,
+                      src: p.a + "/" + r.image,
                     }),
                   },
-                  l.a.createElement(O, {
+                  l.a.createElement(k, {
                     title: r.name,
                     description: r.description,
                   }),
-                  l.a.createElement("p", null, R),
+                  l.a.createElement("p", null, K),
                   l.a.createElement(
                     "p",
                     null,
@@ -541,10 +712,10 @@
                 )
               ),
               l.a.createElement(
-                g.a,
+                y.a,
                 { className: "gutter-row", span: 10 },
                 l.a.createElement(
-                  v.a,
+                  j.a,
                   { to: { pathname: "restaurant-order", state: { id: i } } },
                   l.a.createElement(
                     s.a,
@@ -555,14 +726,14 @@
                 l.a.createElement("br", null),
                 l.a.createElement("br", null),
                 l.a.createElement(
-                  v.a,
+                  j.a,
                   { to: { pathname: "restaurant-menu", state: { id: i } } },
                   l.a.createElement(s.a, null, "\u041c\u0435\u043d\u044e")
                 ),
                 l.a.createElement("br", null),
                 l.a.createElement("br", null),
                 l.a.createElement(
-                  v.a,
+                  j.a,
                   { to: { pathname: "restaurant-modif", state: { id: i } } },
                   l.a.createElement(
                     s.a,
@@ -593,7 +764,7 @@
                   {
                     onClick: function () {
                       fetch(
-                        E.a +
+                        p.a +
                           "/restaurant/edit-rest-name?id="
                             .concat(r.id, "&value=")
                             .concat(M)
@@ -624,9 +795,9 @@
                   ),
                   l.a.createElement(d.a, {
                     token: "eadbc452286d23c7163b38989884d5ae40d08ade",
-                    value: H,
-                    defaultQuery: H,
-                    onChange: K,
+                    value: R,
+                    defaultQuery: R,
+                    onChange: H,
                   }),
                   l.a.createElement("br", null),
                   l.a.createElement(
@@ -634,10 +805,10 @@
                     {
                       onClick: function () {
                         fetch(
-                          E.a +
+                          p.a +
                             "/restaurant/edit-rest-address?id="
                               .concat(r.id, "&value=")
-                              .concat(encodeURIComponent(JSON.stringify(H)))
+                              .concat(encodeURIComponent(JSON.stringify(R)))
                         )
                           .then(function (e) {
                             return e.json();
@@ -669,7 +840,7 @@
                     value: r.delivery_radius,
                     onChange: function (e) {
                       return fetch(
-                        E.a +
+                        p.a +
                           "/restaurant/edit-rest-radius?id="
                             .concat(r.id, "&value=")
                             .concat(e.target.value)
@@ -696,7 +867,7 @@
                         t = new FormData();
                       t.append("file", e.files[0]),
                         fetch(
-                          E.a + "/restaurant/edit-rest-image?id=".concat(r.id),
+                          p.a + "/restaurant/edit-rest-image?id=".concat(r.id),
                           { method: "POST", body: t }
                         )
                           .then(function (e) {
@@ -729,9 +900,9 @@
                   ),
                   l.a.createElement(o.a, {
                     value: r.description,
-                    onChange: _(function (e) {
+                    onChange: w(function (e) {
                       fetch(
-                        E.a +
+                        p.a +
                           "/restaurant/edit-rest-desc?id="
                             .concat(r.id, "&value=")
                             .concat(e.target.value)
@@ -744,7 +915,7 @@
                 l.a.createElement("br", null),
                 l.a.createElement("br", null),
                 l.a.createElement(
-                  v.a,
+                  j.a,
                   { to: { pathname: "restaurant-delivery", state: { id: i } } },
                   l.a.createElement(
                     s.a,
@@ -765,7 +936,7 @@
                   l.a.createElement(o.a, {
                     value: f,
                     onChange: function (e) {
-                      return y(e.target.value);
+                      return h(e.target.value);
                     },
                   })
                 ),
@@ -778,9 +949,9 @@
                     "\u0412\u0440\u0435\u043c\u044f \u0437\u0430\u043a\u0440\u044b\u0442\u0438\u044f (\u0447\u0447:\u043c\u043c)"
                   ),
                   l.a.createElement(o.a, {
-                    value: C,
+                    value: _,
                     onChange: function (e) {
-                      return w(e.target.value);
+                      return C(e.target.value);
                     },
                   })
                 ),
@@ -790,11 +961,11 @@
                   {
                     onClick: function () {
                       fetch(
-                        E.a +
+                        p.a +
                           "/restaurant/edit-rest-time?id="
                             .concat(r.id, "&start=")
                             .concat(f, "&end=")
-                            .concat(C)
+                            .concat(_)
                       )
                         .then(function (e) {
                           return e.json();
@@ -833,7 +1004,7 @@
                   {
                     onClick: function () {
                       fetch(
-                        E.a +
+                        p.a +
                           "/restaurant/edit-rest-deliverytime?id="
                             .concat(r.id, "&time=")
                             .concat(D)
@@ -866,7 +1037,7 @@
                     value: r.min_price,
                     onChange: function (e) {
                       return fetch(
-                        E.a +
+                        p.a +
                           "/restaurant/edit-rest-min-price?id="
                             .concat(r.id, "&value=")
                             .concat(e.target.value)
@@ -897,7 +1068,7 @@
                     {
                       onClick: function () {
                         fetch(
-                          E.a +
+                          p.a +
                             "/restaurant/edit-rest-info?id="
                               .concat(r.id, "&value=")
                               .concat(I)
@@ -916,7 +1087,7 @@
                   {
                     onClick: function () {
                       fetch(
-                        E.a +
+                        p.a +
                           "/restaurant/edit-rest-active?id="
                             .concat(r.id, "&value=")
                             .concat("1" == r.active ? 0 : 1)
@@ -939,7 +1110,7 @@
                 l.a.createElement("br", null),
                 l.a.createElement("br", null),
                 l.a.createElement(
-                  v.a,
+                  j.a,
                   { to: { pathname: "restaurant-discount", state: { id: i } } },
                   l.a.createElement(
                     s.a,
@@ -963,7 +1134,7 @@
                       var t = new FormData();
                       t.append("file", e.target.files[0]),
                         fetch(
-                          E.a +
+                          p.a +
                             "/restaurant/change-rest-image?id=".concat(r.id),
                           { method: "POST", body: t }
                         ).then(function (e) {
@@ -976,12 +1147,12 @@
             )
           );
         },
-        C = a(108),
-        w = a(11),
-        S = a(368),
-        F = a(365),
-        I = S.a.Panel,
-        x = function (e) {
+        S = a(108),
+        F = a(11),
+        I = a(368),
+        x = a(365),
+        T = I.a.Panel,
+        P = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
             r = a[0],
@@ -990,12 +1161,12 @@
           var i = e.location.state.id,
             m = Object(n.useState)(!1),
             d = Object(u.a)(m, 2),
-            p = d[0],
+            E = d[0],
             f = d[1],
-            b = function () {
+            h = function () {
               var e = new FormData();
               e.append("rest_id", i),
-                fetch(E.a + "/restaurant/get-menu", { method: "POST", body: e })
+                fetch(p.a + "/restaurant/get-menu", { method: "POST", body: e })
                   .then(function (e) {
                     return e.json();
                   })
@@ -1004,19 +1175,19 @@
                   });
             };
           Object(n.useEffect)(function () {
-            b();
+            h();
           }, []);
-          var g = Object(n.useState)(!1),
-            y = Object(u.a)(g, 2),
-            j = y[0],
-            O = y[1];
+          var b = Object(n.useState)(!1),
+            v = Object(u.a)(b, 2),
+            y = v[0],
+            O = v[1];
           return (
-            console.log("newItem", j),
+            console.log("newItem", y),
             l.a.createElement(
               l.a.Fragment,
               null,
               l.a.createElement(
-                v.a,
+                j.a,
                 { to: { pathname: "restaurant-modif", state: { id: i } } },
                 l.a.createElement(
                   s.a,
@@ -1024,7 +1195,7 @@
                   "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043c\u043e\u0434\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440\u044b"
                 )
               ),
-              l.a.createElement(F.a, null),
+              l.a.createElement(x.a, null),
               l.a.createElement(o.a, {
                 onChange: function (e) {
                   return f(e.target.value);
@@ -1036,8 +1207,8 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("category_name", p),
-                      fetch(E.a + "/restaurant/create-category-menu", {
+                      e.append("category_name", E),
+                      fetch(p.a + "/restaurant/create-category-menu", {
                         method: "POST",
                         body: e,
                       })
@@ -1045,13 +1216,13 @@
                           return e.json();
                         })
                         .then(function (e) {
-                          return b();
+                          return h();
                         });
                   },
                 },
                 "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044e"
               ),
-              l.a.createElement(F.a, null),
+              l.a.createElement(x.a, null),
               r &&
                 r.menu &&
                 l.a.createElement(
@@ -1074,11 +1245,11 @@
                       "select",
                       {
                         style: { width: "100%", height: 40 },
-                        value: j.category_id,
+                        value: y.category_id,
                         onChange: function (e) {
                           return O(
-                            Object(w.a)(
-                              Object(w.a)({}, j),
+                            Object(F.a)(
+                              Object(F.a)({}, y),
                               {},
                               { category_id: e.target.value }
                             )
@@ -1106,8 +1277,8 @@
                     l.a.createElement(o.a, {
                       onChange: function (e) {
                         return O(
-                          Object(w.a)(
-                            Object(w.a)({}, j),
+                          Object(F.a)(
+                            Object(F.a)({}, y),
                             {},
                             { name: e.target.value }
                           )
@@ -1127,8 +1298,8 @@
                     l.a.createElement(o.a, {
                       onChange: function (e) {
                         return O(
-                          Object(w.a)(
-                            Object(w.a)({}, j),
+                          Object(F.a)(
+                            Object(F.a)({}, y),
                             {},
                             { description: e.target.value }
                           )
@@ -1148,8 +1319,8 @@
                     l.a.createElement(o.a, {
                       onChange: function (e) {
                         return O(
-                          Object(w.a)(
-                            Object(w.a)({}, j),
+                          Object(F.a)(
+                            Object(F.a)({}, y),
                             {},
                             { weight: e.target.value }
                           )
@@ -1169,8 +1340,8 @@
                     l.a.createElement(o.a, {
                       onChange: function (e) {
                         return O(
-                          Object(w.a)(
-                            Object(w.a)({}, j),
+                          Object(F.a)(
+                            Object(F.a)({}, y),
                             {},
                             { price: e.target.value }
                           )
@@ -1190,11 +1361,11 @@
                     l.a.createElement(o.a, {
                       type: "file",
                       id: "new_item_image",
-                      value: j.file,
+                      value: y.file,
                       onChange: function (e) {
                         return O(
-                          Object(w.a)(
-                            Object(w.a)({}, j),
+                          Object(F.a)(
+                            Object(F.a)({}, y),
                             {},
                             { file: e.target.value }
                           )
@@ -1211,8 +1382,8 @@
                               .querySelector("#new_item_image")
                               .dispatchEvent(new Event("change")),
                             O(
-                              Object(w.a)(
-                                Object(w.a)({}, j),
+                              Object(F.a)(
+                                Object(F.a)({}, y),
                                 {},
                                 { file: void 0 }
                               )
@@ -1233,15 +1404,15 @@
                         console.log("data is ", r),
                           e.append(
                             "category_id",
-                            j.category_id ? j.category_id : r.menu[0].id
+                            y.category_id ? y.category_id : r.menu[0].id
                           ),
-                          e.append("description", j.description),
-                          e.append("name", j.name),
-                          e.append("price", j.price),
-                          e.append("weight", j.weight),
+                          e.append("description", y.description),
+                          e.append("name", y.name),
+                          e.append("price", y.price),
+                          e.append("weight", y.weight),
                           e.append("file", t.files[0]),
                           e.append("rest_id", i),
-                          fetch(E.a + "/restaurant/add-item", {
+                          fetch(p.a + "/restaurant/add-item", {
                             method: "POST",
                             body: e,
                           })
@@ -1253,11 +1424,11 @@
                                 ? (alert(
                                     "\u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e"
                                   ),
-                                  b())
+                                  h())
                                 : (alert(
                                     "\u043d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0431\u043b\u044e\u0434\u043e"
                                   ),
-                                  b());
+                                  h());
                             });
                       },
                       style: { marginTop: 20 },
@@ -1265,7 +1436,7 @@
                     "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c"
                   )
                 ),
-              l.a.createElement(F.a, null),
+              l.a.createElement(x.a, null),
               r &&
                 r.menu.length &&
                 r.menu.map(function (e) {
@@ -1292,12 +1463,12 @@
                           style: { width: 150 },
                           onChange: function (t) {
                             fetch(
-                              E.a +
+                              p.a +
                                 "/restaurant/change-rest-category-order?id="
                                   .concat(e.id, "&value=")
                                   .concat(t.target.value)
                             ).then(function (e) {
-                              return b();
+                              return h();
                             });
                           },
                         }),
@@ -1309,12 +1480,12 @@
                                 "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438"
                               ) &&
                                 fetch(
-                                  E.a +
+                                  p.a +
                                     "/restaurant/delete-rest-category?id=".concat(
                                       e.id
                                     )
                                 ).then(function (e) {
-                                  return b();
+                                  return h();
                                 });
                             },
                           },
@@ -1326,10 +1497,10 @@
                       "div",
                       null,
                       l.a.createElement(
-                        S.a,
+                        I.a,
                         { defaultActiveKey: [] },
                         l.a.createElement(
-                          I,
+                          T,
                           {
                             header:
                               "\u041c\u0435\u043d\u044e \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438",
@@ -1337,16 +1508,16 @@
                           },
                           e.menu.map(function (e) {
                             return l.a.createElement(
-                              S.a,
+                              I.a,
                               { key: e.id, defaultActiveKey: [] },
                               l.a.createElement(
-                                I,
+                                T,
                                 { header: e.name, key: "1" },
                                 l.a.createElement(
                                   "div",
                                   { style: { margin: 15 } },
                                   l.a.createElement(
-                                    h.a,
+                                    g.a,
                                     null,
                                     l.a.createElement(
                                       "label",
@@ -1362,7 +1533,7 @@
                                           "\u041d\u043e\u0432\u043e\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435",
                                         onChange: function (t) {
                                           fetch(
-                                            E.a +
+                                            p.a +
                                               "/restaurant/change-item?id="
                                                 .concat(
                                                   e.id,
@@ -1370,13 +1541,13 @@
                                                 )
                                                 .concat(t.target.value)
                                           ).then(function (e) {
-                                            return b();
+                                            return h();
                                           });
                                         },
                                       })
                                     ),
                                     l.a.createElement("img", {
-                                      src: E.a + "/" + e.image,
+                                      src: p.a + "/" + e.image,
                                       style: { maxWidth: 300 },
                                     }),
                                     l.a.createElement("input", {
@@ -1385,14 +1556,14 @@
                                         var a = new FormData();
                                         a.append("file", t.target.files[0]),
                                           fetch(
-                                            E.a +
+                                            p.a +
                                               "/restaurant/change-item-image?id=".concat(
                                                 e.id,
                                                 "\n                                                                        "
                                               ),
                                             { method: "POST", body: a }
                                           ).then(function (e) {
-                                            return b();
+                                            return h();
                                           });
                                       },
                                     }),
@@ -1413,7 +1584,7 @@
                                             "\u041d\u043e\u0432\u043e\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435",
                                           onChange: function (t) {
                                             fetch(
-                                              E.a +
+                                              p.a +
                                                 "/restaurant/change-item?id="
                                                   .concat(
                                                     e.id,
@@ -1421,7 +1592,7 @@
                                                   )
                                                   .concat(t.target.value)
                                             ).then(function (e) {
-                                              return b();
+                                              return h();
                                             });
                                           },
                                         })
@@ -1445,7 +1616,7 @@
                                             "\u041d\u043e\u0432\u044b\u0439 \u0432\u0435\u0441",
                                           onChange: function (t) {
                                             fetch(
-                                              E.a +
+                                              p.a +
                                                 "/restaurant/change-item?id="
                                                   .concat(
                                                     e.id,
@@ -1453,7 +1624,7 @@
                                                   )
                                                   .concat(t.target.value)
                                             ).then(function (e) {
-                                              return b();
+                                              return h();
                                             });
                                           },
                                         })
@@ -1477,7 +1648,7 @@
                                             "\u041d\u043e\u0432\u044b\u0439 \u0432\u0435\u0441",
                                           onChange: function (t) {
                                             fetch(
-                                              E.a +
+                                              p.a +
                                                 "/restaurant/change-item?id="
                                                   .concat(
                                                     e.id,
@@ -1485,7 +1656,7 @@
                                                   )
                                                   .concat(t.target.value)
                                             ).then(function (e) {
-                                              return b();
+                                              return h();
                                             });
                                           },
                                         })
@@ -1509,7 +1680,7 @@
                                           checked: e.active,
                                           onChange: function (t) {
                                             fetch(
-                                              E.a +
+                                              p.a +
                                                 "/restaurant/change-item?id="
                                                   .concat(
                                                     e.id,
@@ -1519,7 +1690,7 @@
                                                     t.target.checked ? 1 : 0
                                                   )
                                             ).then(function (e) {
-                                              return b();
+                                              return h();
                                             });
                                           },
                                         })
@@ -1545,7 +1716,7 @@
                                               : [],
                                             style: { width: "100%" },
                                             onChange: function (t) {
-                                              var a = Object(C.a)(
+                                              var a = Object(S.a)(
                                                 t.target.options
                                               )
                                                 .filter(function (e) {
@@ -1555,7 +1726,7 @@
                                                   return e.value;
                                                 });
                                               fetch(
-                                                E.a +
+                                                p.a +
                                                   "/restaurant/change-item?id="
                                                     .concat(
                                                       e.id,
@@ -1563,7 +1734,7 @@
                                                     )
                                                     .concat(a)
                                               ).then(function (e) {
-                                                return b();
+                                                return h();
                                               });
                                             },
                                           },
@@ -1596,12 +1767,12 @@
                                                 "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0435"
                                               ) &&
                                                 fetch(
-                                                  E.a +
+                                                  p.a +
                                                     "/restaurant/delete-item?id=".concat(
                                                       e.id
                                                     )
                                                 ).then(function (e) {
-                                                  return b();
+                                                  return h();
                                                 });
                                             },
                                           },
@@ -1617,13 +1788,13 @@
                         )
                       )
                     ),
-                    l.a.createElement(F.a, null)
+                    l.a.createElement(x.a, null)
                   );
                 })
             )
           );
         },
-        P = function (e) {
+        D = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
             r = a[0],
@@ -1631,10 +1802,10 @@
             i = e.location.state.id,
             m = Object(n.useState)({ type: "single" }),
             d = Object(u.a)(m, 2),
-            p = d[0],
+            E = d[0],
             f = d[1],
-            b = function () {
-              fetch(E.a + "/restaurant/get-modif-list?restaurant_id=" + i)
+            h = function () {
+              fetch(p.a + "/restaurant/get-modif-list?restaurant_id=" + i)
                 .then(function (e) {
                   return e.json();
                 })
@@ -1643,15 +1814,15 @@
                 });
             };
           Object(n.useEffect)(function () {
-            b();
+            h();
           }, []);
-          var g = function (e) {
+          var b = function (e) {
             window.confirm(
               "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u044f"
             ) &&
-              fetch(E.a + "/restaurant/delete-rest-modif?id=" + e).then(
+              fetch(p.a + "/restaurant/delete-rest-modif?id=" + e).then(
                 function (e) {
-                  return b();
+                  return h();
                 }
               );
           };
@@ -1666,7 +1837,7 @@
                 "\u041c\u043e\u0434\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440\u044b \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u0430"
               ),
               l.a.createElement(
-                v.a,
+                j.a,
                 { to: { pathname: "restaurant", state: { id: i } } },
                 l.a.createElement(
                   s.a,
@@ -1674,7 +1845,7 @@
                   "\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
                 )
               ),
-              l.a.createElement(F.a, null),
+              l.a.createElement(x.a, null),
               l.a.createElement(
                 "label",
                 null,
@@ -1686,8 +1857,8 @@
                 l.a.createElement(o.a, {
                   onChange: function (e) {
                     return f(
-                      Object(w.a)(
-                        Object(w.a)({}, p),
+                      Object(F.a)(
+                        Object(F.a)({}, E),
                         {},
                         { name: e.target.value }
                       )
@@ -1705,8 +1876,8 @@
                     style: { width: "100%", height: 40, marginBottom: 10 },
                     onChange: function (e) {
                       return f(
-                        Object(w.a)(
-                          Object(w.a)({}, p),
+                        Object(F.a)(
+                          Object(F.a)({}, E),
                           {},
                           { type: e.target.value }
                         )
@@ -1731,10 +1902,10 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("name", p.name),
-                      e.append("type", p.type),
-                      e.append("parent_id", p.parent_id ? p.parent_id : null),
-                      fetch(E.a + "/restaurant/create-rest-modif", {
+                      e.append("name", E.name),
+                      e.append("type", E.type),
+                      e.append("parent_id", E.parent_id ? E.parent_id : null),
+                      fetch(p.a + "/restaurant/create-rest-modif", {
                         method: "POST",
                         body: e,
                       })
@@ -1742,13 +1913,13 @@
                           return e.json();
                         })
                         .then(function (e) {
-                          b();
+                          h();
                         });
                   },
                 },
                 "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043c\u043e\u0434\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440"
               ),
-              l.a.createElement(F.a, null),
+              l.a.createElement(x.a, null),
               r &&
                 r.length &&
                 r.map(function (e) {
@@ -1769,7 +1940,7 @@
                         s.a,
                         {
                           onClick: function () {
-                            return g(e.id);
+                            return b(e.id);
                           },
                         },
                         "\u0423\u0434\u0430\u043b\u0438\u0442\u044c"
@@ -1806,14 +1977,14 @@
                               document.getElementById("form" + e.id)
                             );
                             fetch(
-                              E.a + "/restaurant/create-rest-modif-variant",
+                              p.a + "/restaurant/create-rest-modif-variant",
                               { method: "POST", body: t }
                             )
                               .then(function (e) {
                                 return e.json();
                               })
                               .then(function (e) {
-                                b();
+                                h();
                               });
                           },
                         },
@@ -1823,7 +1994,7 @@
                     l.a.createElement("br", null),
                     e.list.map(function (e) {
                       return l.a.createElement(
-                        h.a,
+                        g.a,
                         { key: e.id },
                         l.a.createElement(
                           "div",
@@ -1848,7 +2019,7 @@
                               s.a,
                               {
                                 onClick: function () {
-                                  return g(e.id);
+                                  return b(e.id);
                                 },
                                 style: { marginLeft: 20 },
                               },
@@ -1858,13 +2029,13 @@
                         )
                       );
                     }),
-                    l.a.createElement(F.a, null)
+                    l.a.createElement(x.a, null)
                   );
                 })
             )
           );
         },
-        T = function (e) {
+        N = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
             r = a[0],
@@ -1872,10 +2043,10 @@
             i = e.location.state.id,
             m = Object(n.useState)({ type: "single" }),
             d = Object(u.a)(m, 2),
-            p = d[0],
+            E = d[0],
             f = d[1],
             h = function () {
-              fetch(E.a + "/restaurant/get-delivery-list?restaurant_id=" + i)
+              fetch(p.a + "/restaurant/get-delivery-list?restaurant_id=" + i)
                 .then(function (e) {
                   return e.json();
                 })
@@ -1897,7 +2068,7 @@
                 "\u0414\u043e\u0441\u0442\u0430\u0432\u043a\u0430 \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u0430"
               ),
               l.a.createElement(
-                v.a,
+                j.a,
                 { to: { pathname: "restaurant", state: { id: i } } },
                 l.a.createElement(
                   s.a,
@@ -1905,7 +2076,7 @@
                   "\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
                 )
               ),
-              l.a.createElement(F.a, null),
+              l.a.createElement(x.a, null),
               l.a.createElement(
                 "label",
                 null,
@@ -1917,8 +2088,8 @@
                 l.a.createElement(o.a, {
                   onChange: function (e) {
                     return f(
-                      Object(w.a)(
-                        Object(w.a)({}, p),
+                      Object(F.a)(
+                        Object(F.a)({}, E),
                         {},
                         { price_start: e.target.value }
                       )
@@ -1937,8 +2108,8 @@
                 l.a.createElement(o.a, {
                   onChange: function (e) {
                     return f(
-                      Object(w.a)(
-                        Object(w.a)({}, p),
+                      Object(F.a)(
+                        Object(F.a)({}, E),
                         {},
                         { price: e.target.value }
                       )
@@ -1952,9 +2123,9 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("price", p.price),
-                      e.append("price_start", p.price_start),
-                      fetch(E.a + "/restaurant/create-rest-delivery", {
+                      e.append("price", E.price),
+                      e.append("price_start", E.price_start),
+                      fetch(p.a + "/restaurant/create-rest-delivery", {
                         method: "POST",
                         body: e,
                       })
@@ -1968,7 +2139,7 @@
                 },
                 "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0443"
               ),
-              l.a.createElement(F.a, null),
+              l.a.createElement(x.a, null),
               r &&
                 r.length &&
                 r.map(function (e) {
@@ -1996,7 +2167,7 @@
                           value: e.price_start,
                           onChange: function (t) {
                             fetch(
-                              E.a +
+                              p.a +
                                 "/restaurant/edit-delivery?id="
                                   .concat(e.id, "&key=price_start&value=")
                                   .concat(t.target.value)
@@ -2018,7 +2189,7 @@
                           value: e.price,
                           onChange: function (t) {
                             fetch(
-                              E.a +
+                              p.a +
                                 "/restaurant/edit-delivery?id="
                                   .concat(e.id, "&key=price&value=")
                                   .concat(t.target.value)
@@ -2040,7 +2211,7 @@
                                 "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0435"
                               ) &&
                                 fetch(
-                                  E.a +
+                                  p.a +
                                     "/restaurant/delete-delivery?id=".concat(
                                       e.id
                                     )
@@ -2053,13 +2224,13 @@
                         )
                       )
                     ),
-                    l.a.createElement(F.a, null)
+                    l.a.createElement(x.a, null)
                   );
                 })
             )
           );
         },
-        D = function (e) {
+        q = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
             r = a[0],
@@ -2067,13 +2238,13 @@
             i = e.location.state.id,
             m = Object(n.useState)({ type: "promocode" }),
             d = Object(u.a)(m, 2),
-            p = d[0],
+            E = d[0],
             f = d[1],
             h = Object(n.useState)([]),
             b = Object(u.a)(h, 2),
             g = b[0],
-            y = b[1],
-            j = [
+            v = b[1],
+            y = [
               {
                 value: "promocode",
                 name: "\u041f\u0440\u043e\u043c\u043e\u043a\u043e\u0434",
@@ -2089,7 +2260,7 @@
               },
             ],
             O = function () {
-              fetch(E.a + "/restaurant/get-discount-list?restaurant_id=" + i)
+              fetch(p.a + "/restaurant/get-discount-list?restaurant_id=" + i)
                 .then(function (e) {
                   return e.json();
                 })
@@ -2101,16 +2272,16 @@
             O();
             var e = new FormData();
             e.append("rest_id", i),
-              fetch(E.a + "/restaurant/get-menu", { method: "POST", body: e })
+              fetch(p.a + "/restaurant/get-menu", { method: "POST", body: e })
                 .then(function (e) {
                   return e.json();
                 })
                 .then(function (e) {
-                  return y(e.menu);
+                  return v(e.menu);
                 });
           }, []);
           console.log("data", r),
-            console.log("newModif", p),
+            console.log("newModif", E),
             console.log("menu", g);
           var _ = function (e, t) {
               var a = t;
@@ -2120,8 +2291,8 @@
                 l.a.createElement("span", null, e),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    var t = Object(w.a)({}, p);
-                    (t[a] = e.target.value), f(Object(w.a)({}, t));
+                    var t = Object(F.a)({}, E);
+                    (t[a] = e.target.value), f(Object(F.a)({}, t));
                   },
                 })
               );
@@ -2135,7 +2306,7 @@
                   value: n,
                   onChange: function (t) {
                     fetch(
-                      E.a +
+                      p.a +
                         "/restaurant/edit-discount?id="
                           .concat(e, "&key=")
                           .concat(a, "&value=")
@@ -2156,7 +2327,7 @@
               "\u0421\u043a\u0438\u0434\u043a\u0438, \u0430\u043a\u0446\u0438\u0438 \u0438 \u043f\u0440\u043e\u043c\u043e\u043a\u043e\u0434\u044b"
             ),
             l.a.createElement(
-              v.a,
+              j.a,
               { to: { pathname: "restaurant", state: { id: i } } },
               l.a.createElement(
                 s.a,
@@ -2164,7 +2335,7 @@
                 "\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
               )
             ),
-            l.a.createElement(F.a, null),
+            l.a.createElement(x.a, null),
             l.a.createElement(
               "label",
               null,
@@ -2179,15 +2350,15 @@
                   style: { width: "100%", height: 40 },
                   onChange: function (e) {
                     f(
-                      Object(w.a)(
-                        Object(w.a)({}, p),
+                      Object(F.a)(
+                        Object(F.a)({}, E),
                         {},
                         { type: e.target.value }
                       )
                     );
                   },
                 },
-                j.map(function (e) {
+                y.map(function (e) {
                   return l.a.createElement(
                     "option",
                     { key: e.value, value: e.value },
@@ -2240,14 +2411,14 @@
                   multiple: !0,
                   style: { width: "100%" },
                   onChange: function (e) {
-                    var t = Object(C.a)(e.target.options)
+                    var t = Object(S.a)(e.target.options)
                       .filter(function (e) {
                         return e.selected;
                       })
                       .map(function (e) {
                         return e.value;
                       });
-                    f(Object(w.a)(Object(w.a)({}, p), {}, { items: t }));
+                    f(Object(F.a)(Object(F.a)({}, E), {}, { items: t }));
                   },
                 },
                 g.map(function (e) {
@@ -2273,19 +2444,19 @@
                 onClick: function () {
                   var e = new FormData();
                   e.append("rest_id", i),
-                    e.append("type", p.type ? p.type : ""),
-                    e.append("name", p.name ? p.name : ""),
+                    e.append("type", E.type ? E.type : ""),
+                    e.append("name", E.name ? E.name : ""),
                     e.append(
                       "discount_value",
-                      p.discount_value ? p.discount_value : ""
+                      E.discount_value ? E.discount_value : ""
                     ),
-                    e.append("price_start", p.price_start ? p.price_start : ""),
-                    e.append("description", p.description ? p.description : ""),
-                    e.append("promocode", p.promocode ? p.promocode : ""),
-                    e.append("time_start", p.time_start ? p.time_start : ""),
-                    e.append("time_end", p.time_end ? p.time_end : ""),
-                    e.append("items", p.items ? p.items : ""),
-                    fetch(E.a + "/restaurant/create-rest-discount", {
+                    e.append("price_start", E.price_start ? E.price_start : ""),
+                    e.append("description", E.description ? E.description : ""),
+                    e.append("promocode", E.promocode ? E.promocode : ""),
+                    e.append("time_start", E.time_start ? E.time_start : ""),
+                    e.append("time_end", E.time_end ? E.time_end : ""),
+                    e.append("items", E.items ? E.items : ""),
+                    fetch(p.a + "/restaurant/create-rest-discount", {
                       method: "POST",
                       body: e,
                     })
@@ -2299,7 +2470,7 @@
               },
               "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0430\u043a\u0446\u0438\u044e"
             ),
-            l.a.createElement(F.a, null),
+            l.a.createElement(x.a, null),
             l.a.createElement(
               "h3",
               null,
@@ -2317,7 +2488,7 @@
                       style: { width: "100%", height: 40 },
                       onChange: function (t) {
                         fetch(
-                          E.a +
+                          p.a +
                             "/restaurant/edit-discount?id="
                               .concat(e.id, "&key=type&value=")
                               .concat(t.target.value)
@@ -2327,7 +2498,7 @@
                       },
                       value: e.type,
                     },
-                    j.map(function (e) {
+                    y.map(function (e) {
                       return l.a.createElement(
                         "option",
                         { key: e.value, value: e.value },
@@ -2400,7 +2571,7 @@
                         style: { width: "100%" },
                         value: e.items ? e.items.split(",") : [],
                         onChange: function (t) {
-                          var a = Object(C.a)(t.target.options)
+                          var a = Object(S.a)(t.target.options)
                             .filter(function (e) {
                               return e.selected;
                             })
@@ -2408,7 +2579,7 @@
                               return e.value;
                             });
                           fetch(
-                            E.a +
+                            p.a +
                               "/restaurant/edit-discount?id="
                                 .concat(e.id, "&key=items&value=")
                                 .concat(a)
@@ -2442,7 +2613,7 @@
                           "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0435"
                         ) &&
                           fetch(
-                            E.a + "/restaurant/delete-discount?id=".concat(e.id)
+                            p.a + "/restaurant/delete-discount?id=".concat(e.id)
                           ).then(function (e) {
                             return O();
                           });
@@ -2450,13 +2621,13 @@
                     },
                     "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0430\u043a\u0446\u0438\u044e"
                   ),
-                  l.a.createElement(F.a, null)
+                  l.a.createElement(x.a, null)
                 );
               })
           );
         },
-        N = a(366),
-        J = function (e) {
+        J = a(366),
+        M = function (e) {
           var t = Object(n.useState)([]),
             a = Object(u.a)(t, 2),
             r = a[0],
@@ -2465,12 +2636,12 @@
             o = Object(n.useState)({ type: "single" }),
             m = Object(u.a)(o, 2),
             d = (m[0], m[1], Object(n.useState)(!1)),
-            p = Object(u.a)(d, 2),
-            f = p[0],
-            h = p[1],
+            E = Object(u.a)(d, 2),
+            f = E[0],
+            h = E[1],
             b = function () {
               h(!0),
-                fetch(E.a + "/restaurant/get-order-list?restaurant_id=" + i)
+                fetch(p.a + "/restaurant/get-order-list?restaurant_id=" + i)
                   .then(function (e) {
                     return e.json();
                   })
@@ -2563,7 +2734,7 @@
                                 : l.a.createElement(l.a.Fragment, null);
                             })
                           ),
-                        l.a.createElement(F.a, null)
+                        l.a.createElement(x.a, null)
                       );
                     }),
               totalPrice: e.total_price,
@@ -2584,7 +2755,7 @@
                       )
                     ) &&
                       fetch(
-                        "".concat(E.a, "/payment/cancel?order_id=").concat(e.id)
+                        "".concat(p.a, "/payment/cancel?order_id=").concat(e.id)
                       )
                         .then(function (e) {
                           return e.json();
@@ -2625,7 +2796,7 @@
               "\u0417\u0430\u043a\u0430\u0437\u044b \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u0430"
             ),
             l.a.createElement(
-              v.a,
+              j.a,
               { to: { pathname: "restaurant", state: { id: i } } },
               l.a.createElement(
                 s.a,
@@ -2633,7 +2804,7 @@
                 "\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
               )
             ),
-            l.a.createElement(F.a, null),
+            l.a.createElement(x.a, null),
             l.a.createElement(
               s.a,
               {
@@ -2643,15 +2814,15 @@
               },
               "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a"
             ),
-            l.a.createElement(F.a, null),
+            l.a.createElement(x.a, null),
             f &&
               l.a.createElement(
                 "p",
                 null,
                 " \u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 ... "
               ),
-            l.a.createElement(F.a, null),
-            l.a.createElement(N.a, {
+            l.a.createElement(x.a, null),
+            l.a.createElement(J.a, {
               dataSource: g,
               columns: [
                 {
@@ -2713,20 +2884,21 @@
             ";"
           );
         },
-        q = function () {
+        A = function () {
           return n.createElement(
             n.Fragment,
             null,
             Object(r.a)([
               { path: "/", exact: !0, component: c },
               { path: "/add-rest", component: f },
-              { path: "/list-rest", component: j },
-              { path: "/restaurant", component: k },
-              { path: "/restaurant-menu", component: x },
-              { path: "/restaurant-modif", component: P },
-              { path: "/restaurant-delivery", component: T },
-              { path: "/restaurant-discount", component: D },
-              { path: "/restaurant-order", component: J },
+              { path: "/add-user", component: b },
+              { path: "/list-rest", component: _ },
+              { path: "/restaurant", component: C },
+              { path: "/restaurant-menu", component: P },
+              { path: "/restaurant-modif", component: D },
+              { path: "/restaurant-delivery", component: N },
+              { path: "/restaurant-discount", component: q },
+              { path: "/restaurant-order", component: M },
             ])
           );
         };
@@ -2739,13 +2911,13 @@
       a.r(t);
       var n = a(0),
         l = a.n(n),
-        r = a(17),
+        r = a(18),
         c = a.n(r),
         u = a(42),
         i = a(92),
-        o = a(174),
+        o = a(175),
         m = a(5),
-        s = a(177),
+        s = a(178),
         d = document.querySelector("#root");
       d &&
         c.a.render(
@@ -2784,15 +2956,15 @@
         l = a(45),
         r = Object(l.a)(),
         c = a(63),
-        u = (a(229), a(175)),
-        i = a(146),
-        o = a(176),
+        u = (a(229), a(176)),
+        i = a(147),
+        o = a(177),
         m = a.n(o),
         s = a(11),
         d = { user: void 0 },
-        E = { key: "main", storage: m.a },
-        p = Object(c.c)({
-          main: Object(i.a)(E, function () {
+        p = { key: "main", storage: m.a },
+        E = Object(c.c)({
+          main: Object(i.a)(p, function () {
             var e =
                 arguments.length > 0 && void 0 !== arguments[0]
                   ? arguments[0]
@@ -2800,18 +2972,21 @@
               t = arguments.length > 1 ? arguments[1] : void 0;
             switch (t.type) {
               case "SET_USER":
-                return Object(s.a)(Object(s.a)({}, e), {}, { user: t.user });
+                return (
+                  console.log("SET_USER", t),
+                  Object(s.a)(Object(s.a)({}, e), {}, { user: t.user })
+                );
               default:
                 return Object(s.a)({}, e);
             }
           }),
         });
       n = Object(c.a)(u.a);
-      var f = Object(c.d)(p, void 0, n),
+      var f = Object(c.d)(E, void 0, n),
         h = Object(i.b)(f),
-        b = (a(92), "http://localhost:21080");
+        b = (a(92), "https://app.vegfood.delivery");
     },
   },
   [[220, 1, 2]],
 ]);
-//# sourceMappingURL=main.1673e114.chunk.js.map
+//# sourceMappingURL=main.bd02a686.chunk.js.map

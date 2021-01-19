@@ -16,7 +16,7 @@ const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 const _MainComp = (props) => {
   // console.log("props", props);
-  const { user } = props;
+  const { user, setUser } = props;
   if (!user) {
     const onFinish = (values) => {
       console.log("Success:", values);
@@ -99,19 +99,41 @@ const _MainComp = (props) => {
             >
               <SubMenu key="sub1" title="Рестораны">
                 <Menu.Item key="1">
-                  <Link to={"/list-rest"}>Список ресторанов</Link>
+                  <Link to={{ pathname: "/list-rest", state: { user } }}>
+                    Список ресторанов
+                  </Link>
                 </Menu.Item>
-                {user.role === "admin" && (
-                  <Menu.Item key="2">
-                    <Link to={"/add-rest"}>Добавить ресторан</Link>
-                  </Menu.Item>
-                )}
+                {/* {user.role === "admin" && (
+                                )} */}
+                <Menu.Item key="2">
+                  <Link to={{ pathname: "/add-rest", state: { user } }}>
+                    Добавить ресторан 123
+                  </Link>
+                  {/* <Link to={"/add-rest", { user }}>Добавить ресторан</Link> */}
+                </Menu.Item>
               </SubMenu>
               {user.role === "admin" && (
                 <Menu.Item key="3">
                   <Link to={"/add-user"}>Добавить пользователя</Link>
                 </Menu.Item>
               )}
+              <Menu.Item key="4">
+                <button
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  onClick={() => {
+                    console.log("");
+                    setUser(undefined);
+                    setTimeout(() => {
+                      window.location.href = "/";
+                    }, 1000);
+                  }}
+                >
+                  Выход
+                </button>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Content style={{ padding: 30 }}>

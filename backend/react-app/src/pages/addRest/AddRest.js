@@ -27,7 +27,8 @@ const layout = {
   },
 };
 
-export const AddRest = () => {
+export const AddRest = (props) => {
+  const { user } = props?.location?.state;
   const onFinish = (values) => {
     console.log("Success:", { values, value });
     let input = document.querySelector('input[type="file"]');
@@ -41,6 +42,7 @@ export const AddRest = () => {
       }
     });
     data.append("file", input.files[0]);
+    data.append("user_id", user?.id);
     // data.append("address", JSON.stringify(value));
     data.append("user", "hubot");
     fetch(API_HOST + "/restaurant/add", {
