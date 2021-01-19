@@ -92,7 +92,7 @@ export const AddRest = () => {
         <Form.Item label="Описание" name="description">
           <Input />
         </Form.Item>
-        <Form.Item label="Изобржаение" name="file">
+        <Form.Item label="Изображение" name="file">
           <Input type="file" />
         </Form.Item>
         <Form.Item label="Адрес" name="address">

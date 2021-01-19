@@ -410,6 +410,32 @@ class RestaurantController extends Controller
         $model->update();
     }
 
+    public function actionEditRestName($id, $value) {
+        $model = Restaurant::findOne($id);
+        $model->name = $value;
+        if ($model->update()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
+    public function actionEditRestAddress($id, $value) {
+        $model = Restaurant::findOne($id);
+        $model->address_json = urldecode($value);
+        if ($model->update()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
     public function actionCreateRestDelivery() {
         $model = new RestaurantDelivery;
         $model->restaurant_id = $_POST['rest_id'];

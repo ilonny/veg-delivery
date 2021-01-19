@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Card, Col, Row, Button, Input } from "antd";
 import { API_HOST } from "../../lib";
 import { Link } from "react-router-dom";
-
+import { AddressSuggestions } from "react-dadata";
+import "react-dadata/dist/react-dadata.css";
 const { Meta } = Card;
 
 function debounce(f, ms) {
@@ -26,6 +27,8 @@ export const RestaurantPage = (props) => {
   const [endTime, setEndTime] = useState(false);
   const [restInfo, setRestInfo] = useState(false);
   const [deliveryTime, setDeliveryTime] = useState(false);
+  const [restName, setRestName] = useState(false);
+  const [addressValue, setAddressValue] = useState(false);
   useEffect(() => {
     getData();
   }, [id]);
@@ -39,6 +42,10 @@ export const RestaurantPage = (props) => {
           setEndTime(res.time_end);
           setRestInfo(res.restaurant_info);
           setDeliveryTime(res.delivery_time);
+          setRestName(res.name);
+          let addressJson = JSON.parse(res?.address_json);
+          console.log("addressJson", addressJson);
+          setAddressValue(addressJson);
         });
     } catch (e) {
       console.log(e);
@@ -82,6 +89,35 @@ export const RestaurantPage = (props) => {
         getData();
       });
   };
+
+  const changeRestName = () => {
+    fetch(
+      API_HOST + `/restaurant/edit-rest-name?id=${data.id}&value=${restName}`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Успешно сохранено");
+        }
+        getData();
+      });
+  };
+
+  const changeRestAddress = () => {
+    fetch(
+      API_HOST +
+        `/restaurant/edit-rest-address?id=${data.id}&value=${encodeURIComponent(
+          JSON.stringify(addressValue)
+        )}`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Успешно сохранено");
+        }
+        getData();
+      });
+  };
   return (
     <>
       <Row gutter={[16, 16]}>
@@ -110,6 +146,33 @@ export const RestaurantPage = (props) => {
           <Link to={{ pathname: "restaurant-modif", state: { id: id } }}>
             <Button>Модификаторы</Button>
           </Link>
+          <br />
+          <br />
+          <label>
+            <span>Название</span>
+            <Input
+              value={restName}
+              onChange={(e) => {
+                setRestName(e.target.value);
+              }}
+            />
+          </label>
+          <br />
+          <Button onClick={() => changeRestName()}>Сохранить Название</Button>
+          <br />
+          <br />
+          <label>
+            <span>Адрес</span>
+            <AddressSuggestions
+              token="eadbc452286d23c7163b38989884d5ae40d08ade"
+              value={addressValue}
+              defaultQuery={addressValue}
+              onChange={setAddressValue}
+            />
+            <br />
+            <Button onClick={() => changeRestAddress()}>Сохранить адрес</Button>
+            <br />
+          </label>
           <br />
           <br />
           <label>
