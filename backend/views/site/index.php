@@ -4,7 +4,7 @@
 
 $this->title = 'Veg Delivery Dashboard';
 $this->registerCssFile("@web/static/css/2.0f1fb5eb.chunk.css", [
-    'depends' => [\yii\bootstrap\BootstrapAsset::className()],
+    // 'depends' => [\yii\bootstrap\BootstrapAsset::className()],
     // 'media' => 'print',
 ], 'css-print-theme');
 
@@ -119,5 +119,5 @@ $this->registerCssFile("@web/static/css/2.0f1fb5eb.chunk.css", [
         t();
     })([]);
 </script>
-<script src="/static/js/2.87ef622a.chunk.js"></script>
-<script src="/static/js/main.024d77ff.chunk.js"></script>
+<script src="/static/js/2.6833d4e8.chunk.js"></script>
+<script src="/static/js/main.59501b0f.chunk.js"></script>

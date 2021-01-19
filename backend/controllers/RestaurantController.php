@@ -436,6 +436,24 @@ class RestaurantController extends Controller
         ]);
     }
 
+    public function actionEditRestImage($id) {
+        $model = Restaurant::findOne($id);
+        $uploadFormModel = new UploadForm();
+        $uploadDir = $uploadFormModel->getUploadName($model->name, $_FILES['file']['name']);
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir)) {
+            } else {
+            }
+        $model->image = $uploadDir;
+        if ($model->update()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
     public function actionCreateRestDelivery() {
         $model = new RestaurantDelivery;
         $model->restaurant_id = $_POST['rest_id'];

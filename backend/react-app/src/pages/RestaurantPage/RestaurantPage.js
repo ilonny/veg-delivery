@@ -190,6 +190,34 @@ export const RestaurantPage = (props) => {
           <br />
           <br />
           <label>
+            <span>Изменить изображение</span>
+            <Input
+              type="file"
+              onChange={() => {
+                let input = document.querySelector('input[type="file"]');
+                let formData = new FormData();
+                formData.append("file", input.files[0]);
+                fetch(API_HOST + `/restaurant/edit-rest-image?id=${data.id}`, {
+                  method: "POST",
+                  body: formData,
+                })
+                  .then((res) => res.json())
+                  .then((res) => {
+                    if (res.status === 200) {
+                      getData();
+                    } else {
+                      alert("Ошибка при сохранении изображения");
+                    }
+                  })
+                  .catch((err) => {
+                    alert("Ошибка при сохранении изображения");
+                  });
+              }}
+            />
+          </label>
+          <br />
+          <br />
+          <label>
             <span>Описание ресторана</span>
             <Input
               value={data.description}
