@@ -40,7 +40,9 @@ export const SecondScreen = (props: any) => {
               } else {
                 Geolocation.requestAuthorization();
               }
-              props.swiperRef.current.scrollBy(1, true);
+              // props.swiperRef.current.scrollBy(1, true);
+              props.setOnboardingIsVisible(true);
+              props.goToAddress();
             }
           }}>
           <Text style={styles.buttonText}>Далее</Text>

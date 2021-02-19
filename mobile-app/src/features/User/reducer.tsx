@@ -77,6 +77,7 @@ userReducer.createOrder = (params) => (dispatch, getState) => {
       'Не заполнены обязательные поля',
       'Адрес, кв/офис, имя, телефон',
     );
+    callback();
     return;
   }
   const data = {

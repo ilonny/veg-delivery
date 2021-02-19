@@ -30,11 +30,15 @@ export const Onboarding = (props) => {
         dotColor={'rgb(201, 224, 212)'}
         paginationStyle={{ bottom: 120 }}>
         <FirstScreen swiperRef={swiperRef} />
-        <SecondScreen swiperRef={swiperRef} />
-        <ThirdScreen
+        <SecondScreen
+          swiperRef={swiperRef}
           goToAddress={goToAddress}
           setOnboardingIsVisible={props.setOnboardingIsVisible}
         />
+        {/* <ThirdScreen
+          goToAddress={goToAddress}
+          setOnboardingIsVisible={props.setOnboardingIsVisible}
+        /> */}
       </Swiper>
     </>
     // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

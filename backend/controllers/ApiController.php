@@ -56,7 +56,7 @@ class ApiController extends Controller
     public function actionAbout()
     {
         return '
-        <h1>Пример пользовательского соглашения</h1>
+            <iframe src="/static/policy.pdf" width="100%" style="height:100%"></iframe>
         ';
     }
 }
