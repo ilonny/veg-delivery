@@ -198,6 +198,7 @@ export const RestaurantOrder = (props) => {
   return (
     <>
       <div>Заказы ресторана</div>
+      <p>Test commit</p>
       <Link to={{ pathname: "restaurant", state: { id } }}>
         <Button>Назад в меню</Button>
       </Link>
