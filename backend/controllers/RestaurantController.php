@@ -101,10 +101,15 @@ class RestaurantController extends Controller
         if (!$user_id) {
             $user_id = intval($user);
         }
+        $user_model = User::findOne($user_id);
         if ($token && $token == 'ZWmGuABp3N6' || ($user_id === 1)) {
             $res = Restaurant::find()->all();
         } else {
-            $res = Restaurant::find()->andWhere(['user_id' => $user_id])->all();
+            if ($user_model->role == 'manager') {
+                $res = Restaurant::find()->andWhere(['id' => $user_model->restaurant_id])->all();
+            } else {
+                $res = Restaurant::find()->andWhere(['user_id' => $user_id])->all();
+            }
         }
         return $this->asJson($res);
     }
@@ -597,4 +602,106 @@ class RestaurantController extends Controller
             'status' => 500
         ]);
     }
+
+    public function actionCopy($id) {
+        $original_rest = Restaurant::findOne($id);
+        $new_rest = new Restaurant();
+        $rest_attributes = $original_rest->attributes;
+        $new_rest->setAttributes($rest_attributes);
+        $new_rest->save();
+        // var_dump($new_rest);
+        // $new_rest->name
+        // echo '<pre>';
+        // var_dump($new_rest->id);
+        // echo '</pre>';
+
+        $new_rest_id = $new_rest->id;
+
+        $menu_categories_original = MenuCategory::find()->andWhere(['restaurant_id' => $original_rest->id])->all();
+
+        foreach ($menu_categories_original as $key_menu_cat_orig => $menu_cat_orig) {
+            // var_dump($menu_cat_orig);
+            $new_category = new MenuCategory();
+            $category_attributes = $menu_cat_orig->attributes;
+            $new_category->setAttributes($category_attributes);
+            $new_category->restaurant_id = $new_rest_id;
+            $new_category->save();
+            $new_category_id = $new_category->id;
+
+            $orig_items = Item::find()->andWhere(['menu_category_id' => $menu_cat_orig->id])->all();
+
+            foreach ($orig_items as $key_orig_item => $orig_item) {
+                $new_item = new Item();
+                $item_attributes = $orig_item->attributes;
+                $new_item->setAttributes($item_attributes);
+                $new_item->restaurant_id = $new_rest_id;
+                $new_item->menu_category_id = $new_category_id;
+                $new_item->save();
+            }
+        }
+        $rest_delivery_orig = RestaurantDelivery::find()->andWhere(['restaurant_id' => $original_rest])->all();
+        foreach ($rest_delivery_orig as $key => $rest_delivery_orig) {
+            $new_rest_delivery = new RestaurantDelivery();
+            $rest_delivery_attributes = $rest_delivery_orig->attributes;
+            $new_rest_delivery->setAttributes($rest_delivery_attributes);
+            $new_rest_delivery->restaurant_id = $new_rest_id;
+            $new_rest_delivery->save();
+        }
+        return $this->asJson(['status' => 200]);
+    }
+
+
+    public function actionDelete($id) {
+        $original_rest = Restaurant::findOne($id);
+        if ($original_rest->delete()) {
+            return $this->asJson(['status' => 200]);
+        }
+        return $this->asJson(['status' => 500]);
+    }
+
+    
+
+    public function actionManagerAdd() {
+        $user = new User();
+        $user->role = 'manager';
+        $user->username = $_POST['login'];
+        // var_dump($_POST['email']);
+        // die();
+        $user->email = $_POST['email'] ? $_POST['email'] : '';
+        $user->restaurant_id = $_POST['rest_id'] ? $_POST['rest_id'] : '';
+        $user->setPassword($_POST['password']);
+        $user->generateAuthKey();
+        $user->generateEmailVerificationToken();
+        if ($user->save()) {
+            return $this->asJson([
+                'status' => 200
+            ]);
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
+    public function actionGetManagerList($restaurant_id) {
+        $users = User::find()->andWhere(['restaurant_id' => $restaurant_id, 'role' => 'manager'])->all();
+        $res = [];
+        foreach ($users as $key => $user) {
+            $res[$key]['id'] = $user->id;
+            $res[$key]['login'] = $user->username;
+        }
+        return $this->asJson($res);
+    }
+
+    public function actionManagerDelete($id) {
+        $user = User::findOne($id);
+        if ($user->delete()) {
+            return $this->asJson([
+                'status' => 200
+            ]);   
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
 }

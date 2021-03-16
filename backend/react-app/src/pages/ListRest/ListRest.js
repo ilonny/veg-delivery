@@ -7,7 +7,8 @@ export const ListRest = (props) => {
   const [list, setList] = useState([]);
   console.log("ListRest props", props);
   const { user } = props?.location?.state;
-  useEffect(() => {
+  console.log("user??", user);
+  const getData = () => {
     try {
       fetch(
         API_HOST +
@@ -20,6 +21,9 @@ export const ListRest = (props) => {
     } catch (e) {
       console.log(e);
     }
+  };
+  useEffect(() => {
+    getData();
   }, []);
   // console.log("list is", list);
   return (
@@ -37,7 +41,7 @@ export const ListRest = (props) => {
             }
             return (
               <Link
-                to={{ pathname: "/restaurant", state: { id: rest.id } }}
+                to={{ pathname: "/restaurant", state: { id: rest.id, user } }}
                 key={rest.id}
               >
                 <Col className="gutter-row" span={6}>
@@ -50,6 +54,74 @@ export const ListRest = (props) => {
                       title={rest.name}
                       description={rest.description + "\n" + addrText}
                     />
+                    {user.role !== "manager" && (
+                      <>
+                        <button
+                          style={{
+                            cursor: "pointer",
+                            padding: 10,
+                            marginTop: 10,
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            console.log("rest copy", rest);
+                            fetch(`${API_HOST}/restaurant/copy?id=${rest.id}`)
+                              .then((res) => res.json())
+                              .then((res) => {
+                                if (res.status == 200) {
+                                  getData();
+                                } else {
+                                  alert(
+                                    "Ошибка при копировании, попробуйте позже"
+                                  );
+                                }
+                              })
+                              .catch((err) => {
+                                alert(
+                                  "Ошибка при копировании, попробуйте позже"
+                                );
+                              });
+                          }}
+                        >
+                          Скопировать ресторан
+                        </button>
+                        <button
+                          style={{
+                            cursor: "pointer",
+                            padding: 10,
+                            marginTop: 10,
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            console.log("rest delete", rest);
+                            if (
+                              window.confirm("Подтвердите удаление ресторана")
+                            ) {
+                              fetch(
+                                `${API_HOST}/restaurant/delete?id=${rest.id}`
+                              )
+                                .then((res) => res.json())
+                                .then((res) => {
+                                  if (res.status == 200) {
+                                    getData();
+                                  } else {
+                                    alert(
+                                      "Ошибка при удалении, попробуйте позже"
+                                    );
+                                  }
+                                })
+                                .catch((err) => {
+                                  alert(
+                                    "Ошибка при удалении, попробуйте позже"
+                                  );
+                                });
+                            }
+                          }}
+                        >
+                          Удалить ресторан
+                        </button>
+                      </>
+                    )}
                   </Card>
                 </Col>
               </Link>

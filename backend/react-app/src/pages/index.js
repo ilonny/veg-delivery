@@ -8,6 +8,8 @@ import { RestaurantModif } from "./RestaurantModif";
 import { RestaurantDelivery } from "./RestaurantDelivery";
 import { RestaurantDiscount } from "./RestaurantDiscount";
 import { RestaurantOrder } from "./RestaurantOrder";
+import { RestaurantUsers } from "./RestaurantUsers";
+
 export const routes = () => [
   {
     path: "/",
@@ -49,5 +51,9 @@ export const routes = () => [
   {
     path: "/restaurant-order",
     component: RestaurantOrder,
+  },
+  {
+    path: "/restaurant-users",
+    component: RestaurantUsers,
   },
 ];

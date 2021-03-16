@@ -22,7 +22,7 @@ function debounce(f, ms) {
 
 export const RestaurantPage = (props) => {
   const [data, setData] = useState(null);
-  const { id } = props.location.state;
+  const { id, user } = props.location.state;
   const [startTime, setStartTime] = useState(false);
   const [endTime, setEndTime] = useState(false);
   const [restInfo, setRestInfo] = useState(false);
@@ -57,7 +57,7 @@ export const RestaurantPage = (props) => {
   } catch (e) {
     addrText = "Не определено";
   }
-  console.log("rest data", data);
+  console.log("rest data", data, user);
 
   if (!data) return null;
   // const reOpenRest = () => {};
@@ -347,6 +347,21 @@ export const RestaurantPage = (props) => {
               }}
             />
           </label>
+          <br />
+          <br />
+          <br />
+          {user?.role != "manager" && (
+            <Link
+              to={{
+                pathname: "restaurant-users",
+                state: { id: id },
+              }}
+            >
+              <Button>Список пользователей</Button>
+            </Link>
+          )}
+          <br />
+          <br />
         </Col>
       </Row>
     </>

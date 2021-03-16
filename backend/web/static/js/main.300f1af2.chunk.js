@@ -24,15 +24,15 @@
           r = a(92),
           c = a(209),
           u = a(179),
-          i = a(211),
+          i = a(210),
           o = a(207),
           m = (a(363), a(49)),
           s = a(84),
           d = a(149),
           p = a(218),
-          E = a(54),
-          f = a(30),
-          h = a(5),
+          f = a(54),
+          E = a(28),
+          h = a(4),
           b = m.a.SubMenu,
           g = s.a.Header,
           v = s.a.Content,
@@ -118,7 +118,7 @@
                       l.a.createElement(p.a, { type: "password" })
                     ),
                     l.a.createElement(
-                      E.a,
+                      f.a,
                       { type: "primary", htmlType: "submit" },
                       "\u0412\u043e\u0439\u0442\u0438"
                     )
@@ -160,7 +160,7 @@
                           m.a.Item,
                           { key: "1" },
                           l.a.createElement(
-                            f.a,
+                            E.a,
                             {
                               to: {
                                 pathname: "/list-rest",
@@ -170,26 +170,30 @@
                             "\u0421\u043f\u0438\u0441\u043e\u043a \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u043e\u0432"
                           )
                         ),
-                        l.a.createElement(
-                          m.a.Item,
-                          { key: "2" },
+                        "manager" != t.role &&
                           l.a.createElement(
-                            f.a,
-                            {
-                              to: { pathname: "/add-rest", state: { user: t } },
-                            },
-                            "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d 123"
+                            m.a.Item,
+                            { key: "2" },
+                            l.a.createElement(
+                              E.a,
+                              {
+                                to: {
+                                  pathname: "/add-rest",
+                                  state: { user: t },
+                                },
+                              },
+                              "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d 123"
+                            )
                           )
-                        )
                       ),
                       "admin" === t.role &&
                         l.a.createElement(
                           m.a.Item,
                           { key: "3" },
                           l.a.createElement(
-                            f.a,
+                            E.a,
                             { to: "/add-user" },
-                            "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f"
+                            "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043f\u0430\u0440\u0442\u043d\u0435\u0440\u0430"
                           )
                         ),
                       l.a.createElement(
@@ -252,7 +256,7 @@
       }
       var u = Object(l.createGlobalStyle)(c(), r.a.black);
     },
-    211: function (e, t, a) {
+    210: function (e, t, a) {
       "use strict";
       a.d(t, "a", function () {
         return A;
@@ -271,15 +275,15 @@
             )
           );
         },
-        u = a(17),
+        u = a(13),
         i = a(149),
         o = a(218),
         m = a(110),
         s = a(54),
         d = a(369),
-        p = (a(135), a(5)),
-        E = { labelCol: { span: 4 }, wrapperCol: { span: 16 } },
-        f = function (e) {
+        p = (a(135), a(4)),
+        f = { labelCol: { span: 4 }, wrapperCol: { span: 16 } },
+        E = function (e) {
           var t,
             a = (null === e ||
             void 0 === e ||
@@ -290,7 +294,7 @@
             ).user,
             r = Object(n.useState)(),
             c = Object(u.a)(r, 2),
-            f = c[0],
+            E = c[0],
             h = c[1];
           return l.a.createElement(
             l.a.Fragment,
@@ -301,7 +305,7 @@
                 {
                   name: "basic",
                   onFinish: function (e) {
-                    console.log("Success:", { values: e, value: f });
+                    console.log("Success:", { values: e, value: E });
                     var t = document.querySelector('input[type="file"]'),
                       n = new FormData();
                     Object.keys(e).forEach(function (t) {
@@ -336,7 +340,7 @@
                   style: { minHeight: "100vh" },
                   initialValues: { active: !0 },
                 },
-                E
+                f
               ),
               l.a.createElement(
                 i.a.Item,
@@ -375,7 +379,7 @@
                 { label: "\u0410\u0434\u0440\u0435\u0441", name: "address" },
                 l.a.createElement(d.a, {
                   token: "eadbc452286d23c7163b38989884d5ae40d08ade",
-                  value: f,
+                  value: E,
                   onChange: h,
                 })
               ),
@@ -518,7 +522,7 @@
         g = a(367),
         v = a(97),
         y = a(57),
-        j = a(30),
+        j = a(28),
         O = g.a.Meta,
         _ = function (e) {
           var t,
@@ -534,24 +538,28 @@
             ? void 0
             : t.state
           ).user;
+          console.log("user??", o);
+          var m = function () {
+            try {
+              fetch(
+                p.a +
+                  "/restaurant/list?token="
+                    .concat(1 === o.id ? "ZWmGuABp3N6" : "", "&user=")
+                    .concat(o.id)
+              )
+                .then(function (e) {
+                  return e.json();
+                })
+                .then(function (e) {
+                  return i(e);
+                });
+            } catch (e) {
+              console.log(e);
+            }
+          };
           return (
             Object(n.useEffect)(function () {
-              try {
-                fetch(
-                  p.a +
-                    "/restaurant/list?token="
-                      .concat(1 === o.id ? "ZWmGuABp3N6" : "", "&user=")
-                      .concat(o.id)
-                )
-                  .then(function (e) {
-                    return e.json();
-                  })
-                  .then(function (e) {
-                    return i(e);
-                  });
-              } catch (e) {
-                console.log(e);
-              }
+              m();
             }, []),
             l.a.createElement(
               l.a.Fragment,
@@ -571,7 +579,10 @@
                       return l.a.createElement(
                         j.a,
                         {
-                          to: { pathname: "/restaurant", state: { id: e.id } },
+                          to: {
+                            pathname: "/restaurant",
+                            state: { id: e.id, user: o },
+                          },
                           key: e.id,
                         },
                         l.a.createElement(
@@ -590,7 +601,88 @@
                             l.a.createElement(O, {
                               title: e.name,
                               description: e.description + "\n" + t,
-                            })
+                            }),
+                            "manager" !== o.role &&
+                              l.a.createElement(
+                                l.a.Fragment,
+                                null,
+                                l.a.createElement(
+                                  "button",
+                                  {
+                                    style: {
+                                      cursor: "pointer",
+                                      padding: 10,
+                                      marginTop: 10,
+                                    },
+                                    onClick: function (t) {
+                                      t.preventDefault(),
+                                        console.log("rest copy", e),
+                                        fetch(
+                                          ""
+                                            .concat(p.a, "/restaurant/copy?id=")
+                                            .concat(e.id)
+                                        )
+                                          .then(function (e) {
+                                            return e.json();
+                                          })
+                                          .then(function (e) {
+                                            200 == e.status
+                                              ? m()
+                                              : alert(
+                                                  "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0438, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043f\u043e\u0437\u0436\u0435"
+                                                );
+                                          })
+                                          .catch(function (e) {
+                                            alert(
+                                              "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0438, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043f\u043e\u0437\u0436\u0435"
+                                            );
+                                          });
+                                    },
+                                  },
+                                  "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d"
+                                ),
+                                l.a.createElement(
+                                  "button",
+                                  {
+                                    style: {
+                                      cursor: "pointer",
+                                      padding: 10,
+                                      marginTop: 10,
+                                    },
+                                    onClick: function (t) {
+                                      t.preventDefault(),
+                                        console.log("rest delete", e),
+                                        window.confirm(
+                                          "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u0430"
+                                        ) &&
+                                          fetch(
+                                            ""
+                                              .concat(
+                                                p.a,
+                                                "/restaurant/delete?id="
+                                              )
+                                              .concat(e.id)
+                                          )
+                                            .then(function (e) {
+                                              return e.json();
+                                            })
+                                            .then(function (e) {
+                                              200 == e.status
+                                                ? m()
+                                                : alert(
+                                                    "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0438, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043f\u043e\u0437\u0436\u0435"
+                                                  );
+                                            })
+                                            .catch(function (e) {
+                                              alert(
+                                                "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0438, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043f\u043e\u0437\u0436\u0435"
+                                              );
+                                            });
+                                    },
+                                  },
+                                  "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d"
+                                )
+                              )
                           )
                         )
                       );
@@ -617,67 +709,69 @@
             a = Object(u.a)(t, 2),
             r = a[0],
             c = a[1],
-            i = e.location.state.id,
-            m = Object(n.useState)(!1),
-            E = Object(u.a)(m, 2),
-            f = E[0],
-            h = E[1],
-            b = Object(n.useState)(!1),
-            O = Object(u.a)(b, 2),
-            _ = O[0],
-            C = O[1],
-            S = Object(n.useState)(!1),
-            F = Object(u.a)(S, 2),
-            I = F[0],
-            x = F[1],
-            T = Object(n.useState)(!1),
-            P = Object(u.a)(T, 2),
-            D = P[0],
-            N = P[1],
-            q = Object(n.useState)(!1),
-            J = Object(u.a)(q, 2),
-            M = J[0],
-            A = J[1],
-            L = Object(n.useState)(!1),
-            U = Object(u.a)(L, 2),
-            R = U[0],
-            H = U[1];
+            i = e.location.state,
+            m = i.id,
+            f = i.user,
+            E = Object(n.useState)(!1),
+            h = Object(u.a)(E, 2),
+            b = h[0],
+            O = h[1],
+            _ = Object(n.useState)(!1),
+            C = Object(u.a)(_, 2),
+            S = C[0],
+            F = C[1],
+            I = Object(n.useState)(!1),
+            x = Object(u.a)(I, 2),
+            T = x[0],
+            P = x[1],
+            D = Object(n.useState)(!1),
+            N = Object(u.a)(D, 2),
+            q = N[0],
+            J = N[1],
+            M = Object(n.useState)(!1),
+            U = Object(u.a)(M, 2),
+            A = U[0],
+            L = U[1],
+            R = Object(n.useState)(!1),
+            H = Object(u.a)(R, 2),
+            K = H[0],
+            z = H[1];
           Object(n.useEffect)(
             function () {
-              z();
+              G();
             },
-            [i]
+            [m]
           );
-          var K,
-            z = function () {
+          var B,
+            G = function () {
               try {
-                fetch(p.a + "/restaurant/get-data?id=" + i)
+                fetch(p.a + "/restaurant/get-data?id=" + m)
                   .then(function (e) {
                     return e.json();
                   })
                   .then(function (e) {
                     c(e),
-                      h(e.time_start),
-                      C(e.time_end),
-                      x(e.restaurant_info),
-                      N(e.delivery_time),
-                      A(e.name);
+                      O(e.time_start),
+                      F(e.time_end),
+                      P(e.restaurant_info),
+                      J(e.delivery_time),
+                      L(e.name);
                     var t = JSON.parse(
                       null === e || void 0 === e ? void 0 : e.address_json
                     );
-                    console.log("addressJson", t), H(t);
+                    console.log("addressJson", t), z(t);
                   });
               } catch (e) {
                 console.log(e);
               }
             };
           try {
-            K = JSON.parse(r.address_json).value;
-          } catch (B) {
-            K =
+            B = JSON.parse(r.address_json).value;
+          } catch (V) {
+            B =
               "\u041d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e";
           }
-          if ((console.log("rest data", r), !r)) return null;
+          if ((console.log("rest data", r, f), !r)) return null;
           return l.a.createElement(
             l.a.Fragment,
             null,
@@ -701,7 +795,7 @@
                     title: r.name,
                     description: r.description,
                   }),
-                  l.a.createElement("p", null, K),
+                  l.a.createElement("p", null, B),
                   l.a.createElement(
                     "p",
                     null,
@@ -716,7 +810,7 @@
                 { className: "gutter-row", span: 10 },
                 l.a.createElement(
                   j.a,
-                  { to: { pathname: "restaurant-order", state: { id: i } } },
+                  { to: { pathname: "restaurant-order", state: { id: m } } },
                   l.a.createElement(
                     s.a,
                     null,
@@ -727,14 +821,14 @@
                 l.a.createElement("br", null),
                 l.a.createElement(
                   j.a,
-                  { to: { pathname: "restaurant-menu", state: { id: i } } },
+                  { to: { pathname: "restaurant-menu", state: { id: m } } },
                   l.a.createElement(s.a, null, "\u041c\u0435\u043d\u044e")
                 ),
                 l.a.createElement("br", null),
                 l.a.createElement("br", null),
                 l.a.createElement(
                   j.a,
-                  { to: { pathname: "restaurant-modif", state: { id: i } } },
+                  { to: { pathname: "restaurant-modif", state: { id: m } } },
                   l.a.createElement(
                     s.a,
                     null,
@@ -752,9 +846,9 @@
                     "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435"
                   ),
                   l.a.createElement(o.a, {
-                    value: M,
+                    value: A,
                     onChange: function (e) {
-                      A(e.target.value);
+                      L(e.target.value);
                     },
                   })
                 ),
@@ -767,7 +861,7 @@
                         p.a +
                           "/restaurant/edit-rest-name?id="
                             .concat(r.id, "&value=")
-                            .concat(M)
+                            .concat(A)
                       )
                         .then(function (e) {
                           return e.json();
@@ -777,7 +871,7 @@
                             alert(
                               "\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043e"
                             ),
-                            z();
+                            G();
                         });
                     },
                   },
@@ -795,9 +889,9 @@
                   ),
                   l.a.createElement(d.a, {
                     token: "eadbc452286d23c7163b38989884d5ae40d08ade",
-                    value: R,
-                    defaultQuery: R,
-                    onChange: H,
+                    value: K,
+                    defaultQuery: K,
+                    onChange: z,
                   }),
                   l.a.createElement("br", null),
                   l.a.createElement(
@@ -808,7 +902,7 @@
                           p.a +
                             "/restaurant/edit-rest-address?id="
                               .concat(r.id, "&value=")
-                              .concat(encodeURIComponent(JSON.stringify(R)))
+                              .concat(encodeURIComponent(JSON.stringify(K)))
                         )
                           .then(function (e) {
                             return e.json();
@@ -818,7 +912,7 @@
                               alert(
                                 "\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043e"
                               ),
-                              z();
+                              G();
                           });
                       },
                     },
@@ -845,7 +939,7 @@
                             .concat(r.id, "&value=")
                             .concat(e.target.value)
                       ).then(function (e) {
-                        return z();
+                        return G();
                       });
                     },
                   })
@@ -875,7 +969,7 @@
                           })
                           .then(function (e) {
                             200 === e.status
-                              ? z()
+                              ? G()
                               : alert(
                                   "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f"
                                 );
@@ -907,7 +1001,7 @@
                             .concat(r.id, "&value=")
                             .concat(e.target.value)
                       ).then(function (e) {
-                        return z();
+                        return G();
                       });
                     }, 1e3),
                   })
@@ -916,7 +1010,7 @@
                 l.a.createElement("br", null),
                 l.a.createElement(
                   j.a,
-                  { to: { pathname: "restaurant-delivery", state: { id: i } } },
+                  { to: { pathname: "restaurant-delivery", state: { id: m } } },
                   l.a.createElement(
                     s.a,
                     null,
@@ -934,9 +1028,9 @@
                     "\u0412\u0440\u0435\u043c\u044f \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u044f (\u0447\u0447:\u043c\u043c)"
                   ),
                   l.a.createElement(o.a, {
-                    value: f,
+                    value: b,
                     onChange: function (e) {
-                      return h(e.target.value);
+                      return O(e.target.value);
                     },
                   })
                 ),
@@ -949,9 +1043,9 @@
                     "\u0412\u0440\u0435\u043c\u044f \u0437\u0430\u043a\u0440\u044b\u0442\u0438\u044f (\u0447\u0447:\u043c\u043c)"
                   ),
                   l.a.createElement(o.a, {
-                    value: _,
+                    value: S,
                     onChange: function (e) {
-                      return C(e.target.value);
+                      return F(e.target.value);
                     },
                   })
                 ),
@@ -964,8 +1058,8 @@
                         p.a +
                           "/restaurant/edit-rest-time?id="
                             .concat(r.id, "&start=")
-                            .concat(f, "&end=")
-                            .concat(_)
+                            .concat(b, "&end=")
+                            .concat(S)
                       )
                         .then(function (e) {
                           return e.json();
@@ -975,7 +1069,7 @@
                             alert(
                               "\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043e"
                             ),
-                            z();
+                            G();
                         });
                     },
                   },
@@ -992,9 +1086,9 @@
                     '\u0421\u0440\u043e\u043a\u0438 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438\u0438 (\u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440 "40-50 \u043c\u0438\u043d")'
                   ),
                   l.a.createElement(o.a, {
-                    value: D,
+                    value: q,
                     onChange: function (e) {
-                      return N(e.target.value);
+                      return J(e.target.value);
                     },
                   })
                 ),
@@ -1007,7 +1101,7 @@
                         p.a +
                           "/restaurant/edit-rest-deliverytime?id="
                             .concat(r.id, "&time=")
-                            .concat(D)
+                            .concat(q)
                       )
                         .then(function (e) {
                           return e.json();
@@ -1017,7 +1111,7 @@
                             alert(
                               "\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043e"
                             ),
-                            z();
+                            G();
                         });
                     },
                   },
@@ -1042,7 +1136,7 @@
                             .concat(r.id, "&value=")
                             .concat(e.target.value)
                       ).then(function (e) {
-                        return z();
+                        return G();
                       });
                     },
                   })
@@ -1058,9 +1152,9 @@
                     "\u042e\u0440\u0438\u0434\u0438\u0441\u043a\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f (\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u041e\u041e\u041e, \u0430\u0434\u0440\u0435\u0441, \u0442\u0435\u043b\u0435\u0444\u043e\u043d)"
                   ),
                   l.a.createElement(o.a, {
-                    value: I,
+                    value: T,
                     onChange: function (e) {
-                      return x(e.target.value);
+                      return P(e.target.value);
                     },
                   }),
                   l.a.createElement(
@@ -1071,9 +1165,9 @@
                           p.a +
                             "/restaurant/edit-rest-info?id="
                               .concat(r.id, "&value=")
-                              .concat(I)
+                              .concat(T)
                         ).then(function (e) {
-                          return z();
+                          return G();
                         });
                       },
                     },
@@ -1092,7 +1186,7 @@
                             .concat(r.id, "&value=")
                             .concat("1" == r.active ? 0 : 1)
                       ).then(function (e) {
-                        return z();
+                        return G();
                       });
                     },
                   },
@@ -1111,7 +1205,7 @@
                 l.a.createElement("br", null),
                 l.a.createElement(
                   j.a,
-                  { to: { pathname: "restaurant-discount", state: { id: i } } },
+                  { to: { pathname: "restaurant-discount", state: { id: m } } },
                   l.a.createElement(
                     s.a,
                     null,
@@ -1138,11 +1232,26 @@
                             "/restaurant/change-rest-image?id=".concat(r.id),
                           { method: "POST", body: t }
                         ).then(function (e) {
-                          return z();
+                          return G();
                         });
                     },
                   })
-                )
+                ),
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                l.a.createElement("br", null),
+                "manager" != (null === f || void 0 === f ? void 0 : f.role) &&
+                  l.a.createElement(
+                    j.a,
+                    { to: { pathname: "restaurant-users", state: { id: m } } },
+                    l.a.createElement(
+                      s.a,
+                      null,
+                      "\u0421\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439"
+                    )
+                  ),
+                l.a.createElement("br", null),
+                l.a.createElement("br", null)
               )
             )
           );
@@ -1161,8 +1270,8 @@
           var i = e.location.state.id,
             m = Object(n.useState)(!1),
             d = Object(u.a)(m, 2),
-            E = d[0],
-            f = d[1],
+            f = d[0],
+            E = d[1],
             h = function () {
               var e = new FormData();
               e.append("rest_id", i),
@@ -1198,7 +1307,7 @@
               l.a.createElement(x.a, null),
               l.a.createElement(o.a, {
                 onChange: function (e) {
-                  return f(e.target.value);
+                  return E(e.target.value);
                 },
               }),
               l.a.createElement(
@@ -1207,7 +1316,7 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("category_name", E),
+                      e.append("category_name", f),
                       fetch(p.a + "/restaurant/create-category-menu", {
                         method: "POST",
                         body: e,
@@ -1802,8 +1911,8 @@
             i = e.location.state.id,
             m = Object(n.useState)({ type: "single" }),
             d = Object(u.a)(m, 2),
-            E = d[0],
-            f = d[1],
+            f = d[0],
+            E = d[1],
             h = function () {
               fetch(p.a + "/restaurant/get-modif-list?restaurant_id=" + i)
                 .then(function (e) {
@@ -1856,9 +1965,9 @@
                 ),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    return f(
+                    return E(
                       Object(F.a)(
-                        Object(F.a)({}, E),
+                        Object(F.a)({}, f),
                         {},
                         { name: e.target.value }
                       )
@@ -1875,9 +1984,9 @@
                   {
                     style: { width: "100%", height: 40, marginBottom: 10 },
                     onChange: function (e) {
-                      return f(
+                      return E(
                         Object(F.a)(
-                          Object(F.a)({}, E),
+                          Object(F.a)({}, f),
                           {},
                           { type: e.target.value }
                         )
@@ -1902,9 +2011,9 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("name", E.name),
-                      e.append("type", E.type),
-                      e.append("parent_id", E.parent_id ? E.parent_id : null),
+                      e.append("name", f.name),
+                      e.append("type", f.type),
+                      e.append("parent_id", f.parent_id ? f.parent_id : null),
                       fetch(p.a + "/restaurant/create-rest-modif", {
                         method: "POST",
                         body: e,
@@ -2043,8 +2152,8 @@
             i = e.location.state.id,
             m = Object(n.useState)({ type: "single" }),
             d = Object(u.a)(m, 2),
-            E = d[0],
-            f = d[1],
+            f = d[0],
+            E = d[1],
             h = function () {
               fetch(p.a + "/restaurant/get-delivery-list?restaurant_id=" + i)
                 .then(function (e) {
@@ -2087,9 +2196,9 @@
                 ),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    return f(
+                    return E(
                       Object(F.a)(
-                        Object(F.a)({}, E),
+                        Object(F.a)({}, f),
                         {},
                         { price_start: e.target.value }
                       )
@@ -2107,9 +2216,9 @@
                 ),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    return f(
+                    return E(
                       Object(F.a)(
-                        Object(F.a)({}, E),
+                        Object(F.a)({}, f),
                         {},
                         { price: e.target.value }
                       )
@@ -2123,8 +2232,8 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("price", E.price),
-                      e.append("price_start", E.price_start),
+                      e.append("price", f.price),
+                      e.append("price_start", f.price_start),
                       fetch(p.a + "/restaurant/create-rest-delivery", {
                         method: "POST",
                         body: e,
@@ -2238,8 +2347,8 @@
             i = e.location.state.id,
             m = Object(n.useState)({ type: "promocode" }),
             d = Object(u.a)(m, 2),
-            E = d[0],
-            f = d[1],
+            f = d[0],
+            E = d[1],
             h = Object(n.useState)([]),
             b = Object(u.a)(h, 2),
             g = b[0],
@@ -2281,7 +2390,7 @@
                 });
           }, []);
           console.log("data", r),
-            console.log("newModif", E),
+            console.log("newModif", f),
             console.log("menu", g);
           var _ = function (e, t) {
               var a = t;
@@ -2291,8 +2400,8 @@
                 l.a.createElement("span", null, e),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    var t = Object(F.a)({}, E);
-                    (t[a] = e.target.value), f(Object(F.a)({}, t));
+                    var t = Object(F.a)({}, f);
+                    (t[a] = e.target.value), E(Object(F.a)({}, t));
                   },
                 })
               );
@@ -2349,9 +2458,9 @@
                 {
                   style: { width: "100%", height: 40 },
                   onChange: function (e) {
-                    f(
+                    E(
                       Object(F.a)(
-                        Object(F.a)({}, E),
+                        Object(F.a)({}, f),
                         {},
                         { type: e.target.value }
                       )
@@ -2418,7 +2527,7 @@
                       .map(function (e) {
                         return e.value;
                       });
-                    f(Object(F.a)(Object(F.a)({}, E), {}, { items: t }));
+                    E(Object(F.a)(Object(F.a)({}, f), {}, { items: t }));
                   },
                 },
                 g.map(function (e) {
@@ -2444,18 +2553,18 @@
                 onClick: function () {
                   var e = new FormData();
                   e.append("rest_id", i),
-                    e.append("type", E.type ? E.type : ""),
-                    e.append("name", E.name ? E.name : ""),
+                    e.append("type", f.type ? f.type : ""),
+                    e.append("name", f.name ? f.name : ""),
                     e.append(
                       "discount_value",
-                      E.discount_value ? E.discount_value : ""
+                      f.discount_value ? f.discount_value : ""
                     ),
-                    e.append("price_start", E.price_start ? E.price_start : ""),
-                    e.append("description", E.description ? E.description : ""),
-                    e.append("promocode", E.promocode ? E.promocode : ""),
-                    e.append("time_start", E.time_start ? E.time_start : ""),
-                    e.append("time_end", E.time_end ? E.time_end : ""),
-                    e.append("items", E.items ? E.items : ""),
+                    e.append("price_start", f.price_start ? f.price_start : ""),
+                    e.append("description", f.description ? f.description : ""),
+                    e.append("promocode", f.promocode ? f.promocode : ""),
+                    e.append("time_start", f.time_start ? f.time_start : ""),
+                    e.append("time_end", f.time_end ? f.time_end : ""),
+                    e.append("items", f.items ? f.items : ""),
                     fetch(p.a + "/restaurant/create-rest-discount", {
                       method: "POST",
                       body: e,
@@ -2636,9 +2745,9 @@
             o = Object(n.useState)({ type: "single" }),
             m = Object(u.a)(o, 2),
             d = (m[0], m[1], Object(n.useState)(!1)),
-            E = Object(u.a)(d, 2),
-            f = E[0],
-            h = E[1],
+            f = Object(u.a)(d, 2),
+            E = f[0],
+            h = f[1],
             b = function () {
               h(!0),
                 fetch(p.a + "/restaurant/get-order-list?restaurant_id=" + i)
@@ -2815,7 +2924,7 @@
               "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a"
             ),
             l.a.createElement(x.a, null),
-            f &&
+            E &&
               l.a.createElement(
                 "p",
                 null,
@@ -2884,13 +2993,170 @@
             ";"
           );
         },
+        U = function (e) {
+          var t = Object(n.useState)(null),
+            a = Object(u.a)(t, 2),
+            r = a[0],
+            c = a[1],
+            i = e.location.state.id;
+          console.log("RestaurantUsers", i);
+          var m = Object(n.useState)({}),
+            d = Object(u.a)(m, 2),
+            f = d[0],
+            E = d[1],
+            h = Object(n.useState)([]),
+            b = Object(u.a)(h, 2),
+            g = b[0],
+            v = b[1],
+            y = function () {
+              fetch(p.a + "/restaurant/get-manager-list?restaurant_id=" + i)
+                .then(function (e) {
+                  return e.json();
+                })
+                .then(function (e) {
+                  c(e);
+                });
+            };
+          Object(n.useEffect)(function () {
+            y();
+            var e = new FormData();
+            e.append("rest_id", i),
+              fetch(p.a + "/restaurant/get-menu", { method: "POST", body: e })
+                .then(function (e) {
+                  return e.json();
+                })
+                .then(function (e) {
+                  return v(e.menu);
+                });
+          }, []);
+          console.log("data", r),
+            console.log("newModif", f),
+            console.log("menu", g);
+          var j = function (e, t) {
+            var a = t;
+            return l.a.createElement(
+              "label",
+              null,
+              l.a.createElement("span", null, e),
+              l.a.createElement(o.a, {
+                onChange: function (e) {
+                  var t = Object(F.a)({}, f);
+                  (t[a] = e.target.value), E(Object(F.a)({}, t));
+                },
+              })
+            );
+          };
+          return l.a.createElement(
+            l.a.Fragment,
+            null,
+            l.a.createElement(
+              "h3",
+              null,
+              "\u0421\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0444\u0438\u043b\u0438\u0430\u043b\u0430"
+            ),
+            l.a.createElement(
+              "div",
+              null,
+              j("\u041b\u043e\u0433\u0438\u043d", "login"),
+              j("\u041f\u0430\u0440\u043e\u043b\u044c", "password"),
+              j("Email", "email"),
+              l.a.createElement(
+                s.a,
+                {
+                  onClick: function () {
+                    var e = new FormData();
+                    e.append(
+                      "login",
+                      null === f || void 0 === f ? void 0 : f.login
+                    ),
+                      e.append(
+                        "email",
+                        null === f || void 0 === f ? void 0 : f.email
+                      ),
+                      e.append(
+                        "password",
+                        null === f || void 0 === f ? void 0 : f.password
+                      ),
+                      e.append("rest_id", i),
+                      fetch(p.a + "/restaurant/manager-add", {
+                        method: "POST",
+                        body: e,
+                      })
+                        .then(function (e) {
+                          return e.json();
+                        })
+                        .then(function (e) {
+                          200 === e.status
+                            ? y()
+                            : alert(
+                                "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u0438 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f"
+                              );
+                        })
+                        .catch(function (e) {
+                          alert(
+                            "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u0438 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f"
+                          );
+                        });
+                  },
+                },
+                "\u0421\u043e\u0437\u0434\u0430\u0442\u044c"
+              )
+            ),
+            l.a.createElement(x.a, null),
+            l.a.createElement(
+              "div",
+              null,
+              null === r || void 0 === r
+                ? void 0
+                : r.map(function (e) {
+                    return l.a.createElement(
+                      l.a.Fragment,
+                      null,
+                      l.a.createElement(
+                        "div",
+                        {
+                          style: {
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                          },
+                        },
+                        l.a.createElement("p", null, e.id),
+                        l.a.createElement("p", null, e.login),
+                        l.a.createElement(
+                          s.a,
+                          {
+                            onClick: function () {
+                              window.confirm(
+                                "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0435\u043d\u0438\u0435"
+                              ) &&
+                                fetch(
+                                  p.a + "/restaurant/manager-delete?id=" + e.id
+                                )
+                                  .then(function (e) {
+                                    return e.json();
+                                  })
+                                  .then(function () {
+                                    return y();
+                                  });
+                            },
+                          },
+                          "\u0423\u0434\u0430\u043b\u0438\u0442\u044c"
+                        )
+                      ),
+                      l.a.createElement(x.a, null)
+                    );
+                  })
+            )
+          );
+        },
         A = function () {
           return n.createElement(
             n.Fragment,
             null,
             Object(r.a)([
               { path: "/", exact: !0, component: c },
-              { path: "/add-rest", component: f },
+              { path: "/add-rest", component: E },
               { path: "/add-user", component: b },
               { path: "/list-rest", component: _ },
               { path: "/restaurant", component: C },
@@ -2899,6 +3165,7 @@
               { path: "/restaurant-delivery", component: N },
               { path: "/restaurant-discount", component: q },
               { path: "/restaurant-order", component: M },
+              { path: "/restaurant-users", component: U },
             ])
           );
         };
@@ -2916,7 +3183,7 @@
         u = a(42),
         i = a(92),
         o = a(175),
-        m = a(5),
+        m = a(4),
         s = a(178),
         d = document.querySelector("#root");
       d &&
@@ -2937,13 +3204,13 @@
           d
         );
     },
-    5: function (e, t, a) {
+    4: function (e, t, a) {
       "use strict";
       a.d(t, "b", function () {
         return r;
       }),
         a.d(t, "d", function () {
-          return f;
+          return E;
         }),
         a.d(t, "c", function () {
           return h;
@@ -2955,7 +3222,7 @@
       var n,
         l = a(45),
         r = Object(l.a)(),
-        c = a(63),
+        c = a(64),
         u = (a(229), a(176)),
         i = a(147),
         o = a(177),
@@ -2963,7 +3230,7 @@
         s = a(11),
         d = { user: void 0 },
         p = { key: "main", storage: m.a },
-        E = Object(c.c)({
+        f = Object(c.c)({
           main: Object(i.a)(p, function () {
             var e =
                 arguments.length > 0 && void 0 !== arguments[0]
@@ -2982,11 +3249,11 @@
           }),
         });
       n = Object(c.a)(u.a);
-      var f = Object(c.d)(E, void 0, n),
-        h = Object(i.b)(f),
+      var E = Object(c.d)(f, void 0, n),
+        h = Object(i.b)(E),
         b = (a(92), "https://app.vegfood.delivery");
     },
   },
   [[220, 1, 2]],
 ]);
-//# sourceMappingURL=main.bd02a686.chunk.js.map
+//# sourceMappingURL=main.300f1af2.chunk.js.map
