@@ -104,12 +104,14 @@ export const AddRest = (props) => {
             onChange={setValue}
           />
         </Form.Item>
-        <Form.Item label="Радиус доставки (км)" name="delivery_radius">
-          <Input />
-        </Form.Item>
-        <Form.Item name="active" valuePropName="checked">
+        {user.role === "admin" && (
+          <Form.Item label="Радиус доставки (км)" name="delivery_radius">
+            <Input />
+          </Form.Item>
+        )}
+        {/* <Form.Item name="active" valuePropName="checked">
           <Checkbox>Активен</Checkbox>
-        </Form.Item>
+        </Form.Item> */}
         <Button type="primary" htmlType="submit">
           Сохранить
         </Button>

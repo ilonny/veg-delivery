@@ -71,7 +71,11 @@ class RestaurantController extends Controller
             $model->name = $_POST['name'];
             $model->description = $_POST['description'];
             $model->address_json = $_POST['address'];
-            $model->delivery_radius = $_POST['delivery_radius'];
+            if ($_POST['delivery_radius']) {
+                $model->delivery_radius = $_POST['delivery_radius'];
+            } else {
+                $model->delivery_radius = "0";
+            }
             $model->active = $_POST['active'] === 'true' ? '1' : '0';
             $model->user_id = $user_id;
             $uploadFormModel = new UploadForm();
@@ -86,6 +90,13 @@ class RestaurantController extends Controller
                     'message' => 'Успешно сохранено',
                 ]);
             } else {
+                if ($model->validate()) {
+                    // все данные корректны
+                } else {
+                    // данные не корректны: $errors - массив содержащий сообщения об ошибках
+                    $errors = $model->errors;
+                    var_dump($errors);
+                }
                 return json_encode([
                     'status' => 500,
                     'message' => 'Ошибка сервера, не удалось сохранить',
@@ -127,6 +138,7 @@ class RestaurantController extends Controller
         return $kilometers;
         // return compact('miles','feet','yards','kilometers','meters'); 
     }
+
 
     public function actionMobileList($lat = '', $lon = '') {
         date_default_timezone_set('Europe/Moscow');
@@ -171,13 +183,23 @@ class RestaurantController extends Controller
                             ->andWhere(['parent_id' => null])
                             ->all();
                         foreach ($rest_categories as $key => $value) {
-                            array_push($res_menu, [
-                                'id' => $value->id,
-                                'name' => $value->name,
-                                'order_by' => $value->order_by,
-                                'restaurant_id' => $value->restaurant_id,
-                                'menu' => Item::find()->andWhere(['menu_category_id' => $value->id])->asArray()->all(),
-                            ]);
+                            $menu_arr = Item::find()
+                                ->andWhere([
+                                    'menu_category_id' => $value->id,
+                                    'active' => 1,
+                                    'moderate' => '1',
+                                ])
+                                ->asArray()
+                                ->all();
+                            if (count($menu_arr)) {
+                                array_push($res_menu, [
+                                    'id' => $value->id,
+                                    'name' => $value->name,
+                                    'order_by' => $value->order_by,
+                                    'restaurant_id' => $value->restaurant_id,
+                                    'menu' => Item::find()->andWhere(['menu_category_id' => $value->id])->asArray()->all(),
+                                ]);
+                            }
                             foreach ($res_menu[$key]['menu'] as $key_dish => $dish) {
                                 $modificators_ids = explode(',', $dish['modificators']);
                                 // $res_menu[$key]['menu'][$key_dish] = (array) $res_menu[$key]['menu'][$key_dish];
@@ -284,7 +306,13 @@ class RestaurantController extends Controller
 
     public function actionAddItem() {
         if (Yii::$app->request->isPost) {
+            $user_id = Yii::$app->user->id;
+            $user = User::findOne($user_id);
+
             $model = new Item;
+            if ($user->role == 'admin') {
+                $model->moderate = 1;
+            }
             $model->restaurant_id = $_POST['rest_id'];
             $model->menu_category_id = $_POST['category_id'];
             $model->name = $_POST['name'];
@@ -316,7 +344,12 @@ class RestaurantController extends Controller
 
     public function actionChangeItem($id, $key, $value) {
         $item = Item::findOne($id);
-        $item->{$key} = $value; 
+        $item->{$key} = $value;
+        $user_id = Yii::$app->user->id;
+        $user = User::findOne($user_id);
+        if ($user->role != 'admin') {
+            $item->moderate = null;
+        }
         $item->update();
     }
 
@@ -327,6 +360,11 @@ class RestaurantController extends Controller
 
     public function actionChangeItemImage($id) {
         $item = Item::findOne($id);
+        $user_id = Yii::$app->user->id;
+        $user = User::findOne($user_id);
+        if ($user->role != 'admin') {
+            $item->moderate = null;
+        }
         $uploadFormModel = new UploadForm();
         $uploadDir = $uploadFormModel->getUploadName($item->name, $_FILES['file']['name']);
         move_uploaded_file($_FILES['file']['tmp_name'], $uploadDir);
@@ -695,6 +733,46 @@ class RestaurantController extends Controller
     public function actionManagerDelete($id) {
         $user = User::findOne($id);
         if ($user->delete()) {
+            return $this->asJson([
+                'status' => 200
+            ]);   
+        }
+        return $this->asJson([
+            'status' => 500
+        ]);
+    }
+
+    public function actionGetModerateList() {
+        // $user_id = Yii::$app->user->id;
+        // if (!user_id) {
+
+        // }
+        // $user = User::findOne($user_id);
+        // var_dump($user_id);
+        // if ($user->role == 'admin') {
+        // } else {
+        //     return $this->asJson([1=>2]);
+        // }
+        $res = [];
+        $items = Item::find()->andWhere(['moderate' => null])->asArray()->all();
+        foreach ($items as $key => $item) {
+            $items[$key]['restaurant'] = Restaurant::find(['id' => $item['restaurant_id']])->asArray()->one();
+        }
+        // var_dump($items);   
+        return $this->asJson($items);
+    }
+
+    public function actionApproveItem($id) {
+        // $user_id = Yii::$app->user->id;
+        // $user = User::findOne($user_id);
+        // var_dump($user_id);
+        // if ($user->role == 'admin') {
+        // } else {
+        //     return $this->asJson([1=>2]);
+        // }
+        $item = Item::findOne($id);
+        $item->moderate = '1';
+        if ($item->update()) {
             return $this->asJson([
                 'status' => 200
             ]);   

@@ -173,20 +173,24 @@ export const RestaurantPage = (props) => {
             <Button onClick={() => changeRestAddress()}>Сохранить адрес</Button>
             <br />
           </label>
-          <br />
-          <br />
-          <label>
-            <span>Радиус доставки (км)</span>
-            <Input
-              value={data.delivery_radius}
-              onChange={(e) =>
-                fetch(
-                  API_HOST +
-                    `/restaurant/edit-rest-radius?id=${data.id}&value=${e.target.value}`
-                ).then((res) => getData())
-              }
-            />
-          </label>
+          {user?.role == "admin" && (
+            <>
+              <br />
+              <br />
+              <label>
+                <span>Радиус доставки (км)</span>
+                <Input
+                  value={data.delivery_radius}
+                  onChange={(e) =>
+                    fetch(
+                      API_HOST +
+                        `/restaurant/edit-rest-radius?id=${data.id}&value=${e.target.value}`
+                    ).then((res) => getData())
+                  }
+                />
+              </label>
+            </>
+          )}
           <br />
           <br />
           <label>
@@ -229,16 +233,20 @@ export const RestaurantPage = (props) => {
               }, 1000)}
             />
           </label>
-          <br />
-          <br />
-          <Link
-            to={{
-              pathname: "restaurant-delivery",
-              state: { id: id },
-            }}
-          >
-            <Button>Стоимость доставки</Button>
-          </Link>
+          {user?.role == "admin" && (
+            <>
+              <br />
+              <br />
+              <Link
+                to={{
+                  pathname: "restaurant-delivery",
+                  state: { id: id },
+                }}
+              >
+                <Button>Стоимость доставки</Button>
+              </Link>
+            </>
+          )}
           <br></br>
           <br></br>
           <label>
@@ -257,33 +265,38 @@ export const RestaurantPage = (props) => {
           </label>
           <br />
           <Button onClick={() => changeTime()}>Сохранить время</Button>
+          {user?.role == "admin" && (
+            <>
+              <br />
+              <br />
+              <label>
+                <span>Сроки доставкии (например "40-50 мин")</span>
+                <Input
+                  value={deliveryTime}
+                  onChange={(e) => setDeliveryTime(e.target.value)}
+                />
+              </label>
+              <br />
+              <Button onClick={() => changeDeliveryTime()}>
+                Сохранить время
+              </Button>
 
-          <br />
-          <br />
-          <label>
-            <span>Сроки доставкии (например "40-50 мин")</span>
-            <Input
-              value={deliveryTime}
-              onChange={(e) => setDeliveryTime(e.target.value)}
-            />
-          </label>
-          <br />
-          <Button onClick={() => changeDeliveryTime()}>Сохранить время</Button>
-
-          <br />
-          <br />
-          <label>
-            <span>Минимальная сумма заказа (руб)</span>
-            <Input
-              value={data.min_price}
-              onChange={(e) =>
-                fetch(
-                  API_HOST +
-                    `/restaurant/edit-rest-min-price?id=${data.id}&value=${e.target.value}`
-                ).then((res) => getData())
-              }
-            />
-          </label>
+              <br />
+              <br />
+              <label>
+                <span>Минимальная сумма заказа (руб)</span>
+                <Input
+                  value={data.min_price}
+                  onChange={(e) =>
+                    fetch(
+                      API_HOST +
+                        `/restaurant/edit-rest-min-price?id=${data.id}&value=${e.target.value}`
+                    ).then((res) => getData())
+                  }
+                />
+              </label>
+            </>
+          )}
           <br />
           <br />
           <label>

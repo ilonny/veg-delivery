@@ -117,6 +117,13 @@ const _MainComp = (props) => {
                   <Link to={"/add-user"}>Добавить партнера</Link>
                 </Menu.Item>
               )}
+              {user.role === "admin" && (
+                <Menu.Item key="5">
+                  <Link to={{ pathname: "/moderate", state: { user } }}>
+                    Модерация блюд
+                  </Link>
+                </Menu.Item>
+              )}
               <Menu.Item key="4">
                 <button
                   style={{

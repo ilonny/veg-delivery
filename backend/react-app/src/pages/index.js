@@ -9,6 +9,7 @@ import { RestaurantDelivery } from "./RestaurantDelivery";
 import { RestaurantDiscount } from "./RestaurantDiscount";
 import { RestaurantOrder } from "./RestaurantOrder";
 import { RestaurantUsers } from "./RestaurantUsers";
+import { Moderate } from "./Moderate";
 
 export const routes = () => [
   {
@@ -55,5 +56,9 @@ export const routes = () => [
   {
     path: "/restaurant-users",
     component: RestaurantUsers,
+  },
+  {
+    path: "/moderate",
+    component: Moderate,
   },
 ];

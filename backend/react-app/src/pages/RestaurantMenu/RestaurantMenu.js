@@ -231,7 +231,15 @@ export const RestaurantMenu = (props) => {
                     {category.menu.map((item) => {
                       return (
                         <Collapse key={item.id} defaultActiveKey={[]}>
-                          <Panel header={item.name} key="1">
+                          <Panel
+                            header={
+                              <>
+                                {item.name}
+                                {!item.moderate && " На модерации"}
+                              </>
+                            }
+                            key="1"
+                          >
                             <div
                               style={{
                                 margin: 15,
@@ -304,7 +312,7 @@ export const RestaurantMenu = (props) => {
                                   <label>
                                     <span>Цена - {item.price} руб</span>
                                     <Input
-                                      placeholder="Новый вес"
+                                      placeholder="Новый цена"
                                       onChange={(e) => {
                                         fetch(
                                           API_HOST +
@@ -317,11 +325,13 @@ export const RestaurantMenu = (props) => {
                                 <p>
                                   <label>
                                     <span>
-                                      {item.active ? "активно" : "не активно"}
+                                      {Number(item.active)
+                                        ? "активно"
+                                        : "не активно"}
                                     </span>
                                     <input
                                       type="checkbox"
-                                      checked={item.active}
+                                      checked={!!Number(item.active)}
                                       onChange={(e) => {
                                         fetch(
                                           API_HOST +
