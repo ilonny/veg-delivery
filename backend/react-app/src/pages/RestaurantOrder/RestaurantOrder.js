@@ -206,7 +206,7 @@ export const RestaurantOrder = (props) => {
       <Divider />
       {loading && <p> Загрузка ... </p>}
       <Divider />
-      <Table dataSource={dataSource} columns={columns} scroll={{ x:1000 }} />; 
+      <Table dataSource={dataSource} columns={columns} scroll={{ x:true }} />; 
     </>
   );
 };
