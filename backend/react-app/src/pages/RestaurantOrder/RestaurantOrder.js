@@ -198,7 +198,6 @@ export const RestaurantOrder = (props) => {
   return (
     <>
       <div>Заказы ресторана</div>
-      <p>Test commit</p>
       <Link to={{ pathname: "restaurant", state: { id } }}>
         <Button>Назад в меню</Button>
       </Link>
@@ -207,7 +206,7 @@ export const RestaurantOrder = (props) => {
       <Divider />
       {loading && <p> Загрузка ... </p>}
       <Divider />
-      <Table dataSource={dataSource} columns={columns} />;
+      <Table dataSource={dataSource} columns={columns} scroll={{ x:1000 }} />; 
     </>
   );
 };
