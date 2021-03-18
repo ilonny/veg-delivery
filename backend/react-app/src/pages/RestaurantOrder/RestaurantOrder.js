@@ -13,6 +13,7 @@ import {
 } from "antd";
 import { API_HOST } from "../../lib";
 import { Link } from "react-router-dom";
+import sound from "./sound/signal.mp3";
 // const { Meta } = Card;
 // const { Panel } = Collapse;
 
@@ -21,12 +22,21 @@ export const RestaurantOrder = (props) => {
   const { id } = props.location.state;
   const [newModif, setNewModif] = useState({ type: "single" });
   const [loading, setLoading] = useState(false);
-  const getData = () => {
+  const getData = (oldData) => {
+    console.log("getData fired", oldData);
     setLoading(true);
     fetch(API_HOST + "/restaurant/get-order-list?restaurant_id=" + id)
       .then((res) => res.json())
       .then((res) => {
+        //res - массив с сервера
+        //data - то что было загружено ранее
         setLoading(false);
+        const audioEl = document.getElementById("audio-element");
+        if (oldData && res.length > oldData.length) {
+          console.log("res ", res);
+          console.log("oldData ", oldData);
+          audioEl.play();
+        }
         setData(res);
       });
   };
@@ -137,11 +147,13 @@ export const RestaurantOrder = (props) => {
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      getData();
+    let outerData = data;
+    const interval = setInterval(function log() {
+      getData(data);
     }, 10000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [data]);
 
   const columns = [
     {
@@ -198,16 +210,21 @@ export const RestaurantOrder = (props) => {
   return (
     <>
       <div>Заказы ресторана</div>
-      <p>Test commit</p>
       <Link to={{ pathname: "restaurant", state: { id } }}>
         <Button>Назад в меню</Button>
       </Link>
+      <audio
+        src={sound}
+        controls
+        id="audio-element"
+        style={{ visibility: "hidden" }}
+      ></audio>
       <Divider />
       <Button onClick={() => getData()}>Обновить список</Button>
       <Divider />
       {loading && <p> Загрузка ... </p>}
       <Divider />
-      <Table dataSource={dataSource} columns={columns} />;
+      <Table dataSource={dataSource} columns={columns} scroll={{ x: true }} />
     </>
   );
 };
