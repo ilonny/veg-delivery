@@ -119,5 +119,5 @@ $this->registerCssFile("@web/static/css/2.0f1fb5eb.chunk.css", [
         t();
     })([]);
 </script>
-<script src="/static/js/2.60b0542a.chunk.js"></script>
-<script src="/static/js/main.d8f4a4bc.chunk.js"></script>
+<script src="/static/js/2.bf7fb30d.chunk.js"></script>
+<script src="/static/js/main.34772862.chunk.js"></script>

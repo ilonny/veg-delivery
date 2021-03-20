@@ -22,16 +22,16 @@
         var n = a(0),
           l = a.n(n),
           r = a(92),
-          c = a(207),
+          c = a(208),
           u = a(177),
-          i = a(208),
-          o = a(205),
-          m = (a(361), a(46)),
+          i = a(209),
+          o = a(206),
+          m = (a(362), a(46)),
           s = a(84),
           d = a(147),
-          E = a(216),
-          f = a(55),
-          p = a(27),
+          E = a(217),
+          p = a(55),
+          f = a(27),
           h = a(4),
           b = m.a.SubMenu,
           g = s.a.Header,
@@ -118,7 +118,7 @@
                       l.a.createElement(E.a, { type: "password" })
                     ),
                     l.a.createElement(
-                      f.a,
+                      p.a,
                       { type: "primary", htmlType: "submit" },
                       "\u0412\u043e\u0439\u0442\u0438"
                     )
@@ -160,7 +160,7 @@
                           m.a.Item,
                           { key: "1" },
                           l.a.createElement(
-                            p.a,
+                            f.a,
                             {
                               to: {
                                 pathname: "/list-rest",
@@ -175,7 +175,7 @@
                             m.a.Item,
                             { key: "2" },
                             l.a.createElement(
-                              p.a,
+                              f.a,
                               {
                                 to: {
                                   pathname: "/add-rest",
@@ -191,7 +191,7 @@
                           m.a.Item,
                           { key: "3" },
                           l.a.createElement(
-                            p.a,
+                            f.a,
                             { to: "/add-user" },
                             "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043f\u0430\u0440\u0442\u043d\u0435\u0440\u0430"
                           )
@@ -201,7 +201,7 @@
                           m.a.Item,
                           { key: "5" },
                           l.a.createElement(
-                            p.a,
+                            f.a,
                             {
                               to: { pathname: "/moderate", state: { user: t } },
                             },
@@ -246,12 +246,15 @@
           });
       }.call(this, a(150)(e)));
     },
-    205: function (e, t, a) {
+    189: function (e, t, a) {
+      e.exports = a.p + "static/media/signal.a0d0720b.mp3";
+    },
+    206: function (e, t, a) {
       "use strict";
       a.d(t, "a", function () {
         return u;
       });
-      var n = a(206),
+      var n = a(207),
         l = a(139),
         r = a(115);
       function c() {
@@ -268,14 +271,14 @@
       }
       var u = Object(l.createGlobalStyle)(c(), r.a.black);
     },
-    208: function (e, t, a) {
+    209: function (e, t, a) {
       "use strict";
       a.d(t, "a", function () {
-        return L;
+        return H;
       });
       var n = a(0),
         l = a.n(n),
-        r = a(204),
+        r = a(205),
         c = function () {
           return l.a.createElement(
             l.a.Fragment,
@@ -289,12 +292,12 @@
         },
         u = a(12),
         i = a(147),
-        o = a(216),
+        o = a(217),
         m = a(55),
-        s = a(367),
+        s = a(368),
         d = (a(133), a(4)),
         E = { labelCol: { span: 4 }, wrapperCol: { span: 16 } },
-        f = function (e) {
+        p = function (e) {
           var t,
             a = (null === e ||
             void 0 === e ||
@@ -305,8 +308,8 @@
             ).user,
             r = Object(n.useState)(),
             c = Object(u.a)(r, 2),
-            f = c[0],
-            p = c[1];
+            p = c[0],
+            f = c[1];
           return l.a.createElement(
             l.a.Fragment,
             null,
@@ -316,7 +319,7 @@
                 {
                   name: "basic",
                   onFinish: function (e) {
-                    console.log("Success:", { values: e, value: f });
+                    console.log("Success:", { values: e, value: p });
                     var t = document.querySelector('input[type="file"]'),
                       n = new FormData();
                     Object.keys(e).forEach(function (t) {
@@ -390,8 +393,8 @@
                 { label: "\u0410\u0434\u0440\u0435\u0441", name: "address" },
                 l.a.createElement(s.a, {
                   token: "eadbc452286d23c7163b38989884d5ae40d08ade",
-                  value: f,
-                  onChange: p,
+                  value: p,
+                  onChange: f,
                 })
               ),
               "admin" === a.role &&
@@ -412,7 +415,7 @@
             )
           );
         },
-        p = { labelCol: { span: 4 }, wrapperCol: { span: 16 } },
+        f = { labelCol: { span: 4 }, wrapperCol: { span: 16 } },
         h = function () {
           var e = Object(n.useState)(),
             t = Object(u.a)(e, 2),
@@ -467,7 +470,7 @@
                   style: { minHeight: "100vh" },
                   initialValues: { active: !0 },
                 },
-                p
+                f
               ),
               l.a.createElement(
                 i.a.Item,
@@ -522,7 +525,7 @@
             )
           );
         },
-        b = a(365),
+        b = a(366),
         g = a(97),
         v = a(58),
         y = a(27),
@@ -714,9 +717,9 @@
             c = a[1],
             i = e.location.state,
             E = i.id,
-            f = i.user,
-            p = Object(n.useState)(!1),
-            h = Object(u.a)(p, 2),
+            p = i.user,
+            f = Object(n.useState)(!1),
+            h = Object(u.a)(f, 2),
             j = h[0],
             O = h[1],
             w = Object(n.useState)(!1),
@@ -738,14 +741,14 @@
             R = Object(n.useState)(!1),
             H = Object(u.a)(R, 2),
             K = H[0],
-            z = H[1];
+            B = H[1];
           Object(n.useEffect)(
             function () {
               W();
             },
             [E]
           );
-          var B,
+          var z,
             W = function () {
               try {
                 fetch(d.a + "/restaurant/get-data?id=" + E)
@@ -762,19 +765,19 @@
                     var t = JSON.parse(
                       null === e || void 0 === e ? void 0 : e.address_json
                     );
-                    console.log("addressJson", t), z(t);
+                    console.log("addressJson", t), B(t);
                   });
               } catch (e) {
                 console.log(e);
               }
             };
           try {
-            B = JSON.parse(r.address_json).value;
+            z = JSON.parse(r.address_json).value;
           } catch (G) {
-            B =
+            z =
               "\u041d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e";
           }
-          if ((console.log("rest data", r, f), !r)) return null;
+          if ((console.log("rest data", r, p), !r)) return null;
           return l.a.createElement(
             l.a.Fragment,
             null,
@@ -798,7 +801,7 @@
                     title: r.name,
                     description: r.description,
                   }),
-                  l.a.createElement("p", null, B),
+                  l.a.createElement("p", null, z),
                   l.a.createElement(
                     "p",
                     null,
@@ -894,7 +897,7 @@
                     token: "eadbc452286d23c7163b38989884d5ae40d08ade",
                     value: K,
                     defaultQuery: K,
-                    onChange: z,
+                    onChange: B,
                   }),
                   l.a.createElement("br", null),
                   l.a.createElement(
@@ -923,7 +926,7 @@
                   ),
                   l.a.createElement("br", null)
                 ),
-                "admin" == (null === f || void 0 === f ? void 0 : f.role) &&
+                "admin" == (null === p || void 0 === p ? void 0 : p.role) &&
                   l.a.createElement(
                     l.a.Fragment,
                     null,
@@ -1014,7 +1017,7 @@
                     }, 1e3),
                   })
                 ),
-                "admin" == (null === f || void 0 === f ? void 0 : f.role) &&
+                "admin" == (null === p || void 0 === p ? void 0 : p.role) &&
                   l.a.createElement(
                     l.a.Fragment,
                     null,
@@ -1093,7 +1096,7 @@
                   },
                   "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0432\u0440\u0435\u043c\u044f"
                 ),
-                "admin" == (null === f || void 0 === f ? void 0 : f.role) &&
+                "admin" == (null === p || void 0 === p ? void 0 : p.role) &&
                   l.a.createElement(
                     l.a.Fragment,
                     null,
@@ -1263,7 +1266,7 @@
                 l.a.createElement("br", null),
                 l.a.createElement("br", null),
                 l.a.createElement("br", null),
-                "manager" != (null === f || void 0 === f ? void 0 : f.role) &&
+                "manager" != (null === p || void 0 === p ? void 0 : p.role) &&
                   l.a.createElement(
                     y.a,
                     { to: { pathname: "restaurant-users", state: { id: E } } },
@@ -1281,8 +1284,8 @@
         },
         C = a(108),
         S = a(11),
-        F = a(366),
-        I = a(363),
+        F = a(367),
+        I = a(364),
         x = F.a.Panel,
         T = function (e) {
           var t = Object(n.useState)(null),
@@ -1293,8 +1296,8 @@
           var i = e.location.state.id,
             s = Object(n.useState)(!1),
             E = Object(u.a)(s, 2),
-            f = E[0],
-            p = E[1],
+            p = E[0],
+            f = E[1],
             h = function () {
               var e = new FormData();
               e.append("rest_id", i),
@@ -1330,7 +1333,7 @@
               l.a.createElement(I.a, null),
               l.a.createElement(o.a, {
                 onChange: function (e) {
-                  return p(e.target.value);
+                  return f(e.target.value);
                 },
               }),
               l.a.createElement(
@@ -1339,7 +1342,7 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("category_name", f),
+                      e.append("category_name", p),
                       fetch(d.a + "/restaurant/create-category-menu", {
                         method: "POST",
                         body: e,
@@ -1943,8 +1946,8 @@
             i = e.location.state.id,
             s = Object(n.useState)({ type: "single" }),
             E = Object(u.a)(s, 2),
-            f = E[0],
-            p = E[1],
+            p = E[0],
+            f = E[1],
             h = function () {
               fetch(d.a + "/restaurant/get-modif-list?restaurant_id=" + i)
                 .then(function (e) {
@@ -1997,9 +2000,9 @@
                 ),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    return p(
+                    return f(
                       Object(S.a)(
-                        Object(S.a)({}, f),
+                        Object(S.a)({}, p),
                         {},
                         { name: e.target.value }
                       )
@@ -2016,9 +2019,9 @@
                   {
                     style: { width: "100%", height: 40, marginBottom: 10 },
                     onChange: function (e) {
-                      return p(
+                      return f(
                         Object(S.a)(
-                          Object(S.a)({}, f),
+                          Object(S.a)({}, p),
                           {},
                           { type: e.target.value }
                         )
@@ -2043,9 +2046,9 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("name", f.name),
-                      e.append("type", f.type),
-                      e.append("parent_id", f.parent_id ? f.parent_id : null),
+                      e.append("name", p.name),
+                      e.append("type", p.type),
+                      e.append("parent_id", p.parent_id ? p.parent_id : null),
                       fetch(d.a + "/restaurant/create-rest-modif", {
                         method: "POST",
                         body: e,
@@ -2184,8 +2187,8 @@
             i = e.location.state.id,
             s = Object(n.useState)({ type: "single" }),
             E = Object(u.a)(s, 2),
-            f = E[0],
-            p = E[1],
+            p = E[0],
+            f = E[1],
             h = function () {
               fetch(d.a + "/restaurant/get-delivery-list?restaurant_id=" + i)
                 .then(function (e) {
@@ -2228,9 +2231,9 @@
                 ),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    return p(
+                    return f(
                       Object(S.a)(
-                        Object(S.a)({}, f),
+                        Object(S.a)({}, p),
                         {},
                         { price_start: e.target.value }
                       )
@@ -2248,9 +2251,9 @@
                 ),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    return p(
+                    return f(
                       Object(S.a)(
-                        Object(S.a)({}, f),
+                        Object(S.a)({}, p),
                         {},
                         { price: e.target.value }
                       )
@@ -2264,8 +2267,8 @@
                   onClick: function () {
                     var e = new FormData();
                     e.append("rest_id", i),
-                      e.append("price", f.price),
-                      e.append("price_start", f.price_start),
+                      e.append("price", p.price),
+                      e.append("price_start", p.price_start),
                       fetch(d.a + "/restaurant/create-rest-delivery", {
                         method: "POST",
                         body: e,
@@ -2379,8 +2382,8 @@
             i = e.location.state.id,
             s = Object(n.useState)({ type: "promocode" }),
             E = Object(u.a)(s, 2),
-            f = E[0],
-            p = E[1],
+            p = E[0],
+            f = E[1],
             h = Object(n.useState)([]),
             b = Object(u.a)(h, 2),
             g = b[0],
@@ -2422,7 +2425,7 @@
                 });
           }, []);
           console.log("data", r),
-            console.log("newModif", f),
+            console.log("newModif", p),
             console.log("menu", g);
           var k = function (e, t) {
               var a = t;
@@ -2432,8 +2435,8 @@
                 l.a.createElement("span", null, e),
                 l.a.createElement(o.a, {
                   onChange: function (e) {
-                    var t = Object(S.a)({}, f);
-                    (t[a] = e.target.value), p(Object(S.a)({}, t));
+                    var t = Object(S.a)({}, p);
+                    (t[a] = e.target.value), f(Object(S.a)({}, t));
                   },
                 })
               );
@@ -2490,9 +2493,9 @@
                 {
                   style: { width: "100%", height: 40 },
                   onChange: function (e) {
-                    p(
+                    f(
                       Object(S.a)(
-                        Object(S.a)({}, f),
+                        Object(S.a)({}, p),
                         {},
                         { type: e.target.value }
                       )
@@ -2559,7 +2562,7 @@
                       .map(function (e) {
                         return e.value;
                       });
-                    p(Object(S.a)(Object(S.a)({}, f), {}, { items: t }));
+                    f(Object(S.a)(Object(S.a)({}, p), {}, { items: t }));
                   },
                 },
                 g.map(function (e) {
@@ -2585,18 +2588,18 @@
                 onClick: function () {
                   var e = new FormData();
                   e.append("rest_id", i),
-                    e.append("type", f.type ? f.type : ""),
-                    e.append("name", f.name ? f.name : ""),
+                    e.append("type", p.type ? p.type : ""),
+                    e.append("name", p.name ? p.name : ""),
                     e.append(
                       "discount_value",
-                      f.discount_value ? f.discount_value : ""
+                      p.discount_value ? p.discount_value : ""
                     ),
-                    e.append("price_start", f.price_start ? f.price_start : ""),
-                    e.append("description", f.description ? f.description : ""),
-                    e.append("promocode", f.promocode ? f.promocode : ""),
-                    e.append("time_start", f.time_start ? f.time_start : ""),
-                    e.append("time_end", f.time_end ? f.time_end : ""),
-                    e.append("items", f.items ? f.items : ""),
+                    e.append("price_start", p.price_start ? p.price_start : ""),
+                    e.append("description", p.description ? p.description : ""),
+                    e.append("promocode", p.promocode ? p.promocode : ""),
+                    e.append("time_start", p.time_start ? p.time_start : ""),
+                    e.append("time_end", p.time_end ? p.time_end : ""),
+                    e.append("items", p.items ? p.items : ""),
                     fetch(d.a + "/restaurant/create-rest-discount", {
                       method: "POST",
                       body: e,
@@ -2767,8 +2770,10 @@
               })
           );
         },
-        J = a(364),
-        q = function (e) {
+        J = a(365),
+        q = a(189),
+        M = a.n(q),
+        A = function (e) {
           var t = Object(n.useState)([]),
             a = Object(u.a)(t, 2),
             r = a[0],
@@ -2777,17 +2782,25 @@
             o = Object(n.useState)({ type: "single" }),
             s = Object(u.a)(o, 2),
             E = (s[0], s[1], Object(n.useState)(!1)),
-            f = Object(u.a)(E, 2),
-            p = f[0],
-            h = f[1],
-            b = function () {
-              h(!0),
+            p = Object(u.a)(E, 2),
+            f = p[0],
+            h = p[1],
+            b = function (e) {
+              console.log("getData fired", e),
+                h(!0),
                 fetch(d.a + "/restaurant/get-order-list?restaurant_id=" + i)
                   .then(function (e) {
                     return e.json();
                   })
-                  .then(function (e) {
-                    h(!1), c(e);
+                  .then(function (t) {
+                    h(!1);
+                    var a = document.getElementById("audio-element");
+                    e &&
+                      t.length > e.length &&
+                      (console.log("res ", t),
+                      console.log("oldData ", e),
+                      a.play()),
+                      c(t);
                   });
             };
           Object(n.useEffect)(function () {
@@ -2920,14 +2933,17 @@
               ),
             };
           });
-          Object(n.useEffect)(function () {
-            var e = setInterval(function () {
-              b();
-            }, 1e4);
-            return function () {
-              return clearInterval(e);
-            };
-          }, []);
+          Object(n.useEffect)(
+            function () {
+              var e = setInterval(function () {
+                b(r);
+              }, 1e4);
+              return function () {
+                return clearInterval(e);
+              };
+            },
+            [r]
+          );
           return l.a.createElement(
             l.a.Fragment,
             null,
@@ -2945,6 +2961,12 @@
                 "\u041d\u0430\u0437\u0430\u0434 \u0432 \u043c\u0435\u043d\u044e"
               )
             ),
+            l.a.createElement("audio", {
+              src: M.a,
+              controls: !0,
+              id: "audio-element",
+              style: { visibility: "hidden" },
+            }),
             l.a.createElement(I.a, null),
             l.a.createElement(
               m.a,
@@ -2956,7 +2978,7 @@
               "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a"
             ),
             l.a.createElement(I.a, null),
-            p &&
+            f &&
               l.a.createElement(
                 "p",
                 null,
@@ -3021,11 +3043,11 @@
                   key: "payment_status",
                 },
               ],
-            }),
-            ";"
+              scroll: { x: !0 },
+            })
           );
         },
-        M = function (e) {
+        U = function (e) {
           var t = Object(n.useState)(null),
             a = Object(u.a)(t, 2),
             r = a[0],
@@ -3034,8 +3056,8 @@
           console.log("RestaurantUsers", i);
           var s = Object(n.useState)({}),
             E = Object(u.a)(s, 2),
-            f = E[0],
-            p = E[1],
+            p = E[0],
+            f = E[1],
             h = Object(n.useState)([]),
             b = Object(u.a)(h, 2),
             g = b[0],
@@ -3062,7 +3084,7 @@
                 });
           }, []);
           console.log("data", r),
-            console.log("newModif", f),
+            console.log("newModif", p),
             console.log("menu", g);
           var j = function (e, t) {
             var a = t;
@@ -3072,8 +3094,8 @@
               l.a.createElement("span", null, e),
               l.a.createElement(o.a, {
                 onChange: function (e) {
-                  var t = Object(S.a)({}, f);
-                  (t[a] = e.target.value), p(Object(S.a)({}, t));
+                  var t = Object(S.a)({}, p);
+                  (t[a] = e.target.value), f(Object(S.a)({}, t));
                 },
               })
             );
@@ -3099,15 +3121,15 @@
                     var e = new FormData();
                     e.append(
                       "login",
-                      null === f || void 0 === f ? void 0 : f.login
+                      null === p || void 0 === p ? void 0 : p.login
                     ),
                       e.append(
                         "email",
-                        null === f || void 0 === f ? void 0 : f.email
+                        null === p || void 0 === p ? void 0 : p.email
                       ),
                       e.append(
                         "password",
-                        null === f || void 0 === f ? void 0 : f.password
+                        null === p || void 0 === p ? void 0 : p.password
                       ),
                       e.append("rest_id", i),
                       fetch(d.a + "/restaurant/manager-add", {
@@ -3182,8 +3204,8 @@
             )
           );
         },
-        A = F.a.Panel,
-        U = function (e) {
+        L = F.a.Panel,
+        R = function (e) {
           var t = Object(n.useState)([]),
             a = Object(u.a)(t, 2),
             r = a[0],
@@ -3202,7 +3224,7 @@
                     c(e);
                   });
               }),
-            f = E;
+            p = E;
           return (
             Object(n.useEffect)(function () {
               E();
@@ -3225,7 +3247,7 @@
                     F.a,
                     { key: e.id, defaultActiveKey: [] },
                     l.a.createElement(
-                      A,
+                      L,
                       {
                         header: l.a.createElement(
                           l.a.Fragment,
@@ -3233,8 +3255,7 @@
                           e.name,
                           !e.moderate &&
                             " \u041d\u0430 \u043c\u043e\u0434\u0435\u0440\u0430\u0446\u0438\u0438",
-                          " ",
-                          "(",
+                          " (",
                           null === e ||
                             void 0 === e ||
                             null === (t = e.restaurant) ||
@@ -3279,7 +3300,7 @@
                                       .concat(e.id, "&key=name&value=")
                                       .concat(t.target.value)
                                 ).then(function (e) {
-                                  return f();
+                                  return p();
                                 });
                               },
                             })
@@ -3301,7 +3322,7 @@
                                     ),
                                   { method: "POST", body: a }
                                 ).then(function (e) {
-                                  return f();
+                                  return p();
                                 });
                             },
                           }),
@@ -3327,7 +3348,7 @@
                                         .concat(e.id, "&key=description&value=")
                                         .concat(t.target.value)
                                   ).then(function (e) {
-                                    return f();
+                                    return p();
                                   });
                                 },
                               })
@@ -3356,7 +3377,7 @@
                                         .concat(e.id, "&key=weight&value=")
                                         .concat(t.target.value)
                                   ).then(function (e) {
-                                    return f();
+                                    return p();
                                   });
                                 },
                               })
@@ -3385,7 +3406,7 @@
                                         .concat(e.id, "&key=price&value=")
                                         .concat(t.target.value)
                                   ).then(function (e) {
-                                    return f();
+                                    return p();
                                   });
                                 },
                               })
@@ -3414,7 +3435,7 @@
                                         .concat(e.id, "&key=active&value=")
                                         .concat(t.target.checked ? 1 : 0)
                                   ).then(function (e) {
-                                    return f();
+                                    return p();
                                   });
                                 },
                               })
@@ -3444,7 +3465,7 @@
                                             e.id
                                           )
                                       ).then(function (e) {
-                                        return f();
+                                        return p();
                                       });
                                   },
                                 },
@@ -3476,7 +3497,7 @@
                                             e.id
                                           )
                                       ).then(function (e) {
-                                        return f();
+                                        return p();
                                       });
                                   },
                                 },
@@ -3493,13 +3514,13 @@
             )
           );
         },
-        L = function () {
+        H = function () {
           return n.createElement(
             n.Fragment,
             null,
             Object(r.a)([
               { path: "/", exact: !0, component: c },
-              { path: "/add-rest", component: f },
+              { path: "/add-rest", component: p },
               { path: "/add-user", component: h },
               { path: "/list-rest", component: O },
               { path: "/restaurant", component: w },
@@ -3507,17 +3528,17 @@
               { path: "/restaurant-modif", component: P },
               { path: "/restaurant-delivery", component: D },
               { path: "/restaurant-discount", component: N },
-              { path: "/restaurant-order", component: q },
-              { path: "/restaurant-users", component: M },
-              { path: "/moderate", component: U },
+              { path: "/restaurant-order", component: A },
+              { path: "/restaurant-users", component: U },
+              { path: "/moderate", component: R },
             ])
           );
         };
     },
-    218: function (e, t, a) {
-      e.exports = a(219);
-    },
     219: function (e, t, a) {
+      e.exports = a(220);
+    },
+    220: function (e, t, a) {
       "use strict";
       a.r(t);
       var n = a(0),
@@ -3554,7 +3575,7 @@
         return r;
       }),
         a.d(t, "d", function () {
-          return p;
+          return f;
         }),
         a.d(t, "c", function () {
           return h;
@@ -3567,14 +3588,14 @@
         l = a(45),
         r = Object(l.a)(),
         c = a(64),
-        u = (a(227), a(174)),
+        u = (a(228), a(174)),
         i = a(145),
         o = a(175),
         m = a.n(o),
         s = a(11),
         d = { user: void 0 },
         E = { key: "main", storage: m.a },
-        f = Object(c.c)({
+        p = Object(c.c)({
           main: Object(i.a)(E, function () {
             var e =
                 arguments.length > 0 && void 0 !== arguments[0]
@@ -3593,11 +3614,11 @@
           }),
         });
       n = Object(c.a)(u.a);
-      var p = Object(c.d)(f, void 0, n),
-        h = Object(i.b)(p),
+      var f = Object(c.d)(p, void 0, n),
+        h = Object(i.b)(f),
         b = (a(92), "https://app.vegfood.delivery");
     },
   },
-  [[218, 1, 2]],
+  [[219, 1, 2]],
 ]);
-//# sourceMappingURL=main.d8f4a4bc.chunk.js.map
+//# sourceMappingURL=main.34772862.chunk.js.map
