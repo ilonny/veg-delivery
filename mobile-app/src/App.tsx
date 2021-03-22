@@ -6,6 +6,8 @@ import { store, persistor } from './lib';
 import { PersistGate } from 'redux-persist/integration/react';
 import { StackNavigator } from './modules';
 import Toast from 'react-native-toast-message';
+import codePush from 'react-native-code-push';
+
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
@@ -23,4 +25,5 @@ const App = () => {
     </>
   );
 };
-export default App;
+export default codePush(App);
+// export default App;
