@@ -85,10 +85,10 @@ class PaymentController extends Controller
             $userPhone = mb_substr($userPhone, 1, 10);
         }
         $api = new TinkoffMerchantAPI(
-            // '1609226746243DEMO',  //Ваш Terminal_Key
-            // 'ka2tkc1400rxwcog'   //Ваш Secret_Key
-            '1609226746243',
-            'jmicoygwkbooxabj'   //Ваш Secret_Key
+            '1609226746243DEMO',  //Ваш Terminal_Key
+            'ka2tkc1400rxwcog'   //Ваш Secret_Key
+            //'1609226746243',
+            //'jmicoygwkbooxabj'   //Ваш Secret_Key
         );
         
         $params = [
@@ -160,10 +160,10 @@ class PaymentController extends Controller
 
     public function actionCancel($order_id) {
         $api = new TinkoffMerchantAPI(
-            // '1609226746243DEMO',  //Ваш Terminal_Key
-            // 'ka2tkc1400rxwcog'   //Ваш Secret_Key
-            '1609226746243',
-            'jmicoygwkbooxabj'   //Ваш Secret_Key
+            '1609226746243DEMO',  //Ваш Terminal_Key
+            'ka2tkc1400rxwcog'   //Ваш Secret_Key
+            //'1609226746243',
+            //'jmicoygwkbooxabj'   //Ваш Secret_Key
         );
         $order = Ord::findOne($order_id);
         $paymentData = json_decode($order->other, true);
