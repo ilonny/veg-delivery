@@ -4,6 +4,7 @@ export const Color = {
   red_hover: "#af2c2c",
   gray: "rgb(113, 113, 113)",
   light_gray: "#F2F2F2",
+  pageTitle: "#656665",
 };
 
 export const Media = {
