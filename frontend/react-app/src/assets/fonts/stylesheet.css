@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap');
+
 /* @font-face {
     font-family: 'Futura PT';
     src: url('FuturaPT-Light.eot');
@@ -62,5 +64,18 @@
         url('FuturaPT-ExtraBold.woff') format('woff'),
         url('FuturaPT-ExtraBold.ttf') format('truetype');
     font-weight: 800;
+    font-style: normal;
+} */
+/* @font-face{
+    font-family: 'Exo2';
+    src: url('./Exo2-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Exo2';
+    src: url('./Exo2-Bold.ttf');
+    font-weight: bold;
     font-style: normal;
 } */

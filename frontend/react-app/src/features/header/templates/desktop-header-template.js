@@ -5,25 +5,104 @@ import styled from "styled-components";
 // import { HeaderDelivery } from "../atoms/headerDelivery";
 // import { Media, Color } from "../../../lib";
 // import { MenuTree } from "./menu-tree";
+import { Address } from "../../../features";
+import "./desktop-header-template.css";
+import Logo from "../../../assets/icons/logo.png";
+import RubIcon from "../../../assets/icons/basket.svg";
 
 export const HeaderTemplateDektop = (props) => {
   // const { cart, menu } = props;
   console.log("HeaderTemplateDektop props", props);
   return (
     <HeaderWrapper>
-      <h1>Header desktop</h1>
+      <LeftSide>
+        <Link href="#"><Logotype src={Logo} alt="VegDelivery" /></Link>
+        <Address>Бакунинская 69, ст 1</Address>
+      </LeftSide>
+      <RightSide>
+        <Contacts>
+          <List>
+            <Link href="#">О компании</Link>
+          </List>
+          <List>
+            <Link href="#">Для ресторанов</Link>
+          </List>
+          <List>
+            <Link href="#">Контакты</Link>
+          </List>
+        </Contacts>
+        <Button>
+          <span>
+            <RubImg src={RubIcon} alt="location" />
+          </span>
+          Корзина(0)
+        </Button>
+      </RightSide>
     </HeaderWrapper>
   );
 };
-
+const RubImg = styled.img`
+  background: 5ac17d;
+  margin-right: 8px;
+`;
 const HeaderWrapper = styled.div`
-  // position: fixed;
-  // width: 100%;
-  // left: 0;
-  // top: 0;
-  position: relative;
-  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 53px;
   border-bottom: 1px solid #ccc;
+`;
+const LeftSide = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const RightSide = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+const Contacts = styled.ul`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-right: 39px;
+`;
+const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #5ac17d;
+  color: #ffffff;
+  padding: 18px 57px 18px 86px;
+  height: 53px;
+  outline: none;
+  &:hover{
+    text-decoration: underline;
+  }
+`;
+const List = styled.li`
+  list-style: none;
+  padding-right: 30px;
+`;
+const Link = styled.a`
+  font-family: Exo2Regular;
+  font-size: 14px;
+  line-height: 17px;
+  color: #9f9f9f;
+  pointer:cursor;
+  &:hover{
+    text-decoration: underline;
+  }
+`;
+
+const Logotype = styled.img`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 160px;
+  height: 52px;
+  border-right: 1px solid #f0f0f0;
 `;
 
 // const MainWrapper = styled.div`
@@ -91,7 +170,7 @@ const HeaderWrapper = styled.div`
 // `
 
 // const LinkHoverWrapper = styled.div`
-//     // position: relative;
+//     position: relative;
 //     & ${LinkHoverContent} {
 //         display: none;
 //     }

@@ -34,6 +34,7 @@ export const mixins = (props) => css`
   padding: ${prop(props.padding)};
   width: ${prop(props.width)};
   flex-wrap: ${prop(props.wrap)};
+  margin-top: ${prop(props.marginTop)};
   ${props.mobile_wrap &&
   `${Media.mobile} {
       flex-wrap: wrap;
@@ -47,6 +48,7 @@ export const mixins = (props) => css`
 export const Row = styled(WithTag)`
   display: flex;
   flex-direction: row;
+  position: relative;
   ${mixins}
 
   ${(p) =>
