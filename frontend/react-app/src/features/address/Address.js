@@ -24,15 +24,18 @@ const customStyles = {
     border: "none",
     boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.1)",
     minWidth: "610px",
+    minHeight: 600,
   },
 };
 
 export const Address = (props) => {
   console.log("Address props", props);
+  const { changeAddress } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState("");
-
+  const [savedSugg, setSavedSugg] = useState(null);
+  console.log('savedSugg', savedSugg)
   const getSuggestions = (val) => {
     const url =
       "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
@@ -102,7 +105,7 @@ export const Address = (props) => {
               <img src={CloseModal} alt="Clean" />
             </CleanInput>
           </ChooseAddressInputWrapper>
-          <CustomButton text="Подтвердить" />
+          <CustomButton text="Подтвердить" disabled={!savedSugg} onClick={() => changeAddress(savedSugg)} />
         </Row>
         <SpecialRow>
           <SugContainer>
@@ -111,6 +114,8 @@ export const Address = (props) => {
                 <SugWrapper
                   onClick={() => {
                     setInputValue(sugg.value);
+                    setSavedSugg(sugg);
+                    setSuggestions([]);
                   }}
                 >
                   {sugg.value}
