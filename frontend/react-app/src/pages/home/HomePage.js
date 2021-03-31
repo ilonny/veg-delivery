@@ -11,7 +11,6 @@ import {
 // import { CatalogList } from "../../features/catalog-list";
 // import { HomePageAbout } from "../../features/homepage-about";
 // import { SubscribeForm } from "../../features/subscribe-form";
-// import { Color } from "../../lib";
 // import { pageData } from "./data";
 // import { Link } from "react-router-dom";
 export const HomePage = () => (

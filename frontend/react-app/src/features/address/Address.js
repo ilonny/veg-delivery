@@ -1,14 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import PinSvg from "../../assets/icons/mapCheck.svg";
 import CloseModal from "../../assets/icons/closeModal.svg";
 import Loupe from "../../assets/icons/loupe.svg";
 import { Row } from "../styled-components-layout";
 import Modal from "react-modal";
-import { Color, DADATA_API_KEY } from "../../lib";
+import { Color, DADATA_API_KEY, MAP_API_KEY } from "../../lib";
 import { CustomButton } from "../../features";
 
 import { AddressSuggestions } from "react-dadata";
+import GoogleMapReact from "google-map-react";
 // import "react-dadata/dist/react-dadata.css";
 
 Modal.setAppElement("#root");
@@ -35,7 +36,7 @@ export const Address = (props) => {
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [savedSugg, setSavedSugg] = useState(null);
-  console.log('savedSugg', savedSugg)
+  console.log("savedSugg", savedSugg);
   const getSuggestions = (val) => {
     const url =
       "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
@@ -101,11 +102,20 @@ export const Address = (props) => {
                 getSuggestions(val);
               }}
             />
-            <CleanInput onClick={() => setInputValue("")}>
-              <img src={CloseModal} alt="Clean" />
+            <CleanInput
+              onClick={() => {
+                setInputValue("");
+                setSuggestions([]);
+              }}
+            >
+              <img src={CloseModal} width="12px" height="12px" alt="Clean" />
             </CleanInput>
           </ChooseAddressInputWrapper>
-          <CustomButton text="Подтвердить" disabled={!savedSugg} onClick={() => changeAddress(savedSugg)} />
+          <CustomButton
+            text="Подтвердить"
+            disabled={!savedSugg}
+            onClick={() => changeAddress(savedSugg)}
+          />
         </Row>
         <SpecialRow>
           <SugContainer>
@@ -124,6 +134,24 @@ export const Address = (props) => {
             })}
           </SugContainer>
         </SpecialRow>
+        <div style={{ height: 300, width: 300 }}>
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: MAP_API_KEY }}
+            //defaultCenter={{lat: 55.75396, lng: 37.620393}}
+            center={
+              savedSugg
+                ? Object.assign(
+                    {},
+                    {
+                      lat: Number(savedSugg.data.geo_lat),
+                      lng: Number(savedSugg.data.geo_lon),
+                    }
+                  )
+                : { lat: 55.75396, lng: 37.620393 }
+            }
+            defaultZoom={11}
+          ></GoogleMapReact>
+        </div>
       </Modal>
     </>
   );
@@ -135,13 +163,15 @@ const SugContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
+  background: #fafafa;
+  z-index: 10;
+
   & :hover {
     background: rgba(150, 147, 147, 0.2);
   }
 `;
 const SugWrapper = styled.div`
   font-size: 15px;
-  margin: 10px 10px 10px 0;
   padding: 17px 50px;
   cursor: pointer;
   box-sizing: border-box;
@@ -177,8 +207,10 @@ const CloseButton = styled.button`
 const CleanInput = styled.button`
   background: transparent;
   position: absolute;
-  top: 16px;
+  top: 10px;
   right: 9px;
+  width: 30px;
+  height: 30px;
   outline: none;
 `;
 const AddressName = styled.h2`

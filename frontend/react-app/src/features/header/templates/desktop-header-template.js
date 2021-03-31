@@ -16,20 +16,16 @@ export const HeaderTemplateDektop = (props) => {
   return (
     <HeaderWrapper>
       <LeftSide>
-        <Link href="#"><Logotype src={Logo} alt="VegDelivery" /></Link>
+        <Link href="#">
+          <Logotype src={Logo} alt="VegDelivery" />
+        </Link>
         <Address>Бакунинская 69, ст 1</Address>
       </LeftSide>
       <RightSide>
         <Contacts>
-          <List>
-            <Link href="#">О компании</Link>
-          </List>
-          <List>
-            <Link href="#">Для ресторанов</Link>
-          </List>
-          <List>
-            <Link href="#">Контакты</Link>
-          </List>
+          <ListButton>О компании</ListButton>
+          <ListButton>Для ресторанов</ListButton>
+          <ListButton>Контакты</ListButton>
         </Contacts>
         <Button>
           <span>
@@ -65,6 +61,7 @@ const Contacts = styled.ul`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  width: inherit;
   margin-right: 39px;
 `;
 const Button = styled.button`
@@ -76,21 +73,33 @@ const Button = styled.button`
   padding: 18px 57px 18px 86px;
   height: 53px;
   outline: none;
-  &:hover{
+  &:hover {
     text-decoration: underline;
   }
 `;
-const List = styled.li`
-  list-style: none;
-  padding-right: 30px;
+const ListButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-family: Exo2Regular;
+  font-size: 14px;
+  background: transparent;
+  line-height: 17px;
+  width: inherit;
+  color: #9f9f9f;
+  &:hover {
+    background: #fafafa;
+  }
 `;
+
 const Link = styled.a`
   font-family: Exo2Regular;
   font-size: 14px;
   line-height: 17px;
   color: #9f9f9f;
-  pointer:cursor;
-  &:hover{
+  pointer: cursor;
+  &:hover {
     text-decoration: underline;
   }
 `;
