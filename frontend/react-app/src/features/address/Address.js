@@ -10,6 +10,7 @@ import { CustomButton } from "../../features";
 
 import { AddressSuggestions } from "react-dadata";
 import GoogleMapReact from "google-map-react";
+import MapMarkerIcon from "../../assets/icons/mapCheck.svg";
 // import "react-dadata/dist/react-dadata.css";
 
 Modal.setAppElement("#root");
@@ -61,6 +62,12 @@ export const Address = (props) => {
       })
       .catch((error) => console.log("error", error));
   };
+  const mapCenter = savedSugg
+    ? {
+        lat: Number(savedSugg.data.geo_lat),
+        lng: Number(savedSugg.data.geo_lon),
+      }
+    : { lat: 55.75396, lng: 37.620393 };
   return (
     <>
       <AddressWrapper
@@ -106,6 +113,7 @@ export const Address = (props) => {
               onClick={() => {
                 setInputValue("");
                 setSuggestions([]);
+                setSavedSugg(null);
               }}
             >
               <img src={CloseModal} width="12px" height="12px" alt="Clean" />
@@ -114,7 +122,10 @@ export const Address = (props) => {
           <CustomButton
             text="Подтвердить"
             disabled={!savedSugg}
-            onClick={() => changeAddress(savedSugg)}
+            onClick={() => {
+              changeAddress(savedSugg);
+              setModalIsOpen(false);
+            }}
           />
         </Row>
         <SpecialRow>
@@ -134,24 +145,30 @@ export const Address = (props) => {
             })}
           </SugContainer>
         </SpecialRow>
-        <div style={{ height: 300, width: 300 }}>
+        <MapWrapper>
           <GoogleMapReact
             bootstrapURLKeys={{ key: MAP_API_KEY }}
             //defaultCenter={{lat: 55.75396, lng: 37.620393}}
-            center={
-              savedSugg
-                ? Object.assign(
-                    {},
-                    {
-                      lat: Number(savedSugg.data.geo_lat),
-                      lng: Number(savedSugg.data.geo_lon),
-                    }
-                  )
-                : { lat: 55.75396, lng: 37.620393 }
-            }
-            defaultZoom={11}
-          ></GoogleMapReact>
-        </div>
+            center={mapCenter}
+            defaultZoom={12}
+            zoom={savedSugg ? 15 : 12}
+          >
+            <div
+              lat={mapCenter.lat}
+              lng={mapCenter.lng}
+              style={{
+                position: "absolute",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <img
+                src={MapMarkerIcon}
+                alt="map marker"
+                style={{ width: 20, height: 22 }}
+              />
+            </div>
+          </GoogleMapReact>
+        </MapWrapper>
       </Modal>
     </>
   );
@@ -247,4 +264,10 @@ const ChooseAddressInputWrapper = styled.div`
     background-color: #fff;
     z-index: 1;
   }
+`;
+
+const MapWrapper = styled.div`
+  height: 300px;
+  width: 100%;
+  margin-top: 30px;
 `;
