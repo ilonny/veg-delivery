@@ -35,7 +35,9 @@ export const Address = (props) => {
   const { changeAddress, children, address } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(
+    address?.value ? address.value : ""
+  );
   const [savedSugg, setSavedSugg] = useState(address?.value ? address : null);
   console.log("savedSugg", savedSugg);
   const getSuggestions = (val) => {
