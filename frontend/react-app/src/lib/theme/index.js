@@ -10,6 +10,6 @@ export const Color = {
 
 export const Media = {
   mobile: "@media screen and (max-width: 500px)",
-  tablet: "@media screen and (max-width: 800px)",
+  tablet: "@media screen and (max-width: 1070px)",
   smallDesktop: "@media screen and (max-width: 1151px)",
 };

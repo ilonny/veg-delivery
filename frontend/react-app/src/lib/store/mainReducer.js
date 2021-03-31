@@ -13,7 +13,8 @@ export const mainReducer = (state = initialState, action) => {
       return { ...state, address: action.address };
     }
     default: {
-      return { ...state };
+      return state;
+      // return { ...state };
     }
   }
 };

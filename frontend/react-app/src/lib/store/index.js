@@ -1,6 +1,9 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
 import {
   sideBarReducer,
   categoriesReducer,
@@ -19,6 +22,12 @@ const rootReducer = combineReducers({
 
 let enhacers;
 
+const persistConfig = {
+  key: "root",
+  storage,
+};
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   enhacers = applyMiddleware(thunk, createLogger({ collapsed: true }));
 } else {
@@ -26,8 +35,9 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 }
 
 function configureStore() {
-  const store = createStore(rootReducer, undefined, enhacers);
+  const store = createStore(persistedReducer, undefined, enhacers);
   return store;
 }
 
 export const store = configureStore();
+export const persistor = persistStore(store);

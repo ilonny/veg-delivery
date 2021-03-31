@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import { Link } from "react-router-dom";
 // import { Icon } from "../../common/atoms";
 // import { HeaderDelivery } from "../atoms/headerDelivery";
-// import { Media, Color } from "../../../lib";
+import { Media, Color } from "../../../lib";
 // import { MenuTree } from "./menu-tree";
 import { Address } from "../../../features";
 import "./desktop-header-template.css";
