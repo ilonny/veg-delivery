@@ -7,6 +7,7 @@ export const Header = connect(
     sidebar: state.sidebar,
     cart: state.cart,
     menu: state.main.menuCategories.tree,
+    address: state.main.address,
   }),
   (dispatch) => ({
     toggleSideBar: (params) => dispatch(sideBarReducer.toggleSideBar(params)),

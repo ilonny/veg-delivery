@@ -32,11 +32,11 @@ const customStyles = {
 
 export const Address = (props) => {
   console.log("Address props", props);
-  const { changeAddress } = props;
+  const { changeAddress, children, address } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [savedSugg, setSavedSugg] = useState(null);
+  const [savedSugg, setSavedSugg] = useState(address?.value ? address : null);
   console.log("savedSugg", savedSugg);
   const getSuggestions = (val) => {
     const url =
@@ -76,7 +76,7 @@ export const Address = (props) => {
         }}
       >
         <img src={PinSvg} alt="location" />
-        <p>Бакунинская д 123</p>
+        <AddressLalbel>{children}</AddressLalbel>
       </AddressWrapper>
       <Modal
         isOpen={modalIsOpen}
@@ -270,4 +270,12 @@ const MapWrapper = styled.div`
   height: 300px;
   width: 100%;
   margin-top: 30px;
+`;
+
+const AddressLalbel = styled.p`
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
 `;

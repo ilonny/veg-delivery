@@ -13,13 +13,14 @@ import RubIcon from "../../../assets/icons/basket.svg";
 export const HeaderTemplateDektop = (props) => {
   // const { cart, menu } = props;
   console.log("HeaderTemplateDektop props", props);
+  const { address } = props;
   return (
     <HeaderWrapper>
       <LeftSide>
         <Link href="#">
           <Logotype src={Logo} alt="VegDelivery" />
         </Link>
-        <Address>Бакунинская 69, ст 1</Address>
+        <Address>{address?.value ? address.value : "Не указано"}</Address>
       </LeftSide>
       <RightSide>
         <Contacts>

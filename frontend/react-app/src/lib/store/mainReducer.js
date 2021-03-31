@@ -2,9 +2,7 @@ import { request } from "../rest";
 import { SET_MENU_CATEGORIES } from "./actions";
 const initialState = {
   menuCategories: {},
-  address: {
-    test: 123,
-  },
+  address: {},
 };
 export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -32,5 +30,5 @@ mainReducer.changeAddress = (address) => (dispatch, getState) => {
   dispatch({
     type: "CHANGE_ADDRESS",
     address,
-  })
+  });
 };
