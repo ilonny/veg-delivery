@@ -4,11 +4,14 @@ export const BlockWrapper = styled.div`
   padding: 10px;
   padding-bottom: 40px;
   flex: 1;
-  flex: 1 1 33.33333333%;
-  max-width: 33.33333333%;
+  flex: 1 1 25%;
+  max-width: 25%;
+  transition: all 250ms ease;
+  border-radius: 15px;
   &:hover {
-    [hover_hide] {
-      opacity: 0;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    [translate] {
+      transform: translateX(0);
     }
   }
   // ${Media.smallDesktop} {

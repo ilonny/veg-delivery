@@ -5,7 +5,7 @@ import {
   // Spacer,
   // HoverButton,
 } from "../../features/common";
-import { PageTitle } from "../../features";
+import { PageTitle, CatalogList } from "../../features";
 // import { Banner } from "../../features/banner";
 // import { Row } from "../../features/styled-components-layout";
 // import { HomePageAdvantage } from "../../features/homepage-advantage";
@@ -19,6 +19,7 @@ export const RestaurantPage = (props) => {
   return (
     <HomeTemplate>
       <PageTitle backButton={true}>{restaurant?.name}</PageTitle>
+      <CatalogList restaurant={restaurant} />
     </HomeTemplate>
   );
 };

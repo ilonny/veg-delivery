@@ -8,13 +8,16 @@ import {
   Title,
   CartButton,
   Price,
+  DescriptionWrapper,
 } from "../atoms";
+import { API_URL } from "../../../lib";
 import { Row } from "../../styled-components-layout";
 import ImgNotFound from "../../../assets/icons/image_not_found.png";
 export const Block = ({ item, addToCart, removeFromCart, cart_products }) => {
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
-  const active = !!cart_products.find((product) => product.id === item.id);
+  const active = false;
+  // const active = !!cart_products.find((product) => product.id === item.id);
   const onClickHandler = (product_id, price) => {
     console.log("onClick", product_id);
     if (active) {
@@ -28,23 +31,28 @@ export const Block = ({ item, addToCart, removeFromCart, cart_products }) => {
     <BlockWrapper>
       <Link to={`/product/${item.id}`}>
         <ImageWrapper>
-          {item.image ? (
-            <>
+          <>
+            {item.image ? (
+              <>
+                <img
+                  src={item.image_hover}
+                  style={{ opacity: 0, maxWidth: "100%", maxHeight: "420px" }}
+                  alt={item.title}
+                />
+                <Image src={`${API_URL}${item.image}`} />
+                {/* <Image hover_hide="true" src={item.image} /> */}
+              </>
+            ) : (
               <img
-                src={item.image_hover}
-                style={{ opacity: 0, maxWidth: "100%", maxHeight: "420px" }}
-                alt={item.title}
+                src={ImgNotFound}
+                alt="Изображение отсутствует"
+                style={{ maxWidth: "100%", maxHeight: "420px" }}
               />
-              <Image src={item.image_hover} />
-              <Image hover_hide="true" src={item.image} />
-            </>
-          ) : (
-            <img
-              src={ImgNotFound}
-              alt="Изображение отсутствует"
-              style={{ maxWidth: "100%", maxHeight: "420px" }}
-            />
-          )}
+            )}
+            <DescriptionWrapper translate="true">
+              {item.description}
+            </DescriptionWrapper>
+          </>
         </ImageWrapper>
         <Title>{item.name}</Title>
       </Link>

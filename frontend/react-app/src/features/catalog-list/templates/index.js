@@ -1,26 +1,37 @@
 import React, { useEffect } from "react";
-import { Row } from "../../styled-components-layout";
-import { Block } from "../organisms/block";
-import { CategoryTitle } from "../../common";
+// import { Row } from "../../styled-components-layout";
+// import { Block } from "../organisms/block";
+import { CategoryName } from "../organisms/CategoryName";
+import { CategoryProducts } from "../organisms/CategoryProducts";
 export const CatalogListTemplate = (props) => {
   console.log("catalog list props", props);
-  const { getProducts, isPopular } = props;
-  useEffect(() => {
-    getProducts(null, isPopular);
-  }, [getProducts, isPopular]);
-  if (props.data) {
+  const { restaurant } = props;
+  const menu = restaurant?.menu;
+  if (menu) {
     return (
       <>
-        {isPopular && <CategoryTitle>Популярное</CategoryTitle>}
+        {menu.map((category) => {
+          if (category?.menu?.length) {
+            return (
+              <div key={category.id}>
+                <CategoryName name={category.name} />
+                <CategoryProducts products={category?.menu} />
+              </div>
+            );
+          }
+          return null;
+        })}
+        {/* {isPopular && <CategoryTitle>Популярное</CategoryTitle>}
         <div style={{ margin: "-10px" }}>
-          <Row align="flex-start" wrap="wrap">
-            {props.data.map((item) => (
-              <Block item={item} key={item.id} {...props} />
-            ))}
+        <Row align="flex-start" wrap="wrap">
+        {props.data.map((item) => (
+          <Block item={item} key={item.id} {...props} />
+          ))}
           </Row>
-        </div>
+        </div> */}
       </>
     );
   }
+  return <CategoryProducts />;
   return null;
 };
