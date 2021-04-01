@@ -60,13 +60,14 @@ const LeftSide = styled.div`
 const RightSide = styled.div`
   display: flex;
   justify-content: center;
+  height: inherit;
 `;
 const Contacts = styled.ul`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  width: inherit;
+  height: inherit;
   margin-right: 39px;
 `;
 const Button = styled.button`
@@ -91,10 +92,13 @@ const ListButton = styled.button`
   font-size: 14px;
   background: transparent;
   line-height: 17px;
-  width: inherit;
+  height: inherit;
   color: #9f9f9f;
+  outline: none;
   &:hover {
     background: #fafafa;
+  border-bottom: 1px solid #ccc;
+
   }
 `;
 

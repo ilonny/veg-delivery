@@ -20,7 +20,7 @@ const DesktopWrapper = styled.div`
     display: none;
   }
 `;
-const MobileWrapper = styled.div`
+export const MobileWrapper = styled.div`
   display: none;
   ${Media.tablet} {
     display: block;
