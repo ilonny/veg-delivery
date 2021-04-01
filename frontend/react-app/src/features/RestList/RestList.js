@@ -4,6 +4,7 @@ import { PageTitle, RestCard } from "../../features";
 import { Row } from "../../features/styled-components-layout";
 import styled from "styled-components";
 import Loupe from "../../assets/icons/loupe.svg";
+
 export const RestList = (props) => {
   console.log("RestList props", props);
   const { getRestList, restaurants, address } = props;
@@ -122,8 +123,7 @@ const ChooseAddressInputWrapper = styled.div`
     height: 20px;
     left: 13px;
     top: 13px;
-    background-color: #fff;
-    z-index: 1;
+    // background-color: #fff;
   }
 `;
 

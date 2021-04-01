@@ -2,28 +2,36 @@ import React from "react";
 import styled from "styled-components";
 import { API_URL, Color, Media } from "../../lib";
 import { Row } from "../../features/styled-components-layout";
+import { Link } from "react-router-dom";
+
 export const RestCard = (props) => {
   const { restaurant } = props;
   return (
     <RestCardWrapper>
-      <RestCardImageWrapper {...props} />
-      <RestCardContentWrapper>
-        <h2>{restaurant?.name}</h2>
-        <Row align="center" justify="space-between" marginTop="15px !important">
-          {restaurant?.min_price && (
-            <RestBadge>
-              <span>Заказ от: </span>&nbsp;
-              <span>{restaurant?.min_price} руб.</span>
-            </RestBadge>
-          )}
-          {restaurant?.delivery_time && (
-            <RestBadge>
-              <span>Доставка: </span>&nbsp;
-              <span>{restaurant?.delivery_time}</span>
-            </RestBadge>
-          )}
-        </Row>
-      </RestCardContentWrapper>
+      <Link to={{ pathname: "/restaurant", restaurant }}>
+        <RestCardImageWrapper {...props} />
+        <RestCardContentWrapper>
+          <h2>{restaurant?.name}</h2>
+          <Row
+            align="center"
+            justify="space-between"
+            marginTop="15px !important"
+          >
+            {restaurant?.min_price && (
+              <RestBadge>
+                <span>Заказ от: </span>&nbsp;
+                <span>{restaurant?.min_price} руб.</span>
+              </RestBadge>
+            )}
+            {restaurant?.delivery_time && (
+              <RestBadge>
+                <span>Доставка: </span>&nbsp;
+                <span>{restaurant?.delivery_time}</span>
+              </RestBadge>
+            )}
+          </Row>
+        </RestCardContentWrapper>
+      </Link>
     </RestCardWrapper>
   );
 };

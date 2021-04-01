@@ -97,8 +97,7 @@ const ListButton = styled.button`
   outline: none;
   &:hover {
     background: #fafafa;
-  border-bottom: 1px solid #ccc;
-
+    border-bottom: 1px solid #ccc;
   }
 `;
 
@@ -117,10 +116,10 @@ const Logotype = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  // padding: 20px;
   width: 160px;
-  height: 52px;
-  border-right: 1px solid #f0f0f0;
+  // height: 52px;
+  // border-right: 1px solid #f0f0f0;
 `;
 
 // const MainWrapper = styled.div`

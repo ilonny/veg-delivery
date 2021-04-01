@@ -26,7 +26,7 @@ export const Address = (props) => {
     address?.value ? address.value : ""
   );
 
-  const [coordinates, setCoordinates] = useState('');
+  const [coordinates, setCoordinates] = useState("");
 
   const [savedSugg, setSavedSugg] = useState(address?.value ? address : null);
   // console.log("savedSugg", savedSugg);
@@ -70,14 +70,15 @@ export const Address = (props) => {
     };
     fetch(urlAddress, optionsAddress)
       .then((response) => response.json())
-      .then((result) => {setInputValue(result.suggestions[0].value)
+      .then((result) => {
+        setInputValue(result.suggestions[0].value);
       })
       .catch((error) => console.log("error", error));
   };
   const mapCenter = savedSugg
     ? {
-        lat: Number(savedSugg.data.geo_lat ) ,
-        lng: Number(savedSugg.data.geo_lon ),
+        lat: Number(savedSugg.data.geo_lat),
+        lng: Number(savedSugg.data.geo_lon),
       }
     : { lat: 55.75396, lng: 37.620393 };
   return (
@@ -159,38 +160,37 @@ export const Address = (props) => {
           </SugContainer>
         </SpecialRow>
         <MapWrapper>
-            <GoogleMapReact
-              bootstrapURLKeys={{ key: MAP_API_KEY }}
-              //defaultCenter={{lat: 55.75396, lng: 37.620393}}
-              center={mapCenter}
-              defaultZoom={12}
-              zoom={savedSugg ? 15 : 12}
-              onClick={(map) => {
-                setCoordinates({
-                  lat: map.lat,
-                  lon: map.lng,
-                });
-                console.log(coordinates);
-                getAddress(coordinates);
-               
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: MAP_API_KEY }}
+            //defaultCenter={{lat: 55.75396, lng: 37.620393}}
+            center={mapCenter}
+            defaultZoom={12}
+            zoom={savedSugg ? 15 : 12}
+            onClick={(map) => {
+              setCoordinates({
+                lat: map.lat,
+                lon: map.lng,
+              });
+              console.log(coordinates);
+              getAddress(coordinates);
+            }}
+          >
+            <div
+              lat={mapCenter.lat}
+              lng={mapCenter.lng}
+              style={{
+                position: "absolute",
+                transform: "translate(-50%, -50%)",
               }}
             >
-              <div
-                lat={mapCenter.lat}
-                lng={mapCenter.lng}
-                style={{
-                  position: "absolute",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <img
-                  src={MapMarkerIcon}
-                  alt="map marker"
-                  style={{ width: 20, height: 22 }}
-                />
-              </div>
-            </GoogleMapReact>
-          </MapWrapper>
+              <img
+                src={MapMarkerIcon}
+                alt="map marker"
+                style={{ width: 20, height: 22 }}
+              />
+            </div>
+          </GoogleMapReact>
+        </MapWrapper>
       </Modal>
       <MediaQuery maxWidth={500}>
         <Modal
@@ -229,7 +229,7 @@ export const Address = (props) => {
                   setInputValue("");
                   setSuggestions([]);
                   setSavedSugg(null);
-                  changeAddress(null); 
+                  changeAddress(null);
                 }}
               >
                 <img src={CloseModal} width="12px" height="12px" alt="Clean" />
@@ -275,7 +275,6 @@ export const Address = (props) => {
                 });
                 console.log(coordinates);
                 getAddress(coordinates);
-               
               }}
             >
               <div
@@ -418,7 +417,7 @@ const ChooseAddressInputWrapper = styled.div`
     height: 20px;
     left: 13px;
     top: 13px;
-    background-color: #fff;
+    // background-color: #fff;
     z-index: 1;
   }
 `;

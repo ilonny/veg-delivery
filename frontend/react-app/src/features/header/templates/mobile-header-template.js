@@ -126,7 +126,7 @@ const Logotype = styled.img`
   align-items: center;
   // padding: 20px;
   width: 160px;
-  border-right: 1px solid #f0f0f0;
+  // border-right: 1px solid #f0f0f0;
 `;
 
 const MenuButton = styled.button`
