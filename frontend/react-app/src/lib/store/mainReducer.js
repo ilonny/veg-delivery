@@ -11,7 +11,7 @@ export const mainReducer = (state = initialState, action) => {
       return { ...state, menuCategories: action.categories };
     }
     case "CHANGE_ADDRESS": {
-      return { ...state, address: action.address }
+      return { ...state, address: action.address };
     }
     case "CHANGE_STORE_BY_KEY": {
       return {
@@ -38,15 +38,18 @@ mainReducer.changeAddress = (address) => (dispatch, getState) => {
   dispatch({
     type: "CHANGE_ADDRESS",
     address,
-  })
-}
+  });
+};
 mainReducer.getRestList = (params) => (dispatch, getState) => {
-  let callback = () => { };
+  const address = getState()?.main?.address;
+  let callback = () => {};
   if (params) {
     callback = params?.callback;
   }
-  let lat = 55.7520233;
-  let lon = 37.6153107;
+  // let lat = 55.7520233;
+  // let lon = 37.6153107;
+  let lat = address?.data?.geo_lat;
+  let lon = address?.data?.geo_lon;
   request({
     method: "GET",
     url: `restaurant/mobile-list?lat=${lat}&lon=${lon}`,

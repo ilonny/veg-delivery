@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 // import { Link } from "react-router-dom";
 // import { Icon } from "../../common/atoms";
+import { Container } from "../../common/templates";
 // import { HeaderDelivery } from "../atoms/headerDelivery";
 import { Media, Color } from "../../../lib";
 // import { MenuTree } from "./menu-tree";
@@ -12,30 +13,34 @@ import RubIcon from "../../../assets/icons/basket.svg";
 
 export const HeaderTemplateDektop = (props) => {
   // const { cart, menu } = props;
-  console.log("HeaderTemplateDektop props", props);
+  // console.log("HeaderTemplateDektop props", props);
   const { address } = props;
   return (
-    <HeaderWrapper>
-      <LeftSide>
-        <Link href="#">
-          <Logotype src={Logo} alt="VegDelivery" />
-        </Link>
-        <Address>{address?.value ? address.value : "Не указано"}</Address>
-      </LeftSide>
-      <RightSide>
-        <Contacts>
-          <ListButton>О компании</ListButton>
-          <ListButton>Для ресторанов</ListButton>
-          <ListButton>Контакты</ListButton>
-        </Contacts>
-        <Button>
-          <span>
-            <RubImg src={RubIcon} alt="location" />
-          </span>
-          Корзина(0)
-        </Button>
-      </RightSide>
-    </HeaderWrapper>
+    <div style={{ borderBottom: "1px solid #ccc" }}>
+      <Container>
+        <HeaderWrapper>
+          <LeftSide>
+            <Link href="#">
+              <Logotype src={Logo} alt="VegDelivery" />
+            </Link>
+            <Address>{address?.value ? address.value : "Не указано"}</Address>
+          </LeftSide>
+          <RightSide>
+            <Contacts>
+              <ListButton>О компании</ListButton>
+              <ListButton>Для ресторанов</ListButton>
+              <ListButton>Контакты</ListButton>
+            </Contacts>
+            <Button>
+              <span>
+                <RubImg src={RubIcon} alt="location" />
+              </span>
+              Корзина(0)
+            </Button>
+          </RightSide>
+        </HeaderWrapper>
+      </Container>
+    </div>
   );
 };
 const RubImg = styled.img`
@@ -47,7 +52,6 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 53px;
-  border-bottom: 1px solid #ccc;
 `;
 const LeftSide = styled.div`
   display: flex;

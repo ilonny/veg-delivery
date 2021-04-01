@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL =
+export const API_URL =
   process.env.NODE_ENV === "development" ? "http://localhost:21080/" : "/";
 
 const client = axios.create({

@@ -35,6 +35,7 @@ export const mixins = (props) => css`
   width: ${prop(props.width)};
   flex-wrap: ${prop(props.wrap)};
   margin-top: ${prop(props.marginTop)};
+  margin: ${prop(props.margin)};
   ${props.mobile_wrap &&
   `${Media.mobile} {
       flex-wrap: wrap;

@@ -14,7 +14,7 @@ import MenuButtonIcon from "../../../assets/icons/menu.svg";
 
 export const HeaderTemplateMobile = (props) => {
   // const { cart, menu } = props;
-  console.log("HeaderTemplateDektop props", props);
+  // console.log("HeaderTemplateDektop props", props);
   const { address } = props;
   const [menuOpened, setMenuOpened] = useState(false);
   return (

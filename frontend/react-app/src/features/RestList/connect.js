@@ -6,6 +6,7 @@ import { mainReducer } from "../../features";
 export const RestList = connect(
   (state) => ({
     restaurants: state.main.restaurants,
+    address: state.main.address,
     // menuCategories: state.main.menuCategories,
     // ...state.categories,
   }),

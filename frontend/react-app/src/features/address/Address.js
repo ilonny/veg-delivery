@@ -31,7 +31,7 @@ const customStyles = {
 };
 
 export const Address = (props) => {
-  console.log("Address props", props);
+  // console.log("Address props", props);
   const { changeAddress, children, address } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
@@ -39,7 +39,7 @@ export const Address = (props) => {
     address?.value ? address.value : ""
   );
   const [savedSugg, setSavedSugg] = useState(address?.value ? address : null);
-  console.log("savedSugg", savedSugg);
+  // console.log("savedSugg", savedSugg);
   const getSuggestions = (val) => {
     const url =
       "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
@@ -60,7 +60,7 @@ export const Address = (props) => {
       .then((response) => response.json())
       .then((result) => {
         setSuggestions(result.suggestions);
-        console.log(result.suggestions);
+        // console.log(result.suggestions);
       })
       .catch((error) => console.log("error", error));
   };
