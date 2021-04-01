@@ -4,7 +4,7 @@ import styled from "styled-components";
 // import { Icon } from "../../common/atoms";
 import { Container } from "../../common/templates";
 // import { HeaderDelivery } from "../atoms/headerDelivery";
-import { Media, Color } from "../../../lib";
+// import { Media, Color } from "../../../lib";
 // import { MenuTree } from "./menu-tree";
 import { Address } from "../../../features";
 import "./desktop-header-template.css";

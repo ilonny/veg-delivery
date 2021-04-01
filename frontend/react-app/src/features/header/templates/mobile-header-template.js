@@ -3,12 +3,12 @@ import styled from "styled-components";
 // import { Link } from "react-router-dom";
 // import { Icon } from "../../common/atoms";
 // import { HeaderDelivery } from "../atoms/headerDelivery";
-import { Media, Color } from "../../../lib";
+// import { Media, Color } from "../../../lib";
 // import { MenuTree } from "./menu-tree";
 import { Address } from "../../../features";
 import "./desktop-header-template.css";
 import Logo from "../../../assets/icons/logo.png";
-import RubIcon from "../../../assets/icons/basket.svg";
+// import RubIcon from "../../../assets/icons/basket.svg";
 import RubIconGreen from "../../../assets/icons/basket_green.svg";
 import MenuButtonIcon from "../../../assets/icons/menu.svg";
 
@@ -64,35 +64,35 @@ const HeaderWrapper = styled.div`
   border-bottom: 1px solid #ccc;
   padding: 10px;
 `;
-const LeftSide = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-const RightSide = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const Contacts = styled.ul`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  width: inherit;
-  margin-right: 39px;
-`;
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #5ac17d;
-  color: #ffffff;
-  padding: 18px 57px 18px 86px;
-  height: 53px;
-  outline: none;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+// const LeftSide = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+// `;
+// const RightSide = styled.div`
+//   display: flex;
+//   justify-content: center;
+// `;
+// const Contacts = styled.ul`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: space-around;
+//   width: inherit;
+//   margin-right: 39px;
+// `;
+// const Button = styled.button`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: #5ac17d;
+//   color: #ffffff;
+//   padding: 18px 57px 18px 86px;
+//   height: 53px;
+//   outline: none;
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// `;
 const ListButton = styled.button`
   display: flex;
   justify-content: center;

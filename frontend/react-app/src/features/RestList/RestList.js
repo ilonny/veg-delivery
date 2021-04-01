@@ -90,7 +90,7 @@ export const RestList = (props) => {
       {!loading && !restaurants.length && (
         <div>Извините, по вашему адресу отсутствуют рестораны :( </div>
       )}
-      {!loading && restaurants.length && (
+      {!loading && !!restaurants.length && (
         <>
           <Row justify="flex-start" wrap="wrap" margin="0px -10px;">
             {restaurants.map((restaurant) => {
