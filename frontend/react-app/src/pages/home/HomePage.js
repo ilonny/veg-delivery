@@ -5,6 +5,7 @@ import {
   // Spacer,
   // HoverButton,
 } from "../../features/common";
+import { RestList } from "../../features";
 // import { Banner } from "../../features/banner";
 // import { Row } from "../../features/styled-components-layout";
 // import { HomePageAdvantage } from "../../features/homepage-advantage";
@@ -15,6 +16,6 @@ import {
 // import { Link } from "react-router-dom";
 export const HomePage = () => (
   <HomeTemplate>
-    <h1>HomeTemplate</h1>
+    <RestList />
   </HomeTemplate>
 );

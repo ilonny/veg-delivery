@@ -6,6 +6,7 @@ export const Color = {
   light_gray: "#F2F2F2",
   titleColor: "#656665",
   buttonColor: "#5AC17D",
+  pageTitle: "#656665",
 };
 
 export const Media = {
