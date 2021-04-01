@@ -5,8 +5,10 @@ import CloseModal from "../../assets/icons/closeModal.svg";
 import Loupe from "../../assets/icons/loupe.svg";
 import { Row } from "../styled-components-layout";
 import Modal from "react-modal";
-import { Color, DADATA_API_KEY, MAP_API_KEY } from "../../lib";
+import { Color, DADATA_API_KEY, MAP_API_KEY, Media } from "../../lib";
 import { CustomButton } from "../../features";
+
+import MediaQuery from "react-responsive";
 
 import { AddressSuggestions } from "react-dadata";
 import GoogleMapReact from "google-map-react";
@@ -14,21 +16,6 @@ import MapMarkerIcon from "../../assets/icons/mapCheck.svg";
 // import "react-dadata/dist/react-dadata.css";
 
 Modal.setAppElement("#root");
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    border: "none",
-    boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.1)",
-    minWidth: "610px",
-    minHeight: 600,
-  },
-};
 
 export const Address = (props) => {
   console.log("Address props", props);
@@ -38,6 +25,9 @@ export const Address = (props) => {
   const [inputValue, setInputValue] = useState(
     address?.value ? address.value : ""
   );
+
+  const [coordinates, setCoordinates] = useState('');
+
   const [savedSugg, setSavedSugg] = useState(address?.value ? address : null);
   console.log("savedSugg", savedSugg);
   const getSuggestions = (val) => {
@@ -55,7 +45,6 @@ export const Address = (props) => {
       },
       body: JSON.stringify({ query: query }),
     };
-
     fetch(url, options)
       .then((response) => response.json())
       .then((result) => {
@@ -64,10 +53,31 @@ export const Address = (props) => {
       })
       .catch((error) => console.log("error", error));
   };
+  const getAddress = (coordinates) => {
+    const urlAddress =
+      "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
+    let queryAddress = coordinates;
+    const token = DADATA_API_KEY;
+    const optionsAddress = {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Token " + token,
+      },
+      body: JSON.stringify(queryAddress),
+    };
+    fetch(urlAddress, optionsAddress)
+      .then((response) => response.json())
+      .then((result) => {setInputValue(result.suggestions[0].value)
+      })
+      .catch((error) => console.log("error", error));
+  };
   const mapCenter = savedSugg
     ? {
-        lat: Number(savedSugg.data.geo_lat),
-        lng: Number(savedSugg.data.geo_lon),
+        lat: Number(savedSugg.data.geo_lat ) ,
+        lng: Number(savedSugg.data.geo_lon ),
       }
     : { lat: 55.75396, lng: 37.620393 };
   return (
@@ -116,6 +126,7 @@ export const Address = (props) => {
                 setInputValue("");
                 setSuggestions([]);
                 setSavedSugg(null);
+                changeAddress(null); //ВОТ ЗДЕСЬ, ЕСЛИ ВДРУГ ЮЗЕР ЗАХОЧЕТ СТЕРЕТЬ ВЫБРАННЫЙ АДРЕС, ТО ЧТОБ В ИНПУТЕ ОН ТОЖЕ СТИРАЛСЯ (ЕСЛИ НАПРИМЕР ОН ВВЕЛ НЕПРАВИЛЬНЫЙ АДРЕС, ЧТОБ БЫЛА ВОЗМОЖНОСТЬ ЗАНОВО ВПИСАТЬ )
               }}
             >
               <img src={CloseModal} width="12px" height="12px" alt="Clean" />
@@ -148,33 +159,177 @@ export const Address = (props) => {
           </SugContainer>
         </SpecialRow>
         <MapWrapper>
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: MAP_API_KEY }}
-            //defaultCenter={{lat: 55.75396, lng: 37.620393}}
-            center={mapCenter}
-            defaultZoom={12}
-            zoom={savedSugg ? 15 : 12}
-          >
-            <div
-              lat={mapCenter.lat}
-              lng={mapCenter.lng}
-              style={{
-                position: "absolute",
-                transform: "translate(-50%, -50%)",
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: MAP_API_KEY }}
+              //defaultCenter={{lat: 55.75396, lng: 37.620393}}
+              center={mapCenter}
+              defaultZoom={12}
+              zoom={savedSugg ? 15 : 12}
+              onClick={(map) => {
+                setCoordinates({
+                  lat: map.lat,
+                  lon: map.lng,
+                });
+                console.log(coordinates);
+                getAddress(coordinates);
+               
               }}
             >
-              <img
-                src={MapMarkerIcon}
-                alt="map marker"
-                style={{ width: 20, height: 22 }}
-              />
-            </div>
-          </GoogleMapReact>
-        </MapWrapper>
+              <div
+                lat={mapCenter.lat}
+                lng={mapCenter.lng}
+                style={{
+                  position: "absolute",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <img
+                  src={MapMarkerIcon}
+                  alt="map marker"
+                  style={{ width: 20, height: 22 }}
+                />
+              </div>
+            </GoogleMapReact>
+          </MapWrapper>
       </Modal>
+      <MediaQuery maxWidth={500}>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={() => {
+            setModalIsOpen(false);
+          }}
+          style={mobileStyle}
+          // onAfterOpen={afterOpenModal}
+          // contentLabel="Example Modal"
+        >
+          <Row justify="space-between" align="flex-start">
+            <AddressName>Выберите адрес доставки</AddressName>
+            <CloseButton onClick={() => setModalIsOpen(false)}>
+              <img src={CloseModal} alt="close" />
+            </CloseButton>
+          </Row>
+          <Row
+            justify="space-between"
+            align="center"
+            marginTop="40px !important"
+            position="relative"
+          >
+            <ChooseAddressInputWrapper>
+              <ChooseAddressInput
+                placeholder="Введите ваш адрес"
+                value={inputValue}
+                onChange={(event) => {
+                  const val = event.target.value;
+                  setInputValue(val);
+                  getSuggestions(val);
+                }}
+              />
+              <CleanInput
+                onClick={() => {
+                  setInputValue("");
+                  setSuggestions([]);
+                  setSavedSugg(null);
+                  changeAddress(null); 
+                }}
+              >
+                <img src={CloseModal} width="12px" height="12px" alt="Clean" />
+              </CleanInput>
+            </ChooseAddressInputWrapper>
+            <CustomButton
+              text="Подтвердить"
+              disabled={!savedSugg}
+              onClick={() => {
+                changeAddress(savedSugg);
+                setModalIsOpen(false);
+              }}
+            />
+          </Row>
+          <SpecialRow>
+            <SugContainer>
+              {suggestions.map((sugg) => {
+                return (
+                  <SugWrapper
+                    onClick={() => {
+                      setInputValue(sugg.value);
+                      setSavedSugg(sugg);
+                      setSuggestions([]);
+                    }}
+                  >
+                    {sugg.value}
+                  </SugWrapper>
+                );
+              })}
+            </SugContainer>
+          </SpecialRow>
+          <MapWrapper>
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: MAP_API_KEY }}
+              //defaultCenter={{lat: 55.75396, lng: 37.620393}}
+              center={mapCenter}
+              defaultZoom={12}
+              zoom={savedSugg ? 15 : 12}
+              onClick={(map) => {
+                setCoordinates({
+                  lat: map.lat,
+                  lon: map.lng,
+                });
+                console.log(coordinates);
+                getAddress(coordinates);
+               
+              }}
+            >
+              <div
+                lat={mapCenter.lat}
+                lng={mapCenter.lng}
+                style={{
+                  position: "absolute",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <img
+                  src={MapMarkerIcon}
+                  alt="map marker"
+                  style={{ width: 20, height: 22 }}
+                />
+              </div>
+            </GoogleMapReact>
+          </MapWrapper>
+        </Modal>
+      </MediaQuery>
     </>
   );
 };
+
+const customStyles = {
+  content: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    border: "none",
+    boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.1)",
+    minWidth: "610px",
+    minHeight: "600px",
+  },
+};
+const mobileStyle = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    border: "none",
+    boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.1)",
+    width: "100%",
+    height: "100%",
+  },
+};
+
 const SpecialRow = styled.div`
   position: relative;
 `;
