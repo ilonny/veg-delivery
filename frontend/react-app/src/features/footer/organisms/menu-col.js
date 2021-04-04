@@ -11,33 +11,27 @@ export const MenuCol = () => (
     <div>
       <Row>
         <FirstCol>
-          <Link to="/catalog?type=men">
-            <LinkStyled>Мужчинам</LinkStyled>
+          <Link to="/">
+            <LinkStyled>О компании</LinkStyled>
           </Link>
-          <Link to="/catalog?type=women">
-            <LinkStyled>Женщинам</LinkStyled>
-          </Link>
-          <Link to="/delivery">
-            <LinkStyled>Доставка</LinkStyled>
+          <Link to="/">
+            <LinkStyled>Контакты</LinkStyled>
           </Link>
           <Link to="/delivery">
-            <LinkStyled>Возврат</LinkStyled>
+            <LinkStyled>Мои заказы</LinkStyled>
           </Link>
         </FirstCol>
-        <div>
+        {/* <div>
           <Link to="/delivery">
             <LinkStyled>Чем мы можем помочь</LinkStyled>
           </Link>
-          {/* <Link to="/sitemap">
-                        <LinkStyled>Карта сайта</LinkStyled>
-                    </Link> */}
           <Link to="/about">
             <LinkStyled>О нас</LinkStyled>
           </Link>
           <Link to="/faq">
             <LinkStyled>FAQ</LinkStyled>
           </Link>
-        </div>
+        </div> */}
       </Row>
     </div>
   </MenuColStyled>

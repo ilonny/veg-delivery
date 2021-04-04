@@ -12,7 +12,8 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Exo 2", "Helvetica", "Open Sans", sans-serif;
     height: 100vh;
     -webkit-font-smoothing: antialiased;
-    color: ${Color.black}
+    color: ${Color.black};
+    background: #fafafa;
   }
   a {
     color: inherit;

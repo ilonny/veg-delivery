@@ -13,10 +13,10 @@ export const ContactsCol = (props) => (
       <Row>
         <FirstCol>
           <LinkStyled>
-            <strong>Адрес:</strong> г. Сургут ,ТЦ Союз,2 этаж{" "}
+            <strong>Адрес:</strong> г. Москва{" "}
           </LinkStyled>
           <LinkStyled>
-            <strong>Тел:</strong> +7 (922) 400-400-7
+            <strong>Тел:</strong> +7 (111) 123-456-7
           </LinkStyled>
           <LinkStyled>
             <strong>Напишите нам: </strong>

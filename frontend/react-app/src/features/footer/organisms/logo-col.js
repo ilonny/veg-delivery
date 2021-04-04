@@ -1,19 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { ImageView } from "../../common";
-import { Media } from "../../../lib";
+import { Media, API_URL } from "../../../lib";
+import { Link } from "react-router-dom";
 export const LogoCol = () => (
   <LogoColStyled>
     <ImageView
-      src={require("../../../assets/images/logo_big.png")}
+      src={require("../../../assets/icons/logo.png")}
       className="logo"
     />
     <p className="title">
-      Магазин стильной
+      Доставка
       <br />
-      одежды в Сургуте
+      здорового питания
     </p>
-    <p className="copy gray-text">© BONTON 2020 </p>
+    <p className="copy gray-text">© VegDelivery 2021 </p>
     <a className="copy link gray-text" href="/">
       Политика конфиденциальности
     </a>

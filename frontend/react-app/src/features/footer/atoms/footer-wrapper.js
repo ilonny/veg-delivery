@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Media } from "../../../lib";
 export const FooterWrapper = styled.div`
-  padding: 100px 0;
-  background: #f2f2f2;
+  padding: 100px 0px;
+  background: #fafafa;
   ${Media.smallDesktop} {
-    padding: 70px 0;
+    padding: 70px 15px;
   }
   ${Media.tablet} {
     padding: 50px 0;

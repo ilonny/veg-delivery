@@ -6,7 +6,9 @@ import { Container } from "../templates/container";
 export const HomeTemplate = ({ children }) => (
   <>
     <Header />
-    <Container isGray={true}>{children}</Container>
+    <div style={{ background: "#fafafa", minHeight: "calc(100vh - 400px)" }}>
+      <Container isGray={true}>{children}</Container>
+    </div>
     <Footer />
   </>
 );
