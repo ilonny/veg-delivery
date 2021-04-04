@@ -10,3 +10,4 @@ export * from "./RestList";
 export * from "./PageTitle";
 export * from "./RestCard";
 export * from "./catalog-list";
+export * from "./cart-input";

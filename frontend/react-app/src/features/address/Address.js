@@ -6,7 +6,7 @@ import Loupe from "../../assets/icons/loupe.svg";
 import { Row } from "../styled-components-layout";
 import Modal from "react-modal";
 import { Color, DADATA_API_KEY, MAP_API_KEY, Media } from "../../lib";
-import { CustomButton } from "../../features";
+import { CustomButton, CartInput } from "../../features";
 
 import MediaQuery from "react-responsive";
 
@@ -18,8 +18,8 @@ import MapMarkerIcon from "../../assets/icons/mapCheck.svg";
 Modal.setAppElement("#root");
 
 export const Address = (props) => {
-  // console.log("Address props", props);
-  const { changeAddress, children, address } = props;
+  console.log("Address props", props);
+  const { changeAddress, children, address, isCart = false } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState(
@@ -83,14 +83,18 @@ export const Address = (props) => {
     : { lat: 55.75396, lng: 37.620393 };
   return (
     <>
-      <AddressWrapper
-        onClick={() => {
-          setModalIsOpen(true);
-        }}
-      >
-        <img src={PinSvg} alt="location" />
-        <AddressLalbel>{children}</AddressLalbel>
-      </AddressWrapper>
+      {isCart ? (
+        <CartInput value={children} onFocus={() => setModalIsOpen(true)} />
+      ) : (
+        <AddressWrapper
+          onClick={() => {
+            setModalIsOpen(true);
+          }}
+        >
+          <img src={PinSvg} alt="location" />
+          <AddressLalbel>{children}</AddressLalbel>
+        </AddressWrapper>
+      )}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => {

@@ -107,7 +107,7 @@ export const RestList = (props) => {
 };
 
 const ChooseAddressInput = styled.input`
-  background: #fafafa;
+  background: #fff;
   height: 50px;
   padding-left: 50px;
   width: 100%;
