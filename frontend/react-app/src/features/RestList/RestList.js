@@ -1,9 +1,11 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { PageTitle, RestCard } from "../../features";
+import { history } from "../../lib";
 import { Row } from "../../features/styled-components-layout";
 import styled from "styled-components";
 import Loupe from "../../assets/icons/loupe.svg";
+import Preloader from "../../assets/icons/preloader.gif";
 
 export const RestList = (props) => {
   console.log("RestList props", props);
@@ -61,7 +63,7 @@ export const RestList = (props) => {
       <PageTitle>Рестораны</PageTitle>
       <ChooseAddressInputWrapper>
         <ChooseAddressInput
-          placeholder="Введите ваш адрес"
+          placeholder="Начните вводить название блюда или ресторана"
           value={inputValue}
           onChange={(event) => {
             const val = event.target.value;
@@ -80,8 +82,15 @@ export const RestList = (props) => {
         {!!searchResults?.length && (
           <SearchResultsWrapper>
             {searchResults.map((result) => {
+              console.log("result", result);
               return (
-                <div style={{ padding: 10, cursor: "pointer" }}>
+                <div
+                  style={{ padding: 10, cursor: "pointer" }}
+                  onClick={() => {
+                    if (result?.restaurant_id)
+                      history.push(`/restaurant/${result?.restaurant_id}`);
+                  }}
+                >
                   {result.value} ({result.type})
                 </div>
               );
@@ -89,19 +98,35 @@ export const RestList = (props) => {
           </SearchResultsWrapper>
         )}
       </ChooseAddressInputWrapper>
-      {loading && <div>Загрузка ... </div>}
-      {!loading && !restaurants && ( //.length
-        <div>Извините, по вашему адресу отсутствуют рестораны :( </div>
+      {loading && (
+        <div
+          style={{
+            flex: 1,
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "center",
+            minHeight: "100vh",
+          }}
+        >
+          <img src={Preloader} alt="loading" />{" "}
+        </div>
       )}
-      {!loading && !!restaurants && (  //.length
-        <>
-          <Row justify="flex-start" wrap="wrap" margin="0px -10px;">
-            {restaurants.map((restaurant) => {
-              return <RestCard restaurant={restaurant} key={restaurant.id} />;
-            })}
-          </Row>
-        </>
-      )}
+      {!loading &&
+        !restaurants && ( //.length
+          <PageTitle>
+            Извините, по вашему адресу отсутствуют рестораны :({" "}
+          </PageTitle>
+        )}
+      {!loading &&
+        !!restaurants && ( //.length
+          <>
+            <Row justify="flex-start" wrap="wrap" margin="0px -10px;">
+              {restaurants.map((restaurant) => {
+                return <RestCard restaurant={restaurant} key={restaurant.id} />;
+              })}
+            </Row>
+          </>
+        )}
     </div>
   );
 };
