@@ -112,7 +112,7 @@ export const RestList = (props) => {
         </div>
       )}
       {!loading &&
-        !restaurants && ( //.length
+        !restaurants?.length && ( //.length
           <PageTitle>
             Извините, по вашему адресу отсутствуют рестораны :({" "}
           </PageTitle>

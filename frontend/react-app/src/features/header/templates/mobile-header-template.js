@@ -54,8 +54,10 @@ export const HeaderTemplateMobile = (props) => {
         <MenuContent>
           <Address>{address?.value ? address.value : "Не указано"}</Address>
           <ListButton>О компании</ListButton>
-          <ListButton>Для ресторанов</ListButton>
           <ListButton>Контакты</ListButton>
+          <ListButton>
+            <LinkRouter to={"/orders"}>Мои заказы</LinkRouter>
+          </ListButton>
         </MenuContent>
       )}
     </>
