@@ -87,7 +87,7 @@ const ListButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 11px;
   font-family: Exo2Regular;
   font-size: 14px;
   background: transparent;
