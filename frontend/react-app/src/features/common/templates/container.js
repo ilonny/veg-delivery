@@ -12,4 +12,5 @@ const ContainerStyled = styled.div`
   display: ${(props) => props.display};
   justify-content: ${(props) => props.justifyContent};
   align-items: ${(props) => props.alignItems};
+  background: ${(props) => (props.isGray ? "#fafafa" : "#fff")};
 `;

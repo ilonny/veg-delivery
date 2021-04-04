@@ -8,7 +8,7 @@ export const RestCard = (props) => {
   const { restaurant } = props;
   return (
     <RestCardWrapper>
-      <Link to={{ pathname: "/restaurant", restaurant }}>
+      <Link to={{ pathname: `/restaurant/${restaurant.id}`, restaurant }}>
         <RestCardImageWrapper {...props} />
         <RestCardContentWrapper>
           <h2>{restaurant?.name}</h2>

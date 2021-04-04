@@ -4,81 +4,128 @@ import { Row } from "../../styled-components-layout";
 import { Input, WrapperInput } from "../../subscribe-form/atoms";
 import { HoverButton, CategoryTitle } from "../../common";
 import { Media, Color, request } from "../../../lib";
+import { Address, CartInput } from "../../../features";
 import serialize from "form-serialize";
 
 export const CartForm = (props) => {
-  const { setCartState, cart } = props;
+  const {
+    setCartState,
+    cart,
+    address,
+    changeAddress,
+    userInfo,
+    changeStoreByKey,
+  } = props;
   const [message, setMessage] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
     const data = serialize(e.target, { hash: true });
-    if (!data.name || !data.phone) {
-      setMessage("Необходимо заполнить имя и телефон");
-      return false;
-    }
-    const dataText = `
-            Имя: ${data.name}\n
-            Телефон: ${data.phone}\n
-            E-mail: ${data.email ? data.email : "Не указано"}\n
-            Промокод: ${data.promocode ? data.promocode : "Не указано"}\n
-            Адрес: ${data.address ? data.address : "Не указано"}\n
-            Самовывоз: ${data.self_delivery ? "Да" : "Нет"}\n
-            Товары: ${props.cart.products.map((cart_product) => {
-              const data = props.products.find(
-                (el) => el.id === cart_product.id
-              );
-              return `id: ${data.id} Название: ${data.name} Количество: ${cart_product.count} \n`;
-            })}
-        `;
-    request({
-      method: "POST",
-      url: `send-mail`,
-      data: {
-        dataText: dataText,
-        type: "order",
-      },
-    }).then((response) => {
-      console.log("res sendmail", response);
-      setMessage(response.message);
-      setTimeout(() => {
-        setMessage("");
-      }, 2000);
-    });
   };
   console.log("check props", props);
   return (
     <Wrapper>
       <CategoryTitle>Оформление заказа</CategoryTitle>
+      <SmallLabel>Адрес доставки</SmallLabel>
       <form onSubmit={(e) => onSubmit(e)}>
-        <Row gap="20px" tablet_wrap="true">
-          <Input name="name" type="text" placeholder="Ваше имя" />
-          <Input name="phone" type="text" placeholder="Телефон" />
-          <Input name="email" type="email" placeholder="Ваш e-mail" />
+        <Address isCart={true}>
+          {address?.value ? address.value : "Не указано"}
+        </Address>
+        <Row justify="space-between" align="center">
+          <CartInput
+            placeholder={"Кв./офис"}
+            value={userInfo?.flat}
+            onChange={(e) => {
+              const { value } = e.target;
+              changeStoreByKey({
+                key: "userInfo",
+                value: {
+                  ...userInfo,
+                  flat: value,
+                },
+              });
+            }}
+          />
+          <CartInput
+            placeholder={"Подъезд"}
+            value={userInfo?.entrace}
+            onChange={(e) => {
+              const { value } = e.target;
+              changeStoreByKey({
+                key: "userInfo",
+                value: {
+                  ...userInfo,
+                  entrace: value,
+                },
+              });
+            }}
+          />
+          <CartInput
+            placeholder={"Этаж"}
+            value={userInfo?.floor}
+            onChange={(e) => {
+              const { value } = e.target;
+              changeStoreByKey({
+                key: "userInfo",
+                value: {
+                  ...userInfo,
+                  floor: value,
+                },
+              });
+            }}
+          />
         </Row>
-        <Row gap="20px" className="addr_row" tablet_wrap="true">
-          <Input
-            className="first"
-            name="promocode"
-            type="text"
-            placeholder="Промокод (если есть)"
+        <Row justify="space-between" align="center">
+          <CartInput
+            placeholder={"Комментарий"}
+            width="100%"
+            value={userInfo?.comment}
+            onChange={(e) => {
+              const { value } = e.target;
+              changeStoreByKey({
+                key: "userInfo",
+                value: {
+                  ...userInfo,
+                  comment: value,
+                },
+              });
+            }}
           />
-          <Input
-            className="second"
-            name="address"
-            type="text"
-            placeholder="Адрес доставки"
+        </Row>
+        <div style={{ height: 30 }} />
+        <SmallLabel>Контактные данные</SmallLabel>
+        <Row justify="space-between" align="center">
+          <CartInput
+            placeholder={"Имя"}
+            width="100%"
+            value={userInfo?.name}
+            onChange={(e) => {
+              const { value } = e.target;
+              changeStoreByKey({
+                key: "userInfo",
+                value: {
+                  ...userInfo,
+                  name: value,
+                },
+              });
+            }}
           />
-          <WrapperInput>
-            <LabelWrapper>
-              <Input
-                type="checkbox"
-                placeholder="Заберу сам"
-                name="self_delivery"
-                value="1"
-              />
-              <span>Заберу сам</span>
-            </LabelWrapper>
-          </WrapperInput>
+        </Row>
+        <Row justify="space-between" align="center">
+          <CartInput
+            placeholder={"Телефон"}
+            width="100%"
+            value={userInfo?.phone}
+            onChange={(e) => {
+              const { value } = e.target;
+              changeStoreByKey({
+                key: "userInfo",
+                value: {
+                  ...userInfo,
+                  phone: value,
+                },
+              });
+            }}
+          />
         </Row>
         <Row
           className="bottom"
@@ -86,33 +133,26 @@ export const CartForm = (props) => {
           align="center"
           tablet_wrap="true"
         >
-          <button
+          <BackButton
             onClick={() => {
               setCartState("precheck");
             }}
-            className="back"
           >
             Вернуться в корзину
-          </button>
+          </BackButton>
           <div className="total">
-            Итого:{" "}
-            <span>
-              {cart.total_price < 5000
-                ? cart.total_price + 400
-                : cart.total_price}
-            </span>{" "}
-            руб
+            Итого: <span>{cart.total_price + +cart.delivery_price}</span> руб
           </div>
           <HoverButton
             onClick={() => {}}
-            maxWidth={"372px"}
+            maxWidth={"253px"}
             color={"white"}
-            backgroundColor={Color.red}
-            hoverBackgroundColor={Color.red_hover}
+            backgroundColor={"#5ac17d"}
+            hoverBackgroundColor={"#4da76b"}
             fontSize="18px"
             hoverColor={"white"}
           >
-            {"Оформить заказ"}
+            {"Оплатить"}
           </HoverButton>
         </Row>
         <div style={{ padding: "10px" }}>{message}</div>
@@ -123,6 +163,7 @@ export const CartForm = (props) => {
 
 const Wrapper = styled.div`
   display: block;
+  max-width: 700px;
   ${Media.tablet} {
     & input {
       flex: 1 1 100%;
@@ -144,7 +185,7 @@ const Wrapper = styled.div`
       padding: 10px;
       font-size: 20px;
       & span {
-        color: ${Color.red};
+        color: ${Color.titleColor};
       }
     }
   }
@@ -173,4 +214,14 @@ const LabelWrapper = styled.label`
   //     left: 27px;
   //     top: 16px;
   // }
+`;
+const SmallLabel = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+  color: ${Color.titleColor};
+  margin-bottom: 5px;
+`;
+const BackButton = styled.button`
+  font-size: 14px;
+  background: transparent;
 `;

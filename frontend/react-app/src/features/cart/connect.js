@@ -2,10 +2,16 @@ import { connect } from "react-redux";
 import { CartTemplate } from "./templates";
 import { cartReducer } from "./reducer";
 import { productReducer } from "../product";
+import { mainReducer } from "../../features";
 export const Cart = connect(
   (state) => ({
     cart: state.cart,
     products: state.product.products,
+    // restaurants: state.main.restaurants,
+    address: state?.main?.address,
+    total_price: state?.cart?.total_price,
+    delivery_price: state?.cart?.delivery_price,
+    userInfo: state?.main?.userInfo,
   }),
   (dispatch) => ({
     getCurrentProduct: (id) => dispatch(productReducer.getProducts(id)),
@@ -13,5 +19,8 @@ export const Cart = connect(
       dispatch(cartReducer.addToCart(product_id, price)),
     removeFromCart: (product_id) =>
       dispatch(cartReducer.removeFromCart(product_id)),
+    changeStoreByKey: (params) =>
+      dispatch(mainReducer.changeStoreByKey(params)),
+    changeAddress: (address) => dispatch(mainReducer.changeAddress(address)),
   })
 )(CartTemplate);

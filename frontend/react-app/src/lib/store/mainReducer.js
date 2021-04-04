@@ -4,6 +4,7 @@ const initialState = {
   menuCategories: {},
   address: {},
   restaurants: [],
+  userInfo: {},
 };
 export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -61,5 +62,14 @@ mainReducer.getRestList = (params) => (dispatch, getState) => {
       value: response,
     });
     console.log("response mobile list", response);
+  });
+};
+
+mainReducer.changeStoreByKey = (params) => (dispatch, getState) => {
+  const { key, value } = params;
+  dispatch({
+    type: "CHANGE_STORE_BY_KEY",
+    key,
+    value,
   });
 };

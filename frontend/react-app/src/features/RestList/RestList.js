@@ -68,13 +68,15 @@ export const RestList = (props) => {
             setInputValue(val);
           }}
         />
-        <CleanInput
-          onClick={() => {
-            setInputValue("");
-          }}
-        >
-          <span>Очистить</span>
-        </CleanInput>
+        {inputValue && (
+          <CleanInput
+            onClick={() => {
+              setInputValue("");
+            }}
+          >
+            <span>Очистить</span>
+          </CleanInput>
+        )}
         {!!searchResults?.length && (
           <SearchResultsWrapper>
             {searchResults.map((result) => {
@@ -105,7 +107,7 @@ export const RestList = (props) => {
 };
 
 const ChooseAddressInput = styled.input`
-  background: #fafafa;
+  background: #fff;
   height: 50px;
   padding-left: 50px;
   width: 100%;

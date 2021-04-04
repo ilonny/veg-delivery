@@ -6,7 +6,7 @@ import { Container } from "../templates/container";
 export const HomeTemplate = ({ children }) => (
   <>
     <Header />
-    <Container>{children}</Container>
+    <Container isGray={true}>{children}</Container>
     <Footer />
   </>
 );

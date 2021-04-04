@@ -6,8 +6,7 @@ import Loupe from "../../assets/icons/loupe.svg";
 import { Row, RowColumn } from "../styled-components-layout";
 import Modal from "react-modal";
 import { Color, DADATA_API_KEY, MAP_API_KEY, Media } from "../../lib";
-import { CustomButton } from "../../features";
-//import { WithTag } from "../../styled-components-layout";
+import { CustomButton, CartInput } from "../../features";
 
 import MediaQuery from "react-responsive";
 
@@ -19,8 +18,8 @@ import MapMarkerIcon from "../../assets/icons/mapCheck.svg";
 Modal.setAppElement("#root");
 
 export const Address = (props) => {
-  // console.log("Address props", props);
-  const { changeAddress, children, address } = props;
+  console.log("Address props", props);
+  const { changeAddress, children, address, isCart = false } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState(
@@ -111,16 +110,19 @@ export const Address = (props) => {
   console.log("suggestions??", suggestions);
   return (
     <>
-      <AddressWrapper
-        onClick={() => {
-          setModalIsOpen(true);
-        }}
-      >
-        <img src={PinSvg} alt="location" />
-        <AddressLalbel>{children}</AddressLalbel>
-      </AddressWrapper>
+      {isCart ? (
+        <CartInput value={children} onFocus={() => setModalIsOpen(true)} />
+      ) : (
+        <AddressWrapper
+          onClick={() => {
+            setModalIsOpen(true);
+          }}
+        >
+          <img src={PinSvg} alt="location" />
+          <AddressLalbel>{children}</AddressLalbel>
+        </AddressWrapper>
+      )}
       <ModalStyled
-        {...props}
         isOpen={modalIsOpen}
         onRequestClose={() => {
           setModalIsOpen(false);
@@ -129,7 +131,7 @@ export const Address = (props) => {
         // onAfterOpen={afterOpenModal}
         // contentLabel="Example Modal"
       >
-        <Row  >
+        <Row  width="490px">
           <AddressName>Выберите адрес доставки</AddressName>
           <CloseButton onClick={() => setModalIsOpen(false)}>
             <img src={CloseModal} alt="close" />

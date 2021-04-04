@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Row } from "../../styled-components-layout";
-import { Media, Color } from "../../../lib";
+import { Media, Color, API_URL } from "../../../lib";
 import ImgNotFound from "../../../assets/icons/image_not_found.png";
+import AddToCartIcon from "../../../assets/icons/add_to_cart.png";
+import RemoveFromCartIcon from "../../../assets/icons/remove_from_cart.png";
+
 export const CartProduct = (props) => {
   const { product, addToCart, removeFromCart } = props;
   console.log("cart product", product);
@@ -12,25 +15,40 @@ export const CartProduct = (props) => {
         <Row justify="flex-start" align="center" tablet_wrap="true">
           <ImageWrapper>
             <img
-              src={product.image ? product.image : ImgNotFound}
+              src={product.image ? API_URL + product.image : ImgNotFound}
               alt={product.title}
             />
           </ImageWrapper>
           <ProductInfo>
-            <p>{product.title}</p>
+            <p>{product?.name}</p>
+            <span>{product.description}</span>
             <span>{product.price} руб.</span>
           </ProductInfo>
         </Row>
         <ProductButtons>
-          <button onClick={() => removeFromCart(product.id)}>-</button>
+          <AddBtn onClick={() => removeFromCart(product)}>
+            <img src={RemoveFromCartIcon} alt="Add" />
+          </AddBtn>
           <span>{product.count}</span>
-          <button onClick={() => addToCart(product.id)}>+</button>
+          <AddBtn onClick={() => addToCart(product)}>
+            <img src={AddToCartIcon} alt="Add" />
+          </AddBtn>
         </ProductButtons>
       </Row>
     </ProductWrapper>
   );
 };
 
+const AddBtn = styled.button`
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  & img {
+    width: 100%;
+    height: 100%:
+  }
+`;
 const ProductWrapper = styled.div`
   transition: all 250ms ease;
   width: 100%;
@@ -57,12 +75,14 @@ const ProductInfo = styled.div`
   padding: 15px;
   text-align: left;
   & p {
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: bold;
     text-decoration: underline;
+    color: ${Color.titleColor};
   }
   & span {
     display: block;
-    color: ${Color.red};
+    color: ${Color.titleColor};
     margin-top: 20px;
   }
   ${Media.mobile} {

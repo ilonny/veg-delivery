@@ -5,7 +5,11 @@ import {
   // Spacer,
   // HoverButton,
 } from "../../features/common";
-import { PageTitle, CatalogList } from "../../features";
+import {
+  PageTitle,
+  Cart,
+  // CatalogList
+} from "../../features";
 import { API_URL } from "../../lib";
 // import { Banner } from "../../features/banner";
 // import { Row } from "../../features/styled-components-layout";
@@ -15,27 +19,12 @@ import { API_URL } from "../../lib";
 // import { SubscribeForm } from "../../features/subscribe-form";
 // import { pageData } from "./data";
 // import { Link } from "react-router-dom";
-export const RestaurantPage = (props) => {
-  console.log("RestaurantPage", props);
-  const { id } = props?.match?.params;
-  const [restaurant, setRestaurant] = useState(props?.location?.restaurant);
-  useEffect(() => {
-    if (!restaurant) {
-      let rest = null;
-      fetch(`${API_URL}restaurant/get-data?id=${id}`)
-        .then((res) => res.json())
-        .then((res) => {
-          rest = res;
-          setRestaurant(rest);
-        });
-    }
-  }, []);
-  console.log("RestaurantPage rest", restaurant);
-
+export const CartPage = (props) => {
+  console.log("CartPage", props);
   return (
     <HomeTemplate>
-      <PageTitle backButton={true}>{restaurant?.name}</PageTitle>
-      <CatalogList restaurant={restaurant} id={id} />
+      <PageTitle>Корзина</PageTitle>
+      <Cart />
     </HomeTemplate>
   );
 };
