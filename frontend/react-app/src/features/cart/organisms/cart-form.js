@@ -7,6 +7,7 @@ import { Media, Color, request, history } from "../../../lib";
 import { Address, CartInput } from "../../../features";
 import serialize from "form-serialize";
 import Modal from "react-modal";
+import InputMask from "react-input-mask";
 
 export const CartForm = (props) => {
   const {
@@ -18,6 +19,7 @@ export const CartForm = (props) => {
     changeStoreByKey,
     createOrder,
     addOrder,
+    clearCart,
   } = props;
   console.log("CartForm props", props);
   const [message, setMessage] = useState("");
@@ -32,6 +34,7 @@ export const CartForm = (props) => {
   useEffect(() => {
     if (paymentState == "success" && currentOrder) {
       addOrder(currentOrder);
+      clearCart();
       history.push("/orders");
     }
   }, [paymentState, currentOrder]);
@@ -149,6 +152,7 @@ export const CartForm = (props) => {
         </Row>
         <Row justify="space-between" align="center">
           <CartInput
+            mask="+7 (999) 999-99-99"
             placeholder={"Телефон"}
             width="100%"
             value={userInfo?.phone}

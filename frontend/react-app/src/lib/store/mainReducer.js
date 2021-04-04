@@ -94,7 +94,7 @@ mainReducer.createOrder = (params) => (dispatch, getState) => {
     !addressData.value ||
     !userInfo.flat ||
     !userInfo.name ||
-    !userInfo.phone
+    userInfo.phone.replace(/[^a-zA-Z0-9]/g, "").length < 11
   ) {
     window.alert(
       "Не заполнены обязательные поля (Адрес, кв/офис, имя, телефон)"

@@ -24,5 +24,6 @@ export const Cart = connect(
     changeAddress: (address) => dispatch(mainReducer.changeAddress(address)),
     createOrder: (params) => dispatch(mainReducer.createOrder(params)),
     addOrder: (order) => dispatch(mainReducer.addOrder(order)),
+    clearCart: () => dispatch(cartReducer.clearCart()),
   })
 )(CartTemplate);

@@ -26,6 +26,14 @@ export const cartReducer = (state = initialState, action) => {
         delivery_price: action.deliveryPrice,
       };
     }
+    case "CLEAR_CART": {
+      return {
+        ...state,
+        products: [],
+        total_price: 0,
+        delivery_price: 0,
+      };
+    }
     default: {
       return state;
     }
@@ -150,6 +158,9 @@ cartReducer.removeFromCart = (product) => (dispatch, getState) => {
   });
 };
 
+cartReducer.clearCart = () => (dispatch) => {
+  dispatch({ type: "CLEAR_CART" });
+};
 // cartReducer.removeFromCart = (product_id) => (dispatch, getState) => {
 //   let cartProducts = getState().cart.products;
 //   let existingProductIndex = cartProducts.findIndex(

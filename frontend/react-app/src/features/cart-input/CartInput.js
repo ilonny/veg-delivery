@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
+import InputMask from "react-input-mask";
 
 export const CartInput = (props) => {
   const {
@@ -11,12 +12,15 @@ export const CartInput = (props) => {
     placeholder,
     width = "initial",
     onChange = () => {},
+    mask,
   } = props;
   const inputRef = useRef(null);
   return (
     <div style={{ position: "relative", width }}>
-      <CartInputStyled
-        type="text"
+      <InputMask
+        mask={mask}
+        // type="text"
+        disabled={false}
         value={value}
         ref={inputRef}
         onChange={onChange}
@@ -27,7 +31,9 @@ export const CartInput = (props) => {
           }
         }}
         placeholder={placeholder}
-      />
+      >
+        <CartInputStyled type="text" />
+      </InputMask>
     </div>
   );
 };

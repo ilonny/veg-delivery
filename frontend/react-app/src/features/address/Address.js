@@ -131,7 +131,7 @@ export const Address = (props) => {
         // onAfterOpen={afterOpenModal}
         // contentLabel="Example Modal"
       >
-        <Row  width="490px">
+        <Row align="center" justify="space-between">
           <AddressName>Выберите адрес доставки</AddressName>
           <CloseButton onClick={() => setModalIsOpen(false)}>
             <img src={CloseModal} alt="close" />
@@ -281,9 +281,8 @@ const SugWrapper = styled.div`
   background: none;
   text-align: left;
   width: 398px;
-  ${Media.mobile}{
+  ${Media.mobile} {
     font-size: 14px;
-
   }
 `;
 const AddressWrapper = styled.button`
@@ -324,10 +323,10 @@ const AddressName = styled.h2`
   font-style: normal;
   font-size: 28px;
   color: ${Color.titleColor};
-  ${Media.tablet}{
+  ${Media.tablet} {
     font-size: 24px;
   }
-  ${Media.mobile}{
+  ${Media.mobile} {
     font-size: 20px;
   }
 `;
@@ -344,13 +343,13 @@ const ChooseAddressInput = styled.input`
   border-radius: 10px;
   outline: none;
   padding-right: 32px;
-  ${Media.mobile}{
+  ${Media.mobile} {
     width: 400px;
     font-size: 14px;
   }
 `;
 const ChooseAddressInputWrapper = styled.div`
-position: relative;
+  position: relative;
   &::before {
     content: "";
     background: url(${Loupe}) 0 50% no-repeat;
@@ -362,20 +361,18 @@ position: relative;
     // background-color: #fff;
     z-index: 1;
   }
-  
 `;
 const MapWrapper = styled.div`
   height: 300px;
   width: 100%;
   margin-top: 30px;
-  ${Media.tablet}{
+  ${Media.tablet} {
     height: 60%;
-  width: 100%;
+    width: 100%;
   }
 
-  ${Media.mobile}{
+  ${Media.mobile} {
     width: 80%;
-    
   }
 `;
 
@@ -385,12 +382,12 @@ const AddressLalbel = styled.p`
   display: inline-block;
   max-width: 200px;
   overflow: hidden;
-  ${Media.tablet}{
+  ${Media.tablet} {
     max-width: inherit;
     overflow: inherit;
     font-size: 18px;
   }
-  ${Media.mobile}{
+  ${Media.mobile} {
     overflow: hidden;
     max-width: 200px;
     font-size: 16px;

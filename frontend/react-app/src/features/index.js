@@ -11,3 +11,4 @@ export * from "./PageTitle";
 export * from "./RestCard";
 export * from "./catalog-list";
 export * from "./cart-input";
+export * from "./OrderList";
