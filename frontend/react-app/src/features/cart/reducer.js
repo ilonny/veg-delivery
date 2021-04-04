@@ -9,6 +9,7 @@ const emptyCart = {
   cart_id: undefined,
   products: [],
   total_price: 0,
+  delivery_price: 0,
 };
 const initialState = emptyCart;
 const filterByElem = (item, arr) =>
@@ -17,13 +18,12 @@ const filterByElem = (item, arr) =>
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CART_PRODUCTS: {
+      // ?.find(rest => rest.id == action.products[0].restaurant_id)?.delivery_data;
       return {
         ...state,
         products: action.products,
-        total_price: action.products.reduce(
-          (a, b) => a + Number(b.price) * (b.count || 1),
-          0
-        ),
+        total_price: action.totalPrice,
+        delivery_price: action.deliveryPrice,
       };
     }
     default: {
@@ -55,6 +55,7 @@ export const cartReducer = (state = initialState, action) => {
 // };
 cartReducer.addToCart = (product) => (dispatch, getState) => {
   let cartProducts = getState().cart.products;
+  let restaurants = getState()?.main?.restaurants;
   let { restaurant_id } = product;
   if (
     cartProducts?.length > 0 &&
@@ -75,11 +76,39 @@ cartReducer.addToCart = (product) => (dispatch, getState) => {
     cartProducts.push({ ...product, count: 1 });
   }
   // console.log('cartReducer.addToCart', product, cartProducts)
-  dispatch({ type: SET_CART_PRODUCTS, products: [...cartProducts] });
+  //
+  let totalPrice = cartProducts?.reduce(
+    (a, b) => a + Number(b.price) * (b.count || 1),
+    0
+  );
+
+  let deliveryPrice = 0;
+  try {
+    let restaurantDeliveryData = restaurants?.find(
+      (rest) => rest.id == cartProducts[0].restaurant_id
+    )?.delivery_data;
+    restaurantDeliveryData.forEach((d) => {
+      let priceStart = Number(d.price_start);
+      if (totalPrice >= priceStart) {
+        deliveryPrice = d.price;
+      }
+    });
+    console.log("restaurantDeliveryData", restaurantDeliveryData);
+    console.log("deliveryPrice", deliveryPrice);
+  } catch (e) {}
+  //
+
+  dispatch({
+    type: SET_CART_PRODUCTS,
+    products: [...cartProducts],
+    totalPrice,
+    deliveryPrice,
+  });
 };
 
 cartReducer.removeFromCart = (product) => (dispatch, getState) => {
   let cartProducts = getState().cart.products;
+  let restaurants = getState()?.main?.restaurants;
   let existingProductIndex = cartProducts.findIndex(
     (productInCart) => productInCart?.id === product?.id
   );
@@ -94,8 +123,31 @@ cartReducer.removeFromCart = (product) => (dispatch, getState) => {
   // } else {
   //   cartProducts.push({ ...product, count: 1 });
   // }
+  let totalPrice = cartProducts?.reduce(
+    (a, b) => a + Number(b.price) * (b.count || 1),
+    0
+  );
+
+  let deliveryPrice = 0;
+  try {
+    let restaurantDeliveryData = restaurants?.find(
+      (rest) => rest.id == cartProducts[0].restaurant_id
+    )?.delivery_data;
+    restaurantDeliveryData.forEach((d) => {
+      let priceStart = Number(d.price_start);
+      if (totalPrice >= priceStart) {
+        deliveryPrice = d.price;
+      }
+    });
+  } catch (e) {}
+
   console.log("cartReducer.removeFromCart", cartProducts, product);
-  dispatch({ type: SET_CART_PRODUCTS, products: [...cartProducts] });
+  dispatch({
+    type: SET_CART_PRODUCTS,
+    products: [...cartProducts],
+    totalPrice,
+    deliveryPrice,
+  });
 };
 
 // cartReducer.removeFromCart = (product_id) => (dispatch, getState) => {

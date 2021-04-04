@@ -1,5 +1,6 @@
 import { HomePage } from "./home";
 import { RestaurantPage } from "./restaurant";
+import { CartPage } from "./cart";
 import { NotFoundPage } from "./not-found";
 export const routes = () => [
   {
@@ -11,6 +12,11 @@ export const routes = () => [
     path: "/restaurant/:id",
     exact: true,
     component: RestaurantPage,
+  },
+  {
+    path: "/cart",
+    exact: true,
+    component: CartPage,
   },
   { component: NotFoundPage },
 ];

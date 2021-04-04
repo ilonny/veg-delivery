@@ -6,6 +6,9 @@ export const Cart = connect(
   (state) => ({
     cart: state.cart,
     products: state.product.products,
+    // restaurants: state.main.restaurants,
+    total_price: state?.cart?.total_price,
+    delivery_price: state?.cart?.delivery_price,
   }),
   (dispatch) => ({
     getCurrentProduct: (id) => dispatch(productReducer.getProducts(id)),

@@ -3,33 +3,22 @@ import { Row } from "../../styled-components-layout";
 import { CartProduct, CartBottom, CartForm } from "../organisms";
 import { CategoryTitle } from "../../common";
 import { Link } from "react-router-dom";
+import { EmptyCart } from "./empty-cart";
 import "./styles.scss";
 export const CartTemplate = (props) => {
   console.log("Cart props", props);
   const [cartState, setCartState] = useState("precheck");
   // const { id, getCurrentProduct } = props;
-  const { getCurrentProduct, cart, products } = props;
-  const cartProducts = cart.products;
-  const cartProductsIds = cartProducts.map((item) => item.id);
-  useEffect(() => {
-    getCurrentProduct(cartProducts.map((item) => item.id));
-  }, [getCurrentProduct, cartProducts]);
-  const cart_products = cartProductsIds.map((id, index) => {
-    const data = products.find((product) => product.id === id);
-    return {
-      count: cartProducts[index].count,
-      ...data,
-    };
-  });
-  console.log("cart_products", cart_products);
-  // const cart_products = products.filter(item => cartProductsIds.includes(item.id));
-  // console.log('cart_products', cart_products);
-  if (cart_products.length) {
+  const { cart } = props;
+  const cartProducts = cart?.products || [];
+  console.log("cartProducts", cartProducts);
+  // const cartProducts = products.filter(item => cartProductsIds.includes(item.id));
+  // console.log('cartProducts', cartProducts);
+  if (cartProducts.length) {
     if (cartState === "precheck") {
       return (
         <div>
-          <CategoryTitle>Ваша корзина</CategoryTitle>
-          {cart_products.map((product, index) => (
+          {cartProducts.map((product, index) => (
             <Row
               justify="flex-start"
               align="flex-start"
@@ -49,10 +38,7 @@ export const CartTemplate = (props) => {
   } else {
     return (
       <>
-        <CategoryTitle>Корзина пуста</CategoryTitle>
-        <div>
-          <Link to={"/"}>На главную</Link>
-        </div>
+        <EmptyCart />
       </>
     );
   }

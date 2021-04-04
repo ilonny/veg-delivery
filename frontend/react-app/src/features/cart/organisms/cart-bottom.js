@@ -4,7 +4,7 @@ import { Row } from "../../styled-components-layout";
 import { HoverButton } from "../../common";
 import { Color, Media } from "../../../lib";
 export const CartBottom = (props) => {
-  const { cart, setCartState } = props;
+  const { cart, setCartState, total_price, delivery_price } = props;
   return (
     <Wrapper>
       <Row
@@ -14,21 +14,13 @@ export const CartBottom = (props) => {
         className="cart-bottom"
       >
         <div className="delivery">
-          {cart.total_price < 5000 && (
-            <p className="first">
-              Доставка: <span>+400 руб.</span>
-            </p>
-          )}
-          <p className="second">Бесплатная доставка от 5000 руб.</p>
+          <p className="first">
+            Доставка: <span>+{delivery_price} руб.</span>
+          </p>
         </div>
         <div className="total-wrapper">
           <p>
-            Итого:{" "}
-            <span>
-              {cart.total_price >= 5000
-                ? `${cart.total_price} руб`
-                : `${cart.total_price + 400} руб`}
-            </span>
+            Итого: <span>{`${+total_price + +delivery_price} руб`}</span>
           </p>
         </div>
         <div>
@@ -38,8 +30,8 @@ export const CartBottom = (props) => {
             }}
             maxWidth={"372px"}
             color={"white"}
-            backgroundColor={Color.red}
-            hoverBackgroundColor={Color.red_hover}
+            backgroundColor={"#5ac17d"}
+            hoverBackgroundColor={"#4ca96c"}
             fontSize="18px"
             hoverColor={"white"}
           >
@@ -60,14 +52,14 @@ const Wrapper = styled.div`
     font-weight: 500;
     font-size: 18px;
     & span {
-      color: ${Color.red};
+      color: ${Color.titleColor};
     }
   }
   & .delivery {
     font-size: 18px;
     & .first {
       span {
-        color: ${Color.red};
+        color: ${Color.titleColor};
       }
     }
     & .second {

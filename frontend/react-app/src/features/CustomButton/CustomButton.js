@@ -13,6 +13,10 @@ const Button = styled.button`
   color: #fff;
   border-radius: 10px;
   outline: none;
+  transition: all 250ms ease;
+  &:hover {
+    text-decoration: underline;
+  }
   ${(props) =>
     props.disabled
       ? `
