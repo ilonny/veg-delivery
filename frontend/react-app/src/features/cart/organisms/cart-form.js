@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Row } from "../../styled-components-layout";
 import { Input, WrapperInput } from "../../subscribe-form/atoms";
 import { HoverButton, CategoryTitle } from "../../common";
-import { Media, Color, request } from "../../../lib";
+import { Media, Color, request, history } from "../../../lib";
 import { Address, CartInput } from "../../../features";
 import serialize from "form-serialize";
+import Modal from "react-modal";
 
 export const CartForm = (props) => {
   const {
@@ -15,12 +16,48 @@ export const CartForm = (props) => {
     changeAddress,
     userInfo,
     changeStoreByKey,
+    createOrder,
+    addOrder,
   } = props;
+  console.log("CartForm props", props);
   const [message, setMessage] = useState("");
+  const [paymentLink, setPaymentLink] = useState("");
+  const [currentOrder, setCurrentOrder] = useState(null);
+  const [paymentState, setPaymentState] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const onSubmit = (e) => {
     e.preventDefault();
     const data = serialize(e.target, { hash: true });
   };
+  useEffect(() => {
+    if (paymentState == "success" && currentOrder) {
+      addOrder(currentOrder);
+      history.push("/orders");
+    }
+  }, [paymentState, currentOrder]);
+  useEffect(() => {
+    const handler = (event) => {
+      console.log("handler fired", event);
+      console.log("handler fired", event.data);
+      const { data } = event;
+      // const data = JSON.parse(event.data)
+      console.log("Hello World?", data);
+      if (data == "success") {
+        setPaymentState("success");
+        addOrder(currentOrder);
+        setModalIsOpen(false);
+      }
+      if (data == "error") {
+        setPaymentState("error");
+        setModalIsOpen(false);
+        window.alert("Возникла ошибка при оплате.");
+      }
+    };
+    window.addEventListener("message", handler, true);
+    console.log('window.addEventListener("message", handler)');
+    // clean up
+    return () => window.removeEventListener("message", handler);
+  }, []);
   console.log("check props", props);
   return (
     <Wrapper>
@@ -144,7 +181,21 @@ export const CartForm = (props) => {
             Итого: <span>{cart.total_price + +cart.delivery_price}</span> руб
           </div>
           <HoverButton
-            onClick={() => {}}
+            onClick={() => {
+              // setLoading(true);
+              createOrder({
+                totalPrice: cart?.total_price,
+                deliveryPrice: cart?.delivery_price,
+                callback: (data) => {
+                  console.log("callback data: ", data);
+                  if (data && data?.paymentLink) {
+                    setPaymentLink(data?.paymentLink);
+                    setCurrentOrder(data?.order);
+                    setModalIsOpen(true);
+                  }
+                },
+              });
+            }}
             maxWidth={"253px"}
             color={"white"}
             backgroundColor={"#5ac17d"}
@@ -157,6 +208,39 @@ export const CartForm = (props) => {
         </Row>
         <div style={{ padding: "10px" }}>{message}</div>
       </form>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+        }}
+        contentStyle={{ inset: 0 }}
+        style={{ content: { inset: 0 } }}
+      >
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
+        >
+          <HoverButton
+            onClick={() => {
+              // setLoading(true);
+              setModalIsOpen(false);
+            }}
+            maxWidth={"253px"}
+            color={"white"}
+            backgroundColor={"#5ac17d"}
+            hoverBackgroundColor={"#4da76b"}
+            fontSize="18px"
+            hoverColor={"white"}
+          >
+            {"Закрыть"}
+          </HoverButton>
+        </div>
+        <iframe
+          name="target"
+          src={paymentLink}
+          // src="http://localhost:21080/payment/success?order_id=62"
+          style={{ width: "100%", height: "100%" }}
+        />
+      </Modal>
     </Wrapper>
   );
 };

@@ -22,5 +22,7 @@ export const Cart = connect(
     changeStoreByKey: (params) =>
       dispatch(mainReducer.changeStoreByKey(params)),
     changeAddress: (address) => dispatch(mainReducer.changeAddress(address)),
+    createOrder: (params) => dispatch(mainReducer.createOrder(params)),
+    addOrder: (order) => dispatch(mainReducer.addOrder(order)),
   })
 )(CartTemplate);

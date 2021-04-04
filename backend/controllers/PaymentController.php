@@ -85,10 +85,10 @@ class PaymentController extends Controller
             $userPhone = mb_substr($userPhone, 1, 10);
         }
         $api = new TinkoffMerchantAPI(
-            // '1609226746243DEMO',  //Ваш Terminal_Key
-            // 'ka2tkc1400rxwcog'   //Ваш Secret_Key
-            '1609226746243',
-            'jmicoygwkbooxabj'   //Ваш Secret_Key
+            '1609226746243DEMO',  //Ваш Terminal_Key
+            'ka2tkc1400rxwcog'   //Ваш Secret_Key
+            // '1609226746243',
+            // 'jmicoygwkbooxabj'   //Ваш Secret_Key
         );
         
         $params = [
@@ -135,7 +135,19 @@ class PaymentController extends Controller
             <script>
                 setTimeout(() => {
                     console.log("payment has been succeeded");
-                    window.ReactNativeWebView.postMessage("success");
+                    try {
+                        window.ReactNativeWebView.postMessage("success");
+                    } catch (e) {
+                    }
+                    // console.log(window.top)
+                    try {
+                        window.parent.postMessage(
+                            "success",
+                            "*"
+                        );
+                    } catch (e) {
+                        console.log(e);
+                    }
                 }, 500);
             </script>
         ';
@@ -152,7 +164,17 @@ class PaymentController extends Controller
             <script>
                 setTimeout(() => {
                     console.log("payment has been unlucky");
-                    window.ReactNativeWebView.postMessage("error");
+                    try {
+                        window.ReactNativeWebView.postMessage("error");
+                    } catch (e) {
+                    }
+                    try {
+                        window.postMessage(
+                            "error",
+                            "*"
+                        );
+                    } catch (e) {
+                    }
                 }, 500);
             </script>
         ';
