@@ -110,8 +110,9 @@ const ListButton = styled.button`
   font-size: 14px;
   background: transparent;
   line-height: 17px;
-  width: inherit;
+  width: 100%;
   color: #9f9f9f;
+  outline: none;
   &:hover {
     background: #fafafa;
   }
@@ -132,6 +133,7 @@ const Logotype = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: none;
   // padding: 20px;
   width: 160px;
   // border-right: 1px solid #f0f0f0;
@@ -142,6 +144,7 @@ const MenuButton = styled.button`
   height: 30px;
   background: transparent;
   border: none;
+  outline: none;
   & img {
     width: 100%;
     height: 100%;
@@ -149,7 +152,11 @@ const MenuButton = styled.button`
 `;
 const MenuContent = styled.div`
   padding: 10px;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px 1px rgb(0 0 0 / 20%);
+  justify-content: center;
+  align-items: center;
 `;
 
 const CartCount = styled.div`
