@@ -17,7 +17,7 @@ export const NotFoundPage = (props) => {
         <CategoryTitle>На главную</CategoryTitle>
       </Link>
       <Spacer />
-      <SubscribeForm />
+      {/* <SubscribeForm /> */}
       <Spacer />
     </HomeTemplate>
   );

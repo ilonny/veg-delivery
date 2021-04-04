@@ -17,7 +17,7 @@ export const MenuCol = () => (
           <Link to="/">
             <LinkStyled>Контакты</LinkStyled>
           </Link>
-          <Link to="/delivery">
+          <Link to="/orders">
             <LinkStyled>Мои заказы</LinkStyled>
           </Link>
         </FirstCol>
