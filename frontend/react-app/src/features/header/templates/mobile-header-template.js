@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import { Link } from "react-router-dom";
 // import { Icon } from "../../common/atoms";
 // import { HeaderDelivery } from "../atoms/headerDelivery";
-// import { Media, Color } from "../../../lib";
+import { Media, Color } from "../../../lib";
 // import { MenuTree } from "./menu-tree";
 import { Address } from "../../../features";
 import "./desktop-header-template.css";
@@ -11,11 +11,12 @@ import Logo from "../../../assets/icons/logo.png";
 // import RubIcon from "../../../assets/icons/basket.svg";
 import RubIconGreen from "../../../assets/icons/basket_green.svg";
 import MenuButtonIcon from "../../../assets/icons/menu.svg";
+import { Link as LinkRouter } from "react-router-dom";
 
 export const HeaderTemplateMobile = (props) => {
   // const { cart, menu } = props;
   // console.log("HeaderTemplateDektop props", props);
-  const { address } = props;
+  const { address, cart_count } = props;
   const [menuOpened, setMenuOpened] = useState(false);
   return (
     <>
@@ -23,10 +24,17 @@ export const HeaderTemplateMobile = (props) => {
         <MenuButton onClick={() => setMenuOpened(!menuOpened)}>
           <img src={MenuButtonIcon} alt="Menu Button" />
         </MenuButton>
-        <Link href="#">
-          <Logotype src={Logo} alt="VegDelivery" />
-        </Link>
-        <RubImg src={RubIconGreen} alt="location" />
+        <LinkRouter to={"/"}>
+          <Link>
+            <Logotype src={Logo} alt="VegDelivery" />
+          </Link>
+        </LinkRouter>
+        <LinkRouter to="/cart">
+          <div style={{ position: "relative" }}>
+            <RubImg src={RubIconGreen} alt="location" />
+            <CartCount>{cart_count}</CartCount>
+          </div>
+        </LinkRouter>
         {/* <LeftSide>
         <Link href="#">
           <Logotype src={Logo} alt="VegDelivery" />
@@ -109,7 +117,7 @@ const ListButton = styled.button`
   }
 `;
 
-const Link = styled.a`
+const Link = styled.div`
   font-family: Exo2Regular;
   font-size: 14px;
   line-height: 17px;
@@ -142,4 +150,14 @@ const MenuButton = styled.button`
 const MenuContent = styled.div`
   padding: 10px;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+`;
+
+const CartCount = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: ${Color.buttonColor};
+  border-radius: 100%;
+  padding: 1px 4px;
+  font-size: 10px;
 `;

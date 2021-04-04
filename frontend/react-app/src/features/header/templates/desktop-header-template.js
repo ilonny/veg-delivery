@@ -10,19 +10,22 @@ import { Address } from "../../../features";
 import "./desktop-header-template.css";
 import Logo from "../../../assets/icons/logo.png";
 import RubIcon from "../../../assets/icons/basket.svg";
+import { Link as LinkRouter } from "react-router-dom";
 
 export const HeaderTemplateDektop = (props) => {
   // const { cart, menu } = props;
-  // console.log("HeaderTemplateDektop props", props);
-  const { address } = props;
+  console.log("HeaderTemplateDektop props", props);
+  const { address, products, cart_count } = props;
   return (
     <div style={{ borderBottom: "1px solid #ccc" }}>
       <Container>
         <HeaderWrapper>
           <LeftSide>
-            <Link href="#">
-              <Logotype src={Logo} alt="VegDelivery" />
-            </Link>
+            <LinkRouter to={"/"}>
+              <Link>
+                <Logotype src={Logo} alt="VegDelivery" />
+              </Link>
+            </LinkRouter>
             <Address>{address?.value ? address.value : "Не указано"}</Address>
           </LeftSide>
           <RightSide>
@@ -31,12 +34,14 @@ export const HeaderTemplateDektop = (props) => {
               <ListButton>Для ресторанов</ListButton>
               <ListButton>Контакты</ListButton>
             </Contacts>
-            <Button>
-              <span>
-                <RubImg src={RubIcon} alt="location" />
-              </span>
-              Корзина(0)
-            </Button>
+            <LinkRouter to="/cart">
+              <Button>
+                <span>
+                  <RubImg src={RubIcon} alt="location" />
+                </span>
+                Корзина ({cart_count})
+              </Button>
+            </LinkRouter>
           </RightSide>
         </HeaderWrapper>
       </Container>
@@ -101,7 +106,7 @@ const ListButton = styled.button`
   }
 `;
 
-const Link = styled.a`
+const Link = styled.div`
   font-family: Exo2Regular;
   font-size: 14px;
   line-height: 17px;

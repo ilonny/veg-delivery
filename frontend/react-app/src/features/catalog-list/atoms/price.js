@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import { Color, Media } from "../../../lib";
 export const Price = styled.p`
-  color: ${Color.red};
+  color: ${Color.titleColor};
   font-weight: ${(props) => (props.isBold ? "600" : "500")};
   padding-left: ${(props) => (props.isBold ? "10px" : "0")};
   text-decoration: ${(props) => (props.isNewPrice ? "line-through" : "none")};

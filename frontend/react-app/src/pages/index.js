@@ -8,7 +8,7 @@ export const routes = () => [
     component: HomePage,
   },
   {
-    path: "/restaurant",
+    path: "/restaurant/:id",
     exact: true,
     component: RestaurantPage,
   },

@@ -11,9 +11,7 @@ export const CatalogList = connect(
   (dispatch) => ({
     getProducts: (id, _isPopular) =>
       dispatch(productReducer.getProducts(id, _isPopular)),
-    addToCart: (product_id, price) =>
-      dispatch(cartReducer.addToCart(product_id, price)),
-    removeFromCart: (product_id) =>
-      dispatch(cartReducer.removeFromCart(product_id)),
+    addToCart: (product) => dispatch(cartReducer.addToCart(product)),
+    removeFromCart: (product) => dispatch(cartReducer.removeFromCart(product)),
   })
 )(CatalogListTemplate);

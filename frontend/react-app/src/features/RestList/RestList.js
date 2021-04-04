@@ -68,13 +68,15 @@ export const RestList = (props) => {
             setInputValue(val);
           }}
         />
-        <CleanInput
-          onClick={() => {
-            setInputValue("");
-          }}
-        >
-          <span>Очистить</span>
-        </CleanInput>
+        {inputValue && (
+          <CleanInput
+            onClick={() => {
+              setInputValue("");
+            }}
+          >
+            <span>Очистить</span>
+          </CleanInput>
+        )}
         {!!searchResults?.length && (
           <SearchResultsWrapper>
             {searchResults.map((result) => {

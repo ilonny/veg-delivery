@@ -1,14 +1,48 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as CartSvg } from "../../../assets/icons/cart.svg";
+import AddToCartIcon from "../../../assets/icons/add_to_cart.png";
+import RemoveFromCartIcon from "../../../assets/icons/remove_from_cart.png";
+import { Row } from "../../../features/styled-components-layout";
 import { Color, Media } from "../../../lib";
-export const CartButton = (props) => (
-  <ButtonStyled {...props}>
-    {!props.active && <CartSvg />}
-    <p>{props.active ? "В корзине" : "В корзину"}</p>
-  </ButtonStyled>
-);
 
+export const CartButton = (props) => {
+  const { active, removeFromCart, addToCart, item, cart_products } = props;
+  // console.log('CartButton', props)
+  let count = 1;
+  try {
+    count = cart_products?.find((el) => el.id == item.id)?.count;
+  } catch (e) {}
+  if (!active) {
+    return (
+      <AddBtn onClick={() => addToCart()}>
+        <img src={AddToCartIcon} alt="Add" />
+      </AddBtn>
+    );
+  }
+  return (
+    <Row align="center">
+      <AddBtn onClick={() => removeFromCart()}>
+        <img src={RemoveFromCartIcon} alt="Remove" />
+      </AddBtn>
+      <span style={{ paddingRight: 10, paddingLeft: 10 }}>{count}</span>
+      <AddBtn onClick={() => addToCart()}>
+        <img src={AddToCartIcon} alt="Add" />
+      </AddBtn>
+    </Row>
+  );
+};
+
+const AddBtn = styled.button`
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  & img {
+    width: 100%;
+    height: 100%:
+  }
+`;
 const activeStyles = `
     background: ${Color.red};
     color: #fff;
