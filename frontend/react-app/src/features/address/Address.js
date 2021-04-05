@@ -131,11 +131,13 @@ export const Address = (props) => {
         // onAfterOpen={afterOpenModal}
         // contentLabel="Example Modal"
       >
-        <Row align="center" justify="space-between">
-          <AddressName>Выберите адрес доставки</AddressName>
+        <Row width="100%" align="center" justify="flex-end">
           <CloseButton onClick={() => setModalIsOpen(false)}>
             <img src={CloseModal} alt="close" />
           </CloseButton>
+        </Row>
+        <Row align="center" justify="center">
+          <AddressName>Выберите адрес доставки</AddressName>
         </Row>
         <RowColumn
           justify="space-between"
@@ -253,8 +255,6 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     border: "none",
     boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.1)",
-    minWidth: "610px",
-    minHeight: "600px",
   },
 };
 const SpecialRow = styled.div`
@@ -305,8 +305,15 @@ const AddressWrapper = styled.button`
   }
 `;
 const CloseButton = styled.button`
+  display: flex;
+  justify-content: flex-end;
   background: transparent;
   outline: none;
+  ${Media.tablet}{
+    margin-bottom: 15px;
+  };
+  
+  }
 `;
 const CleanInput = styled.button`
   background: transparent;
@@ -343,8 +350,12 @@ const ChooseAddressInput = styled.input`
   border-radius: 10px;
   outline: none;
   padding-right: 32px;
+  ${Media.tablet} {
+    width: 100%;
+    min-width: 325px;
+  }
   ${Media.mobile} {
-    width: 400px;
+    width: 100%;
     font-size: 14px;
   }
 `;
@@ -372,7 +383,7 @@ const MapWrapper = styled.div`
   }
 
   ${Media.mobile} {
-    width: 80%;
+    width: 100%;
   }
 `;
 
@@ -397,9 +408,9 @@ const AddressLalbel = styled.p`
 const ModalStyled = styled(Modal)`
   border: none;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
-  min-width: 610px;
-  min-height: 610px;
-  padding: 20px;
+  min-width: 320px;
+  min-height: 568px;
+  padding: 10px;
   outline: none;
   background: #fff;
   ${Media.tablet} {
@@ -408,8 +419,10 @@ const ModalStyled = styled(Modal)`
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    min-width: initial;
     width: 100%;
     height: 100%;
+  }
+  ${Media.mobile} {
+    padding: 20px;
   }
 `;

@@ -48,10 +48,7 @@ export const mixins = (props) => css`
 
 export const Row = styled(WithTag)`
   display: flex;
-  flex-direction: row;
-  position: relative;
-  justify-content: space-between;
-
+  
   ${mixins}
 
   ${(p) =>
@@ -63,7 +60,12 @@ export const Row = styled(WithTag)`
     `}
     &:not(:first-child) {
     margin-top: 30px;
+  
+  ${Media.desktop}{
+    margin-top: 0;
   }
+  }
+
 `;
 
 export const RowColumn = styled(WithTag)`

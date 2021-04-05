@@ -26,9 +26,9 @@ const Button = styled.button`
           background: ${Color.buttonColor};
         `};
   ${Media.mobile} {
-    width: 90%;
-    padding: 7px 30px;
-    max-height: 30px;
+    width: 100%;
+    padding: 10px 30px;
+    max-height: 40px;
     font-size: 14px;
   }
 `;
