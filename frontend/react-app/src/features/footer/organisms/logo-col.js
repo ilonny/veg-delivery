@@ -16,7 +16,7 @@ export const LogoCol = () => (
     </p>
     <p className="copy gray-text">© VegDelivery 2021 </p>
     <a className="copy link gray-text" href="/">
-      Политика конфиденциальности
+      Политика конфиденциальности 
     </a>
   </LogoColStyled>
 );

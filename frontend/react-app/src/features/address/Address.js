@@ -186,7 +186,7 @@ export const Address = (props) => {
               <img src={CloseModal} width="12px" height="12px" alt="Clean" />
             </CleanInput>
           </ChooseAddressInputWrapper>
-          <CustomButton
+          <UniqueButton
             text="Подтвердить"
             disabled={buttonDisabled}
             onClick={() => {
@@ -337,7 +337,35 @@ const AddressName = styled.h2`
     font-size: 20px;
   }
 `;
-
+const UniqueButton = (props) => {
+  const { text } = props;
+  return <ButtonTrue {...props}>{text}</ButtonTrue>;
+};
+const ButtonTrue = styled.button`
+  padding: 15px 30px;
+  max-height: 49px;
+  color: #fff;
+  border-radius: 10px;
+  outline: none;
+  transition: all 250ms ease;
+  &:hover {
+    text-decoration: underline;
+  }
+  ${(props) =>
+    props.disabled
+      ? `
+          background: gray;
+        `
+      : `
+          background: ${Color.buttonColor};
+        `};
+  ${Media.mobile} {
+    width: 100%;
+    padding: 10px 30px;
+    max-height: 40px;
+    font-size: 14px;
+  }
+`;
 const ChooseAddressInputBox = React.forwardRef((props, ref) => {
   return <AddressSuggestions {...props} ref={ref} />;
 });

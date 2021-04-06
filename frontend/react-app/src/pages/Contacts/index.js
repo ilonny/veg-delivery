@@ -1,0 +1,1 @@
+export { ContactsCompany } from "./Contacts";

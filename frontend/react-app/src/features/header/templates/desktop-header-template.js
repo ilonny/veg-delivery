@@ -30,8 +30,12 @@ export const HeaderTemplateDektop = (props) => {
           </LeftSide>
           <RightSide>
             <Contacts>
-              <ListButton>О компании</ListButton>
-              <ListButton>Контакты</ListButton>
+              <ListButton>
+                <LinkRouter to={"/about"}>О компании</LinkRouter>
+              </ListButton>
+              <ListButton>
+                <LinkRouter to={"/contacts"}>Контакты</LinkRouter>
+              </ListButton>
               <ListButton>
                 <LinkRouter to={"/orders"}>Мои заказы</LinkRouter>
               </ListButton>
