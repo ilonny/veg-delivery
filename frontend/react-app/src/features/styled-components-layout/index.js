@@ -59,11 +59,7 @@ export const Row = styled(WithTag)`
       }
     `}
     &:not(:first-child) {
-    margin-top: 30px;
-  
-  ${Media.desktop}{
-    margin-top: 0;
-  }
+      margin-top: 30px;
   }
 
 `;

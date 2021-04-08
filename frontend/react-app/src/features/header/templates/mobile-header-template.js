@@ -12,7 +12,7 @@ import Logo from "../../../assets/icons/logo.png";
 import RubIconGreen from "../../../assets/icons/basket_green.svg";
 import MenuButtonIcon from "../../../assets/icons/menu.svg";
 import { Link as LinkRouter } from "react-router-dom";
-
+import "./mobile-header-template.css";
 export const HeaderTemplateMobile = (props) => {
   // const { cart, menu } = props;
   // console.log("HeaderTemplateDektop props", props);
@@ -53,20 +53,21 @@ export const HeaderTemplateMobile = (props) => {
       {menuOpened && (
         <MenuContent>
           <Address>{address?.value ? address.value : "Не указано"}</Address>
-         <ListButton>
-                <LinkRouter to={"/about"}>О компании</LinkRouter>
-              </ListButton>
-              <ListButton>
-                <LinkRouter to={"/contacts"}>Контакты</LinkRouter>
-              </ListButton>
-              <ListButton>
-                <LinkRouter to={"/orders"}>Мои заказы</LinkRouter>
-              </ListButton>
+          <LinkRouter className="linkto" to={"/about"}>
+            <ListButton>О компании</ListButton>
+          </LinkRouter>
+          <LinkRouter className="linkto" to={"/contacts"}>
+            <ListButton>Контакты</ListButton>
+          </LinkRouter>
+          <LinkRouter className="linkto" to={"/orders"}>
+            <ListButton>Мои заказы</ListButton>
+          </LinkRouter>
         </MenuContent>
       )}
     </>
   );
 };
+
 const RubImg = styled.img`
   background: 5ac17d;
   margin-right: 8px;
@@ -85,14 +86,6 @@ const HeaderWrapper = styled.div`
 // const RightSide = styled.div`
 //   display: flex;
 //   justify-content: center;
-// `;
-// const Contacts = styled.ul`
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   justify-content: space-around;
-//   width: inherit;
-//   margin-right: 39px;
 // `;
 // const Button = styled.button`
 //   display: flex;
@@ -158,6 +151,7 @@ const MenuButton = styled.button`
 `;
 const MenuContent = styled.div`
   padding: 10px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 10px 1px rgb(0 0 0 / 20%);

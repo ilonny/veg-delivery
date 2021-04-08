@@ -30,15 +30,15 @@ export const HeaderTemplateDektop = (props) => {
           </LeftSide>
           <RightSide>
             <Contacts>
-              <ListButton>
-                <LinkRouter to={"/about"}>О компании</LinkRouter>
-              </ListButton>
-              <ListButton>
-                <LinkRouter to={"/contacts"}>Контакты</LinkRouter>
-              </ListButton>
-              <ListButton>
-                <LinkRouter to={"/orders"}>Мои заказы</LinkRouter>
-              </ListButton>
+              <LinkRouter to={"/about"}>
+                <ListButton>О компании</ListButton>
+              </LinkRouter>
+              <LinkRouter to={"/contacts"}>
+                <ListButton>Контакты</ListButton>
+              </LinkRouter>
+              <LinkRouter to={"/orders"}>
+                <ListButton>Мои заказы</ListButton>
+              </LinkRouter>
             </Contacts>
             <LinkRouter to="/cart">
               <Button>
@@ -106,6 +106,7 @@ const ListButton = styled.button`
   height: inherit;
   color: #9f9f9f;
   outline: none;
+  height: 53px;
   &:hover {
     background: #fafafa;
     border-bottom: 1px solid #ccc;

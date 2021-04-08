@@ -1,0 +1,33 @@
+diff a/frontend/react-app/src/features/styled-components-layout/index.js b/frontend/react-app/src/features/styled-components-layout/index.js	(rejected hunks)
+@@ -50,6 +50,31 @@
+   display: flex;
+   flex-direction: row;
+   position: relative;
++  justify-content: space-between;
++
++  ${mixins}
++
++  ${(p) =>
++    p.gap &&
++    css`
++      & > :not(:first-child) {
++        margin-left: ${p.gap};
++      }
++    `}
++    &:not(:first-child) {
++    margin-top: 30px;
++  }
++`;
++
++export const RowColumn = styled(WithTag)`
++  display: flex;
++  flex-direction: row;
++  position: relative;
++
++  ${Media.mobile}{
++    flex-direction: column;
++  }
++
+   ${mixins}
+ 
+   ${(p) =>
