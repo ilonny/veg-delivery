@@ -3,6 +3,7 @@ import { Media } from "../../../lib";
 export const FooterWrapper = styled.div`
   padding: 100px 0px;
   background: #fafafa;
+  
   ${Media.smallDesktop} {
     padding: 70px 15px;
   }

@@ -30,15 +30,23 @@ export const HeaderTemplateDektop = (props) => {
           </LeftSide>
           <RightSide>
             <Contacts>
-              <LinkRouter to={"/about"}>
-                <ListButton>О компании</ListButton>
-              </LinkRouter>
-              <LinkRouter to={"/contacts"}>
-                <ListButton>Контакты</ListButton>
-              </LinkRouter>
-              <LinkRouter to={"/orders"}>
-                <ListButton>Мои заказы</ListButton>
-              </LinkRouter>
+              <ListButton>
+                <LinkRouter to={"/about"}>О компании</LinkRouter>
+              </ListButton>
+              <ListButton>
+                <LinkRouter to={"/useragree"}>
+                  Пользовательское соглашение
+                </LinkRouter>
+              </ListButton>
+              <ListButton>
+                <LinkRouter to={"/contacts"}>Контакты</LinkRouter>
+              </ListButton>
+              <ListButton>
+                <LinkRouter to={"/partners"}>Стать партнером</LinkRouter>
+              </ListButton>
+              <ListButton>
+                <LinkRouter to={"/orders"}>Мои заказы</LinkRouter>
+              </ListButton>
             </Contacts>
             <LinkRouter to="/cart">
               <Button>
@@ -70,7 +78,7 @@ const LeftSide = styled.div`
 `;
 const RightSide = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: inherit;
 `;
 const Contacts = styled.ul`
@@ -79,7 +87,7 @@ const Contacts = styled.ul`
   align-items: center;
   justify-content: space-around;
   height: inherit;
-  margin-right: 39px;
+  // margin-right: 39px;
 `;
 const Button = styled.button`
   display: flex;
@@ -87,7 +95,7 @@ const Button = styled.button`
   align-items: center;
   background: #5ac17d;
   color: #ffffff;
-  padding: 18px 57px 18px 86px;
+  padding: 18px 46px 18px 46px;
   height: 53px;
   outline: none;
   &:hover {
@@ -109,7 +117,6 @@ const ListButton = styled.button`
   height: 53px;
   &:hover {
     background: #fafafa;
-    border-bottom: 1px solid #ccc;
   }
 `;
 
@@ -128,10 +135,7 @@ const Logotype = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding: 20px;
   width: 160px;
-  // height: 52px;
-  // border-right: 1px solid #f0f0f0;
 `;
 
 // const MainWrapper = styled.div`

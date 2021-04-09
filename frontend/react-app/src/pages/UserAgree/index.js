@@ -1,0 +1,1 @@
+export { UserAgree } from "./UserAgree";

@@ -7,52 +7,46 @@ import { Media } from "../../../lib";
 import { Link } from "react-router-dom";
 export const MenuCol = () => (
   <MenuColStyled>
-    <ColTitle>Меню</ColTitle>
-    <div>
-      <Row>
-        <FirstCol>
-          <Link to="/">
-            <LinkStyled>О компании</LinkStyled>
-          </Link>
-          <Link to="/">
-            <LinkStyled>Контакты</LinkStyled>
-          </Link>
-          <Link to="/orders">
-            <LinkStyled>Мои заказы</LinkStyled>
-          </Link>
-        </FirstCol>
-        {/* <div>
-          <Link to="/delivery">
-            <LinkStyled>Чем мы можем помочь</LinkStyled>
-          </Link>
-          <Link to="/about">
-            <LinkStyled>О нас</LinkStyled>
-          </Link>
-          <Link to="/faq">
-            <LinkStyled>FAQ</LinkStyled>
-          </Link>
-        </div> */}
-      </Row>
-    </div>
+    {/* <ColTitle>Меню</ColTitle> */}
+    <Contacts>
+      <ListLink>
+        <Link to={"/about"}>О компании</Link>
+      </ListLink>
+      <ListLink>
+        <Link to={"/useragree"}>Пользовательское соглашение</Link>
+      </ListLink>
+      <ListLink>
+        <Link to={"/contacts"}>Контакты</Link>
+      </ListLink>
+      <ListLink>
+        <Link to={"/partners"}>Стать партнером</Link>
+      </ListLink>
+      <ListLink>
+        <Link to={"/orders"}>Мои заказы</Link>
+      </ListLink>
+    </Contacts>
   </MenuColStyled>
 );
-
+const Contacts = styled.ul`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: inherit;
+  margin-right: 39px;
+`;
+const ListLink = styled.li`
+margin-right: 20px;
+list-style: none;
+&:hover{
+  color: #10b93d;
+}
+`;
 const MenuColStyled = styled.div`
   flex: 1 1 100%;
   ${Media.tablet} {
-    flex: 1 1 50%;
+    // flex: 1 1 50%;
   }
   ${Media.mobile} {
-    flex: 1 1 100%;
+    // flex: 1 1 100%;
   }
-`;
-const LinkStyled = styled.span`
-  font-size: 18px;
-  line-height: 23px;
-  display: block;
-  margin-bottom: 10px;
-`;
-
-const FirstCol = styled.div`
-  margin-right: 50px;
 `;

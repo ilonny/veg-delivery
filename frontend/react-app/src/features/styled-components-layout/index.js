@@ -24,6 +24,7 @@ const is = (value) => typeof value !== "undefined";
 const prop = (value) => (is(value) ? value : "initial");
 
 export const mixins = (props) => css`
+  flex-direction: ${prop(props.flexDirection)};
   align-content: ${prop(props.alignContent)};
   align-items: ${prop(props.align)};
   flex-basis: ${prop(props.basis)};
@@ -48,7 +49,7 @@ export const mixins = (props) => css`
 
 export const Row = styled(WithTag)`
   display: flex;
-  
+  flex-direction: row;
   ${mixins}
 
   ${(p) =>

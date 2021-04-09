@@ -6,11 +6,13 @@ export const Container = (props) => (
 );
 
 const ContainerStyled = styled.div`
-  max-width: 1150px;
+  max-width: 1350px;
   margin: 0 auto;
   padding: 0px 15px;
   display: ${(props) => props.display};
   justify-content: ${(props) => props.justifyContent};
   align-items: ${(props) => props.alignItems};
   background: ${(props) => (props.isGray ? "#fafafa" : "#fff")};
+  flex-direction: ${(props) => props.flexDirection};
+  width: ${(props) => props.width};
 `;

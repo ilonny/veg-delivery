@@ -42,7 +42,7 @@ export const ContactsCol = (props) => (
 );
 
 const MenuColStyled = styled(WithTag)`
-  flex: 1 1 100%;
+  // flex: 1 1 100%;
   ${Media.tablet} {
     flex: 1 1 50%;
   }
@@ -51,7 +51,7 @@ const MenuColStyled = styled(WithTag)`
   }
 `;
 const LinkStyled = styled.div`
-  font-size: 18px;
+  font-size: 14px;
   line-height: 23px;
   display: block;
   margin-bottom: 10px;

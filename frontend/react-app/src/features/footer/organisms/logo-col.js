@@ -3,26 +3,28 @@ import styled from "styled-components";
 import { ImageView } from "../../common";
 import { Media, API_URL } from "../../../lib";
 import { Link } from "react-router-dom";
+
 export const LogoCol = () => (
   <LogoColStyled>
+    <Link to={"/"}>
     <ImageView
       src={require("../../../assets/icons/logo.png")}
       className="logo"
-    />
-    <p className="title">
+    /></Link>
+    {/* <TitleText>
       Доставка
-      <br />
       здорового питания
-    </p>
-    <p className="copy gray-text">© VegDelivery 2021 </p>
+    </TitleText> */}
+    {/* <p className="copy gray-text">© VegDelivery 2021 </p>
     <a className="copy link gray-text" href="/">
       Политика конфиденциальности 
-    </a>
+    </a> */}
   </LogoColStyled>
 );
 
 const LogoColStyled = styled.div`
   flex: 1 1 100%;
+  margin-bottom: 20px;
   & .logo {
     max-width: 118px;
     max-height: 52px;

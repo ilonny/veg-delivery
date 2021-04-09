@@ -5,6 +5,8 @@ import { OrdersPage } from "./orders";
 import { NotFoundPage } from "./not-found";
 import { AboutCompany } from "./AboutCompany";
 import { ContactsCompany } from "./Contacts";
+import { UserAgree } from "./UserAgree"; 
+import { Partners } from "./Partners"
 export const routes = () => [
   {
     path: "/",
@@ -35,6 +37,16 @@ export const routes = () => [
     path: "/contacts",
     exact: true,
     component: ContactsCompany,
+  },
+  {
+    path: "/useragree",
+    exact: true,
+    component: UserAgree,
+  },
+  {
+    path: "/partners",
+    exact: true,
+    component: Partners,
   },
   { component: NotFoundPage },
 ];

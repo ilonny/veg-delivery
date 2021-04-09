@@ -56,8 +56,14 @@ export const HeaderTemplateMobile = (props) => {
           <LinkRouter className="linkto" to={"/about"}>
             <ListButton>О компании</ListButton>
           </LinkRouter>
+          <LinkRouter className="linkto" to={"/useragree"}>
+            <ListButton>Пользовательское соглашение</ListButton>
+          </LinkRouter>
           <LinkRouter className="linkto" to={"/contacts"}>
             <ListButton>Контакты</ListButton>
+          </LinkRouter>
+          <LinkRouter className="linkto" to={"/partners"}>
+            <ListButton>Стать партнером</ListButton>
           </LinkRouter>
           <LinkRouter className="linkto" to={"/orders"}>
             <ListButton>Мои заказы</ListButton>
