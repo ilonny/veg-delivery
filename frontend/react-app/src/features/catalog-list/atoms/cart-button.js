@@ -5,7 +5,7 @@ import AddToCartIcon from "../../../assets/icons/add_to_cart.png";
 import RemoveFromCartIcon from "../../../assets/icons/remove_from_cart.png";
 import { Row } from "../../../features/styled-components-layout";
 import { Color, Media } from "../../../lib";
-
+import { ToastsContainer, ToastsStore } from "react-toasts";
 export const CartButton = (props) => {
   const { active, removeFromCart, addToCart, item, cart_products } = props;
   // console.log('CartButton', props)
@@ -15,9 +15,17 @@ export const CartButton = (props) => {
   } catch (e) {}
   if (!active) {
     return (
-      <AddBtn onClick={() => addToCart()}>
-        <img src={AddToCartIcon} alt="Add" />
-      </AddBtn>
+      <>
+        <AddBtn
+          onClick={() => {
+            ToastsStore.success("Товар добавлен в корзину");
+            addToCart();
+          }}
+        >
+          <img src={AddToCartIcon} alt="Add" />
+        </AddBtn>
+        <ToastsContainer store={ToastsStore} />
+      </>
     );
   }
   return (
@@ -26,9 +34,15 @@ export const CartButton = (props) => {
         <img src={RemoveFromCartIcon} alt="Remove" />
       </AddBtn>
       <span style={{ paddingRight: 10, paddingLeft: 10 }}>{count}</span>
-      <AddBtn onClick={() => addToCart()}>
+      <AddBtn
+        onClick={() => {
+          ToastsStore.success("Товар добавлен в корзину");
+          addToCart();
+        }}
+      >
         <img src={AddToCartIcon} alt="Add" />
       </AddBtn>
+      <ToastsContainer store={ToastsStore} />
     </Row>
   );
 };

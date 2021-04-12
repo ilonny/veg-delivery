@@ -33,4 +33,5 @@ const IconsWrapper = styled.div`
 
 const SocialLink = styled.a`
   margin: 0 6px;
+ 
 `;

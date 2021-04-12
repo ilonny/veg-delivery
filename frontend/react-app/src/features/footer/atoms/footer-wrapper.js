@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Media } from "../../../lib";
 export const FooterWrapper = styled.div`
-  padding: 100px 0px;
+  padding: 100px 0px 20px 0;
   background: #fafafa;
   
   ${Media.smallDesktop} {

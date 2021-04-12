@@ -39,12 +39,21 @@ export const mixins = (props) => css`
   margin: ${prop(props.margin)};
   ${props.mobile_wrap &&
   `${Media.mobile} {
-      flex-wrap: wrap;
+    flex-wrap: wrap;
     }`}
   ${props.tablet_wrap &&
   `${Media.tablet} {
-        flex-wrap: wrap;
-      }`}
+    flex-wrap: wrap;
+    }`}
+    ${props.mobile_direction &&
+  `${Media.mobile} {
+    flex-direction: column;
+    align-items: center;
+    }`}
+    ${props.tablet_justify &&
+  `${Media.tablet} {
+    justify-content: space-between;
+    }`}
 `;
 
 export const Row = styled(WithTag)`
@@ -60,9 +69,8 @@ export const Row = styled(WithTag)`
       }
     `}
     &:not(:first-child) {
-      margin-top: 30px;
+    margin-top: 30px;
   }
-
 `;
 
 export const RowColumn = styled(WithTag)`
@@ -70,7 +78,7 @@ export const RowColumn = styled(WithTag)`
   flex-direction: row;
   position: relative;
 
-  ${Media.mobile}{
+  ${Media.mobile} {
     flex-direction: column;
   }
 

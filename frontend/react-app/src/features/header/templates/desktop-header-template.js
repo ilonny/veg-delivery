@@ -30,23 +30,21 @@ export const HeaderTemplateDektop = (props) => {
           </LeftSide>
           <RightSide>
             <Contacts>
-              <ListButton>
-                <LinkRouter to={"/about"}>О компании</LinkRouter>
-              </ListButton>
-              <ListButton>
-                <LinkRouter to={"/useragree"}>
-                  Пользовательское соглашение
-                </LinkRouter>
-              </ListButton>
-              <ListButton>
-                <LinkRouter to={"/contacts"}>Контакты</LinkRouter>
-              </ListButton>
-              <ListButton>
-                <LinkRouter to={"/partners"}>Стать партнером</LinkRouter>
-              </ListButton>
-              <ListButton>
-                <LinkRouter to={"/orders"}>Мои заказы</LinkRouter>
-              </ListButton>
+            <LinkRouter className="linkto" to={"/about"}>
+            <ListButton>О компании</ListButton>
+          </LinkRouter>
+          <LinkRouter className="linkto" to={"/useragree"}>
+            <ListButton>Пользовательское соглашение</ListButton>
+          </LinkRouter>
+          <LinkRouter className="linkto" to={"/contacts"}>
+            <ListButton>Контакты</ListButton>
+          </LinkRouter>
+          <LinkRouter className="linkto" to={"/partners"}>
+            <ListButton>Стать партнером</ListButton>
+          </LinkRouter>
+          <LinkRouter className="linkto" to={"/orders"}>
+            <ListButton>Мои заказы</ListButton>
+          </LinkRouter>
             </Contacts>
             <LinkRouter to="/cart">
               <Button>

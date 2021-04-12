@@ -32,11 +32,14 @@ const Contacts = styled.ul`
   flex-direction: row;
   align-items: center;
   height: inherit;
-  margin-right: 39px;
+  margin-right: 5px;
 `;
 const ListLink = styled.li`
-margin-right: 20px;
+display: flex;
+justify-content: space-between;
+margin-right: 10px;
 list-style: none;
+font-size: 14px;
 &:hover{
   color: #10b93d;
 }
@@ -45,6 +48,7 @@ const MenuColStyled = styled.div`
   flex: 1 1 100%;
   ${Media.tablet} {
     // flex: 1 1 50%;
+    display: none;
   }
   ${Media.mobile} {
     // flex: 1 1 100%;

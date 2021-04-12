@@ -1,3 +1,5 @@
-.linkto{
-    width: 100%;
+@media screen and (max-width: 800px) {
+    .linkto {
+        width: 100%;
+    }
 }

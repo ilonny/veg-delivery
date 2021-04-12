@@ -14,8 +14,5 @@ export const LogoMenuCol = () => (
 const LogoMenuColStyled = styled.div`
   display: flex;
   flex-direction: column;
-  ${Media.tablet}{
-
-  justify-content: center;
-}
+  
 `;

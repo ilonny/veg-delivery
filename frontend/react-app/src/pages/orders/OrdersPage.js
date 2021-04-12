@@ -10,7 +10,8 @@ import {
 import {
   PageTitle,
   OrderList,
-  CustomButton
+  CustomButton,
+  Cart
   // CatalogList
 } from "../../features";
 import { API_URL } from "../../lib";
@@ -22,13 +23,15 @@ import { API_URL } from "../../lib";
 // import { SubscribeForm } from "../../features/subscribe-form";
 // import { pageData } from "./data";
 import { Link } from "react-router-dom";
-import { Row } from "../"
-
+import { CartTemplate} from "../../features/cart/templates/cart-template"
 export const OrdersPage = (props) => {
   console.log("OrdersPage", props);
   return (
     <HomeTemplate>
+      {/* <Cart/> */}
       <PageTitle>Список заказов</PageTitle>
+      
+      
       <OrderRow>
         <OrderWrapper>Заказы отсутствуют!</OrderWrapper>
       <Link to={"/"}>
