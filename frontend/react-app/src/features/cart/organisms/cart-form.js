@@ -21,7 +21,7 @@ export const CartForm = (props) => {
     addOrder,
     clearCart,
   } = props;
-  console.log("CartForm props", props);
+  // console.log("CartForm props", props);
   const [message, setMessage] = useState("");
   const [paymentLink, setPaymentLink] = useState("");
   const [currentOrder, setCurrentOrder] = useState(null);
@@ -40,11 +40,11 @@ export const CartForm = (props) => {
   }, [paymentState, currentOrder]);
   useEffect(() => {
     const handler = (event) => {
-      console.log("handler fired", event);
-      console.log("handler fired", event.data);
+      // console.log("handler fired", event);
+      // console.log("handler fired", event.data);
       const { data } = event;
       // const data = JSON.parse(event.data)
-      console.log("Hello World?", data);
+      // console.log("Hello World?", data);
       if (data == "success") {
         setPaymentState("success");
         addOrder(currentOrder);
@@ -57,11 +57,11 @@ export const CartForm = (props) => {
       }
     };
     window.addEventListener("message", handler, true);
-    console.log('window.addEventListener("message", handler)');
+    // console.log('window.addEventListener("message", handler)');
     // clean up
     return () => window.removeEventListener("message", handler);
   }, []);
-  console.log("check props", props);
+  // console.log("check props", props);
   return (
     <Wrapper>
       <CategoryTitle>Оформление заказа</CategoryTitle>
@@ -191,7 +191,7 @@ export const CartForm = (props) => {
                 totalPrice: cart?.total_price,
                 deliveryPrice: cart?.delivery_price,
                 callback: (data) => {
-                  console.log("callback data: ", data);
+                  // console.log("callback data: ", data);
                   if (data && data?.paymentLink) {
                     setPaymentLink(data?.paymentLink);
                     setCurrentOrder(data?.order);

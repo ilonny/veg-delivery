@@ -8,7 +8,7 @@ import RemoveFromCartIcon from "../../../assets/icons/remove_from_cart.png";
 
 export const CartProduct = (props) => {
   const { product, addToCart, removeFromCart } = props;
-  console.log("cart product", product);
+  // console.log("cart product", product);
   return (
     <ProductWrapper>
       <Row justify="space-between" align="center" tablet_wrap="true">
