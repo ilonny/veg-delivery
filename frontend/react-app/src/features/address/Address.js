@@ -111,7 +111,11 @@ export const Address = (props) => {
   return (
     <>
       {isCart ? (
-        <CartInput value={children} onFocus={() => setModalIsOpen(true)} />
+        <CartInput
+          mask={false}
+          value={children}
+          onFocus={() => setModalIsOpen(true)}
+        />
       ) : (
         <AddressWrapper
           onClick={() => {

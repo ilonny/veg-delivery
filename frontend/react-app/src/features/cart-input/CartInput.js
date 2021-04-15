@@ -15,6 +15,24 @@ export const CartInput = (props) => {
     mask,
   } = props;
   const inputRef = useRef(null);
+  if (mask === false) {
+    return (
+      <CartInputStyled
+        type="text"
+        value={value}
+        ref={inputRef}
+        onChange={onChange}
+        onFocus={() => {
+          if (onFocus) {
+            console.log("inputRef?.current", inputRef?.current);
+            onFocus();
+            inputRef?.current?.blur();
+          }
+        }}
+        placeholder={placeholder}
+      />
+    );
+  }
   return (
     <div style={{ position: "relative", width }}>
       <InputMask
@@ -26,6 +44,7 @@ export const CartInput = (props) => {
         onChange={onChange}
         onFocus={() => {
           if (onFocus) {
+            console.log("inputRef?.current", inputRef?.current);
             onFocus();
             inputRef?.current?.blur();
           }
