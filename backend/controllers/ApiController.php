@@ -53,6 +53,42 @@ class ApiController extends Controller
         ]);
     }
 
+    public function actionContact()
+    {
+        $request = Yii::$app->request;
+        $post = $request->post();
+        // var_dump($post);
+        Yii::$app->mailer->compose()
+            ->setFrom('admin@vegfood.delivery')
+            ->setTo('lonnyfox@bk.ru')
+            ->setSubject('Обратная связь vegfood.delivery')
+            // ->setTextBody('Текст сообщения')
+            ->setHtmlBody('
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Имя: </td>
+                            <td>'.$post['name'].'</td>
+                        </tr>
+                        <tr>
+                            <td>Телефон: </td>
+                            <td>'.$post['phone'].'</td>
+                        </tr>
+                        <tr>
+                            <td>Почта: </td>
+                            <td>'.$post['email'].'</td>
+                        </tr>
+                        <tr>
+                            <td>Сообщение: </td>
+                            <td>'.$post['message'].'</td>
+                        </tr>
+                    </tbody>
+                </table>
+            ')
+            ->send();
+            return $this->asJson(['status' => 200]);
+    }
+
     public function actionAbout()
     {
         return '

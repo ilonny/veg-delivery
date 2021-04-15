@@ -36,6 +36,7 @@ export const CartInput = (props) => {
   return (
     <div style={{ position: "relative", width }}>
       <InputMask
+        {...props}
         mask={mask}
         // type="text"
         disabled={false}
