@@ -56,9 +56,6 @@ export const HeaderTemplateMobile = (props) => {
           <LinkRouter className="linkto" to={"/about"}>
             <ListButton>О компании</ListButton>
           </LinkRouter>
-          <LinkRouter className="linkto" to={"/useragree"}>
-            <ListButton>Пользовательское соглашение</ListButton>
-          </LinkRouter>
           <LinkRouter className="linkto" to={"/contacts"}>
             <ListButton>Контакты</ListButton>
           </LinkRouter>
@@ -84,6 +81,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   border-bottom: 1px solid #ccc;
   padding: 10px;
+  background: #fff; 
 `;
 // const LeftSide = styled.div`
 //   display: flex;
@@ -112,7 +110,7 @@ const ListButton = styled.button`
   align-items: center;
   padding: 15px;
   font-family: Exo2Regular;
-  font-size: 14px;
+  font-size: 16px;
   background: transparent;
   line-height: 17px;
   width: 100%;

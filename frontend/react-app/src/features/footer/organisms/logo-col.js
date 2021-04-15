@@ -44,7 +44,7 @@ const LogoColStyled = styled.div`
   ${Media.tablet} {
     order: 3;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     margin-top: 30px;

@@ -18,7 +18,7 @@ background-color: #fff;
 font-size: 12px;
 line-height: 16px;
 color: #919399;
-padding: 16px 0;
+padding: 16px 0px;
 box-shadow: 0 -1px 0 0 #e3e4e6
 `;
 

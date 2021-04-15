@@ -17,8 +17,8 @@ export const HeaderTemplateDektop = (props) => {
   console.log("HeaderTemplateDektop props", props);
   const { address, products, cart_count } = props;
   return (
-    <div style={{ borderBottom: "1px solid #ccc" }}>
-      <Container>
+    <div style={{ borderBottom: "1px solid #ccc", background: '#fff' }}>
+      <Container isGray={false}>
         <HeaderWrapper>
           <LeftSide>
             <LinkRouter to={"/"}>
@@ -32,9 +32,6 @@ export const HeaderTemplateDektop = (props) => {
             <Contacts>
             <LinkRouter className="linkto" to={"/about"}>
             <ListButton>О компании</ListButton>
-          </LinkRouter>
-          <LinkRouter className="linkto" to={"/useragree"}>
-            <ListButton>Пользовательское соглашение</ListButton>
           </LinkRouter>
           <LinkRouter className="linkto" to={"/contacts"}>
             <ListButton>Контакты</ListButton>
@@ -106,7 +103,7 @@ const ListButton = styled.button`
   align-items: center;
   padding: 11px;
   font-family: Exo2Regular;
-  font-size: 14px;
+  font-size: 16px;
   background: transparent;
   line-height: 17px;
   height: inherit;

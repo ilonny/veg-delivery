@@ -35,6 +35,8 @@ const ContainerText = styled.p`
   color: #919399;
   font-size: 12px;
   line-height: 16px;
+  display: flex;
+  justify-content: center;
 `;
 const DownloadWrapper = styled.div`
   display: flex;

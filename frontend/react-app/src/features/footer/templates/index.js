@@ -10,7 +10,7 @@ import { SocialMedia } from "../organisms/SocialMedia";
 import { OtherInfo } from "../organisms/OtherInfo";
 export const Footer = () => (
   <FooterWrapper>
-    <Container isGray={true}>
+    <Container  isGray={false}>
       <Row
         align="flex-start"
         tablet_wrap="true"

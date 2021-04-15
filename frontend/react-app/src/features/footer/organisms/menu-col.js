@@ -13,9 +13,6 @@ export const MenuCol = () => (
         <Link to={"/about"}>О компании</Link>
       </ListLink>
       <ListLink>
-        <Link to={"/useragree"}>Пользовательское соглашение</Link>
-      </ListLink>
-      <ListLink>
         <Link to={"/contacts"}>Контакты</Link>
       </ListLink>
       <ListLink>

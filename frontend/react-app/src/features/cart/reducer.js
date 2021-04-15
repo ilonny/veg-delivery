@@ -13,7 +13,7 @@ const emptyCart = {
 };
 const initialState = emptyCart;
 const filterByElem = (item, arr) =>
-  arr.filter((a_item) => a_item.id !== item.id);
+arr.filter((a_item) => a_item.id !== item.id);
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {

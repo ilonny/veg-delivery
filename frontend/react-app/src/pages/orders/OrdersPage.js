@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
+import { connect } from "react-redux";
 import {
   HomeTemplate,
   // CategoryTitle,
@@ -10,8 +10,7 @@ import {
 import {
   PageTitle,
   OrderList,
-  CustomButton,
-  Cart
+  CustomButton
   // CatalogList
 } from "../../features";
 import { API_URL } from "../../lib";
@@ -23,13 +22,30 @@ import { API_URL } from "../../lib";
 // import { SubscribeForm } from "../../features/subscribe-form";
 // import { pageData } from "./data";
 import { Link } from "react-router-dom";
-import { CartTemplate} from "../../features/cart/templates/cart-template"
+import { Row } from "../"
+
+//  const OrderCart = connect({
+//     products: state.product.products,
+//     total_price: state?.cart?.total_price,
+//     delivery_price: state?.cart?.delivery_price,
+//   }),
+//   (dispatch) => ({
+//   })(OrdersPage);
+
+// const IsOrder = () =>{
+//   props.OrderCart
+//   ? 
+// }
+
 export const OrdersPage = (props) => {
   console.log("OrdersPage", props);
+ 
+ 
+
   return (
     <HomeTemplate>
-      {/* <Cart/> */}
       <PageTitle>Список заказов</PageTitle>
+      
       
       
       <OrderRow>
