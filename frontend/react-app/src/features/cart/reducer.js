@@ -10,6 +10,7 @@ const emptyCart = {
   products: [],
   total_price: 0,
   delivery_price: 0,
+  min_price: 0,
 };
 const initialState = emptyCart;
 const filterByElem = (item, arr) =>
@@ -24,6 +25,7 @@ export const cartReducer = (state = initialState, action) => {
         products: action.products,
         total_price: action.totalPrice,
         delivery_price: action.deliveryPrice,
+        min_price: action.restaurantMinPrice,
       };
     }
     case "CLEAR_CART": {
@@ -91,10 +93,13 @@ cartReducer.addToCart = (product) => (dispatch, getState) => {
   );
 
   let deliveryPrice = 0;
+  let restaurantMinPrice = 0;
   try {
-    let restaurantDeliveryData = restaurants?.find(
+    let restaurantData = restaurants?.find(
       (rest) => rest.id == cartProducts[0].restaurant_id
-    )?.delivery_data;
+    );
+    let restaurantDeliveryData = restaurantData?.delivery_data;
+    restaurantMinPrice = restaurantData?.min_price;
     restaurantDeliveryData.forEach((d) => {
       let priceStart = Number(d.price_start);
       if (totalPrice >= priceStart) {
@@ -111,6 +116,7 @@ cartReducer.addToCart = (product) => (dispatch, getState) => {
     products: [...cartProducts],
     totalPrice,
     deliveryPrice,
+    restaurantMinPrice,
   });
 };
 
@@ -137,10 +143,13 @@ cartReducer.removeFromCart = (product) => (dispatch, getState) => {
   );
 
   let deliveryPrice = 0;
+  let restaurantMinPrice = 0;
   try {
-    let restaurantDeliveryData = restaurants?.find(
+    let restaurantData = restaurants?.find(
       (rest) => rest.id == cartProducts[0].restaurant_id
-    )?.delivery_data;
+    );
+    let restaurantDeliveryData = restaurantData?.delivery_data;
+    restaurantMinPrice = restaurantData?.min_price;
     restaurantDeliveryData.forEach((d) => {
       let priceStart = Number(d.price_start);
       if (totalPrice >= priceStart) {
@@ -155,6 +164,7 @@ cartReducer.removeFromCart = (product) => (dispatch, getState) => {
     products: [...cartProducts],
     totalPrice,
     deliveryPrice,
+    restaurantMinPrice,
   });
 };
 

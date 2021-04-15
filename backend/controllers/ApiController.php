@@ -58,34 +58,81 @@ class ApiController extends Controller
         $request = Yii::$app->request;
         $post = $request->post();
         // var_dump($post);
-        Yii::$app->mailer->compose()
-            ->setFrom('admin@vegfood.delivery')
-            ->setTo('lonnyfox@bk.ru')
-            ->setSubject('Обратная связь vegfood.delivery')
-            // ->setTextBody('Текст сообщения')
-            ->setHtmlBody('
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Имя: </td>
-                            <td>'.$post['name'].'</td>
-                        </tr>
-                        <tr>
-                            <td>Телефон: </td>
-                            <td>'.$post['phone'].'</td>
-                        </tr>
-                        <tr>
-                            <td>Почта: </td>
-                            <td>'.$post['email'].'</td>
-                        </tr>
-                        <tr>
-                            <td>Сообщение: </td>
-                            <td>'.$post['message'].'</td>
-                        </tr>
-                    </tbody>
-                </table>
-            ')
-            ->send();
+        $to = 'lonnyfox@bk.ru';
+        // тема письма
+        $subject = 'Обратная связь vegfood.delivery';
+        // текст письма
+        $message = '
+        <html>
+        <head>
+        <title>Обратная связь vegfood.delivery</title>
+        </head>
+        <body>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Имя: </td>
+                    <td>'.$post['name'].'</td>
+                </tr>
+                <tr>
+                    <td>Телефон: </td>
+                    <td>'.$post['phone'].'</td>
+                </tr>
+                <tr>
+                    <td>Почта: </td>
+                    <td>'.$post['email'].'</td>
+                </tr>
+                <tr>
+                    <td>Сообщение: </td>
+                    <td>'.$post['message'].'</td>
+                </tr>
+            </tbody>
+        </table>
+        </body>
+        </html>
+        ';
+
+        // Для отправки HTML-письма должен быть установлен заголовок Content-type
+        $headers[] = 'MIME-Version: 1.0';
+        //. "\r\n";
+        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+        // Дополнительные заголовки
+        $headers[] = 'To: Dmitry <lonnyfox@bk.ru>';
+        $headers[] = 'From: VegFood Delivery <admin@vegfood.delivery>';
+        // $headers[] = 'Cc: birthdayarchive@example.com';
+        // $headers[] = 'Bcc: birthdaycheck@example.com';
+
+        // Отправляем
+        $result = mail($to, $subject, $message, implode("\r\n", $headers));
+        // Yii::$app->mailer->compose()
+        //     ->setFrom('admin@vegfood.delivery')
+        //     ->setTo('lonnyfox@bk.ru')
+        //     ->setSubject('Обратная связь vegfood.delivery')
+        //     // ->setTextBody('Текст сообщения')
+        //     ->setHtmlBody('
+        //         <table>
+        //             <tbody>
+        //                 <tr>
+        //                     <td>Имя: </td>
+        //                     <td>'.$post['name'].'</td>
+        //                 </tr>
+        //                 <tr>
+        //                     <td>Телефон: </td>
+        //                     <td>'.$post['phone'].'</td>
+        //                 </tr>
+        //                 <tr>
+        //                     <td>Почта: </td>
+        //                     <td>'.$post['email'].'</td>
+        //                 </tr>
+        //                 <tr>
+        //                     <td>Сообщение: </td>
+        //                     <td>'.$post['message'].'</td>
+        //                 </tr>
+        //             </tbody>
+        //         </table>
+        //     ')
+        //     ->send();
             return $this->asJson(['status' => 200]);
     }
 

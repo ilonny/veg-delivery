@@ -54,13 +54,13 @@ const RestCardWrapper = styled.div`
 const RestCardImageWrapper = styled.div`
   width: 100%;
   height: 180px;
-  background-size: cover;
   ${(props) => {
     const { restaurant } = props;
     return `
-      background: url(${`${API_URL}${restaurant?.image}`}) center center no-repeat;
+    background: url(${`${API_URL}${restaurant?.image}`}) center center no-repeat;
     `;
   }}
+  background-size: cover;
 `;
 const RestCardContentWrapper = styled.div`
   padding: 20px;

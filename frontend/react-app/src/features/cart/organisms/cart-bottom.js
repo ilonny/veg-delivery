@@ -5,6 +5,9 @@ import { HoverButton } from "../../common";
 import { Color, Media } from "../../../lib";
 export const CartBottom = (props) => {
   const { cart, setCartState, total_price, delivery_price } = props;
+  console.log("CartBottom props", props);
+  let min_price = Number(cart.min_price);
+  let canOrder = Boolean(total_price >= min_price);
   return (
     <Wrapper>
       <Row
@@ -24,19 +27,23 @@ export const CartBottom = (props) => {
           </p>
         </div>
         <div>
-          <HoverButton
-            onClick={() => {
-              setCartState("form");
-            }}
-            maxWidth={"372px"}
-            color={"white"}
-            backgroundColor={"#5ac17d"}
-            hoverBackgroundColor={"#4ca96c"}
-            fontSize="18px"
-            hoverColor={"white"}
-          >
-            {"Оформить заказ"}
-          </HoverButton>
+          {canOrder ? (
+            <HoverButton
+              onClick={() => {
+                setCartState("form");
+              }}
+              maxWidth={"372px"}
+              color={"white"}
+              backgroundColor={"#5ac17d"}
+              hoverBackgroundColor={"#4ca96c"}
+              fontSize="18px"
+              hoverColor={"white"}
+            >
+              {"Оформить заказ"}
+            </HoverButton>
+          ) : (
+            <div>Минимальная сумма заказа {min_price} руб</div>
+          )}
         </div>
       </Row>
     </Wrapper>

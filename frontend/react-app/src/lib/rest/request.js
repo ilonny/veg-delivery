@@ -1,6 +1,9 @@
 import axios from "axios";
 export const API_URL =
-  process.env.NODE_ENV === "development" ? "http://localhost:21080/" : "/";
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:21080/"
+    : // : "http://localhost:21080/";
+      "https://app.vegfood.delivery/";
 
 const client = axios.create({
   baseURL: API_URL,
