@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Media } from "../../../lib";
 import "./image-gallery.scss";
 export const ProductGallery = (props) => {
-  console.log("props", props);
+  // console.log("props", props);
   let photos = props.data.photos;
   photos = photos.map((el) => ({
     original: el,
@@ -12,7 +12,7 @@ export const ProductGallery = (props) => {
   }));
 
   if (props.data) {
-    console.log("photos", props.data.photos);
+    // console.log("photos", props.data.photos);
     if (photos.length) {
       return (
         <GalleryWrapper>

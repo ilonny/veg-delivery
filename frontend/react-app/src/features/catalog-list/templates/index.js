@@ -5,10 +5,10 @@ import { CategoryName } from "../organisms/CategoryName";
 import { CategoryProducts } from "../organisms/CategoryProducts";
 import { API_URL } from "../../../lib";
 export const CatalogListTemplate = (props) => {
-  console.log("catalog list props", props);
+  // console.log("catalog list props", props);
   const { addToCart, removeFromCart, cart_products, id, restaurant } = props;
   const menu = restaurant?.menu;
-  console.log("restaurant", restaurant);
+  // console.log("restaurant", restaurant);
   if (menu) {
     return (
       <>

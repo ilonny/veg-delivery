@@ -79,7 +79,7 @@ export const CategoryProducts = ({
   removeFromCart,
   cart_products,
 }) => {
-  console.log("CategoryProducts", products);
+  // console.log("CategoryProducts", products);
   return (
     <Row align="center" margin="0px 0px 20px 0px;" marginTop="0px !important">
       {products?.map((product) => {

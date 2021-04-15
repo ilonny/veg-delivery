@@ -130,7 +130,7 @@ categoriesReducer.syncCategoriesWithParams = (params) => (
 };
 
 categoriesReducer.toggleCategory = (params) => (dispatch, getState) => {
-  console.log("toggleCategory", params);
+  // console.log("toggleCategory", params);
   setSearchParams("categories", params);
   const allCategories = getState().categories.categories;
   const newState = allCategories;
@@ -165,9 +165,9 @@ categoriesReducer.setSorting = (params) => (dispatch, getState) => {
   const sortKey = params.code;
   const currentSort = getState().categories[`${sortKey}`];
   const newVal = sortMap[currentSort];
-  console.log("sortKey", sortKey);
-  console.log("currentSort", currentSort);
-  console.log("newVal", newVal);
+  // console.log("sortKey", sortKey);
+  // console.log("currentSort", currentSort);
+  // console.log("newVal", newVal);
   setSearchParams(sortKey, { code: newVal });
   dispatch({
     type: SET_SORT,
@@ -181,7 +181,7 @@ categoriesReducer.reset = () => (dispatch) => {
 };
 
 categoriesReducer.setPagination = (page) => (dispatch) => {
-  console.log("setPagination fired", { code: page });
+  // console.log("setPagination fired", { code: page });
   setSearchParams("page", { code: page });
   dispatch({ type: SET_PAGINATION });
 };

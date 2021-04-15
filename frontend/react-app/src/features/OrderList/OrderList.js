@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Row } from "../../features/styled-components-layout";
 export const OrderListTemplate = (props) => {
   const { orders } = props;
-  console.log("orders??", orders);
+  //   console.log("orders??", orders);
   return (
     <div>
       {orders?.map((order) => {

@@ -36,7 +36,7 @@ export const productReducer = (state = initialState, action) => {
 productReducer.getProducts = (id, _isPopular) => (dispatch, getState) => {
   dispatch({ type: GET_PRODUCTS_START });
   if (Array.isArray(id)) {
-    console.log("arr id", id);
+    // console.log("arr id", id);
     //зарпос с конкретными айди за продуктами
     request({
       method: "GET",
@@ -83,7 +83,7 @@ productReducer.getProducts = (id, _isPopular) => (dispatch, getState) => {
         method: "GET",
         url: `get-products?id=${id}`,
       }).then((response) => {
-        console.log("get product response", response);
+        // console.log("get product response", response);
         const data = response.products_on_page[0];
         let photos = [];
         if (data) {
@@ -99,7 +99,7 @@ productReducer.getProducts = (id, _isPopular) => (dispatch, getState) => {
         });
       });
     } else {
-      console.log("is_popular", _isPopular);
+      // console.log("is_popular", _isPopular);
       let search = window.location.search;
       if (_isPopular) {
         search += "&is_popular=1";

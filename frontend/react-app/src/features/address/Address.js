@@ -18,7 +18,7 @@ import MapMarkerIcon from "../../assets/icons/mapCheck.svg";
 Modal.setAppElement("#root");
 
 export const Address = (props) => {
-  console.log("Address props", props);
+  // console.log("Address props", props);
   const { changeAddress, children, address, isCart = false } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
@@ -32,9 +32,9 @@ export const Address = (props) => {
   const [savedSugg, setSavedSugg] = useState(address?.value ? address : null);
   // console.log("savedSugg", savedSugg);
   useEffect(() => {
-    console.log("savedSugg hook", savedSugg);
-    console.log("savedSugg hook 2", savedSugg?.data?.house);
-    console.log("savedSugg hook 3", !!savedSugg && !savedSugg?.data?.house);
+    // console.log("savedSugg hook", savedSugg);
+    // console.log("savedSugg hook 2", savedSugg?.data?.house);
+    // console.log("savedSugg hook 3", !!savedSugg && !savedSugg?.data?.house);
     let errorsLocal = [];
     if (!!savedSugg && savedSugg?.data?.city !== "Москва") {
       errorsLocal.push("В вашем городе рестораны отсутствуют");
@@ -76,7 +76,7 @@ export const Address = (props) => {
       .catch((error) => console.log("error", error));
   };
   const getAddress = (dataAddress) => {
-    console.log("dataAddress", dataAddress);
+    // console.log("dataAddress", dataAddress);
     const urlAddress =
       "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
     let queryAddress = dataAddress;
@@ -107,7 +107,7 @@ export const Address = (props) => {
         lng: Number(dataAddress.lon) || Number(savedSugg.data.geo_lon),
       }
     : { lat: 55.75396, lng: 37.620393 };
-  console.log("suggestions??", suggestions);
+  // console.log("suggestions??", suggestions);
   return (
     <>
       {isCart ? (

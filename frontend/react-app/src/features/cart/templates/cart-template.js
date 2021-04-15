@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import { EmptyCart } from "./empty-cart";
 import "./styles.scss";
 export const CartTemplate = (props) => {
-  console.log("Cart props", props);
+  // console.log("Cart props", props);
   // const [cartState, setCartState] = useState("form");
   const [cartState, setCartState] = useState("precheck");
   // const { id, getCurrentProduct } = props;
   const { cart } = props;
   const cartProducts = cart?.products || [];
-  console.log("cartProducts", cartProducts);
+  // console.log("cartProducts", cartProducts);
   // const cartProducts = products.filter(item => cartProductsIds.includes(item.id));
   // console.log('cartProducts', cartProducts);
   if (cartProducts.length) {

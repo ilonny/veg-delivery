@@ -24,7 +24,7 @@ export const CartInput = (props) => {
         onChange={onChange}
         onFocus={() => {
           if (onFocus) {
-            console.log("inputRef?.current", inputRef?.current);
+            // console.log("inputRef?.current", inputRef?.current);
             onFocus();
             inputRef?.current?.blur();
           }
@@ -44,7 +44,7 @@ export const CartInput = (props) => {
         onChange={onChange}
         onFocus={() => {
           if (onFocus) {
-            console.log("inputRef?.current", inputRef?.current);
+            // console.log("inputRef?.current", inputRef?.current);
             onFocus();
             inputRef?.current?.blur();
           }

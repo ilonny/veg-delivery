@@ -69,7 +69,7 @@ mainReducer.getRestList = (params) => (dispatch, getState) => {
       key: "restaurants",
       value: response,
     });
-    console.log("response mobile list", response);
+    // console.log("response mobile list", response);
   });
 };
 
@@ -83,7 +83,7 @@ mainReducer.changeStoreByKey = (params) => (dispatch, getState) => {
 };
 
 mainReducer.createOrder = (params) => (dispatch, getState) => {
-  console.log("userReducer.createOrder", params);
+  // console.log("userReducer.createOrder", params);
   const { totalPrice, deliveryPrice, callback, navigation } = params;
   const { userInfo } = getState().main;
   let addressData = getState().main?.address;
@@ -111,8 +111,8 @@ mainReducer.createOrder = (params) => (dispatch, getState) => {
     cartList,
     restaurant_id,
   };
-  console.log("create order data", data);
-  console.log(`${API_URL}/order/create`);
+  // console.log("create order data", data);
+  // console.log(`${API_URL}/order/create`);
   const formData = new FormData();
   formData.append("data", JSON.stringify(data));
   fetch(`${API_URL}/order/create`, {
@@ -122,7 +122,7 @@ mainReducer.createOrder = (params) => (dispatch, getState) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("create order res", res);
+      // console.log("create order res", res);
       let orderData = {
         ...res.orderInfo,
         restaurantInfo: res.restInfo,
@@ -139,20 +139,20 @@ mainReducer.createOrder = (params) => (dispatch, getState) => {
             .then((res) => res.json())
             .then((res) => {
               if (res.Success) {
-                console.log("create payment link res", res);
+                // console.log("create payment link res", res);
                 callback({
                   paymentLink: res?.PaymentURL,
                   order: orderData,
                 });
               } else {
-                console.log("res != success", res);
+                // console.log("res != success", res);
                 window.alert(
                   "Возникла ошибка при создании оплаты. Попробуйте позже."
                 );
               }
             })
             .catch((err) => {
-              console.log("create payment link error", err);
+              // console.log("create payment link error", err);
               window.alert(
                 "Возникла ошибка при создании оплаты. Попробуйте позже."
               );
@@ -165,11 +165,11 @@ mainReducer.createOrder = (params) => (dispatch, getState) => {
       }
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
     });
 };
 
 mainReducer.addOrder = (order) => (dispatch, getState) => {
-  console.log("mainReducer.addOrder", order);
+  // console.log("mainReducer.addOrder", order);
   dispatch({ type: "ADD_ORDER", order });
 };

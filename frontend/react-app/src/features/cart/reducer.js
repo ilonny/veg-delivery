@@ -13,7 +13,7 @@ const emptyCart = {
 };
 const initialState = emptyCart;
 const filterByElem = (item, arr) =>
-arr.filter((a_item) => a_item.id !== item.id);
+  arr.filter((a_item) => a_item.id !== item.id);
 
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -101,8 +101,8 @@ cartReducer.addToCart = (product) => (dispatch, getState) => {
         deliveryPrice = d.price;
       }
     });
-    console.log("restaurantDeliveryData", restaurantDeliveryData);
-    console.log("deliveryPrice", deliveryPrice);
+    // console.log("restaurantDeliveryData", restaurantDeliveryData);
+    // console.log("deliveryPrice", deliveryPrice);
   } catch (e) {}
   //
 
@@ -149,7 +149,7 @@ cartReducer.removeFromCart = (product) => (dispatch, getState) => {
     });
   } catch (e) {}
 
-  console.log("cartReducer.removeFromCart", cartProducts, product);
+  // console.log("cartReducer.removeFromCart", cartProducts, product);
   dispatch({
     type: SET_CART_PRODUCTS,
     products: [...cartProducts],

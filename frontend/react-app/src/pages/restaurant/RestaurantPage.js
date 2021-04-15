@@ -16,7 +16,7 @@ import { API_URL } from "../../lib";
 // import { pageData } from "./data";
 // import { Link } from "react-router-dom";
 export const RestaurantPage = (props) => {
-  console.log("RestaurantPage", props);
+  // console.log("RestaurantPage", props);
   const { id } = props?.match?.params;
   const [restaurant, setRestaurant] = useState(props?.location?.restaurant);
   useEffect(() => {
@@ -30,7 +30,7 @@ export const RestaurantPage = (props) => {
         });
     }
   }, []);
-  console.log("RestaurantPage rest", restaurant);
+  // console.log("RestaurantPage rest", restaurant);
 
   return (
     <HomeTemplate>

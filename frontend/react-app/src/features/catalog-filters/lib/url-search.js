@@ -1,6 +1,6 @@
 import { history } from "../../../lib";
 export const setSearchParams = (name, _value) => {
-  console.log("SetSearchParams name", name, _value);
+  // console.log("SetSearchParams name", name, _value);
   let { code } = _value;
   code = code.toString();
   let searchParams = new URLSearchParams(window.location.search);
@@ -17,7 +17,7 @@ export const setSearchParams = (name, _value) => {
       // console.log(1);
       new_param = code;
     } else {
-      console.log("name", name);
+      // console.log("name", name);
       if (
         name === "price_min" ||
         name === "price_max" ||

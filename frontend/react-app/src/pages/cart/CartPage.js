@@ -20,7 +20,7 @@ import { API_URL } from "../../lib";
 // import { pageData } from "./data";
 // import { Link } from "react-router-dom";
 export const CartPage = (props) => {
-  console.log("CartPage", props);
+  // console.log("CartPage", props);
   return (
     <HomeTemplate>
       <PageTitle>Корзина</PageTitle>

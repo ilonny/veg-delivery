@@ -14,10 +14,10 @@ import { Link as LinkRouter } from "react-router-dom";
 
 export const HeaderTemplateDektop = (props) => {
   // const { cart, menu } = props;
-  console.log("HeaderTemplateDektop props", props);
+  // console.log("HeaderTemplateDektop props", props);
   const { address, products, cart_count } = props;
   return (
-    <div style={{ borderBottom: "1px solid #ccc", background: '#fff' }}>
+    <div style={{ borderBottom: "1px solid #ccc", background: "#fff" }}>
       <Container isGray={false}>
         <HeaderWrapper>
           <LeftSide>
@@ -30,18 +30,18 @@ export const HeaderTemplateDektop = (props) => {
           </LeftSide>
           <RightSide>
             <Contacts>
-            <LinkRouter className="linkto" to={"/about"}>
-            <ListButton>О компании</ListButton>
-          </LinkRouter>
-          <LinkRouter className="linkto" to={"/contacts"}>
-            <ListButton>Контакты</ListButton>
-          </LinkRouter>
-          <LinkRouter className="linkto" to={"/partners"}>
-            <ListButton>Стать партнером</ListButton>
-          </LinkRouter>
-          <LinkRouter className="linkto" to={"/orders"}>
-            <ListButton>Мои заказы</ListButton>
-          </LinkRouter>
+              <LinkRouter className="linkto" to={"/about"}>
+                <ListButton>О компании</ListButton>
+              </LinkRouter>
+              <LinkRouter className="linkto" to={"/contacts"}>
+                <ListButton>Контакты</ListButton>
+              </LinkRouter>
+              <LinkRouter className="linkto" to={"/partners"}>
+                <ListButton>Стать партнером</ListButton>
+              </LinkRouter>
+              <LinkRouter className="linkto" to={"/orders"}>
+                <ListButton>Мои заказы</ListButton>
+              </LinkRouter>
             </Contacts>
             <LinkRouter to="/cart">
               <Button>
