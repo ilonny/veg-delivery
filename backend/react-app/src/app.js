@@ -106,7 +106,7 @@ const _MainComp = (props) => {
                 {user.role != "manager" && (
                   <Menu.Item key="2">
                     <Link to={{ pathname: "/add-rest", state: { user } }}>
-                      Добавить ресторан 123
+                      Добавить ресторан
                     </Link>
                     {/* <Link to={"/add-rest", { user }}>Добавить ресторан</Link> */}
                   </Menu.Item>
@@ -114,7 +114,7 @@ const _MainComp = (props) => {
               </SubMenu>
               {user.role === "admin" && (
                 <Menu.Item key="3">
-                  <Link to={"/add-user"}>Добавить партнера</Link>
+                  <Link to={"/add-user"}>Список партнеров</Link>
                 </Menu.Item>
               )}
               {user.role === "admin" && (

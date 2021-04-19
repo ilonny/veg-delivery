@@ -18,6 +18,7 @@ use yii\web\Response;
 use DateTime;
 use yii\filters\Cors;
 use yii\filters\auth\HttpBasicAuth;
+use common\models\User;
 /**
  * Category controller
  */
@@ -50,6 +51,30 @@ class ApiController extends Controller
     {
         return Json::encode([
             'hello' => 'can i help?'
+        ]);
+    }
+
+    public function actionPartners() {
+        $res = [];
+        $partners = User::find()->andWhere(['role' => 'user'])->all();
+        foreach ($partners as $key => $partner) {
+            $res[$key]['id'] = $partner->id;
+            $res[$key]['username'] = $partner->username;
+            $res[$key]['email'] = $partner->email;
+            $res[$key]['created_at'] = $partner->created_at;
+        }
+        return $this->asJson($res);
+    }
+
+    public function actionPartnerDelete($id) {
+        $user = User::findOne($id);
+        if ($user->delete()) {
+            return $this->asJson([
+                'status' => 200
+            ]);   
+        }
+        return $this->asJson([
+            'status' => 500
         ]);
     }
 

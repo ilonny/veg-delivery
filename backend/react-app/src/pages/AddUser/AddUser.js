@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Form,
   Input,
   Button,
   Checkbox,
+  Divider,
   // Upload,
   // Select,
   // InputNumber,
@@ -28,6 +29,18 @@ const layout = {
 };
 
 export const AddUser = () => {
+  const [partners, setPartners] = useState([]);
+  const getData = () => {
+    fetch(API_HOST + "/api/partners")
+      .then((res) => res.json())
+      .then((res) => {
+        setPartners(res);
+      });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   const onFinish = (values) => {
     console.log("Success:", { values, value });
     let data = new FormData();
@@ -52,7 +65,8 @@ export const AddUser = () => {
         alert(res.message);
         if (res.status === 200) {
           alert("Пользователь успешно добавлен");
-          document.location.href = "/";
+          getData();
+          // document.location.href = "/";
         } else {
           alert("Ошибка добавления пользователя");
         }
@@ -68,6 +82,39 @@ export const AddUser = () => {
   const [value, setValue] = useState();
   return (
     <>
+      <h2>Список партнеров</h2>
+      {partners?.map((el) => {
+        return (
+          <div key={el.id}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <p>{el.id}</p>
+              <p>{el.username}</p>
+              <p>{el.email}</p>
+              <p>{el.created_at}</p>
+              <Button
+                onClick={() => {
+                  if (window.confirm("Подтвердите удаление")) {
+                    fetch(API_HOST + "/api/partner-delete?id=" + el.id)
+                      .then((res) => res.json())
+                      .then(() => getData());
+                  }
+                }}
+              >
+                Удалить
+              </Button>
+            </div>
+            <Divider />
+          </div>
+        );
+      })}
+      <Divider />
+      <h2>Добавить партнера</h2>
       <Form
         name="basic"
         onFinish={onFinish}
@@ -115,7 +162,7 @@ export const AddUser = () => {
           <Input />
         </Form.Item>
         <Button type="primary" htmlType="submit">
-          Сохранить
+          Добавить
         </Button>
       </Form>
     </>
