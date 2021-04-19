@@ -32,17 +32,18 @@ const Contacts = styled.ul`
   margin-right: 5px;
 `;
 const ListLink = styled.li`
-display: flex;
-justify-content: space-between;
-margin-right: 10px;
-list-style: none;
-font-size: 14px;
-&:hover{
-  color: #10b93d;
-}
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10px;
+  list-style: none;
+  font-size: 14px;
+  &:hover {
+    color: #10b93d;
+  }
 `;
 const MenuColStyled = styled.div`
-  flex: 1 1 100%;
+  // flex: 1 1 100%;
+  flex: 0;
   ${Media.tablet} {
     // flex: 1 1 50%;
     display: none;

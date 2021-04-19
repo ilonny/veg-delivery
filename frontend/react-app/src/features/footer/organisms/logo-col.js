@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 export const LogoCol = () => (
   <LogoColStyled>
     <Link to={"/"}>
-    <ImageView
-      src={require("../../../assets/icons/logo.png")}
-      className="logo"
-    /></Link>
+      <ImageView
+        src={require("../../../assets/icons/logo.png")}
+        className="logo"
+      />
+    </Link>
     {/* <TitleText>
       Доставка
       здорового питания
@@ -25,6 +26,7 @@ export const LogoCol = () => (
 const LogoColStyled = styled.div`
   flex: 1 1 100%;
   margin-bottom: 20px;
+  flex: 0;
   & .logo {
     max-width: 118px;
     max-height: 52px;
