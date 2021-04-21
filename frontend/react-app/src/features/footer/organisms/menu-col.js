@@ -10,9 +10,6 @@ export const MenuCol = () => (
     {/* <ColTitle>Меню</ColTitle> */}
     <Contacts>
       <ListLink>
-        <Link to={"/about"}>О компании</Link>
-      </ListLink>
-      <ListLink>
         <Link to={"/contacts"}>Контакты</Link>
       </ListLink>
       <ListLink>

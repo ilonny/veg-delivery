@@ -5,13 +5,14 @@ import { Row } from "../../features/styled-components-layout";
 import { Link } from "react-router-dom";
 
 export const RestCard = (props) => {
-  const { restaurant } = props;
+  const { restaurant, address } = props;
   return (
     <RestCardWrapper>
       <Link to={{ pathname: `/restaurant/${restaurant.id}`, restaurant }}>
         <RestCardImageWrapper {...props} />
         <RestCardContentWrapper>
           <h2>{restaurant?.name}</h2>
+          <AddressRest>{address?.value}</AddressRest>
           <Row
             align="center"
             justify="space-between"
@@ -35,7 +36,11 @@ export const RestCard = (props) => {
     </RestCardWrapper>
   );
 };
-
+const AddressRest = styled.p`
+font size: 8px;
+margin: 5px 0;
+color: #9F9F9F;
+`;
 const RestCardWrapper = styled.div`
   width: 100%;
   max-width: 360px;

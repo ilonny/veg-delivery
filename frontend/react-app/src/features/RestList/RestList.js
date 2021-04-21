@@ -122,7 +122,7 @@ export const RestList = (props) => {
           <>
             <Row justify="flex-start" wrap="wrap" margin="0px -10px;">
               {restaurants.map((restaurant) => {
-                return <RestCard restaurant={restaurant} key={restaurant.id} />;
+                return <RestCard address={address} restaurant={restaurant} key={restaurant.id} />;
               })}
             </Row>
           </>
