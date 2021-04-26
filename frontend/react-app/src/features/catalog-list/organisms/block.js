@@ -60,7 +60,7 @@ export const Block = ({ item, addToCart, removeFromCart, cart_products }) => {
       <Title>{item.name}</Title>
       {/* </Link> */}
       <div>
-        <Row align="center" mobile_wrap="true">
+        <Row align="flex-start" position='absolute' bottom='20px' flexDirection='column'>
           <CartButton
             item={item}
             removeFromCart={() => removeFromCart(item)}
@@ -68,7 +68,7 @@ export const Block = ({ item, addToCart, removeFromCart, cart_products }) => {
             active={active}
             cart_products={cart_products}
           />
-          <Price isBold={true}>{item.price} руб.</Price>
+          <Price style={{alignSelf:'flex-start', marginLeft: '40px'}}  isBold={true}>{item.price} руб.</Price>
           {!!item.new_price && <Price isBold>{item.new_price} руб.</Price>}
         </Row>
       </div>

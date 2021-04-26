@@ -24,6 +24,9 @@ const is = (value) => typeof value !== "undefined";
 const prop = (value) => (is(value) ? value : "initial");
 
 export const mixins = (props) => css`
+  position: ${prop(props.position)};
+  left: ${prop(props.left)};
+  bottom: ${prop(props.bottom)}; 
   flex-direction: ${prop(props.flexDirection)};
   align-content: ${prop(props.alignContent)};
   align-items: ${prop(props.align)};

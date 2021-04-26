@@ -8,6 +8,7 @@ export const BlockWrapper = styled.div`
   max-width: 25%;
   transition: all 250ms ease;
   border-radius: 15px;
+  position: relative;
   &:hover {
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
     [translate] {
@@ -21,6 +22,7 @@ export const BlockWrapper = styled.div`
   ${Media.tablet} {
     flex: 1 1 50%;
     max-width: 50%;
+    height: 400px;
   }
   ${Media.mobile} {
     // flex: 1 1 100%;

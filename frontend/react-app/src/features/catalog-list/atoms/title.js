@@ -10,7 +10,7 @@ const StyledTitle = styled.p`
   color: ${Color.titleColor};
   font-weight: bold;
   ${Media.smallDesktop} {
-    font-size: 18px;
+    font-size: 16px;
   }
   // ${Media.mobile} {
   //   text-align: center;
