@@ -80,12 +80,12 @@ class ApiController extends Controller
 
     public function actionContact()
     {
-        ini_set('sendmail_from', 'hello@vegfood.delivery');
+        ini_set('sendmail_from', 'no-reply@vegfood.delivery');
         error_reporting(E_ALL|E_STRICT);
         ini_set('display_errors', 1);
         $request = Yii::$app->request;
         $post = $request->post();
-        $to = 'lonnyfox@bk.ru';
+        $to = 'hello@vegfood.delivery, lonnyfox@bk.ru';
         $subject = 'Обратная связь vegfood.delivery';
         $message = '
         <html>
@@ -130,12 +130,12 @@ class ApiController extends Controller
 
     public function actionPartner()
     {
-        ini_set('sendmail_from', 'hello@vegfood.delivery');
+        ini_set('sendmail_from', 'no-reply@vegfood.delivery');
         error_reporting(E_ALL|E_STRICT);
         ini_set('display_errors', 1);
         $request = Yii::$app->request;
         $post = $request->post();
-        $to = 'lonnyfox@bk.ru';
+        $to = 'hello@vegfood.delivery, lonnyfox@bk.ru';
         $subject = 'Заявка "Стать партнером" vegfood.delivery';
         $message = '
         <html>
