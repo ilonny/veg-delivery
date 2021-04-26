@@ -80,13 +80,13 @@ class ApiController extends Controller
 
     public function actionContact()
     {
+        ini_set('sendmail_from', 'hello@vegfood.delivery');
+        error_reporting(E_ALL|E_STRICT);
+        ini_set('display_errors', 1);
         $request = Yii::$app->request;
         $post = $request->post();
-        // var_dump($post);
         $to = 'lonnyfox@bk.ru';
-        // тема письма
         $subject = 'Обратная связь vegfood.delivery';
-        // текст письма
         $message = '
         <html>
         <head>
@@ -116,49 +116,70 @@ class ApiController extends Controller
         </body>
         </html>
         ';
-
-        // Для отправки HTML-письма должен быть установлен заголовок Content-type
         $headers[] = 'MIME-Version: 1.0';
-        //. "\r\n";
-        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-
+        $headers[] = 'Content-type: text/html; charset=utf-8';
         // Дополнительные заголовки
-        $headers[] = 'To: Dmitry <lonnyfox@bk.ru>';
-        $headers[] = 'From: VegFood Delivery <admin@vegfood.delivery>';
+        // $headers[] = 'To: Dmitry <lonnyfox@bk.ru>';
+        // $headers[] = 'From: VegFood Delivery <hello@vegfood.delivery>';
         // $headers[] = 'Cc: birthdayarchive@example.com';
         // $headers[] = 'Bcc: birthdaycheck@example.com';
-
         // Отправляем
         $result = mail($to, $subject, $message, implode("\r\n", $headers));
-        // Yii::$app->mailer->compose()
-        //     ->setFrom('admin@vegfood.delivery')
-        //     ->setTo('lonnyfox@bk.ru')
-        //     ->setSubject('Обратная связь vegfood.delivery')
-        //     // ->setTextBody('Текст сообщения')
-        //     ->setHtmlBody('
-        //         <table>
-        //             <tbody>
-        //                 <tr>
-        //                     <td>Имя: </td>
-        //                     <td>'.$post['name'].'</td>
-        //                 </tr>
-        //                 <tr>
-        //                     <td>Телефон: </td>
-        //                     <td>'.$post['phone'].'</td>
-        //                 </tr>
-        //                 <tr>
-        //                     <td>Почта: </td>
-        //                     <td>'.$post['email'].'</td>
-        //                 </tr>
-        //                 <tr>
-        //                     <td>Сообщение: </td>
-        //                     <td>'.$post['message'].'</td>
-        //                 </tr>
-        //             </tbody>
-        //         </table>
-        //     ')
-        //     ->send();
-            return $this->asJson(['status' => 200]);
+        return $this->asJson(['status' => 200]);
+    }
+
+    public function actionPartner()
+    {
+        ini_set('sendmail_from', 'hello@vegfood.delivery');
+        error_reporting(E_ALL|E_STRICT);
+        ini_set('display_errors', 1);
+        $request = Yii::$app->request;
+        $post = $request->post();
+        $to = 'lonnyfox@bk.ru';
+        $subject = 'Заявка "Стать партнером" vegfood.delivery';
+        $message = '
+        <html>
+        <head>
+        <title>Заявка "Стать партнером" vegfood.delivery</title>
+        </head>
+        <body>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Город: </td>
+                    <td>'.$post['city'].'</td>
+                </tr>
+                <tr>
+                    <td>Название ресторана: </td>
+                    <td>'.$post['name'].'</td>
+                </tr>
+                <tr>
+                    <td>Адрес: </td>
+                    <td>'.$post['address'].'</td>
+                </tr>
+                <tr>
+                    <td>Почта: </td>
+                    <td>'.$post['email'].'</td>
+                </tr>
+                <tr>
+                    <td>Телефон: </td>
+                    <td>'.$post['phone'].'</td>
+                </tr>
+            </tbody>
+        </table>
+        </body>
+        </html>
+        ';
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=utf-8';
+        // Дополнительные заголовки
+        // $headers[] = 'To: Dmitry <lonnyfox@bk.ru>';
+        // $headers[] = 'From: VegFood Delivery <hello@vegfood.delivery>';
+        // $headers[] = 'Cc: birthdayarchive@example.com';
+        // $headers[] = 'Bcc: birthdaycheck@example.com';
+        // Отправляем
+        $result = mail($to, $subject, $message, implode("\r\n", $headers));
+        return $this->asJson(['status' => 200]);
     }
 
     public function actionAbout()

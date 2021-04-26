@@ -41,12 +41,16 @@ export const ContactsCompany = (props) => {
           <Mail href="mailto:hello@vegfood.delivery">
             hello@vegfood.delivery
           </Mail>
-          <br /> или звоните по номеру <br />
-          <Phone href="tel:+74959999999">+7 (495) 999-99-99</Phone>
+          {/* <br /> или звоните по номеру <br />
+          <Phone href="tel:+74959999999">+7 (495) 999-99-99</Phone> */}
         </MailWrap>
 
         <FormContacts action="#" method="post" name="form" id="contact-form">
-          <p style={{fontSize: '18px', color: '#9F9F9F', marginBottom: '40px'}}>Спросите нас, заполнив форму обратной связи</p>
+          <p
+            style={{ fontSize: "18px", color: "#9F9F9F", marginBottom: "40px" }}
+          >
+            Спросите нас, заполнив форму обратной связи
+          </p>
           <CartInput
             name="name"
             type="text"
@@ -97,9 +101,9 @@ const MailWrap = styled.div`
   font-size: 18px;
   margin-bottom: 20px;
   width: 340px;
-  color: #9F9F9F;
-  line-height: 1.30;
-  ${Media.mobile}{
+  color: #9f9f9f;
+  line-height: 1.3;
+  ${Media.mobile} {
     font-size: 16px;
   }
 `;
