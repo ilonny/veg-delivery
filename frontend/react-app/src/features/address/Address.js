@@ -20,7 +20,7 @@ Modal.setAppElement("#root");
 export const Address = (props) => {
   // console.log("Address props", props);
   const { changeAddress, children, address, isCart = false } = props;
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(address ? false : true);
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState(
     address?.value ? address.value : ""
@@ -261,8 +261,8 @@ const customStyles = {
     boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.1)",
   },
   overlay: {
-    zIndex: '2'
-  }
+    zIndex: "2",
+  },
 };
 const SpecialRow = styled.div`
   position: relative;
