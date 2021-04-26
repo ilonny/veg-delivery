@@ -8,9 +8,11 @@ export const OtherInfo = () => (
       <br />© VegDelivery 2021{" "}
     </p>
     <div style={{ textAlign: "right" }}>
-      <Link href="/privacy-policy">Политика конфиденциальности</Link>
-      <br />
+      {/* <Link href="/privacy-policy">Политика конфиденциальности</Link> */}
+      {/* <br /> */}
       <Link href="/terms-of-use">Пользовательское соглашение</Link>
+      <br />
+      <Link href="mailto:hello@vegfood.delivery">hello@vegfood.delivery</Link>
     </div>
   </Copyright>
 );

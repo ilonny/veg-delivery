@@ -7,20 +7,21 @@ import { Media } from "../../../lib";
 import { WithTag } from "../../styled-components-layout";
 import { Link } from "react-router-dom";
 export const SocialMedia = (props) => (
-  <MenuColStyled>
-    <ColText>Присоединяйтесь к нам в соцсетях</ColText>
-    <div>
-      <Row>
-        <FirstCol>
-          <LinkStyled>
-            <div style={{ marginLeft: -6, marginTop: "8px" }}>
-              <SocialLinks />
-            </div>
-          </LinkStyled>
-        </FirstCol>
-      </Row>
-    </div>
-  </MenuColStyled>
+  <div></div>
+  // <MenuColStyled>
+  //   <ColText>Присоединяйтесь к нам в соцсетях</ColText>
+  //   <div>
+  //     <Row>
+  //       <FirstCol>
+  //         <LinkStyled>
+  //           <div style={{ marginLeft: -6, marginTop: "8px" }}>
+  //             <SocialLinks />
+  //           </div>
+  //         </LinkStyled>
+  //       </FirstCol>
+  //     </Row>
+  //   </div>
+  // </MenuColStyled>
 );
 const ColText = styled.p`
   color: #919399;
