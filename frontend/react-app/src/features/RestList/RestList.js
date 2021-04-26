@@ -32,6 +32,10 @@ export const RestList = (props) => {
           type: "Ресторан",
         });
         console.log("rest??", rest?.menu);
+        let address = "";
+        try {
+          address = JSON.parse(rest?.address_json);
+        } catch (e) {}
         rest?.menu?.forEach((category) => {
           category?.menu?.forEach((item) => {
             searchData.push({
@@ -41,6 +45,7 @@ export const RestList = (props) => {
               type: "Блюдо",
               restaurant_id: item.restaurant_id,
               id: item.id,
+              address_name: address?.value,
             });
           });
         });
@@ -91,7 +96,8 @@ export const RestList = (props) => {
                       history.push(`/restaurant/${result?.restaurant_id}`);
                   }}
                 >
-                  {result.value} ({result.type})
+                  {result.value} ({result.type}) ({result.rest_name} -{" "}
+                  {result.address_name})
                 </div>
               );
             })}
@@ -122,7 +128,7 @@ export const RestList = (props) => {
           <>
             <Row justify="flex-start" wrap="wrap" margin="0px -10px;">
               {restaurants.map((restaurant) => {
-                return <RestCard  restaurant={restaurant} key={restaurant.id} />;
+                return <RestCard restaurant={restaurant} key={restaurant.id} />;
               })}
             </Row>
           </>
