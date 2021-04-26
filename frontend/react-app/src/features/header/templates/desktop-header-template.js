@@ -17,7 +17,7 @@ export const HeaderTemplateDektop = (props) => {
   // console.log("HeaderTemplateDektop props", props);
   const { address, products, cart_count } = props;
   return (
-    <div style={{ borderBottom: "1px solid #ccc", background: "#fff" }}>
+    <HeaderContainer >
       <Container isGray={false}>
         <HeaderWrapper>
           <LeftSide>
@@ -51,9 +51,16 @@ export const HeaderTemplateDektop = (props) => {
           </RightSide>
         </HeaderWrapper>
       </Container>
-    </div>
+    </HeaderContainer>
   );
 };
+const HeaderContainer = styled.div`
+// position: fixed;
+// width: 100%; 
+// z-index: 3;
+// border-bottom: 1px solid #ccc; 
+background: #fff
+`;
 const RubImg = styled.img`
   background: 5ac17d;
   margin-right: 8px;

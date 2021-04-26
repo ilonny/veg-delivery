@@ -260,6 +260,9 @@ const customStyles = {
     border: "none",
     boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.1)",
   },
+  overlay: {
+    zIndex: '2'
+  }
 };
 const SpecialRow = styled.div`
   position: relative;

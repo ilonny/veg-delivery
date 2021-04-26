@@ -19,7 +19,7 @@ export const CartButton = (props) => {
         <AddBtn
           onClick={() => {
             addToCart();
-            ToastsStore.success("Товар добавлен в корзину");
+            // ToastsStore.success("Товар добавлен в корзину");
           }}
         >
           <img src={AddToCartIcon} alt="Add" />

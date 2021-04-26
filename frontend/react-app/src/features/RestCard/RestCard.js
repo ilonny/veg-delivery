@@ -6,13 +6,15 @@ import { Link } from "react-router-dom";
 
 export const RestCard = (props) => {
   const { restaurant, address } = props;
+  console.log('reastcard props', props);
+  const restAddress = JSON.parse(restaurant.address_json)
   return (
     <RestCardWrapper>
       <Link to={{ pathname: `/restaurant/${restaurant.id}`, restaurant }}>
         <RestCardImageWrapper {...props} />
         <RestCardContentWrapper>
           <h2>{restaurant?.name}</h2>
-          <AddressRest>{address?.value}</AddressRest>
+          <AddressRest>{restAddress.value}</AddressRest>
           <Row
             align="center"
             justify="space-between"
@@ -58,14 +60,15 @@ const RestCardWrapper = styled.div`
 `;
 const RestCardImageWrapper = styled.div`
   width: 100%;
-  height: 180px;
+  height: 200px;
+  margin-top: 15px;
   ${(props) => {
     const { restaurant } = props;
     return `
     background: url(${`${API_URL}${restaurant?.image}`}) center center no-repeat;
     `;
   }}
-  background-size: cover;
+  background-size: 90% auto;
 `;
 const RestCardContentWrapper = styled.div`
   padding: 20px;

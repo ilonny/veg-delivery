@@ -19,7 +19,7 @@ export const HeaderTemplateMobile = (props) => {
   const { address, cart_count } = props;
   const [menuOpened, setMenuOpened] = useState(false);
   return (
-    <>
+    <HeaderContainer>
       <HeaderWrapper>
         <MenuButton onClick={() => setMenuOpened(!menuOpened)}>
           <img src={MenuButtonIcon} alt="Menu Button" />
@@ -64,7 +64,7 @@ export const HeaderTemplateMobile = (props) => {
           </LinkRouter>
         </MenuContent>
       )}
-    </>
+    </HeaderContainer>
   );
 };
 
@@ -101,6 +101,11 @@ const HeaderWrapper = styled.div`
 //     text-decoration: underline;
 //   }
 // `;
+const HeaderContainer = styled.div`
+// position: fixed;
+// width: 100%; 
+// z-index: 3
+`;
 const ListButton = styled.button`
   display: flex;
   justify-content: center;

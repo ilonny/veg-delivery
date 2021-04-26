@@ -5,6 +5,7 @@ import {
   // SAVE_LOCAL_CART,
   // LOAD_LOCAL_CART
 } from "./actions";
+import { ToastsContainer, ToastsStore } from "react-toasts";
 const emptyCart = {
   cart_id: undefined,
   products: [],
@@ -118,6 +119,7 @@ cartReducer.addToCart = (product) => (dispatch, getState) => {
     deliveryPrice,
     restaurantMinPrice,
   });
+  ToastsStore.success("Товар добавлен в корзину");
 };
 
 cartReducer.removeFromCart = (product) => (dispatch, getState) => {
