@@ -23,7 +23,10 @@ WithTag.propTypes = {
 const is = (value) => typeof value !== "undefined";
 const prop = (value) => (is(value) ? value : "initial");
 
+const propBot = (value, value2) => (is(propBot) ? value : value2);
+
 export const mixins = (props) => css`
+  padding-left: ${prop(props.paddingLeft)}
   position: ${prop(props.position)};
   left: ${prop(props.left)};
   bottom: ${prop(props.bottom)}; 
@@ -40,24 +43,44 @@ export const mixins = (props) => css`
   flex-wrap: ${prop(props.wrap)};
   margin-top: ${prop(props.marginTop)};
   margin: ${prop(props.margin)};
-  ${props.mobile_wrap &&
-  `${Media.mobile} {
+  ${
+    props.mobile_wrap &&
+    `${Media.mobile} {
     flex-wrap: wrap;
-    }`}
-  ${props.tablet_wrap &&
-  `${Media.tablet} {
+    }`
+  }
+  ${
+    props.tablet_wrap &&
+    `${Media.tablet} {
     flex-wrap: wrap;
-    }`}
-    ${props.mobile_direction &&
-  `${Media.mobile} {
+    }`
+  }
+    ${
+      props.mobile_direction &&
+      `${Media.mobile} {
     flex-direction: column;
     align-items: center;
-    }`}
-    ${props.tablet_justify &&
-  `${Media.tablet} {
+    }`
+    }
+    ${
+      props.tablet_justify &&
+      `${Media.tablet} {
     justify-content: space-between;
-    }`}
-`;
+    }`
+    }
+    ${
+      props.bottom &&
+      `${Media.mobile}{
+      bottom: 20px;
+    }`
+    }
+    ${
+      props.bottom &&
+      `${Media.tablet}{
+      bottom: 10px;
+    }`
+    }
+  `;
 
 export const Row = styled(WithTag)`
   display: flex;

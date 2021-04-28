@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 // import styled from "styled-components";
 import {
   BlockWrapper,
@@ -10,7 +12,7 @@ import {
   Price,
   DescriptionWrapper,
 } from "../atoms";
-import { API_URL } from "../../../lib";
+import { API_URL, Media } from "../../../lib";
 import { Row } from "../../styled-components-layout";
 import ImgNotFound from "../../../assets/icons/image_not_found.png";
 export const Block = ({ item, addToCart, removeFromCart, cart_products }) => {
@@ -59,8 +61,8 @@ export const Block = ({ item, addToCart, removeFromCart, cart_products }) => {
       </ImageWrapper>
       <Title>{item.name}</Title>
       {/* </Link> */}
-      <div>
-        <Row align="flex-start" position='absolute' bottom='20px' flexDirection='column'>
+      <PriceWrapper>
+        <Row align="flex-start" flexDirection='column'>
           <CartButton
             item={item}
             removeFromCart={() => removeFromCart(item)}
@@ -68,10 +70,20 @@ export const Block = ({ item, addToCart, removeFromCart, cart_products }) => {
             active={active}
             cart_products={cart_products}
           />
-          <Price style={{alignSelf:'flex-start', marginLeft: '40px'}}  isBold={true}>{item.price} руб.</Price>
+          <Price isBold={true}>{item.price} руб.</Price>
           {!!item.new_price && <Price isBold>{item.new_price} руб.</Price>}
         </Row>
-      </div>
+      </PriceWrapper>
     </BlockWrapper>
   );
 };
+
+const PriceWrapper = styled.div`
+position: absolute;
+bottom: 25px;
+left: 20px;
+${Media.tablet}{
+  bottom: 15px;
+  left: 10px;
+}
+`;

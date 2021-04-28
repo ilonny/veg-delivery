@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import PinSvg from "../../assets/icons/mapCheck.svg";
+// import PinSvg from "../../assets/icons/mapCheck.svg";
 import CloseModal from "../../assets/icons/closeModal.svg";
 import Loupe from "../../assets/icons/loupe.svg";
 import { Row, RowColumn } from "../styled-components-layout";
@@ -21,7 +21,7 @@ export const Address = (props) => {
   // console.log("Address props", props);
   const { changeAddress, children, address, isCart = false } = props;
   const [modalIsOpen, setModalIsOpen] = useState(
-    Object.keys(address).length ? false : true
+    Object.keys(address)?.length ? false : true
   );
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState(
@@ -124,7 +124,7 @@ export const Address = (props) => {
             setModalIsOpen(true);
           }}
         >
-          <img src={PinSvg} alt="location" />
+          {/* <img src={PinSvg} alt="location" /> */}
           <AddressLalbel>{children}</AddressLalbel>
         </AddressWrapper>
       )}
@@ -186,7 +186,7 @@ export const Address = (props) => {
                 setInputValue("");
                 setSuggestions([]);
                 setSavedSugg(null);
-                changeAddress(null);
+                changeAddress({});
               }}
             >
               <img src={CloseModal} width="12px" height="12px" alt="Clean" />
@@ -300,7 +300,7 @@ const AddressWrapper = styled.button`
   align-items: center;
   font-family: Exo2Regular;
   font-size: 18px;
-  margin-left: 49px;
+  margin-left: 0;
   line-height: 22px;
   color: #9f9f9f;
   background: transparent;

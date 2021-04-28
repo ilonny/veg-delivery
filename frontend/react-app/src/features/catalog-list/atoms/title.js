@@ -10,9 +10,10 @@ const StyledTitle = styled.p`
   color: ${Color.titleColor};
   font-weight: bold;
   ${Media.smallDesktop} {
-    font-size: 16px;
+    font-size: 18px;
   }
-  // ${Media.mobile} {
-  //   text-align: center;
-  // }
+  ${Media.mobile} {
+    font-size: 14px;
+  }
+  
 `;

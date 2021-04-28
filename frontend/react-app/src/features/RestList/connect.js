@@ -11,6 +11,9 @@ export const RestList = connect(
     // ...state.categories,
   }),
   (dispatch) => ({
+
     getRestList: (params) => dispatch(mainReducer.getRestList(params)),
+    changeAddress: (address) => dispatch(mainReducer.changeAddress(address))
+
   })
 )(RestListTemplate);

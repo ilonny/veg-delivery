@@ -9,6 +9,8 @@ import { Container } from "../../common/templates";
 import { Address } from "../../../features";
 import "./desktop-header-template.css";
 import Logo from "../../../assets/icons/logo.png";
+import PinSvg from "../../../assets/icons/mapCheck.svg";
+
 import RubIcon from "../../../assets/icons/basket.svg";
 import { Link as LinkRouter } from "react-router-dom";
 
@@ -26,6 +28,7 @@ export const HeaderTemplateDektop = (props) => {
                 <Logotype src={Logo} alt="VegDelivery" />
               </Link>
             </LinkRouter>
+            <img style={{marginRight: '10px'}} src={PinSvg} alt="location" />
             <Address>{address?.value ? address.value : "Не указано"}</Address>
           </LeftSide>
           <RightSide>
@@ -135,6 +138,7 @@ const Logotype = styled.img`
   justify-content: center;
   align-items: center;
   width: 160px;
+  margin-right: 49px;
 `;
 
 // const MainWrapper = styled.div`

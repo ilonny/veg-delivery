@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Media } from "../../../lib";
 export const BlockWrapper = styled.div`
   padding: 10px;
-  padding-bottom: 40px;
+  height: 350px;
   flex: 1;
   flex: 1 1 25%;
   max-width: 25%;
@@ -22,10 +22,11 @@ export const BlockWrapper = styled.div`
   ${Media.tablet} {
     flex: 1 1 50%;
     max-width: 50%;
-    height: 400px;
   }
   ${Media.mobile} {
     // flex: 1 1 100%;
     // max-width: 100%;
+    height: 420px;
+
   }
 `;
