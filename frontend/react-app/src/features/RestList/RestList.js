@@ -197,7 +197,6 @@ const ChooseAddressInputWrapper = styled.div`
     // background-color: #fff;
   }
 `;
-
 const CloseButton = styled.button`
   background: transparent;
   outline: none;
