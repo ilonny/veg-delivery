@@ -20,7 +20,7 @@ Modal.setAppElement("#root");
 export const Address = (props) => {
   // console.log("Address props", props);
   const { changeAddress, children, address, isCart = false } = props;
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [inputValue, setInputValue] = useState(
     address?.value ? address.value : ""

@@ -158,7 +158,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-width: 90%;
+width: 100%;
 `;
 const SomeButton = styled.button`
   padding: 15px 30px;
@@ -168,6 +168,9 @@ const SomeButton = styled.button`
   outline: none;
   transition: all 250ms ease;
   background: ${Color.buttonColor};
+  &:hover {
+    text-decoration: underline;
+  }
   ${Media.mobile} {
     width: 100%;
     padding: 10px 30px;
