@@ -143,7 +143,7 @@ class RestaurantController extends Controller
     public function actionMobileList($lat = '', $lon = '') {
         date_default_timezone_set('Europe/Moscow');
         $res = [];
-        $rest_all = Restaurant::find()->asArray()->all();
+        $rest_all = Restaurant::find()->andWhere(['active' => '1'])->asArray()->all();
         $R=6371;  // Earth's radius
         
         foreach ($rest_all as $key => $rest) {
